@@ -43,7 +43,7 @@
             padding: 40px 20px;
             text-align: center;
         }
-        .navbar-brand { color: #ff0000 !important; }
+        .navbar-brand { color: #070606 !important; }
         .nav-link { color:rgb(10, 10, 77) !important; }
         .nav-link:hover { color:rgb(175, 6, 6) !important; }
         .sejarah-img {
@@ -73,13 +73,30 @@
             color: rgb(9, 9, 121);
             margin-bottom: 20px;
         }
+        .btn-login-hkbp {
+        background-color: #134884;
+        color: #fff;
+        border: none;
+        padding: 8px 20px;
+        font-weight: bold;
+        border-radius: 6px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-login-hkbp:hover {
+        background-color: #001530;
+        color: #fff;
+    }
     </style>
 </head>
 <body>
     <!-- Navbar fixed-top -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="#home">HKBP Bakkara</a>
+            <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#home">
+                <img src="{{ asset('images/hkbp.png') }}" alt="Logo HKBP" width="40" height="40">
+                HKBP Sinambela Simanullang
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -94,14 +111,18 @@
                     <li class="nav-item"><a class="nav-link" href="#ayat">Ayat Harian</a></li>
                     <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
                 </ul>
+
+                <!-- Tombol Login -->
+                <a href="{{ route('login') }}" class="btn-login-hkbp ms-3">Login</a>
             </div>
         </div>
     </nav>
 
      <!-- Hero Section -->
-    <section id="home" class="hero" style="background-image: url('https://awsimages.detik.net.id/community/media/visual/2024/12/24/suasana-persiapan-natal-di-gereja-katedral-santa-perawan-maria-ratu-rosario-suci-di-kelurahan-randusari-kecamatan-semarang-sel-1_169.jpeg?w=1200'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: white; position: relative;">
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5);"></div>
-        <h1 class="display-3 fw-bold" style="position: relative; z-index: 1;">Selamat Datang di HKBP Bakkara</h1>
+    <section id="home" class="hero" style="background-image: url('{{ asset('images/gambar12.jpg') }}');">
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></div>
+        <h1 class="display-3 fw-bold" style="position: relative; z-index: 1;font-size: 46px; font-family: 'Poppins', sans-serif;">Selamat Datang di HKBP Sinambela Simanullang
+        </h1>
         <p class="lead" style="position: relative; z-index: 1;">Gereja yang melayani dengan kasih dan kebersamaan</p>
     </section>
 
@@ -111,7 +132,7 @@
             <h2 class="section-title text-center">SEJARAH GEREJA</h2>
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Milan_Cathedral_from_Piazza_del_Duomo.jpg/1200px-Milan_Cathedral_from_Piazza_del_Duomo.jpg" alt="HKBP Bakkara" class="img-fluid sejarah-img">
+                    <img src="{{ asset('images/gambar12.jpg') }}" alt="HKBP Bakkara" class="img-fluid sejarah-img">
                 </div>
                 <div class="col-md-6 sejarah-text">
                     <p class="lead">HKBP Bakkara memiliki sejarah panjang dalam melayani jemaat. Berdiri sejak abad ke-19, gereja ini menjadi pusat peribadatan bagi umat Kristen Batak, khususnya di wilayah Bakkara.</p>
@@ -180,7 +201,7 @@
                     </p>
                 </div>
             </div>
-            
+
             <hr class="mt-4 mb-4" style="border-color: white;">
             <p>© 2025 HKBP Bakkara. Semua hak dilindungi.</p>
         </div>
