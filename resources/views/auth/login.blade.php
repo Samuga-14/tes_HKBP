@@ -4,7 +4,7 @@
 <div class="login-wrapper">
     {{-- GANTI TEKS DENGAN LOGO --}}
     <div class="text-center mb-4">
-        <img src="{{ asset('images/hkbp.png') }}" alt="Logo HKBP Sinambela" style="max-height: 100px;">
+        <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP Sinambela" style="max-height: 100px;">
     </div>
 
     <div class="card login-card">

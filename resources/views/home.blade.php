@@ -94,7 +94,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="#home">
-                <img src="{{ asset('images/hkbp.png') }}" alt="Logo HKBP" width="40" height="40">
+                <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" width="40" height="40">
                 HKBP Sinambela Simanullang
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
