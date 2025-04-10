@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: url('/images/gambar12.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(227, 224, 224, 0.4);
+    z-index: 0;
+}
+
+.login-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px 70px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.login-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.login-card label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.login-card .form-control {
+    border-radius: 8px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    background-color: #f7f9fc;
+}
+
+.login-card .form-control:focus {
+    border-color: #0066ff;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2);
+}
+
+.login-card .form-check {
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.login-card button.btn-primary {
+    background-color: #0066ff;
+    border: none;
+    padding: 10px 25px;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.login-card button.btn-primary:hover {
+    background-color: #004dcc;
+}
+
+.login-card .btn-link {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #0066ff;
+}
+
+.login-card .btn-link:hover {
+    text-decoration: underline;
+}
