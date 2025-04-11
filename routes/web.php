@@ -1,5 +1,5 @@
 <?php
-use Illuminate\Support\Facades\Auth;    
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BeritaController;
@@ -13,9 +13,23 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/pages/sejarah', function () {
-    return view('pages.sejarah');
-})->name('pages.sejarah');
+Route::get('/sejarah', function () {
+    return view('sejarah');
+});
+
+Route::get('/berita', function () {
+    return view('berita');
+});
+
+Route::get('/galeri', function () {
+    return view('galeri');
+});
+Route::get('/warta', function () {
+    return view('warta');
+});
+Route::get('/pengurus', function () {
+    return view('pengurus');
+});
 
 // Authentication
 Auth::routes();

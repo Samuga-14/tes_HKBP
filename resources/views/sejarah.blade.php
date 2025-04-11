@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sejarah Gereja - HKBP Sinambela Simanullang</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero-sejarah {
+            background-image: url('{{ asset('images/gambar12.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-sejarah::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            background-color: #3498db;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .content-section {
+            background-color: #f4f4f4;
+            padding: 2rem;
+        }
+
+        .content-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .content-block {
+            margin-bottom: 2rem;
+        }
+
+        .content-block h4 {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .content-block p {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    {{-- Header --}}
+    @include('header')
+
+    {{-- Hero Section --}}
+    <section class="hero-sejarah">
+        <div class="hero-text">
+            <h1 class="display-5 fw-bold">SELAMAT DATANG DI HKBP SINAMBELA SIMANULLANG</h1>
+            <p class="lead">Jahowa Do Si Parmaluan Au</p>
+        </div>
+    </section>
+
+    {{-- Sejarah Section --}}
+    <section class="section-title">
+        Sejarah Gereja HKBP Sinambela Simanullang
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <p class="mb-4 text-center">Berikut adalah beberapa poin sejarah dari HKBP Sinambela yang bisa Anda ketahui:</p>
+
+            <div class="content-block">
+                <h4>Sejarah HKBP Bakkara</h4>
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{{ asset('images/ingwerl.jpg') }}" alt="Ingwer Ludwig Nommensen">
+                    </div>
+                    <div class="col-md-9">
+                        <p>
+                            HKBP (Huria Kristen Batak Protestan) Bakkara adalah salah satu jemaat yang berada di bawah naungan HKBP pusat. Pusatnya di Pearaja, Tarutung, Sumatera Utara. Sejarah HKBP tidak bisa dilepaskan dari peran penting misionaris Jerman, yaitu Ingwer Ludwig Nommensen, yang datang ke tanah Batak pada tahun 1860-an. Melalui pelayanannya, banyak masyarakat Batak mengenal ajaran Kristen dan menjadi pengikut Kristus.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h4>Sejarah Bangunan Gereja</h4>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ asset('images/foto-lama.jpg') }}" alt="Bangunan Lama HKBP">
+                    </div>
+                    <div class="col-md-8">
+                        <p>
+                            Menyusul kekristenan ke wilayah Bakkara (dan sekitarnya) dari misi penginjilan, masyarakat mulai membangun tempat ibadah secara sederhana. Bangunan gereja awal dibuat dari bahan seadanya seperti kayu dan ilalang. Seiring perkembangan zaman, gereja pun dibangun kembali dengan arsitektur lebih kokoh dan permanen, hingga menjadi seperti yang ada saat ini.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h4>Berdirinya Bangunan Gereja</h4>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{ asset('images/gereja-modern.jpg') }}" alt="Bangunan Gereja Baru">
+                    </div>
+                    <div class="col-md-8">
+                        <p>
+                            HKBP Bakkara (dan wilayah Sinambela Simanullang) secara resmi memiliki gedung HKBP sejak bertahun-tahun lalu dengan peresmian yang dilakukan oleh pimpinan jemaat setempat. Sejak saat itu, gereja ini aktif melayani jemaat melalui berbagai kegiatan ibadah, pelayanan sosial, pembinaan remaja dan pemuda, serta mendukung pendidikan anak-anak.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h4>Peran HKBP Sinambela - Simanullang</h4>
+                <p>
+                    HKBP Bakkara dan turunannya berfungsi sebagai tempat ibadah, tetapi juga sebagai pusat kegiatan sosial dan budaya bagi masyarakat Kristen Batak di sekitarnya. Gereja ini berperan aktif dalam:
+                    <ul>
+                        <li>Pendidikan Agama Kristen sejak usia dini</li>
+                        <li>Pelestarian budaya Batak melalui kegiatan seni dan budaya</li>
+                        <li>Pembinaan moral generasi muda</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    {{-- Footer --}}
+    @include('footer')
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
