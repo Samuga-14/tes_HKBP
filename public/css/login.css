@@ -22,9 +22,9 @@ body::before {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 650px; /* <-- ubah ini kalau mau lebih lebar */
+    max-width: 650px;
     background: rgba(255, 255, 255, 0.9);
-    padding: 30px 65px; /* <-- kurangi padding samping jika form terlalu sempit */
+    padding: 30px 65px;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }

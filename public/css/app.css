@@ -1,0 +1,44 @@
+footer {
+    font-size: 0.95rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+}
+
+footer h5 {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+footer p,
+footer li {
+    font-size: 0.875rem;
+    margin-bottom: 0.4rem;
+}
+
+footer i {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding-top: 1rem;
+        padding-bottom: 0.5rem;
+    }
+
+    footer .row > div {
+        margin-bottom: 1rem;
+    }
+
+    footer p,
+    footer li {
+        font-size: 0.8rem;
+    }
+
+    footer h5 {
+        font-size: 0.9rem;
+    }
+
+    footer img {
+        width: 60px;
+    }
+}

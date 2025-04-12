@@ -1,0 +1,72 @@
+/* Mengatur tampilan card */
+.card {
+    border-radius: 10px; /* Sudut yang lebih lembut */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek depth */
+    border: none;
+}
+
+/* Mengatur header card */
+.card-header {
+    background-color: #4CAF50; /* Warna latar belakang hijau */
+    color: white;
+    font-size: 1.25rem; /* Ukuran font lebih besar */
+    text-align: center;
+    padding: 15px;
+}
+
+/* Mengatur form */
+form {
+    padding: 20px;
+}
+
+/* Mengatur input form */
+.form-control {
+    border-radius: 5px; /* Sudut lebih halus pada input */
+    border: 1px solid #ddd; /* Warna border yang lembut */
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px; /* Jarak antar input */
+}
+
+/* Mengatur button submit */
+button[type="submit"] {
+    background-color: #4CAF50; /* Warna hijau untuk button */
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    width: 100%; /* Lebar tombol penuh */
+    cursor: pointer;
+}
+
+/* Menambahkan efek hover pada button */
+button[type="submit"]:hover {
+    background-color: #45a049; /* Warna hijau lebih gelap saat hover */
+}
+
+/* Mengatur validasi error */
+.invalid-feedback {
+    color: #e74c3c; /* Warna merah untuk pesan error */
+    font-size: 0.875rem;
+}
+
+/* Responsif untuk tampilan mobile */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .card {
+        margin-top: 20px;
+    }
+
+    .form-control {
+        font-size: 1rem;
+    }
+
+    button[type="submit"] {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+    }
+}
