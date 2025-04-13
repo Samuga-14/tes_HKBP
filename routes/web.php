@@ -30,6 +30,13 @@ Route::get('/warta', function () {
 Route::get('/pengurus', function () {
     return view('pengurus');
 });
+Route::get('/perkembangan', function () {
+    return view('perkembangan');
+});
+Route::get('/ayat', function () {
+    return view('ayat');
+});
+
 
 // Authentication
 Auth::routes();

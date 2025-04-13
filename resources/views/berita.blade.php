@@ -90,7 +90,7 @@
                             <p class="card-text">Lihat ayat harian yang disediakan oleh HKBP Sinambela</p>
                         </div>
                         <div class="card-footer bg-transparent text-end border-0">
-                            <a href="#" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
+                            <a href="{{ url('/ayat') }}" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                             <p class="card-text">Lihat bagaimana perkembangan pembangunan gereja setiap saat</p>
                         </div>
                         <div class="card-footer bg-transparent text-end border-0">
-                            <a href="#" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
+                            <a href="{{ url('/perkembangan') }}" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
                         </div>
                     </div>
                 </div>

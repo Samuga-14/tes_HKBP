@@ -66,7 +66,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6">
-                    <img src="{{ asset('images/foto-ibadah.jpg') }}" alt="Foto Ibadah" class="img-fluid rounded shadow-sm">
+                    <img src="{{ asset('images/ibadah.jpg') }}" alt="Foto Ibadah" class="img-fluid rounded shadow-sm">
                 </div>
             </div>
         </div>

@@ -99,7 +99,7 @@
                 <h4>Sejarah HKBP Bakkara</h4>
                 <div class="row">
                     <div class="col-md-3">
-                        <img src="{{ asset('images/ingwerl.jpg') }}" alt="Ingwer Ludwig Nommensen">
+                        <img src="{{ asset('images/nomensen.jpg') }}" alt="Ingwer Ludwig Nommensen">
                     </div>
                     <div class="col-md-9">
                         <p>
@@ -113,7 +113,7 @@
                 <h4>Sejarah Bangunan Gereja</h4>
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="{{ asset('images/foto-lama.jpg') }}" alt="Bangunan Lama HKBP">
+                        <img src="{{ asset('images/hkbp1.jpg') }}" alt="Bangunan Lama HKBP">
                     </div>
                     <div class="col-md-8">
                         <p>
@@ -127,7 +127,7 @@
                 <h4>Berdirinya Bangunan Gereja</h4>
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="{{ asset('images/gereja-modern.jpg') }}" alt="Bangunan Gereja Baru">
+                        <img src="{{ asset('images/gambar12.jpg') }}" alt="Bangunan Gereja Baru">
                     </div>
                     <div class="col-md-8">
                         <p>
