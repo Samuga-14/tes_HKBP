@@ -6,81 +6,7 @@
     <title>Struktur Kepengurusan - HKBP Sinambela</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8f9fa;
-        }
-
-        .hero-section {
-            background-image: url('{{ asset('images/gambar12.jpg') }}');
-            background-size: cover;
-            background-position: center;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-text {
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-title {
-            background-color: #005fa3;
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            font-weight: bold;
-            font-size: 2rem;
-        }
-
-        .sub-section {
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        .person {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .person img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #ddd;
-        }
-
-        .person h5 {
-            margin-top: 1rem;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .person small {
-            color: #666;
-        }
-
-        .section-description {
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            color: #666;
-            font-size: 0.95rem;
-        }
-    </style>
+    <link href="{{ asset('css/struktur.css') }}" rel="stylesheet">
 </head>
 <body>
 
@@ -125,19 +51,31 @@
         </p>
         <div class="container">
             <div class="row justify-content-center">
-                @foreach ([
-                    ['img' => 'niky1.jpg', 'nama' => 'ST. NICKY MANULLANG', 'jabatan' => 'Sekretaris'],
-                    ['img' => 'niky2.jpg', 'nama' => 'ST. NICKY MANULLANG', 'jabatan' => 'Anggota'],
-                    ['img' => 'pegadian.jpg', 'nama' => 'ST. PEGADIAN', 'jabatan' => 'Ketua Ama'],
-                    ['img' => 'niky3.jpg', 'nama' => 'ST. NICKY MANULLANG', 'jabatan' => 'Ama Ronsen'],
-                    ['img' => 'saor.jpg', 'nama' => 'ST. SAOR MANULLANG', 'jabatan' => 'Sekretaris Marturia'],
-                ] as $fungsionaris)
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/' . $fungsionaris['img']) }}" alt="{{ $fungsionaris['nama'] }}">
-                    <h5>{{ $fungsionaris['nama'] }}</h5>
-                    <small>{{ $fungsionaris['jabatan'] }}</small>
+                    <img src="{{ asset('images/niky1.jpg') }}" alt="ST. NICKY MANULLANG">
+                    <h5>ST. NICKY MANULLANG</h5>
+                    <small>Sekretaris</small>
                 </div>
-                @endforeach
+                <div class="col-6 col-md-4 col-lg-3 person">
+                    <img src="{{ asset('images/niky2.jpg') }}" alt="ST. NICKY MANULLANG">
+                    <h5>ST. NICKY MANULLANG</h5>
+                    <small>Anggota</small>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 person">
+                    <img src="{{ asset('images/pegadian.jpg') }}" alt="ST. PEGADIAN">
+                    <h5>ST. PEGADIAN</h5>
+                    <small>Ketua Ama</small>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 person">
+                    <img src="{{ asset('images/niky3.jpg') }}" alt="ST. NICKY MANULLANG">
+                    <h5>ST. NICKY MANULLANG</h5>
+                    <small>Ama Ronsen</small>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 person">
+                    <img src="{{ asset('images/saor.jpg') }}" alt="ST. SAOR MANULLANG">
+                    <h5>ST. SAOR MANULLANG</h5>
+                    <small>Sekretaris Marturia</small>
+                </div>
             </div>
         </div>
     </div>
@@ -150,19 +88,31 @@
         </p>
         <div class="container">
             <div class="row justify-content-center">
-                @foreach ([
-                    ['img' => 'simamora.jpg', 'nama' => 'ST. SIMAMORA', 'jabatan' => 'Ketua'],
-                    ['img' => 'bonatua.jpg', 'nama' => 'ST. BONATUA', 'jabatan' => 'Anggota'],
-                    ['img' => 'hedrina.jpg', 'nama' => 'ST. HEDRINA', 'jabatan' => 'Anggota'],
-                    ['img' => 'saut1.jpg', 'nama' => 'ST. SAUT SIMAMORA', 'jabatan' => 'Anggota'],
-                    ['img' => 'saut2.jpg', 'nama' => 'ST. SAUT SIMAMORA', 'jabatan' => 'Anggota'],
-                ] as $marturia)
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/' . $marturia['img']) }}" alt="{{ $marturia['nama'] }}">
-                    <h5>{{ $marturia['nama'] }}</h5>
-                    <small>{{ $marturia['jabatan'] }}</small>
+                    <img src="{{ asset('images/simamora.jpg') }}" alt="ST. SIMAMORA">
+                    <h5>ST. SIMAMORA</h5>
+                    <small>Ketua</small>
                 </div>
-                @endforeach
+                <div class="col-6 col-md-4 col-lg-3 person">
+                    <img src="{{ asset('images/bonatua.jpg') }}" alt="ST. BONATUA">
+                    <h5>ST. BONATUA</h5>
+                    <small>Anggota</small>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 person">
+                    <img src="{{ asset('images/hedrina.jpg') }}" alt="ST. HEDRINA">
+                    <h5>ST. HEDRINA</h5>
+                    <small>Anggota</small>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 person">
+                    <img src="{{ asset('images/saut1.jpg') }}" alt="ST. SAUT SIMAMORA">
+                    <h5>ST. SAUT SIMAMORA</h5>
+                    <small>Anggota</small>
+                </div>
+                <div class="col-6 col-md-4 col-lg-3 person">
+                    <img src="{{ asset('images/saut2.jpg') }}" alt="ST. SAUT SIMAMORA">
+                    <h5>ST. SAUT SIMAMORA</h5>
+                    <small>Anggota</small>
+                </div>
             </div>
         </div>
     </div>

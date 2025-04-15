@@ -1,72 +1,120 @@
-/* Mengatur tampilan card */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: url('/images/gambar12.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(67, 62, 62, 0.4);
+    z-index: 0;
+}
+
+.register-container {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
 .card {
-    border-radius: 10px; /* Sudut yang lebih lembut */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek depth */
-    border: none;
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
-/* Mengatur header card */
 .card-header {
-    background-color: #4CAF50; /* Warna latar belakang hijau */
+    background-color: #0077c2;
     color: white;
-    font-size: 1.25rem; /* Ukuran font lebih besar */
-    text-align: center;
     padding: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
 }
 
-/* Mengatur form */
-form {
+.card-body {
     padding: 20px;
 }
 
-/* Mengatur input form */
-.form-control {
-    border-radius: 5px; /* Sudut lebih halus pada input */
-    border: 1px solid #ddd; /* Warna border yang lembut */
-    padding: 10px;
-    font-size: 1rem;
-    margin-bottom: 15px; /* Jarak antar input */
+.form-group {
+    margin-bottom: 1.5rem;
 }
 
-/* Mengatur button submit */
-button[type="submit"] {
-    background-color: #4CAF50; /* Warna hijau untuk button */
+label {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+input.form-control {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+input.form-control:focus {
+    border-color: #0077c2;
+    box-shadow: 0 0 5px rgba(0, 119, 194, 0.3);
+}
+
+.invalid-feedback {
+    color: red;
+    font-size: 0.9rem;
+}
+
+button.btn {
+    background-color: #0077c2;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 15px;
     font-size: 1rem;
     border: none;
     border-radius: 5px;
-    width: 100%; /* Lebar tombol penuh */
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-/* Menambahkan efek hover pada button */
-button[type="submit"]:hover {
-    background-color: #45a049; /* Warna hijau lebih gelap saat hover */
+button.btn:hover {
+    background-color: #005fa3;
 }
 
-/* Mengatur validasi error */
-.invalid-feedback {
-    color: #e74c3c; /* Warna merah untuk pesan error */
-    font-size: 0.875rem;
-}
-
-/* Responsif untuk tampilan mobile */
 @media (max-width: 768px) {
-    .container {
-        padding: 15px;
+    .register-container {
+        padding: 10px;
+        margin: 20px auto;
     }
 
     .card {
-        margin-top: 20px;
+        border-radius: 8px;
     }
 
-    .form-control {
-        font-size: 1rem;
-    }
-
-    button[type="submit"] {
+    .card-header {
         font-size: 1.1rem;
-        padding: 12px 20px;
+        padding: 12px;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    input.form-control {
+        padding: 0.6rem;
+        font-size: 0.95rem;
+    }
+
+    button.btn {
+        padding: 8px 12px;
+        font-size: 0.95rem;
     }
 }

@@ -1,0 +1,73 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.hero-section {
+    background-image: url('../images/gambar12.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: white;
+    text-align: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+}
+
+.section-title {
+    background-color: #005fa3;
+    color: white;
+    text-align: center;
+    padding: 2rem 1rem;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.sub-section {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.person {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.person img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ddd;
+}
+
+.person h5 {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.person small {
+    color: #666;
+}
+
+.section-description {
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    color: #666;
+    font-size: 0.95rem;
+}

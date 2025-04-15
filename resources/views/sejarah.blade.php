@@ -7,71 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .hero-sejarah {
-            background-image: url('{{ asset('images/gambar12.jpg') }}');
-            background-size: cover;
-            background-position: center;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            color: white;
-            text-align: center;
-        }
-
-        .hero-sejarah::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero-text {
-            position: relative;
-            z-index: 2;
-        }
-
-        .section-title {
-            background-color: #3498db;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-
-        .content-section {
-            background-color: #f4f4f4;
-            padding: 2rem;
-        }
-
-        .content-section img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .content-block {
-            margin-bottom: 2rem;
-        }
-
-        .content-block h4 {
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .content-block p {
-            text-align: justify;
-        }
-    </style>
+    <!-- Link to external CSS file -->
+    <link href="{{ asset('css/sejarah.css') }}" rel="stylesheet">
 </head>
 <body>
 
