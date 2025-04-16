@@ -30,13 +30,13 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-4 person">
-                    <img src="{{ asset('images/pendeta1.jpg') }}" alt="Pendeta Resort">
-                    <h5>PDT. MANGARA MANURUNG</h5>
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="Pendeta Resort">
+                    <h5>PDT. TONY NAINGGOLAN</h5>
                     <small>Pendeta Resort</small>
                 </div>
                 <div class="col-12 col-md-4 person">
-                    <img src="{{ asset('images/pendeta2.jpg') }}" alt="Pendeta Fungsional">
-                    <h5>PDT. MANGARA MANURUNG</h5>
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="Pendeta Fungsional">
+                    <h5>PDT. IMANUEL DARATUA SITORUS</h5>
                     <small>Pendeta Fungsional</small>
                 </div>
             </div>
@@ -52,27 +52,27 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/niky1.jpg') }}" alt="ST. NICKY MANULLANG">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. NICKY MANULLANG">
                     <h5>ST. NICKY MANULLANG</h5>
                     <small>Sekretaris</small>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/niky2.jpg') }}" alt="ST. NICKY MANULLANG">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. NICKY MANULLANG">
                     <h5>ST. NICKY MANULLANG</h5>
                     <small>Anggota</small>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/pegadian.jpg') }}" alt="ST. PEGADIAN">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. PEGADIAN">
                     <h5>ST. PEGADIAN</h5>
                     <small>Ketua Ama</small>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/niky3.jpg') }}" alt="ST. NICKY MANULLANG">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. NICKY MANULLANG">
                     <h5>ST. NICKY MANULLANG</h5>
                     <small>Ama Ronsen</small>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/saor.jpg') }}" alt="ST. SAOR MANULLANG">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. SAOR MANULLANG">
                     <h5>ST. SAOR MANULLANG</h5>
                     <small>Sekretaris Marturia</small>
                 </div>
@@ -89,27 +89,27 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/simamora.jpg') }}" alt="ST. SIMAMORA">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. SIMAMORA">
                     <h5>ST. SIMAMORA</h5>
                     <small>Ketua</small>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/bonatua.jpg') }}" alt="ST. BONATUA">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. BONATUA">
                     <h5>ST. BONATUA</h5>
                     <small>Anggota</small>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/hedrina.jpg') }}" alt="ST. HEDRINA">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. HEDRINA">
                     <h5>ST. HEDRINA</h5>
                     <small>Anggota</small>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/saut1.jpg') }}" alt="ST. SAUT SIMAMORA">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. SAUT SIMAMORA">
                     <h5>ST. SAUT SIMAMORA</h5>
                     <small>Anggota</small>
                 </div>
                 <div class="col-6 col-md-4 col-lg-3 person">
-                    <img src="{{ asset('images/saut2.jpg') }}" alt="ST. SAUT SIMAMORA">
+                    <img src="{{ asset('images/sinsim2.png') }}" alt="ST. SAUT SIMAMORA">
                     <h5>ST. SAUT SIMAMORA</h5>
                     <small>Anggota</small>
                 </div>
