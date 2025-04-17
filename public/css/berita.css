@@ -1,3 +1,4 @@
+/* General Styling */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -5,6 +6,7 @@ body {
     background-color: #f4f4f4;
 }
 
+/* Hero Section */
 .hero-sejarah {
     background-image: url('../images/gambar12.jpg');
     background-size: cover;
@@ -16,6 +18,8 @@ body {
     position: relative;
     color: white;
     text-align: center;
+    padding: 0 20px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
 }
 
 .hero-sejarah::before {
@@ -28,17 +32,37 @@ body {
 .hero-text {
     position: relative;
     z-index: 2;
+    max-width: 800px;
 }
 
+.hero-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.hero-text p {
+    font-size: 1.25rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+}
+
+/* Section Title */
 .section-title {
     background-color: #3498db;
     color: white;
     padding: 1rem;
     text-align: center;
-    font-weight: bold;
-    font-size: 1.5rem;
+    font-weight: 600;
+    font-size: 1.75rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Content Section */
 .content-section {
     padding: 2rem 0;
 }
@@ -46,12 +70,45 @@ body {
 .card-img-top {
     height: 220px;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card-img-top:hover {
+    transform: scale(1.05);
 }
 
 .card {
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-footer {
+    padding: 0.5rem;
+}
+
+/* Responsif untuk Perangkat Mobile */
+@media (max-width: 768px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .card-img-top {
+        height: 180px;
+    }
 }

@@ -23,8 +23,8 @@
     {{-- Hero Section --}}
     <section class="hero-galeri">
         <div class="hero-text">
-            <h1 class="display-5 fw-bold">Galeri Kegiatan HKBP Sinambela Simanullang</h1>
-            <p class="lead">Kumpulan Dokumentasi Kegiatan Gereja</p>
+            <h1 class="display-5 fw-bold animate__animated animate__fadeIn">Galeri Kegiatan HKBP Sinambela Simanullang</h1>
+            <p class="lead animate__animated animate__fadeIn animate__delay-1s">Kumpulan Dokumentasi Kegiatan Gereja</p>
         </div>
     </section>
 
@@ -36,14 +36,12 @@
     {{-- Galeri Section --}}
     <section class="content-section">
         <div class="container">
-            <div class="row">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 <!-- Galeri 1 -->
-                <div class="col-md-6 galeri-item">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img src="{{ asset('images/galeri1.jpg') }}" alt="Kegiatan 1">
-                        </div>
-                        <div class="col-md-7 galeri-text">
+                <div class="col">
+                    <div class="galeri-item">
+                        <img src="{{ asset('images/galeri1.jpg') }}" alt="Kegiatan 1">
+                        <div class="galeri-text">
                             <h5>Kebaktian Pemuda</h5>
                             <p>Acara kebaktian pemuda HKBP yang penuh semangat dan sukacita.</p>
                             <small>10 Maret 2024</small>
@@ -52,12 +50,10 @@
                 </div>
 
                 <!-- Galeri 2 -->
-                <div class="col-md-6 galeri-item">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <img src="{{ asset('images/galeri2.jpg') }}" alt="Kegiatan 2">
-                        </div>
-                        <div class="col-md-7 galeri-text">
+                <div class="col">
+                    <div class="galeri-item">
+                        <img src="{{ asset('images/galeri2.jpg') }}" alt="Kegiatan 2">
+                        <div class="galeri-text">
                             <h5>Ibadah Paskah</h5>
                             <p>Peringatan hari Paskah bersama seluruh jemaat HKBP Sinambela.</p>
                             <small>31 Maret 2024</small>

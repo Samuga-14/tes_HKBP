@@ -16,8 +16,9 @@
                 <li class="nav-item"><a class="nav-link" href="/warta">Warta Jemaat</a></li>
                 <li class="nav-item"><a class="nav-link" href="/pengurus">Struktur Kepengurusan</a></li>
             </ul>
-            <a href="{{ route('login') }}" class="btn btn-primary ms-3">Login</a>
+            <div class="d-flex ms-auto">
+                <a href="{{ route('login') }}" class="btn btn-primary ms-0">Login</a>
+            </div>
         </div>
     </div>
 </nav>
-<div style="height: 70px;"></div> 

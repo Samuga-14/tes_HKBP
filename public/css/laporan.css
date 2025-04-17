@@ -1,10 +1,11 @@
+/* Global */
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #f1f5f9;
     margin: 0;
 }
 
-/* Hero */
+/* Hero Section */
 .hero-perkembangan {
     background: url('/images/gambar12.jpg') no-repeat center center/cover;
     height: 65vh;
@@ -44,15 +45,16 @@ body {
     color: white;
 }
 
-/* Progress Cards */
+/* Content Section */
 .progress-section {
     padding: 2rem 0;
 }
 
+/* Card Style */
 .progress-card {
     background: #fff;
     border-radius: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     transition: transform 0.3s ease;
 }
