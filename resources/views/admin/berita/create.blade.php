@@ -1,66 +1,45 @@
 @extends('layouts.admin')
-@section('title', 'Tambah Data berita')
+
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card shadow">
-                <div class="card-header bg-primary">
-                    <h5 class="text-white mb-0">
-                        <i class="fas fa-user-plus mr-2"></i> Form Tambah Data berita
-                    </h5>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="fas fa-newspaper me-2"></i>Tambah Berita</h4>
                 </div>
-                <div class="card-body">
-                    <form method="POST" action="{{ route('admin.berita.store') }}" enctype="multipart/form-data">
+                <div class="card-body bg-light">
+                    <form action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="judul"><i class="fas fa-heading text-primary"></i> Judul Berita</label>
-                                    <input type="text" class="form-control @error('judul') is-invalid @enderror" id="judul" name="judul" value="{{ old('judul') }}" required>
-                                    @error('judul')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
 
-                                <div class="form-group">
-                                    <label for="deskripsi"><i class="fas fa-align-left text-info"></i> Deskripsi</label>
-                                    <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="5" required>{{ old('deskripsi') }}</textarea>
-                                    @error('deskripsi')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="gambar"><i class="fas fa-image text-warning"></i> Gambar</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input @error('gambar') is-invalid @enderror" id="gambar" name="gambar" required>
-                                        <label class="custom-file-label" for="gambar">Pilih file gambar</label>
-                                        @error('gambar')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="tanggal_publikasi"><i class="fas fa-calendar text-purple"></i> Tanggal Publikasi</label>
-                                    <input type="date" class="form-control @error('tanggal_publikasi') is-invalid @enderror" id="tanggal_publikasi" name="tanggal_publikasi" value="{{ old('tanggal_publikasi') }}" required>
-                                    @error('tanggal_publikasi')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>                            </div>
+                        <div class="form-group mb-4">
+                            <label for="judul" class="form-label fw-bold"><i class="fas fa-heading me-1"></i>Judul</label>
+                            <input type="text" name="judul" id="judul" class="form-control form-control-lg shadow-sm" placeholder="Masukkan judul berita" required>
                         </div>
 
-                        <div class="text-right mt-4">
-                            <a href="{{ route('admin.berita.index') }}" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left mr-2"></i>Kembali
-                            </a>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save mr-2"></i>Simpan
+                        <div class="form-group mb-4">
+                            <label for="deskripsi" class="form-label fw-bold"><i class="fas fa-align-left me-1"></i>Deskripsi</label>
+                            <textarea name="deskripsi" id="deskripsi" class="form-control shadow-sm" rows="6" placeholder="Tulis deskripsi berita di sini" required></textarea>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="gambar" class="form-label fw-bold"><i class="fas fa-image me-1"></i>Gambar</label>
+                            <input type="file" name="gambar" id="gambar" class="form-control shadow-sm" accept="image/*">
+                            <small class="text-muted">Format yang didukung: JPG, PNG, GIF (Max: 2MB)</small>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="tanggal_publikasi" class="form-label fw-bold"><i class="fas fa-calendar-alt me-1"></i>Tanggal Publikasi</label>
+                            <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control shadow-sm" required>
+                        </div>
+
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="fas fa-save me-1"></i> Simpan
                             </button>
+                            <a href="{{ route('admin.berita.index') }}" class="btn btn-danger px-4">
+                                <i class="fas fa-times me-1"></i> Batal
+                            </a>
                         </div>
                     </form>
                 </div>
@@ -68,16 +47,4 @@
         </div>
     </div>
 </div>
-
-@push('scripts')
-<script>
-    // Show filename in custom file input
-    $('.custom-file-input').on('change', function() {
-        let fileName = $(this).val().split('\\').pop();
-        $(this).next('.custom-file-label').addClass("selected").html(fileName);
-    });
-</script>
-@endpush
 @endsection
-
-
