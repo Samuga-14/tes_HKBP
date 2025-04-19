@@ -1,5 +1,7 @@
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
 }
 
 .hero-warta {
@@ -11,15 +13,15 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     text-align: center;
+    color: white;
 }
 
 .hero-warta::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.55);
 }
 
 .hero-text {
@@ -37,41 +39,44 @@ body {
 }
 
 .quote {
-    text-align: center;
     font-style: italic;
-    color: #333;
+    text-align: center;
     padding: 2rem;
+    color: #333;
+    background-color: #eaf4fb;
+    margin: 0 1rem 2rem;
+    border-left: 5px solid #0077c2;
+    border-radius: 8px;
 }
 
-.warta-list {
-    padding: 1rem 2rem;
+.warta-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.warta-item {
-    border-bottom: 1px solid #ccc;
-    padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.warta-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
-.warta-date {
+.card-title {
+    color: #2c3e50;
+}
+
+.card-text {
     font-size: 0.9rem;
-    color: #555;
-    min-width: 120px;
-}
-
-.warta-title {
-    flex: 1;
-    font-weight: 500;
-}
-
-.warta-download {
-    color: #0077c2;
-    font-size: 1.2rem;
 }
 
 .pagination {
-    justify-content: center;
     margin-top: 2rem;
+}
+
+.pagination .page-link {
+    color: #0077c2;
+    border: none;
+}
+
+.pagination .page-item.active .page-link,
+.pagination .page-link:hover {
+    background-color: #0077c2;
+    color: white;
 }

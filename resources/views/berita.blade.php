@@ -39,7 +39,7 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <!-- Card 1 -->
                 <div class="col">
-                    <div class="card h-100 border-0 shadow-sm">
+                    <div class="card h-100 border-0 shadow-lg">
                         <img src="{{ asset('images/berita/ayat.jpg') }}" class="card-img-top" alt="Ayat Harian">
                         <div class="card-body">
                             <h5 class="card-title">Ayat Harian</h5>
@@ -53,21 +53,21 @@
 
                 <!-- Card 2 -->
                 <div class="col">
-                    <div class="card h-100 border-0 shadow-sm">
+                    <div class="card h-100 border-0 shadow-lg">
                         <img src="{{ asset('images/berita/kegiatan.jpg') }}" class="card-img-top" alt="Laporan Kegiatan">
                         <div class="card-body">
                             <h5 class="card-title">Laporan Kegiatan</h5>
                             <p class="card-text">Lihat kegiatan-kegiatan ataupun acara yang dilaksanakan di HKBP Sinambela</p>
                         </div>
                         <div class="card-footer bg-transparent text-end border-0">
-                            <a href="#" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
+                            <a href="{{ url('/kegiatan') }}" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
                 <div class="col">
-                    <div class="card h-100 border-0 shadow-sm">
+                    <div class="card h-100 border-0 shadow-lg">
                         <img src="{{ asset('images/berita/perkembangan.jpg') }}" class="card-img-top" alt="Perkembangan Gereja">
                         <div class="card-body">
                             <h5 class="card-title">Perkembangan Gereja</h5>

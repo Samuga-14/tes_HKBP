@@ -36,6 +36,9 @@ Route::get('/perkembangan', function () {
 Route::get('/ayat', function () {
     return view('ayat');
 });
+Route::get('/kegiatan', function () {
+    return view('kegiatan');
+});
 
 
 // Authentication
