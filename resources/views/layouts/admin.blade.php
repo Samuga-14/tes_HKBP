@@ -136,7 +136,7 @@
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div>  
     </aside>
 
     <!-- Content -->
