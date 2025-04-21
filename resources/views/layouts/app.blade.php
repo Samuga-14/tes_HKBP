@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -29,6 +30,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+=======
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKBP Bakkara</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+>>>>>>> Stashed changes
         html { scroll-behavior: smooth; }
         body { font-family: 'Poppins', sans-serif; }
         section { padding: 100px 20px; min-height: 100vh; }
@@ -39,6 +49,7 @@
             margin-bottom: 40px;
             position: relative;
             padding-bottom: 20px;
+<<<<<<< Updated upstream
         }
         .section-title::after {
             content: '';
@@ -50,6 +61,19 @@
             height: 4px;
             background: rgb(9, 9, 121);
         }
+=======
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: rgb(9, 9, 121);
+        }
+>>>>>>> Stashed changes
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?church');
             background-size: cover;

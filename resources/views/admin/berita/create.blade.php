@@ -2,6 +2,7 @@
 
 @section('content')
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -49,12 +50,20 @@
 <div class="container">
     <h1>Tambah Berita</h1>
 
+=======
+<div class="container">
+    <h1>Tambah Berita</h1>
+
+>>>>>>> Stashed changes
     <form action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
             <label for="judul" class="form-label">Judul</label>
             <input type="text" class="form-control" name="judul" required>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         </div>
 
@@ -78,7 +87,11 @@
     </form>
 </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 @endsection
+=======
+@endsection
+>>>>>>> Stashed changes
 =======
 @endsection
 >>>>>>> Stashed changes
