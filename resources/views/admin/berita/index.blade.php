@@ -3,9 +3,6 @@
 @section('title', 'Data Berita')
 
 @section('content')
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <div class="card shadow-sm">
     <div class="card-header bg-gradient-primary text-white d-flex justify-content-between align-items-center py-3">
         <div class="d-flex align-items-center gap-3">
@@ -31,7 +28,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($berita as $item)
+                    @forelse ($beritas as $item)
                         <tr class="align-middle">
                             <td>{{ $item->judul }}</td>
                             <td>{{ Str::limit(strip_tags($item->deskripsi), 50) }}</td>
@@ -76,132 +73,4 @@
     </div>
 </div>
 @endsection
-=======
-<div class="container">
-    <h1 class="mb-4">Daftar Berita</h1>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <a href="{{ route('admin.berita.create') }}" class="btn btn-primary mb-3">+ Tambah Berita</a>
-
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Judul</th>
-                <th>Gambar</th>
-                <th>Tanggal Publikasi</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($beritas as $berita)
-            <tr>
-                <td>{{ $berita->judul }}</td>
-                <td><img src="{{ asset('storage/' . $berita->gambar) }}" alt="" width="100"></td>
-                <td>{{ \Carbon\Carbon::parse($berita->tanggal_publikasi)->format('d M Y') }}</td>
-                <td>
-                    <a href="{{ route('admin.berita.show', $berita) }}" class="btn btn-info btn-sm">Detail</a>
-                    <a href="{{ route('admin.berita.edit', $berita) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('admin.berita.destroy', $berita) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus berita ini?')">Hapus</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    {{ $beritas->links() }}
-</div>
-@endsection
->>>>>>> Stashed changes
-=======
-<div class="container">
-    <h1 class="mb-4">Daftar Berita</h1>
-
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <a href="{{ route('admin.berita.create') }}" class="btn btn-primary mb-3">+ Tambah Berita</a>
-
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Judul</th>
-                <th>Gambar</th>
-                <th>Tanggal Publikasi</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($beritas as $berita)
-            <tr>
-                <td>{{ $berita->judul }}</td>
-                <td><img src="{{ asset('storage/' . $berita->gambar) }}" alt="" width="100"></td>
-                <td>{{ \Carbon\Carbon::parse($berita->tanggal_publikasi)->format('d M Y') }}</td>
-                <td>
-                    <a href="{{ route('admin.berita.show', $berita) }}" class="btn btn-info btn-sm">Detail</a>
-                    <a href="{{ route('admin.berita.edit', $berita) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('admin.berita.destroy', $berita) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus berita ini?')">Hapus</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    {{ $beritas->links() }}
-</div>
-@endsection
->>>>>>> Stashed changes
-=======
-<div class="container">
-    <h1 class="mb-4">Daftar Berita</h1>
-
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <a href="{{ route('admin.berita.create') }}" class="btn btn-primary mb-3">+ Tambah Berita</a>
-
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Judul</th>
-                <th>Gambar</th>
-                <th>Tanggal Publikasi</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($beritas as $berita)
-            <tr>
-                <td>{{ $berita->judul }}</td>
-                <td><img src="{{ asset('storage/' . $berita->gambar) }}" alt="" width="100"></td>
-                <td>{{ \Carbon\Carbon::parse($berita->tanggal_publikasi)->format('d M Y') }}</td>
-                <td>
-                    <a href="{{ route('admin.berita.show', $berita) }}" class="btn btn-info btn-sm">Detail</a>
-                    <a href="{{ route('admin.berita.edit', $berita) }}" class="btn btn-warning btn-sm">Edit</a>
-                    <form action="{{ route('admin.berita.destroy', $berita) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus berita ini?')">Hapus</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-
-    {{ $beritas->links() }}
-</div>
-@endsection
->>>>>>> Stashed changes
