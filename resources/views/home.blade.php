@@ -147,6 +147,7 @@
             <div class="row">
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 <div class="col-lg-6 mb-4">
                     <div class="card p-4 shadow-lg">
                         <h3 class="fw-bold">VISI</h3>
@@ -159,6 +160,8 @@
                         <p class="fs-5">Menjadi gereja yang hidup dalam iman, kasih, dan pelayanan demi kemuliaan Tuhan.</p>
                     </div>
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                 <div class="col-md-3 mb-4">
@@ -199,6 +202,11 @@
                     <h4 class="fw-bold">HKBP Bakkara</h4>
                     <p class="small">Huria Kristen Batak Protestan</p>
                 </div>
+                <div class="col-md-3 mb-4 text-center">
+                    <img src="{{ asset('images/logo-hkbp.png') }}" alt="Logo HKBP" height="100" class="mb-3">
+                    <h4 class="fw-bold">HKBP Bakkara</h4>
+                    <p class="small">Huria Kristen Batak Protestan</p>
+                </div>
             </div>
 <<<<<<< Updated upstream
 =======
@@ -213,6 +221,9 @@
                 </div>
             </div>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -235,6 +246,34 @@
 
 <<<<<<< Updated upstream
 =======
+    <!-- Add this CSS to your existing style section -->
+    <style>
+        .social-media a {
+            transition: all 0.3s ease;
+        }
+        .social-media a:hover {
+            color: #ffc107 !important;
+            transform: translateY(-3px);
+        }
+        footer i {
+            width: 20px;
+        }
+        footer {
+            position: relative;
+            overflow: hidden;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ffc107, #dc3545, #0d6efd);
+        }
+    </style>
+
+
     <!-- Add this CSS to your existing style section -->
     <style>
         .social-media a {

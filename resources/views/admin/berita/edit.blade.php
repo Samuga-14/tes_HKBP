@@ -3,6 +3,7 @@
 @section('content')
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <div class="container mt-4">
     <h4>Edit Berita</h4>
     <div class="card">
@@ -43,6 +44,11 @@
     <h1>Edit Berita</h1>
 
 >>>>>>> Stashed changes
+=======
+<div class="container">
+    <h1>Edit Berita</h1>
+
+>>>>>>> Stashed changes
     <form action="{{ route('admin.berita.update', $berita) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -51,6 +57,9 @@
             <label for="judul" class="form-label">Judul</label>
             <input type="text" class="form-control" name="judul" value="{{ $berita->judul }}" required>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
