@@ -29,11 +29,22 @@ class BeritaController extends Controller
 
     $data = $request->all();
 
+<<<<<<< Updated upstream
     if ($request->hasFile('gambar')) {
         $gambar = $request->file('gambar');
         $namaFile = time() . '_' . $gambar->getClientOriginalName();
         $gambar->move(public_path('images/berita'), $namaFile);
         $data['gambar'] = 'images/berita/' . $namaFile;
+=======
+        Berita::create([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'gambar' => $gambarPath,
+            'tanggal_publikasi' => $request->tanggal_publikasi,
+        ]);
+
+        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan!');
+>>>>>>> Stashed changes
     }
 
     Berita::create($data);
@@ -70,6 +81,7 @@ class BeritaController extends Controller
             unlink(public_path($beritum->gambar));
         }
 
+<<<<<<< Updated upstream
         $gambar = $request->file('gambar');
         $namaFile = time() . '_' . $gambar->getClientOriginalName();
         $gambar->move(public_path('images/berita'), $namaFile);
@@ -93,4 +105,20 @@ class BeritaController extends Controller
             $berita->delete();
             return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil dihapus.');
             }
+=======
+        $berita->update([
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
+            'tanggal_publikasi' => $request->tanggal_publikasi,
+        ]);
+
+        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil diperbarui!');
+    }
+
+    public function destroy(Berita $berita)
+    {
+        $berita->delete();
+        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil dihapus!');
+    }
+>>>>>>> Stashed changes
 }

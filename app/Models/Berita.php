@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Berita extends Model
 {
     use HasFactory;
-    protected $table = 'beritas';
+    protected $table = 'beritas'; // supaya Laravel gak nebak 'berita' jadi 'beritum'
+
     protected $fillable = ['judul', 'deskripsi', 'gambar', 'tanggal_publikasi'];
+
+    public function getRouteKeyName()
+{
+    return 'id';
+}
+
 }
