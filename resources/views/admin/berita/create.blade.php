@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -47,64 +44,8 @@
                     </form>
                 </div>
             </div>
-=======
-<div class="container">
-    <h1>Tambah Berita</h1>
-
-=======
-<div class="container">
-    <h1>Tambah Berita</h1>
-
->>>>>>> Stashed changes
-=======
-<div class="container">
-    <h1>Tambah Berita</h1>
-
->>>>>>> Stashed changes
-    <form action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
-        @csrf
-
-        <div class="mb-3">
-            <label for="judul" class="form-label">Judul</label>
-            <input type="text" class="form-control" name="judul" required>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         </div>
-
-        <div class="mb-3">
-            <label for="deskripsi" class="form-label">Deskripsi</label>
-            <textarea class="form-control" name="deskripsi" rows="5" required></textarea>
-        </div>
-
-        <div class="mb-3">
-            <label for="gambar" class="form-label">Gambar</label>
-            <input type="file" class="form-control" name="gambar" required>
-        </div>
-
-        <div class="mb-3">
-            <label for="tanggal_publikasi" class="form-label">Tanggal Publikasi</label>
-            <input type="date" class="form-control" name="tanggal_publikasi" required>
-        </div>
-
-        <button type="submit" class="btn btn-success">Simpan</button>
-        <a href="{{ route('admin.berita.index') }}" class="btn btn-secondary">Kembali</a>
-    </form>
+    </div>
 </div>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 @endsection
-=======
-@endsection
->>>>>>> Stashed changes
-=======
-@endsection
->>>>>>> Stashed changes
-=======
-@endsection
->>>>>>> Stashed changes
+

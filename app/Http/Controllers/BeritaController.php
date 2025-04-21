@@ -11,6 +11,7 @@ class BeritaController extends Controller
     {
         $beritas = Berita::latest()->paginate(5);
         return view('admin.berita.index', compact('beritas'));
+
     }
 
     public function index2()
@@ -38,7 +39,7 @@ class BeritaController extends Controller
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
-           $gambar->move(public_path('images/berita'), $namaFile); 
+            $gambar->move(public_path('images/berita'), $namaFile);
             $data['gambar'] = 'images/berita/' . $namaFile;
         }
 
@@ -76,7 +77,7 @@ class BeritaController extends Controller
 
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->move(public_path('resources/images'), $namaFile);
+            $gambar->move(public_path('images/berita'), $namaFile);
             $data['gambar'] = 'images/berita/' . $namaFile;
         }
 

@@ -57,5 +57,5 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('warta', WartaController::class);
     Route::resource('galeri', GaleriKegiatanController::class);
     Route::resource('jemaat', JemaatController::class);
-    Route::resource('kepengurusan', StrukturKepengurusanController::class);
+    Route::resource('struktur', StrukturKepengurusanController::class);
 });

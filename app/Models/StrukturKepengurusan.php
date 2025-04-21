@@ -8,5 +8,5 @@ class StrukturKepengurusan extends Model
 {
     use HasFactory;
     protected $table = 'struktur_kepengurusans';
-    protected $fillable = ['nama', 'jabatan'];
+    protected $fillable = ['nama', 'jabatan','gambar'];
 }
