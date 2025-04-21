@@ -31,10 +31,10 @@
                     @forelse ($berita as $item)
                         <tr class="align-middle">
                             <td>{{ $item->judul }}</td>
-                            <td>{{ Str::limit(strip_tags($item->isi), 50) }}</td>
+                            <td>{{ Str::limit(strip_tags($item->deskripsi), 50) }}</td>
                             <td class="text-center">
                                 @if ($item->gambar)
-                                    <img src="{{ asset('storage/' . $item->gambar) }}" alt="gambar" class="img-thumbnail" width="80">
+                                <img src="{{ asset($item->gambar) }}" alt="gambar" class="img-thumbnail" width="80">
                                 @else
                                     <span class="badge bg-secondary">Tidak ada</span>
                                 @endif
