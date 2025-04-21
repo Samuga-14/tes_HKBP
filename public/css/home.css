@@ -1,166 +1,148 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-}
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        scroll-behavior: smooth;
+    }
 
-/* Hero Section */
-.hero {
-    background-image: url('../images/gambar12.jpg');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    color: white;
-    position: relative;
-    padding: 2rem;
-    animation: fadeIn 1.5s ease-in-out;
-    display: flex;
-    align-items: center; /* teks tengah */
-    justify-content: flex-start; /* teks ke kiri */
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    text-align: left;
-    padding: 2rem;
-    max-width: 600px;
-}
-
-.hero-content h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-}
-
-.hero-content p {
-    font-family: 'Arial', sans-serif;
-    font-size: 1.9rem;
-    font-weight: 300;
-    margin-top: 0.5rem;
-}
-
-/* Section Headings */
-section h2 {
-    color: #1a237e;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Visi Misi Section */
-section.text-center {
-    background-color: #ffffff;
-    padding: 4rem 1rem;
-    animation: slideUp 1s ease-in-out;
-}
-
-section.text-center p {
-    max-width: 700px;
-    margin: 0 auto 1.5rem;
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #555;
-}
-
-/* Peta */
-.ratio iframe {
-    border: 3px solid #c5cae9;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.ratio iframe:hover {
-    transform: scale(1.01);
-}
-
-/* Layanan List */
-.list-group-item {
-    transition: background-color 0.3s ease;
-    font-size: 1rem;
-}
-
-.list-group-item:hover {
-    background-color: #e3f2fd;
-    cursor: pointer;
-}
-
-/* Image Section */
-.image-container {
-    position: relative;
-    overflow: hidden;
-    border-radius: 15px;
-}
-
-.image-hover {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Menutupi seluruh area dengan mempertahankan rasio gambar */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.image-hover:hover {
-    transform: scale(1.05); /* Gambar membesar sedikit saat hover */
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3); /* Efek bayangan lebih kuat */
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.2); /* Overlay transparan */
-    border-radius: 15px;
-    transition: background 0.3s ease;
-    pointer-events: none;
-}
-
-.image-container:hover .overlay {
-    background: rgba(0, 0, 0, 0.4); /* Efek overlay lebih gelap saat hover */
-}
-
-/* Responsive Fix */
-@media (max-width: 768px) {
+    /* Hero */
     .hero {
-        min-height: 60vh;
+        background-image: url('../images/gambar12.jpg');
+        background-size: cover;
+        background-position: center;
+        min-height: 80vh;
+        position: relative;
+        display: flex;
+        align-items: flex-start; /* biar text besar tetap di kiri */
+        justify-content: flex-end; /* posisikan konten ke tengah vertikal */
+        padding: 2rem;
+        color: white;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        margin-top: 150px;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+        text-align: left;
+        max-width: 800px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+
+    /* Button Style */
+    .hero .btn-primary {
+        background-color: #1a237e;
+        border: none;
+        padding: 0.75rem 2rem;
+        font-size: 1.1rem;
+        border-radius: 30px;
+        transition: background-color 0.3s ease;
+    }
+
+    .hero .btn-primary:hover {
+        background-color: #3949ab;
+    }
+    .section-title {
+        background-color: #3498db;
+        color: white;
+        padding: 2rem;
+    }
+    /* Layanan */
+    .list-group-item {
+        font-size: 1.05rem;
         padding: 1rem;
+        background-color: #e8eaf6;
+        border: none;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: all 0.3s ease;
     }
 
-    .hero h1 {
-        font-size: 2rem;
+    .list-group-item:hover {
+        background-color: #c5cae9;
+        transform: scale(1.02);
     }
 
-    .hero p {
-        font-size: 1rem;
+    /* Images */
+    .image-hover,
+    .img-fluid {
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .image-hover:hover {
+        transform: scale(1.03);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Map */
+    .ratio iframe {
+        border: 4px solid #c5cae9;
+        border-radius: 12px;
+    }
+
+    /* Typography */
+    section h2 {
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
 
     section.text-center p {
-        font-size: 1rem;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: #444;
     }
-}
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+    /* Responsive */
+    @media (max-width: 768px) {
+        .hero {
+          align-items: center; /* agar teks bisa di tengah secara vertikal */
+          justify-content: center; /* agar teks horizontal center */
+          text-align: center;
+        }
 
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        .hero-content {
+          margin-top: 0;
+        }
+
+        .hero-title {
+          text-align: center;
+        }
+
+        .hero-subtitle {
+          text-align: center;
+        }
+      }
+
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+        opacity: 0;
+        transform: translateY(-20px);
+        }
+        to {
+        opacity: 1;
+        transform: translateY(0);
+        }
+    }
