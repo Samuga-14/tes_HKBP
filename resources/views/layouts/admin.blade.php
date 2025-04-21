@@ -111,7 +111,7 @@
                         </a>
                     </li>
                     <li class="nav-item" style="--item-index: 5">
-                        <a href="{{ route('admin.kepengurusan.index') }}" class="nav-link">
+                        <a href="{{ route('admin.struktur.index') }}" class="nav-link">
                             <i class="nav-icon fas fa-bullhorn"></i>
                             <p>Struktur Kepengurusan</p>
                         </a>

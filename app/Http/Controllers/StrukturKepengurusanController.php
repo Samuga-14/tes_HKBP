@@ -9,7 +9,7 @@ class StrukturKepengurusanController extends Controller
     public function index()
     {
         $struktur = StrukturKepengurusan::latest()->paginate(10);
-        return view('admin.struktur_kepengurusan.index', compact('struktur'));
+        return view('admin.struktur.index', compact('struktur'));
     }
 
     public function create()
@@ -22,12 +22,23 @@ class StrukturKepengurusanController extends Controller
         $request->validate([
             'nama' => 'required',
             'jabatan' => 'required',
+            'gambar' => 'required|mimes:jpg,jpeg,png,gif,svg|max:2048',
         ]);
-
-        StrukturKepengurusan::create($request->all());
-
-        return redirect()->route('struktur-kepengurusan.index')->with('success', 'Struktur berhasil ditambahkan!');
+    
+        $data = $request->all();
+    
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file('gambar');
+            $namaFile = time() . '_' . $gambar->getClientOriginalName();
+            $gambar->move(public_path('images/struktur'), $namaFile);
+            $data['gambar'] = 'images/struktur/' . $namaFile;
+        }
+    
+        StrukturKepengurusan::create($data);
+    
+        return redirect()->route('admin.struktur.index')->with('success', 'Struktur berhasil ditambahkan!');
     }
+    
 
     public function edit(StrukturKepengurusan $struktur_kepengurusan)
     {
@@ -35,20 +46,45 @@ class StrukturKepengurusanController extends Controller
     }
 
     public function update(Request $request, StrukturKepengurusan $struktur_kepengurusan)
-    {
-        $request->validate([
-            'nama' => 'required',
-            'jabatan' => 'required',
-        ]);
+{
+    $request->validate([
+        'nama' => 'required',
+        'jabatan' => 'required',
+        'gambar' => 'nullable|mimes:jpg,jpeg,png,gif,svg|max:2048',
+    ]);
 
-        $struktur_kepengurusan->update($request->all());
+    $data = $request->all();
 
-        return redirect()->route('struktur-kepengurusan.index')->with('success', 'Struktur berhasil diperbarui!');
+    if ($request->hasFile('gambar')) {
+        // Hapus gambar lama
+        if ($struktur_kepengurusan->gambar && file_exists(public_path($struktur_kepengurusan->gambar))) {
+            unlink(public_path($struktur_kepengurusan->gambar));
+        }
+
+        $gambar = $request->file('gambar');
+        $namaFile = time() . '_' . $gambar->getClientOriginalName();
+        $gambar->move(public_path('images/struktur'), $namaFile);
+        $data['gambar'] = 'images/struktur/' . $namaFile;
     }
 
-    public function destroy(StrukturKepengurusan $struktur_kepengurusan)
-    {
-        $struktur_kepengurusan->delete();
-        return redirect()->route('struktur-kepengurusan.index')->with('success', 'Struktur berhasil dihapus!');
+    $struktur_kepengurusan->update($data);
+
+    return redirect()->route('admin.struktur.index')->with('success', 'Struktur berhasil diperbarui!');
+}
+
+
+    public function destroy($id)
+{
+    $struktur = StrukturKepengurusan::findOrFail($id);
+
+    // Hapus gambar kalau ada
+    if ($struktur->gambar && file_exists(public_path($struktur->gambar))) {
+        unlink(public_path($struktur->gambar));
     }
+
+    $struktur->delete();
+
+    return redirect()->route('admin.struktur.index')->with('success', 'Data berhasil dihapus!');
+}
+
 }
