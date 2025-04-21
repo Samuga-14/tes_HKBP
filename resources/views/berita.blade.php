@@ -37,19 +37,21 @@
     <section class="content-section">
         <div class="container">
             <div class="row row-cols-1 row-cols-md-3 g-4">
+                @foreach ($beritas as $item)
                 <!-- Card 1 -->
                 <div class="col">
                     <div class="card h-100 border-0 shadow-lg">
                         <img src="{{ asset('images/berita/ayat.jpg') }}" class="card-img-top" alt="Ayat Harian">
                         <div class="card-body">
-                            <h5 class="card-title">Ayat Harian</h5>
-                            <p class="card-text">Lihat ayat harian yang disediakan oleh HKBP Sinambela</p>
+                            <h5 class="card-title">{{ $item->judul }}</h5>
+                            <p class="card-text">{{ Str::limit(strip_tags($item->deskripsi), 50) }}</p>
                         </div>
                         <div class="card-footer bg-transparent text-end border-0">
                             <a href="{{ url('/ayat') }}" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
                         </div>
                     </div>
                 </div>
+                @endforeach ($beritas as $item)     
 
                 <!-- Card 2 -->
                 <div class="col">
@@ -82,7 +84,6 @@
         </div>
     </section>
 
-    {{-- Footer --}}
     @include('footer')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
