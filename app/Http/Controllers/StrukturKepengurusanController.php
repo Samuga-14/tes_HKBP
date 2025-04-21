@@ -9,7 +9,7 @@ class StrukturKepengurusanController extends Controller
     public function index()
     {
         $struktur = StrukturKepengurusan::latest()->paginate(10);
-        return view('admin.struktur_kepengurusan.index', compact('struktur'));
+        return view('admin.struktur.index', compact('struktur'));
     }
 
     public function create()
@@ -26,12 +26,12 @@ class StrukturKepengurusanController extends Controller
 
         StrukturKepengurusan::create($request->all());
 
-        return redirect()->route('struktur-kepengurusan.index')->with('success', 'Struktur berhasil ditambahkan!');
+        return redirect()->route('struktur.index')->with('success', 'Struktur berhasil ditambahkan!');
     }
 
     public function edit(StrukturKepengurusan $struktur_kepengurusan)
     {
-        return view('admin.struktur.edit', compact('struktur_kepengurusan'));
+        return view('admin.struktur.edit', compact('struktur'));
     }
 
     public function update(Request $request, StrukturKepengurusan $struktur_kepengurusan)
@@ -43,12 +43,12 @@ class StrukturKepengurusanController extends Controller
 
         $struktur_kepengurusan->update($request->all());
 
-        return redirect()->route('struktur-kepengurusan.index')->with('success', 'Struktur berhasil diperbarui!');
+        return redirect()->route('struktur.index')->with('success', 'Struktur berhasil diperbarui!');
     }
 
     public function destroy(StrukturKepengurusan $struktur_kepengurusan)
     {
         $struktur_kepengurusan->delete();
-        return redirect()->route('struktur-kepengurusan.index')->with('success', 'Struktur berhasil dihapus!');
+        return redirect()->route('struktur.index')->with('success', 'Struktur berhasil dihapus!');
     }
 }

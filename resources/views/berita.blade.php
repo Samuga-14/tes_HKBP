@@ -21,7 +21,7 @@
     @include('header')
 
     {{-- Hero Section --}}
-    <section class="hero-sejarah">
+    <section class="hero-berita">
         <div class="hero-text">
             <h1 class="display-5 fw-bold">BERITA TERBARU DARI HKBP SINAMBELA SIMANULLANG</h1>
             <p class="lead">"Mengabarkan kasih Tuhan lewat informasi dan kegiatan."</p>
@@ -34,53 +34,23 @@
     </section>
 
     {{-- Berita Section --}}
-    <section class="content-section">
+    <section class="content-section py-5">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                @foreach ($beritas as $item)
-                <!-- Card 1 -->
-                <div class="col">
-                    <div class="card h-100 border-0 shadow-lg">
-                        <img src="{{ asset('images/berita/ayat.jpg') }}" class="card-img-top" alt="Ayat Harian">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $item->judul }}</h5>
-                            <p class="card-text">{{ Str::limit(strip_tags($item->deskripsi), 50) }}</p>
-                        </div>
-                        <div class="card-footer bg-transparent text-end border-0">
-                            <a href="{{ url('/ayat') }}" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
-                        </div>
-                    </div>
+            <h2 class="mb-4 text-center fw-bold">Berita Terbaru</h2>
+            @foreach ($beritas->sortByDesc('tanggal_publikasi') as $item)
+            <div class="d-flex flex-column flex-md-row gap-3 mb-4 p-3 berita-box bg-white shadow-sm rounded-3">
+                <div class="flex-shrink-0">
+                    <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="img-fluid rounded" style="width: 220px; height: 140px; object-fit: cover;">
                 </div>
-                @endforeach ($beritas as $item)     
-
-                <!-- Card 2 -->
-                <div class="col">
-                    <div class="card h-100 border-0 shadow-lg">
-                        <img src="{{ asset('images/berita/kegiatan.jpg') }}" class="card-img-top" alt="Laporan Kegiatan">
-                        <div class="card-body">
-                            <h5 class="card-title">Laporan Kegiatan</h5>
-                            <p class="card-text">Lihat kegiatan-kegiatan ataupun acara yang dilaksanakan di HKBP Sinambela</p>
-                        </div>
-                        <div class="card-footer bg-transparent text-end border-0">
-                            <a href="{{ url('/kegiatan') }}" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="col">
-                    <div class="card h-100 border-0 shadow-lg">
-                        <img src="{{ asset('images/berita/perkembangan.jpg') }}" class="card-img-top" alt="Perkembangan Gereja">
-                        <div class="card-body">
-                            <h5 class="card-title">Perkembangan Gereja</h5>
-                            <p class="card-text">Lihat bagaimana perkembangan pembangunan gereja setiap saat</p>
-                        </div>
-                        <div class="card-footer bg-transparent text-end border-0">
-                            <a href="{{ url('/perkembangan') }}" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya →</a>
-                        </div>
-                    </div>
+                <div>
+                    <h5 class="fw-semibold">{{ $item->judul }}</h5>
+                    <p class="text-muted mb-1" style="font-size: 0.9rem;">
+                        Dipublikasikan pada {{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}
+                    </p>
+                    <p class="mb-2">{{ Str::limit(strip_tags($item->deskripsi), 150) }}</p>
                 </div>
             </div>
+            @endforeach
         </div>
     </section>
 

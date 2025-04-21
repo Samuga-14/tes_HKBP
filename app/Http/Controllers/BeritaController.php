@@ -38,7 +38,7 @@ class BeritaController extends Controller
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->move(public_path('images/berita'), $namaFile);
+           $gambar->move(public_path('images/berita'), $namaFile); 
             $data['gambar'] = 'images/berita/' . $namaFile;
         }
 
@@ -76,7 +76,7 @@ class BeritaController extends Controller
 
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->move(public_path('images/berita'), $namaFile);
+            $gambar->move(public_path('resources/images'), $namaFile);
             $data['gambar'] = 'images/berita/' . $namaFile;
         }
 
