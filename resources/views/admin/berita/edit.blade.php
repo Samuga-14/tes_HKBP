@@ -1,88 +1,54 @@
 @extends('layouts.admin')
 
 @section('content')
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<div class="container mt-4">
-    <h4>Edit Berita</h4>
-    <div class="card">
-        <div class="card-body">
-            <form action="{{ route('admin.berita.update', $beritum->id) }}" method="POST" enctype="multipart/form-data">
+<div class="container py-4">
+    <div class="card shadow-sm border-0 rounded-3">
+        <div class="card-header bg-gradient bg-primary bg-opacity-10 border-0">
+            <h4 class="mb-0 py-2 text-primary">Edit Berita</h4>
+        </div>
+        <div class="card-body p-4">
+            <form action="{{ route('admin.berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                <div class="form-group mb-3">
-                    <label for="judul">Judul</label>
-                    <input type="text" name="judul" id="judul" class="form-control" value="{{ $beritum->judul }}" required>
+                <div class="form-group mb-4">
+                    <label for="judul" class="form-label fw-semibold">Judul</label>
+                    <input type="text" name="judul" id="judul" class="form-control form-control-lg border-0 bg-light" value="{{ $berita->judul }}" required>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label for="deskripsi">Deskripsi</label>
-                    <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4" required>{{ $beritum->deskripsi }}</textarea>
+                <div class="form-group mb-4">
+                    <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>
+                    <textarea name="deskripsi" id="deskripsi" class="form-control border-0 bg-light" rows="6" required>{{ $berita->deskripsi }}</textarea>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label for="gambar">Gambar (biarkan kosong jika tidak ingin mengubah)</label>
-                    <input type="file" name="gambar" id="gambar" class="form-control">
+                <div class="form-group mb-4">
+                    <label for="gambar" class="form-label fw-semibold">Gambar</label>
+                    <div class="mb-3">
+                        @if($berita->gambar)
+                            <img src="{{ asset('storage/' . $berita->gambar) }}" class="img-thumbnail" style="max-width: 200px">
+                        @endif
+                    </div>
+                    <div class="input-group">
+                        <input type="file" name="gambar" id="gambar" class="form-control border-0 bg-light" accept="image/*">
+                        <span class="input-group-text bg-light border-0 text-muted">Optional</span>
+                    </div>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label for="tanggal_publikasi">Tanggal Publikasi</label>
-                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" value="{{ $beritum->tanggal_publikasi }}" required>
+                <div class="form-group mb-4">
+                    <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
+                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control border-0 bg-light" value="{{ $berita->tanggal_publikasi }}" required>
                 </div>
 
-                <button type="submit" class="btn btn-success">Update</button>
-                <a href="{{ route('admin.berita.index') }}" class="btn btn-secondary">Batal</a>
+                <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary px-4 py-2">
+                        <i class="fas fa-save me-2"></i>Update
+                    </button>
+                    <a href="{{ route('admin.berita.index') }}" class="btn btn-light px-4 py-2">
+                        <i class="fas fa-arrow-left me-2"></i>Kembali
+                    </a>
+                </div>
             </form>
-=======
-<div class="container">
-    <h1>Edit Berita</h1>
-
-=======
-<div class="container">
-    <h1>Edit Berita</h1>
-
->>>>>>> Stashed changes
-=======
-<div class="container">
-    <h1>Edit Berita</h1>
-
->>>>>>> Stashed changes
-    <form action="{{ route('admin.berita.update', $berita) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-
-        <div class="mb-3">
-            <label for="judul" class="form-label">Judul</label>
-            <input type="text" class="form-control" name="judul" value="{{ $berita->judul }}" required>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
         </div>
-
-        <div class="mb-3">
-            <label for="deskripsi" class="form-label">Deskripsi</label>
-            <textarea class="form-control" name="deskripsi" rows="5" required>{{ $berita->deskripsi }}</textarea>
-        </div>
-
-        <div class="mb-3">
-            <label for="gambar" class="form-label">Gambar (Opsional)</label><br>
-            <img src="{{ asset('storage/' . $berita->gambar) }}" width="150" class="mb-2">
-            <input type="file" class="form-control" name="gambar">
-        </div>
-
-        <div class="mb-3">
-            <label for="tanggal_publikasi" class="form-label">Tanggal Publikasi</label>
-            <input type="date" class="form-control" name="tanggal_publikasi" value="{{ $berita->tanggal_publikasi->format('Y-m-d') }}" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('admin.berita.index') }}" class="btn btn-secondary">Kembali</a>
-    </form>
+    </div>
 </div>
 @endsection
