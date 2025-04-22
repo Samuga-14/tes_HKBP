@@ -21,9 +21,12 @@ Route::get('/berita', function () {
     return view('berita');
 });
 
+Route::get('/berita/user', [BeritaController::class, 'index2'])->name('berita.user');
+
 Route::get('/galeri', function () {
     return view('galeri');
 });
+
 Route::get('/warta', function () {
     return view('warta');
 });

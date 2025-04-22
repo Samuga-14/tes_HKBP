@@ -22,28 +22,28 @@
             gap: 8px;
             transition: all 0.3s ease;
         }
-        
+
         .navbar-nav .nav-link.logout-btn:hover {
             background: #dc3545;
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
         }
-        
+
         .navbar-nav .nav-link.logout-btn i {
             font-size: 1.1rem;
             transition: transform 0.3s ease;
         }
-        
+
         .navbar-nav .nav-link.logout-btn:hover i {
             transform: translateX(3px);
         }
-        
+
         .navbar-nav .nav-link.logout-btn span {
             font-weight: 500;
             display: none;
         }
-        
+
         @media (min-width: 768px) {
             .navbar-nav .nav-link.logout-btn span {
                 display: inline;
@@ -60,7 +60,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
-        
+
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
@@ -136,7 +136,7 @@
                     </li>
                 </ul>
             </nav>
-        </div>  
+        </div>
     </aside>
 
     <!-- Content -->

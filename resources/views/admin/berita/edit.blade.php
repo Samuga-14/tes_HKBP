@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
 <div class="container py-4">
     <div class="card shadow-sm border-0 rounded-3">
