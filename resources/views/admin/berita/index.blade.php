@@ -40,8 +40,9 @@
                                 @endif
                             </td>
                             <td class="text-center">
-                                <span class="badge bg-info">{{ $item->created_at->format('d M Y') }}</span>
+                                <span class="badge bg-info">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->format('d M Y') }}</span>
                             </td>
+
                             <td class="text-center">
                                 <div class="btn-group" role="group">
                                     <a href="{{ route('admin.berita.edit', $item->id) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" title="Edit">

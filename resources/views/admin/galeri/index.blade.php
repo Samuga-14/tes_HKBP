@@ -23,7 +23,8 @@
                         <th class="text-center">Judul</th>
                         <th class="text-center">Deskripsi</th>
                         <th class="text-center">Gambar</th>
-                        <th class="text-center">Tanggal Publikasi</th>
+                        <th class="text-center">Video</th>
+                        <th class="text-center">Tanggal Unggah</th>
                         <th class="text-center">Aksi</th>
                     </tr>
                 </thead>
@@ -31,7 +32,7 @@
                     @forelse ($galeri as $item)
                         <tr class="align-middle">
                             <td>{{ $item->judul }}</td>
-                            <td>{{ Str::limit(strip_tags($item->isi), 50) }}</td>
+                            <td>{{ Str::limit(strip_tags($item->deskripsi), 50) }}</td>
                             <td class="text-center">
                                 @if ($item->gambar)
                                     <img src="{{ asset('storage/' . $item->gambar) }}" alt="gambar" class="img-thumbnail" width="80">
@@ -40,7 +41,14 @@
                                 @endif
                             </td>
                             <td class="text-center">
-                                <span class="badge bg-info">{{ $item->created_at->format('d M Y') }}</span>
+                                @if ($item->video)
+                                    <span class="badge bg-success">Ada</span>
+                                @else
+                                    <span class="badge bg-secondary">Tidak ada</span>
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                <span class="badge bg-info">{{ \Carbon\Carbon::parse($item->tanggal_unggah)->format('d M Y') }}</span>
                             </td>
                             <td class="text-center">
                                 <div class="btn-group" role="group">
@@ -59,7 +67,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="text-center py-4">
+                            <td colspan="6" class="text-center py-4">
                                 <div class="text-muted">
                                     <i class="fas fa-inbox fa-3x mb-3"></i>
                                     <p>Tidak ada data galeri</p>

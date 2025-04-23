@@ -18,6 +18,11 @@
                         </div>
 
                         <div class="form-group mb-4">
+                            <label for="tanggal_lahir" class="form-label fw-bold"><i class="fas fa-calendar me-1"></i>Tanggal Lahir</label>
+                            <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control shadow-sm" required>
+                        </div>
+
+                        <div class="form-group mb-4">
                             <label for="jenis_kelamin" class="form-label fw-bold"><i class="fas fa-venus-mars me-1"></i>Jenis Kelamin</label>
                             <select name="jenis_kelamin" id="jenis_kelamin" class="form-control shadow-sm" required>
                                 <option value="">Pilih Jenis Kelamin</option>

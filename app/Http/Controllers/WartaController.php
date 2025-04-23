@@ -34,7 +34,7 @@ class WartaController extends Controller
             'file_pdf' => $filePath,
         ]);
 
-        return redirect()->route('warta.index')->with('success', 'Warta berhasil ditambahkan!');
+        return redirect()->route('admin.warta.index')->with('success', 'Warta berhasil ditambahkan!');
     }
 
     public function edit(Warta $warta)
@@ -62,12 +62,13 @@ class WartaController extends Controller
             'tanggal_publikasi' => $request->tanggal_publikasi,
         ]);
 
-        return redirect()->route('warta.index')->with('success', 'Warta berhasil diperbarui!');
+        return redirect()->route('admin.warta.index')->with('success', 'Warta berhasil diperbarui!');
+
     }
 
     public function destroy(Warta $warta)
     {
         $warta->delete();
-        return redirect()->route('warta.index')->with('success', 'Warta berhasil dihapus!');
+        return redirect()->route('admin.warta.index')->with('success', 'Warta berhasil dihapus!');
     }
 }

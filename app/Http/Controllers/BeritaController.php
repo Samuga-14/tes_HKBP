@@ -54,37 +54,37 @@ class BeritaController extends Controller
     }
 
     public function edit($id)
-    {
-        $berita = Berita::findOrFail($id);
-        return view('admin.berita.edit', compact('berita'));
+{
+    $berita = Berita::findOrFail($id);
+    return view('admin.berita.edit', compact('berita'));
+}
+
+
+public function update(Request $request, Berita $berita)
+{
+    $request->validate([
+        'judul' => 'required',
+        'deskripsi' => 'required',
+        'tanggal_publikasi' => 'required|date',
+        'gambar' => 'nullable|mimes:jpg,jpeg,png,gif|max:2048'
+    ]);
+
+    // Simpan data awal
+    $data = $request->only(['judul', 'deskripsi', 'tanggal_publikasi']);
+
+    // Handle gambar
+    if ($request->hasFile('gambar')) {
+        $gambar = $request->file('gambar');
+        $namaFile = time() . '_' . $gambar->getClientOriginalName();
+        $gambar->move(public_path('images/berita'), $namaFile);
+        $data['gambar'] = 'images/berita/' . $namaFile;
     }
 
-    public function update(Request $request, Berita $berita)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'tanggal_publikasi' => 'required|date',
-        ]);
+    $berita->update($data);
 
-        $data = $request->only(['judul', 'deskripsi', 'tanggal_publikasi']);
+    return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil diperbarui!');
+}
 
-        if ($request->hasFile('gambar')) {
-            if ($berita->gambar && file_exists(public_path($berita->gambar))) {
-                unlink(public_path($berita->gambar));
-            }
-
-            $gambar = $request->file('gambar');
-            $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->move(public_path('images/berita'), $namaFile);
-            $data['gambar'] = 'images/berita/' . $namaFile;
-        }
-
-        $berita->update($data);
-
-        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil diperbarui!');
-    }
 
     public function destroy($id)
     {

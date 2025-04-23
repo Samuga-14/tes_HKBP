@@ -27,6 +27,7 @@ class JemaatController extends Controller
         $request->validate([
             'nama' => 'required',
             'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required|date',
             'alamat' => 'required',
             'status_pernikahan' => 'required',
             'nama_pasangan' => 'nullable|string',
@@ -35,7 +36,7 @@ class JemaatController extends Controller
 
         Jemaat::create($request->all());
 
-        return redirect()->route('jemaat.index')->with('success', 'Jemaat berhasil ditambahkan!');
+        return redirect()->route('admin.jemaat.index')->with('success', 'Jemaat berhasil ditambahkan!');
     }
 
     public function edit(Jemaat $jemaat)
@@ -48,6 +49,7 @@ class JemaatController extends Controller
         $request->validate([
             'nama' => 'required',
             'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required|date',
             'alamat' => 'required',
             'status_pernikahan' => 'required',
             'nama_pasangan' => 'nullable|string',
@@ -56,12 +58,12 @@ class JemaatController extends Controller
 
         $jemaat->update($request->all());
 
-        return redirect()->route('jemaat.index')->with('success', 'Jemaat berhasil diperbarui!');
+        return redirect()->route('admin.jemaat.index')->with('success', 'Jemaat berhasil diperbarui!');
     }
 
     public function destroy(Jemaat $jemaat)
     {
         $jemaat->delete();
-        return redirect()->route('jemaat.index')->with('success', 'Jemaat berhasil dihapus!');
+        return redirect()->route('admin.jemaat.index')->with('success', 'Jemaat berhasil dihapus!');
     }
 }

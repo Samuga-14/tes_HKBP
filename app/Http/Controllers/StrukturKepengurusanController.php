@@ -40,36 +40,46 @@ class StrukturKepengurusanController extends Controller
         return redirect()->route('admin.struktur.index')->with('success', 'Struktur berhasil ditambahkan!');
     }
 
-    public function edit(StrukturKepengurusan $struktur_kepengurusan)
+    public function edit(StrukturKepengurusan $struktur)
     {
-        return view('admin.struktur.edit', ['struktur' => $struktur_kepengurusan]);
+        return view('admin.struktur.edit', ['struktur' => $struktur]);
     }
 
-    public function update(Request $request, StrukturKepengurusan $struktur_kepengurusan)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nama' => 'required',
             'jabatan' => 'required',
-            'gambar' => 'nullable|mimes:jpg,jpeg,png,gif,svg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
-
-        $data = $request->all();
-
+    
+        $struktur = StrukturKepengurusan::findOrFail($id);
+    
+        // Cek apakah user upload gambar baru
         if ($request->hasFile('gambar')) {
-            if ($struktur_kepengurusan->gambar && file_exists(public_path($struktur_kepengurusan->gambar))) {
-                unlink(public_path($struktur_kepengurusan->gambar));
-            }
-
-            $gambar = $request->file('gambar');
-            $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->move(public_path('images/struktur'), $namaFile);
-            $data['gambar'] = 'images/struktur/' . $namaFile;
+            // Simpan file baru
+            $gambarPath = $request->file('gambar')->store('uploads/struktur', 'public');
+    
+            // Optional: hapus file lama kalau mau
+            // Storage::disk('public')->delete($struktur->gambar);
+    
+            // Update semua
+            $struktur->update([
+                'nama' => $request->nama,
+                'jabatan' => $request->jabatan,
+                'gambar' => $gambarPath,
+            ]);
+        } else {
+            // Gambar tidak diubah
+            $struktur->update([
+                'nama' => $request->nama,
+                'jabatan' => $request->jabatan,
+            ]);
         }
-
-        $struktur_kepengurusan->update($data);
-
+    
         return redirect()->route('admin.struktur.index')->with('success', 'Struktur berhasil diperbarui!');
     }
+    
 
     public function destroy($id)
     {

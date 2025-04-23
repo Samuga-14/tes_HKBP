@@ -22,6 +22,7 @@
                     <tr class="bg-primary text-white">
                         <th class="text-center">Nama</th>
                         <th class="text-center">Jenis Kelamin</th>
+                        <th class="text-center">Tanggal Lahir</th>
                         <th class="text-center">Alamat</th>
                         <th class="text-center">Status Pernikahan</th>
                         <th class="text-center">Nama Pasangan</th>
@@ -34,6 +35,7 @@
                         <tr class="align-middle">
                             <td>{{ $item->nama }}</td>
                             <td>{{ $item->jenis_kelamin }}</td>
+                            <td>{{ $item->tanggal_lahir }}</td>
                             <td>{{ $item->alamat }}</td>
                             <td>{{ $item->status_pernikahan }}</td>
                             <td>{{ $item->nama_pasangan }}</td>
@@ -55,7 +57,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="7" class="text-center py-4">
+                            <td colspan="8" class="text-center py-4">
                                 <div class="text-muted">
                                     <i class="fas fa-inbox fa-3x mb-3"></i>
                                     <p>Tidak ada data jemaat</p>

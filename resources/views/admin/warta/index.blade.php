@@ -22,7 +22,7 @@
                     <tr class="bg-primary text-white">
                         <th class="text-center">Judul</th>
                         <th class="text-center">Deskripsi</th>
-                        <th class="text-center">Gambar</th>
+                        <th class="text-center">File PDF</th>
                         <th class="text-center">Tanggal Publikasi</th>
                         <th class="text-center">Aksi</th>
                     </tr>
@@ -31,29 +31,32 @@
                     @forelse ($wartas as $item)
                         <tr class="align-middle">
                             <td>{{ $item->judul }}</td>
-                            <td>{{ Str::limit(strip_tags($item->isi), 50) }}</td>
+                            <td>{{ Str::limit($item->deskripsi, 50) }}</td>
                             <td class="text-center">
-                                @if ($item->gambar)
-                                    <img src="{{ asset('storage/' . $item->gambar) }}" alt="gambar" class="img-thumbnail" width="80">
+                                @if ($item->file_pdf)
+                                    <a href="{{ asset('storage/' . $item->file_pdf) }}" class="btn btn-sm btn-info" target="_blank">
+                                        <i class="fas fa-file-pdf"></i> Lihat PDF
+                                    </a>
                                 @else
                                     <span class="badge bg-secondary">Tidak ada</span>
                                 @endif
                             </td>
                             <td class="text-center">
-                                <span class="badge bg-info">{{ $item->created_at->format('d M Y') }}</span>
+                                <span class="badge bg-info">{{ $item->tanggal_publikasi }}</span>
                             </td>
                             <td class="text-center">
                                 <div class="btn-group" role="group">
-                                    <a href="{{ route('admin.wartas.edit', $item->id) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" title="Edit">
+                                    <a href="{{ route('admin.warta.edit', $item->id) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    <form action="{{ route('admin.wartas.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin mau hapus wartas ini?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" title="Hapus">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
+                                    <form action="{{ route('admin.warta.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin mau hapus warta ini?')">
+    @csrf
+    @method('DELETE')
+    <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" title="Hapus">
+        <i class="fas fa-trash"></i>
+    </button>
+</form>
+
                                 </div>
                             </td>
                         </tr>
@@ -62,7 +65,7 @@
                             <td colspan="5" class="text-center py-4">
                                 <div class="text-muted">
                                     <i class="fas fa-inbox fa-3x mb-3"></i>
-                                    <p>Tidak ada data wartas</p>
+                                    <p>Tidak ada data warta</p>
                                 </div>
                             </td>
                         </tr>

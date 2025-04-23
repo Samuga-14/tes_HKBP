@@ -20,24 +20,32 @@ class GaleriKegiatanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'judul' => 'required',
-            'deskripsi' => 'required',
-            'gambar' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-            'video' => 'required|mimes:mp4,webm,ogg|max:10240',
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'video' => 'nullable|mimes:mp4,webm,ogg|max:10240',
             'tanggal_unggah' => 'required|date',
         ]);
 
-        $gambarPath = $request->file('gambar')->store('uploads', 'public');
+        $data = $request->only(['judul', 'deskripsi', 'tanggal_unggah']);
 
-        GaleriKegiatan::create([
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'gambar' => $gambarPath,
-            'video' => $request->file('video')->store('uploads', 'public'),
-            'tanggal_unggah' => $request->tanggal_unggah,
-        ]);
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file('gambar');
+            $namaFile = time() . '_' . $gambar->getClientOriginalName();
+            $gambar->move(public_path('images/galeri'), $namaFile);
+            $data['gambar'] = 'images/galeri/' . $namaFile;
+        }
 
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil ditambahkan!');
+        if ($request->hasFile('video')) {
+            $video = $request->file('video');
+            $namaFile = time() . '_' . $video->getClientOriginalName();
+            $video->move(public_path('videos/galeri'), $namaFile);
+            $data['video'] = 'videos/galeri/' . $namaFile;
+        }
+
+        GaleriKegiatan::create($data);
+
+        return redirect()->route('admin.galeri.index')->with('success', 'Berita berhasil ditambahkan!');
     }
 
     public function edit(GaleriKegiatan $galeri)
@@ -46,38 +54,40 @@ class GaleriKegiatanController extends Controller
     }
 
     public function update(Request $request, GaleriKegiatan $galeri)
-    {
-        $request->validate([
-            'judul' => 'required',
-            'deskripsi' => 'required',
-            'gambar' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-            'video' => 'required|mimes:mp4,webm,ogg|max:10240',
-            'tanggal_unggah' => 'required|date',
-        ]);
+{
+    $request->validate([
+        'judul' => 'required|string|max:255',
+        'deskripsi' => 'required|string',
+        'gambar' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        'video' => 'nullable|mimes:mp4,webm,ogg|max:10240',
+        'tanggal_unggah' => 'required|date',
+    ]);
 
-        if ($request->hasFile('gambar')) {
-            $gambarPath = $request->file('gambar')->store('uploads', 'public');
-            $galeri->update(['gambar' => $gambarPath]);
-        }
-        if ($request->hasFile('video')) {
-            $videoPath = $request->file('video')->store('uploads', 'public');
-            $galeri->update(['video' => $videoPath]);
-        }
+    $data = $request->only(['judul', 'deskripsi', 'tanggal_unggah']);
 
-        $galeri->update([
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'gambar' => $gambarPath,
-            'video' => $videoPath,
-            'tanggal_unggah' => $request->tanggal_unggah,
-        ]);
-
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil diperbarui!');
+    if ($request->hasFile('gambar')) {
+        $gambar = $request->file('gambar');
+        $namaFile = time() . '_' . $gambar->getClientOriginalName();
+        $gambar->move(public_path('images/galeri'), $namaFile);
+        $data['gambar'] = 'images/galeri/' . $namaFile;
     }
+
+    if ($request->hasFile('video')) {
+        $video = $request->file('video');
+        $namaFile = time() . '_' . $video->getClientOriginalName();
+        $video->move(public_path('videos/galeri'), $namaFile);
+        $data['video'] = 'videos/galeri/' . $namaFile;
+    }
+
+    $galeri->update($data);
+
+    return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil diperbarui!');
+}
+
 
     public function destroy(GaleriKegiatan $galeri)
     {
         $galeri->delete();
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil dihapus!');
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil dihapus!');
     }
 }

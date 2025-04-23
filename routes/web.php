@@ -54,7 +54,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::resource('berita', BeritaController::class);
-    Route::resource('warta', WartaController::class);
+    // di route: web.php
+Route::resource('warta', WartaController::class)->parameters([
+    'warta' => 'warta'
+]);
+
     Route::resource('galeri', GaleriKegiatanController::class);
     Route::resource('jemaat', JemaatController::class);
     Route::resource('struktur', StrukturKepengurusanController::class);

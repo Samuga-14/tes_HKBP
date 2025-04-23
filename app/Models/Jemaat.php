@@ -9,5 +9,5 @@ class Jemaat extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama', 'jenis_kelamin', 'alamat', 'status_pernikahan', 'nama_pasangan', 'jumlah_anak'];
+    protected $fillable = ['nama','tanggal_lahir', 'jenis_kelamin', 'alamat', 'status_pernikahan', 'nama_pasangan', 'jumlah_anak'];
 }

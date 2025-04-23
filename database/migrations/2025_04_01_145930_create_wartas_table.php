@@ -14,6 +14,7 @@ return new class extends Migration
     Schema::create('jemaats', function (Blueprint $table) {
         $table->id();
         $table->string('nama');
+        $table->date('tanggal_lahir');
         $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
         $table->text('alamat');
         $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah']);
@@ -22,7 +23,6 @@ return new class extends Migration
         $table->timestamps();
     });
 }
-
 
     /**
      * Reverse the migrations.
