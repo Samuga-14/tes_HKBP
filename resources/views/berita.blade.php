@@ -40,6 +40,7 @@
             @foreach ($beritas->sortByDesc('tanggal_publikasi') as $item)
             <div class="d-flex flex-column flex-md-row gap-3 mb-4 p-3 berita-box bg-white shadow-sm rounded-3">
                 <div class="flex-shrink-0">
+                    {{-- Menampilkan Gambar --}}
                     <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="img-fluid rounded" style="width: 220px; height: 140px; object-fit: cover;">
                 </div>
                 <div>
@@ -54,8 +55,10 @@
         </div>
     </section>
 
+    {{-- Footer --}}
     @include('footer')
 
+    {{-- Bootstrap JS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
