@@ -45,10 +45,10 @@
                 </div>
                 <div>
                     <h5 class="fw-semibold">{{ $item->judul }}</h5>
+                    <p class="mb-2">{{ Str::limit(strip_tags($item->deskripsi), 150) }}</p>
                     <p class="text-muted mb-1" style="font-size: 0.9rem;">
                         Dipublikasikan pada {{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}
                     </p>
-                    <p class="mb-2">{{ Str::limit(strip_tags($item->deskripsi), 150) }}</p>
                 </div>
             </div>
             @endforeach

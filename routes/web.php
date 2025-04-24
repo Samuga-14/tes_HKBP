@@ -22,11 +22,8 @@ Route::get('/berita', function () {
 });
 
 Route::get('/berita/user', [BeritaController::class, 'index2'])->name('berita.user');
-
-Route::get('/galeri', function () {
-    return view('galeri');
-});
-
+Route::get('/galeri/user', [GaleriKegiatanController::class, 'index2'])->name('galeri.user');
+Route::get('/warta/user', [WartaController::class, 'index2'])->name('warta.user');
 Route::get('/warta', function () {
     return view('warta');
 });

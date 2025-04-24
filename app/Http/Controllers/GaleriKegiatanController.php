@@ -11,6 +11,11 @@ class GaleriKegiatanController extends Controller
         $galeri = GaleriKegiatan::latest()->paginate(10);
         return view('admin.galeri.index', compact('galeri'));
     }
+    public function index2()
+    {
+        $galeri = GaleriKegiatan::latest()->paginate(10);
+        return view('galeri', compact('galeri'));
+    }
 
     public function create()
     {

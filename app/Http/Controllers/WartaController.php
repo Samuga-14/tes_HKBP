@@ -10,6 +10,11 @@ class WartaController extends Controller
         $wartas = Warta::latest()->paginate(10);
         return view('admin.warta.index', compact('wartas'));
     }
+    public function index2()
+    {
+        $wartas = Warta::latest()->paginate(10);
+        return view('warta', compact('wartas'));
+    }
 
     public function create()
     {

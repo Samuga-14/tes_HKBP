@@ -21,47 +21,40 @@
     @include('header')
 
     {{-- Hero Section --}}
-    <section class="hero-galeri">
-        <div class="hero-text">
+    <section class="hero-galeri text-center py-5 bg-light">
+        <div class="container">
             <h1 class="display-5 fw-bold animate__animated animate__fadeIn">Galeri Kegiatan HKBP Sinambela Simanullang</h1>
             <p class="lead animate__animated animate__fadeIn animate__delay-1s">Kumpulan Dokumentasi Kegiatan Gereja</p>
         </div>
     </section>
 
     {{-- Judul Section --}}
-    <section class="section-title">
+    <section class="section-title text-center mt-4 mb-3">
         Dokumentasi Kegiatan Terbaru
     </section>
 
     {{-- Galeri Section --}}
     <section class="content-section">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <!-- Galeri 1 -->
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                @foreach ($galeri as $item)
                 <div class="col">
-                    <div class="galeri-item">
-                        <img src="{{ asset('images/galeri1.jpg') }}" alt="Kegiatan 1">
-                        <div class="galeri-text">
-                            <h5>Kebaktian Pemuda</h5>
-                            <p>Acara kebaktian pemuda HKBP yang penuh semangat dan sukacita.</p>
-                            <small>10 Maret 2024</small>
+                    <div class="galeri-card shadow-sm rounded-4">
+                        <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="galeri-img rounded-top-4">
+                        <div class="p-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="me-2" width="30">
+                                <div>
+                                    <strong>HKBP SINAMBELA SIMANULLANG</strong>
+                                </div>
+                            </div>
+                            <h5 class="judul-galeri">{{ $item->judul }}</h5>
+                            <p class="mb-1 deskripsi-galeri">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
+                            <small class="text-muted">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}</small>
                         </div>
                     </div>
                 </div>
-
-                <!-- Galeri 2 -->
-                <div class="col">
-                    <div class="galeri-item">
-                        <img src="{{ asset('images/galeri2.jpg') }}" alt="Kegiatan 2">
-                        <div class="galeri-text">
-                            <h5>Ibadah Paskah</h5>
-                            <p>Peringatan hari Paskah bersama seluruh jemaat HKBP Sinambela.</p>
-                            <small>31 Maret 2024</small>
-                        </div>
-                    </div>
-                </div>
-
-                {{-- Tambahkan galeri lainnya di sini --}}
+                @endforeach
             </div>
         </div>
     </section>
