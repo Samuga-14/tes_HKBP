@@ -34,7 +34,7 @@
                             <td>{{ Str::limit(strip_tags($item->deskripsi), 50) }}</td>
                             <td class="text-center">
                                 @if ($item->gambar)
-                                <img src="{{ asset($item->gambar) }}" alt="gambar" class="img-thumbnail" width="80">
+                                    <img src="{{ Storage::url($item->gambar) }}" alt="gambar" class="img-thumbnail" width="80">
                                 @else
                                     <span class="badge bg-secondary">Tidak ada</span>
                                 @endif

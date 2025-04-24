@@ -39,8 +39,8 @@ class BeritaController extends Controller
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->storeAs('public/images/berita', $namaFile);
-            $data['gambar'] = 'storage/images/berita/' . $namaFile;
+            $path = $gambar->storeAs('public/images/berita', $namaFile);
+            $data['gambar'] = Storage::url($path); // Hasil: /storage/images/berita/namafile.jpg
         }
 
         Berita::create($data);
@@ -62,24 +62,27 @@ class BeritaController extends Controller
     public function update(Request $request, Berita $berita)
     {
         $request->validate([
-            'judul' => 'required',
-            'deskripsi' => 'required',
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
             'tanggal_publikasi' => 'required|date',
-            'gambar' => 'nullable|mimes:jpg,jpeg,png,gif|max:2048'
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         $data = $request->only(['judul', 'deskripsi', 'tanggal_publikasi']);
 
         if ($request->hasFile('gambar')) {
-            // Hapus gambar lama jika ada
-            if ($berita->gambar && file_exists(public_path($berita->gambar))) {
-                unlink(public_path($berita->gambar));
+            // Hapus gambar lama
+            if ($berita->gambar) {
+                $oldPath = public_path($berita->gambar);
+                if (file_exists($oldPath)) {
+                    unlink($oldPath);
+                }
             }
 
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->storeAs('public/images/berita', $namaFile);
-            $data['gambar'] = 'storage/images/berita/' . $namaFile;
+            $path = $gambar->storeAs('public/images/berita', $namaFile);
+            $data['gambar'] = Storage::url($path);
         }
 
         $berita->update($data);
@@ -91,8 +94,11 @@ class BeritaController extends Controller
     {
         $berita = Berita::findOrFail($id);
 
-        if ($berita->gambar && file_exists(public_path($berita->gambar))) {
-            unlink(public_path($berita->gambar));
+        if ($berita->gambar) {
+            $oldPath = public_path($berita->gambar);
+            if (file_exists($oldPath)) {
+                unlink($oldPath);
+            }
         }
 
         $berita->delete();
