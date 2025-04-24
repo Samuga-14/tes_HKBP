@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
@@ -11,7 +12,6 @@ class BeritaController extends Controller
     {
         $beritas = Berita::latest()->paginate(5);
         return view('admin.berita.index', compact('beritas'));
-
     }
 
     public function index2()
@@ -39,8 +39,8 @@ class BeritaController extends Controller
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->move(public_path('images/berita'), $namaFile);
-            $data['gambar'] = 'images/berita/' . $namaFile;
+            $gambar->storeAs('public/images/berita', $namaFile);
+            $data['gambar'] = 'storage/images/berita/' . $namaFile;
         }
 
         Berita::create($data);
@@ -54,37 +54,38 @@ class BeritaController extends Controller
     }
 
     public function edit($id)
-{
-    $berita = Berita::findOrFail($id);
-    return view('admin.berita.edit', compact('berita'));
-}
-
-
-public function update(Request $request, Berita $berita)
-{
-    $request->validate([
-        'judul' => 'required',
-        'deskripsi' => 'required',
-        'tanggal_publikasi' => 'required|date',
-        'gambar' => 'nullable|mimes:jpg,jpeg,png,gif|max:2048'
-    ]);
-
-    // Simpan data awal
-    $data = $request->only(['judul', 'deskripsi', 'tanggal_publikasi']);
-
-    // Handle gambar
-    if ($request->hasFile('gambar')) {
-        $gambar = $request->file('gambar');
-        $namaFile = time() . '_' . $gambar->getClientOriginalName();
-        $gambar->move(public_path('images/berita'), $namaFile);
-        $data['gambar'] = 'images/berita/' . $namaFile;
+    {
+        $berita = Berita::findOrFail($id);
+        return view('admin.berita.edit', compact('berita'));
     }
 
-    $berita->update($data);
+    public function update(Request $request, Berita $berita)
+    {
+        $request->validate([
+            'judul' => 'required',
+            'deskripsi' => 'required',
+            'tanggal_publikasi' => 'required|date',
+            'gambar' => 'nullable|mimes:jpg,jpeg,png,gif|max:2048'
+        ]);
 
-    return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil diperbarui!');
-}
+        $data = $request->only(['judul', 'deskripsi', 'tanggal_publikasi']);
 
+        if ($request->hasFile('gambar')) {
+            // Hapus gambar lama jika ada
+            if ($berita->gambar && file_exists(public_path($berita->gambar))) {
+                unlink(public_path($berita->gambar));
+            }
+
+            $gambar = $request->file('gambar');
+            $namaFile = time() . '_' . $gambar->getClientOriginalName();
+            $gambar->storeAs('public/images/berita', $namaFile);
+            $data['gambar'] = 'storage/images/berita/' . $namaFile;
+        }
+
+        $berita->update($data);
+
+        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil diperbarui!');
+    }
 
     public function destroy($id)
     {
