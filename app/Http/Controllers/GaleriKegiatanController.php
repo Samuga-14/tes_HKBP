@@ -38,7 +38,8 @@ class GaleriKegiatanController extends Controller
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
             $gambar->move(public_path('images/galeri'), $namaFile);
-            $data['gambar'] = 'images/galeri/' . $namaFile;
+
+            $data['gambar'] = $namaFile; 
         }
 
         if ($request->hasFile('video')) {

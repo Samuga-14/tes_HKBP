@@ -26,7 +26,7 @@
                     <h1 class="fw-bold display-4 mb-4 text-primary">{{ $berita->judul }}</h1>
 
                     <!-- Image -->
-                    <img src="{{ asset('storage/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="img-fluid rounded-4 mb-4 shadow-lg">
+                    <img src="{{ asset('images/berita/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="img-fluid rounded-4 mb-4 shadow-lg">
 
                     <!-- Description -->
                     <div class="content-description">

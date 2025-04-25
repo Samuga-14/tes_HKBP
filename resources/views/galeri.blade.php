@@ -40,7 +40,7 @@
                 @foreach ($galeri as $item)
                 <div class="col">
                     <div class="galeri-card shadow-sm rounded-4">
-                        <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="galeri-img rounded-top-4">
+                        <img src="{{ asset('images/galeri/' . $item->gambar) }}" alt="gambar" class="img-thumbnail" width="90">
                         <div class="p-3">
                             <div class="d-flex align-items-center mb-2">
                                 <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="me-2" width="30">
