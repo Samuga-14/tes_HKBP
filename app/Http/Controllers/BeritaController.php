@@ -48,10 +48,12 @@ class BeritaController extends Controller
         return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan!');
     }
 
-    public function show(Berita $berita)
-    {
-        return view('admin.berita.show', compact('berita'));
-    }
+    public function show($id)
+{
+    $berita = Berita::findOrFail($id);
+    return view('detail', compact('berita'));
+}
+
 
     public function edit($id)
     {

@@ -36,8 +36,8 @@
                 {{ \Carbon\Carbon::parse($item->tanggal_terbit)->translatedFormat('d F Y') }}
             </div>
             <div class="judul flex-grow-1 px-3">
-                <div class="fw-semibold">Warta dan Tata Ibadah</div>
-                <div class="text-muted small">HKBP SINAMBELA Minggu {{ $loop->iteration }}</div>
+                <h5 class="fw-semibold">{{$item->judul}}</h5>
+                <p class="text-muted small">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
             </div>
             <div class="download-icon">
                 <a href="{{ asset('storage/' . $item->file) }}" download class="text-decoration-none text-dark fs-5">

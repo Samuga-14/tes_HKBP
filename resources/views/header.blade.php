@@ -14,7 +14,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{route("berita.user")}}">Berita</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route("galeri.user")}}">Galeri</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{route("warta.user")}}">Warta Jemaat</a></li>
-                <li class="nav-item"><a class="nav-link" href="/pengurus">Struktur Kepengurusan</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{route("pengurus.user")}}">Struktur Kepengurusan</a></li>
             </ul>
             <div class="d-flex ms-auto">
                 <a href="{{ route('login') }}" class="btn btn-primary ms-0">Login</a>
