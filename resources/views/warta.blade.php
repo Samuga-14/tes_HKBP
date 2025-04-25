@@ -40,12 +40,13 @@
                 <p class="text-muted small">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
             </div>
             <div class="download-icon">
-                <a href="{{ asset('storage/' . $item->file) }}" download class="text-decoration-none text-dark fs-5">
-                    <i class="bi bi-download"></i>
-                </a>
+                @if ($item->file_pdf)
+                    <a href="{{ asset('storage/' . $item->file_pdf) }}" class="btn btn-sm btn-info" target="_blank">
+                        <i class="fas fa-file-pdf"></i> Lihat PDF
+                    </a>
+                @endif
             </div>
-        </div>
-        @endforeach
+        </div>        @endforeach
     </div>
 
     <div class="d-flex justify-content-center my-4 pagination-custom">
