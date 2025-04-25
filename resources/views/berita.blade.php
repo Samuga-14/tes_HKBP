@@ -43,7 +43,7 @@
             @foreach ($beritas->sortByDesc('tanggal_publikasi') as $item)
             <div class="d-flex flex-column flex-md-row gap-3 mb-4 p-4 berita-box bg-white shadow-lg rounded-4">
                 <div class="flex-shrink-0">
-                    <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}" class="img-fluid rounded-3" style="width: 220px; height: 140px; object-fit: cover;">
+                    <img src="{{ asset('images/berita/' . $item->gambar) }}"  alt="{{ $item->judul }}" class="img-fluid rounded-3" style="width: 220px; height: 140px; object-fit: cover;">
                 </div>
                 <div class="flex-grow-1">
                     <h5 class="fw-semibold">{{ $item->judul }}</h5>

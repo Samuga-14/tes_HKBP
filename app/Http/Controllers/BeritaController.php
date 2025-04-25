@@ -39,8 +39,9 @@ class BeritaController extends Controller
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $path = $gambar->storeAs('public/images/berita', $namaFile);
-            $data['gambar'] = Storage::url($path); // Hasil: /storage/images/berita/namafile.jpg
+            $gambar->move(public_path('images/berita'), $namaFile);
+
+            $data['gambar'] = $namaFile; 
         }
 
         Berita::create($data);
