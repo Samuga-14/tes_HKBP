@@ -30,7 +30,7 @@
                     <p class="lead text-secondary">"Mengabarkan kasih Tuhan lewat informasi dan kegiatan."</p>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <img src="{{ asset('images/itdel.jpeg') }}" alt="Ilustrasi Berita" class="img-fluid rounded-4 shadow-sm" style="max-height: 320px;">
+                    <img src="{{ asset('images/bg1.jpg') }}" alt="Ilustrasi Berita" class="img-fluid rounded-4 shadow-sm" style="max-height: 320px;">
                 </div>
             </div>
         </div>
