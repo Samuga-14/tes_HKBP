@@ -13,13 +13,12 @@
 
     @include('header')
 
-    <section class="hero-warta text-center py-5 bg-light">
-        <div class="container">
-            <h1 class="display-5 fw-bold">WARTA JEMAAT</h1>
-            <p class="lead">Informasi & Tata Ibadah HKBP Sinambela Simanullang</p>
+    <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">Warta Gereja<br>HKBP Sinambela Simanullang</h1><br><br>
+          <p class="hero-subtitle">Jahowa Do Si Parmahan Au</p>
         </div>
-    </section>
-
+  </section>
     <div class="section-title text-center mt-4 fw-semibold fs-5">
         Warta Jemaat HKBP Sinambela Simanullang
     </div>

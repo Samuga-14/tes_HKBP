@@ -41,7 +41,7 @@ class BeritaController extends Controller
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
             $gambar->move(public_path('images/berita'), $namaFile);
 
-            $data['gambar'] = $namaFile; 
+            $data['gambar'] = $namaFile;
         }
 
         Berita::create($data);

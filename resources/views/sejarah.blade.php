@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Link to external CSS file -->
+    <!-- Link ke file CSS external -->
     <link href="{{ asset('css/sejarah.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -23,20 +23,21 @@
         </div>
     </section>
 
-    {{-- Sejarah Section --}}
+    {{-- Section Judul --}}
     <section class="section-title">
         Sejarah Gereja HKBP Sinambela Simanullang
     </section>
 
+    {{-- Konten Sejarah --}}
     <section class="content-section">
         <div class="container">
-            <p class="mb-4 text-center">Berikut adalah beberapa poin sejarah dari HKBP Sinambela yang bisa Anda ketahui:</p>
+            <p class="mb-5 text-center">Berikut adalah beberapa poin sejarah dari HKBP Sinambela yang bisa Anda ketahui:</p>
 
             <div class="content-block">
                 <h4>Sejarah HKBP Bakkara</h4>
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-md-3">
-                        <img src="{{ asset('images/nomensen.jpg') }}" alt="Ingwer Ludwig Nommensen">
+                        <img src="{{ asset('images/nomensen.jpg') }}" alt="Ingwer Ludwig Nommensen" class="img-fluid">
                     </div>
                     <div class="col-md-9">
                         <p>
@@ -48,9 +49,9 @@
 
             <div class="content-block">
                 <h4>Sejarah Bangunan Gereja</h4>
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-md-4">
-                        <img src="{{ asset('images/hkbp1.jpg') }}" alt="Bangunan Lama HKBP">
+                        <img src="{{ asset('images/hkbp1.jpg') }}" alt="Bangunan Lama HKBP" class="img-fluid">
                     </div>
                     <div class="col-md-8">
                         <p>
@@ -62,9 +63,9 @@
 
             <div class="content-block">
                 <h4>Berdirinya Bangunan Gereja</h4>
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-md-4">
-                        <img src="{{ asset('images/gambar12.jpg') }}" alt="Bangunan Gereja Baru">
+                        <img src="{{ asset('images/gambar12.jpg') }}" alt="Bangunan Gereja Baru" class="img-fluid">
                     </div>
                     <div class="col-md-8">
                         <p>

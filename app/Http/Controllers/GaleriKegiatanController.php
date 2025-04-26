@@ -39,7 +39,7 @@ class GaleriKegiatanController extends Controller
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
             $gambar->move(public_path('images/galeri'), $namaFile);
 
-            $data['gambar'] = $namaFile; 
+            $data['gambar'] = $namaFile;
         }
 
         if ($request->hasFile('video')) {
@@ -64,7 +64,7 @@ class GaleriKegiatanController extends Controller
     $request->validate([
         'judul' => 'required|string|max:255',
         'deskripsi' => 'required|string',
-        'gambar' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+        'gambar' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:5048',
         'video' => 'nullable|mimes:mp4,webm,ogg|max:10240',
         'tanggal_unggah' => 'required|date',
     ]);

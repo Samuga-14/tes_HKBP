@@ -29,12 +29,6 @@
   </section>
   <section class="section-title">
 </section>
-
-  <!-- Divider -->
-  <div class="container my-5">
-    <hr class="my-4" />
-  </div>
-
   <!-- Layanan Section -->
   <section class="py-5 bg-light" id="layanan">
     <div class="container">
