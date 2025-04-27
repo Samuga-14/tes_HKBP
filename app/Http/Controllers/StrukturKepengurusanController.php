@@ -65,7 +65,8 @@ public function index2()
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
             $gambar->move(public_path('images/struktur'), $namaFile);
-            $data['gambar'] = 'images/struktur/' . $namaFile;
+
+            $data['gambar'] = $namaFile; 
         }
 
         StrukturKepengurusan::create($data);
