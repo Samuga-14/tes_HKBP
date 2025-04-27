@@ -41,7 +41,28 @@ public function index2()
         ]);
     });
 
-    return view('pengurus', compact('pendeta', 'fungsionaris', 'marturia'));
+    $diakonia = $struktur->filter(function ($item) {
+        return in_array($item->jabatan, [
+            'Ketua Diakonia',
+            'Anggota Diakonia'
+        ]);
+    });
+
+    $koinonia = $struktur->filter(function ($item) {
+        return in_array($item->jabatan, [
+            'Ketua Koinonia',
+            'Anggota Koinonia'
+        ]);
+    });
+
+    $calonsintua = $struktur->filter(function ($item) {
+        return in_array($item->jabatan, [
+            'Learning',
+            'Calon sintua'
+        ]);
+    });
+
+    return view('pengurus', compact('pendeta', 'fungsionaris', 'marturia','diakonia', 'koinonia', 'calonsintua'));
 }
 
 

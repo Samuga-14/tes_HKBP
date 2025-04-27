@@ -1,3 +1,4 @@
+{{-- Galeri.blade.php --}}
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -21,40 +22,45 @@
     @include('header')
 
     {{-- Hero Section --}}
-    <section class="hero-galeri text-center py-5 bg-light">
-        <div class="container">
-            <h1 class="display-5 fw-bold animate__animated animate__fadeIn">Galeri Kegiatan HKBP Sinambela Simanullang</h1>
-            <p class="lead animate__animated animate__fadeIn animate__delay-1s">Kumpulan Dokumentasi Kegiatan Gereja</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Selamat Datang di HKBP<br>Sinambela Simanullang</h1>
+            <p class="hero-subtitle">Jahowa Do Si Parmahan Au</p>
         </div>
     </section>
 
     {{-- Judul Section --}}
-    <section class="section-title text-center mt-4 mb-3">
+    <section class="section-title text-center mt-5 mb-4">
         Dokumentasi Kegiatan Terbaru
     </section>
 
     {{-- Galeri Section --}}
     <section class="content-section">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
                 @foreach ($galeri as $item)
                 <div class="col">
-                    <div class="galeri-card shadow-sm rounded-4">
-                        <img src="{{ asset('images/galeri/' . $item->gambar) }}" alt="gambar" class="img-thumbnail" width="90">
-                        <div class="p-3">
-                            <div class="d-flex align-items-center mb-2">
-                                <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="me-2" width="30">
-                                <div>
-                                    <strong>HKBP SINAMBELA SIMANULLANG</strong>
-                                </div>
-                            </div>
-                            <h5 class="judul-galeri">{{ $item->judul }}</h5>
-                            <p class="mb-1 deskripsi-galeri">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
-                            <small class="text-muted">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}</small>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
+                    <div class="galeri-card">
+                        <div class="galeri-img-wrapper">
+            <img src="{{ asset('images/galeri/' . $item->gambar) }}" alt="{{ $item->judul }}" class="img-fluid">
+        </div>
+        <div class="galeri-text">
+            <div class="d-flex align-items-center mb-3">
+                <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="logo-galeri-mini me-2">
+                <span class="text-muted small">HKBP SINAMBELA SIMANULLANG</span>
+            </div>
+            <h5 class="judul-galeri">{{ $item->judul }}</h5>
+            <p class="deskripsi-galeri">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
+            <div class="d-flex justify-content-between align-items-center mt-2">
+                <small class="text-muted">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}</small>
+                <a href="{{ asset('images/galeri/' . $item->gambar) }}" class="btn btn-sm btn-outline-primary" download>
+                    <i class="bi bi-download"></i> Unduh
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
             </div>
         </div>
     </section>

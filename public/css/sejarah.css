@@ -60,51 +60,108 @@ body {
     text-align: center;
     font-weight: 600;
     font-size: 1.75rem;
-    border-radius: 10px;
+    border-radius: 0px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Content Section */
+/* Konten Sejarah */
 .content-section {
-    background-color: #f4f4f4;
-    padding: 3rem 2rem;
+    background-color: #ffffff;
+    padding: 60px 0;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    margin: 40px 0;
 }
 
-.content-section img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.content-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* Content Block */
-.content-block {
-    margin-bottom: 3rem;
-    background-color: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.content-block:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.content-block h4 {
-    font-weight: bold;
-    color: #2c3e50;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.content-block p {
-    font-size: 1.1rem;
+.content-section p {
+    font-size: 1.2rem;
+    color: #34495e;
     line-height: 1.8;
-    text-align: justify;
-    color: #555;
+    font-weight: 300;
+}
+
+.content-section h4 {
+    font-size: 2rem;
+    color: #2c3e50;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Garis bawah untuk judul */
+.content-section h4::after {
+    content: "";
+    position: relative;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Konten Block */
+.content-block {
+    margin-bottom: 50px;
+}
+
+.content-block .row {
+    align-items: center;
+}
+
+.content-block img {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content-block img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Kolom Deskripsi */
+.content-block .col-md-9, .content-block .col-md-8 {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #34495e;
+}
+
+/* Kolom Gambar */
+.content-block .col-md-3, .content-block .col-md-4 {
+    padding-right: 15px;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .content-section {
+        padding: 40px 0;
+    }
+
+    .content-section h4 {
+        font-size: 1.8rem;
+    }
+
+    .content-section p {
+        font-size: 1rem;
+    }
+
+    .content-block img {
+        max-height: 350px;
+    }
+
+    .content-block .col-md-3, .content-block .col-md-4 {
+        text-align: center;
+    }
+
+    .content-block .col-md-9, .content-block .col-md-8 {
+        font-size: 1rem;
+    }
 }
 
 /* Responsif untuk Perangkat Mobile */

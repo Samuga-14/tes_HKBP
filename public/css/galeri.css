@@ -1,127 +1,153 @@
-/* General Styling */
+/* Import font Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
     margin: 0;
     padding: 0;
-    background-color: #f3f0f0;
 }
 
 /* Hero Section */
-.hero-galeri {
+.hero {
     background-image: url('../images/gambar12.jpg');
     background-size: cover;
     background-position: center;
-    min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    min-height: 80vh;
     position: relative;
-    color: rgb(253, 247, 247);
-    text-align: center;
-    padding: 0 20px;
-    box-shadow: inset 0 0 30px rgba(249, 248, 248, 0.4);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 2rem;
+    color: white;
 }
 
-.hero-galeri::before {
+
+.hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
 }
 
-.hero-text {
+.hero-content {
     position: relative;
     z-index: 2;
+    width: 100%;
+    margin-top: 150px;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    text-align: left;
     max-width: 800px;
 }
 
-.hero-text h1 {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    letter-spacing: 2px;
-    animation: fadeIn 2s ease-in-out;
+.hero-subtitle {
+    font-size: 1.4rem;
+    text-align: center;
 }
 
-.hero-text p {
-    font-size: 1.25rem;
-    font-weight: 300;
-    line-height: 1.6;
-    margin-top: 0.5rem;
-    text-transform: uppercase;
-    animation: fadeIn 2s ease-in-out 1s;
-}
+
 
 /* Section Title */
 .section-title {
-    background-color: #3498db;
-    color: white;
-    padding: 1rem;
-    text-align: center;
+    font-size: 1.8rem;
     font-weight: 600;
-    font-size: 1.75rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    position: relative;
 }
 
-/* Content Section */
-.content-section {
-    padding: 2rem 0;
-}
-
-/* Galeri Items */
-.galeri-item {
+/* Galeri Card */
+.galeri-card {
+    background-color: #ffffff;
+    border-radius: 12px;
     overflow: hidden;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 }
 
-.galeri-item img {
+.galeri-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Gambar Galeri */
+.galeri-img-wrapper {
     width: 100%;
-    height: auto;
+    height: 220px;
+    overflow: hidden;
+}
+
+.galeri-img-wrapper img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
 
-.galeri-item:hover img {
-    transform: scale(1.1);
+.galeri-card:hover .galeri-img-wrapper img {
+    transform: scale(1.03);
 }
 
-.galeri-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-}
-
+/* Isi Text Galeri */
 .galeri-text {
-    padding: 15px;
+    padding: 1rem;
 }
 
-.galeri-text h5 {
-    font-weight: bold;
+.logo-galeri-mini {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.judul-galeri {
+    font-size: 1.1rem;
+    font-weight: 600;
     color: #2c3e50;
+    margin-bottom: 8px;
 }
 
-.galeri-text small {
-    color: #777;
+.deskripsi-galeri {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 10px;
 }
 
-/* Responsive Layout */
+/* Tombol Unduh */
+.btn-outline-primary {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+/* Responsive spacing */
 @media (max-width: 768px) {
-    .hero-text h1 {
-        font-size: 2.5rem;
+    .hero-title {
+        font-size: 2rem;
     }
 
-    .hero-text p {
-        font-size: 1.1rem;
+    .hero-subtitle {
+        font-size: 1rem;
     }
 
-    .section-title {
-        font-size: 1.5rem;
+    .judul-galeri {
+        font-size: 1rem;
     }
 
-    .content-section {
-        padding: 1.5rem 0;
+    .deskripsi-galeri {
+        font-size: 0.9rem;
     }
 }

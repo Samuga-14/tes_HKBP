@@ -62,6 +62,48 @@
     </div>
   </section>
 
+  <section class="section-wrapper">
+    <div class="section-title">Dewan Diakonia</div>
+    <p class="section-description">Dewan yang bertugas dalam pelayanan sosial dan kemanusiaan, seperti memberikan bantuan kepada yang membutuhkan dan mengelola program sosial gereja.</p>
+    <div class="container person-grid">
+      @foreach ($diakonia as $item)
+        <div class="person-card">
+          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}">
+          <h5>{{ $item->nama }}</h5>
+          <span>{{ $item->jabatan }}</span>
+        </div>
+      @endforeach
+    </div>
+  </section>
+
+  <section class="section-wrapper">
+    <div class="section-title">Dewan Koinonia</div>
+    <p class="section-description">Dewan yang fokus pada mempererat hubungan persaudaraan dan persekutuan umat melalui kegiatan doa, retret, dan pertemuan sosial.</p>
+    <div class="container person-grid">
+      @foreach ($koinonia as $item)
+        <div class="person-card">
+          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}">
+          <h5>{{ $item->nama }}</h5>
+          <span>{{ $item->jabatan }}</span>
+        </div>
+      @endforeach
+    </div>
+  </section>
+
+  <section class="section-wrapper">
+    <div class="section-title">Calon Sintua</div>
+    <p class="section-description">Anggota jemaat yang sedang dibina untuk menjadi sintua (penatua), dengan tugas membimbing dan memberikan nasihat rohani kepada jemaat.</p>
+    <div class="container person-grid">
+      @foreach ($calonsintua as $item)
+        <div class="person-card">
+          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}">
+          <h5>{{ $item->nama }}</h5>
+          <span>{{ $item->jabatan }}</span>
+        </div>
+      @endforeach
+    </div>
+  </section>
+
 
   @include('footer')
 
