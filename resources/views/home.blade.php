@@ -30,21 +30,63 @@
   <section class="section-title">
 </section>
   <!-- Layanan Section -->
-  <section class="py-5 bg-light" id="layanan">
+<section class="service-section py-6" id="layanan">
     <div class="container">
-      <h2 class="text-center mb-5 fw-bold text-primary">Layanan Ibadah</h2>
-      <div class="row align-items-center">
-        <div class="col-md-6 mb-4 mb-md-0">
-          <ul class="list-group shadow">
-            <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> Ibadah Minggu</li>
-            <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> Ibadah Tamu</li>
-            <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> Baptisan Kudus</li>
-            <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> Perjamuan Kudus</li>
-            <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i> Permintaan Doa</li>
-          </ul>
+      <div class="section-header text-center mb-5">
+        <h2 class="section-title fw-bold">Layanan Ibadah</h2>
+        <div class="section-divider mx-auto"></div>
+        <p class="section-subtitle mt-3">Melayani dengan penuh kasih dan kerendahan hati</p>
+      </div>
+
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <div class="service-card">
+            <h3 class="service-card-title h4 mb-4">Kami Menyediakan</h3>
+            <ul class="service-list">
+              <li class="service-item">
+                <span class="service-icon">
+                  <i class="bi bi-calendar-check"></i>
+                </span>
+                <span>Ibadah Minggu</span>
+              </li>
+              <li class="service-item">
+                <span class="service-icon">
+                  <i class="bi bi-people"></i>
+                </span>
+                <span>Ibadah Tamu</span>
+              </li>
+              <li class="service-item">
+                <span class="service-icon">
+                  <i class="bi bi-water"></i>
+                </span>
+                <span>Baptisan Kudus</span>
+              </li>
+              <li class="service-item">
+                <span class="service-icon">
+                  <i class="bi bi-cup-hot"></i>
+                </span>
+                <span>Perjamuan Kudus</span>
+              </li>
+              <li class="service-item">
+                <span class="service-icon">
+                  <i class="bi bi-heart"></i>
+                </span>
+                <span>Permintaan Doa</span>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-6">
-          <img src="{{ asset('images/ibadah.jpg') }}" alt="Ibadah Jemaat" class="img-fluid rounded shadow image-hover" />
+
+        <div class="col-lg-6">
+          <div class="service-image">
+            <img src="{{ asset('images/ibadah.jpg') }}" alt="Ibadah Jemaat" class="img-fluid w-100">
+            <div class="service-image-overlay">
+              <div class="service-image-content">
+                <h4>Bergabunglah bersama kami</h4>
+                <a href="#jadwal" class="btn btn-light btn-sm mt-3">Lihat Jadwal</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -66,38 +66,194 @@
         color: white;
         padding: 2rem;
     }
-/* Layanan */
-.list-group-item {
-    font-size: 1.15rem;
-    padding: 1.5rem;
-    background-color: #f3f6fc;
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 16px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
 
-.list-group-item:hover {
-    background-color: #e1e8f0;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
+/* Bagian Layanan */
+.service-section {
+    background: linear-gradient(135deg, #f8faff 0%, #eef2f9 100%);
+    position: relative;
+    padding: 5rem 0;
+  }
 
-/* Images */
-.image-hover,
-.img-fluid {
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+  .py-6 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
 
-.image-hover:hover,
-.img-fluid:hover {
-    transform: scale(1.07);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
-}
+  .section-title {
+    color: #edeff4;
+    font-size: 2.5rem;
+    position: relative;
+    margin-bottom: 1rem;
+  }
 
+  .section-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #e0e3e8, #6e8cd5);
+    border-radius: 2px;
+    margin-top: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .service-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    transition: all 0.4s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(59, 89, 152, 0.1);
+  }
+
+  .service-card-title {
+    color: #3b5998;
+    font-weight: 600;
+    border-bottom: 2px solid #f0f4f9;
+    padding-bottom: 1rem;
+  }
+
+  .service-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .service-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    background-color: #f8faff;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .service-item:hover {
+    background-color: #eef2f9;
+    transform: translateX(5px);
+    border-left: 3px solid #3b5998;
+  }
+
+  .service-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .service-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgba(59, 89, 152, 0.1);
+    color: #3b5998;
+    border-radius: 12px;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+
+  .service-item:hover .service-icon {
+    background-color: #3b5998;
+    color: #ffffff;
+    transform: rotate(5deg);
+  }
+
+  .service-image {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .service-image:hover img {
+    transform: scale(1.05);
+  }
+
+  .service-image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    padding: 2rem;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    opacity: 0;
+  }
+
+  .service-image:hover .service-image-overlay {
+    opacity: 1;
+  }
+
+  .service-image-content {
+    text-align: center;
+  }
+
+  .service-image-content h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  /* Responsive */
+  @media (max-width: 991.98px) {
+    .service-section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .service-card {
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .service-image {
+      margin-top: 1rem;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .py-6 {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+    }
+
+    .service-item {
+      padding: 0.8rem;
+    }
+
+    .service-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+  }
 /* Map */
 .ratio iframe {
     border: 4px solid #c5d1e8;
