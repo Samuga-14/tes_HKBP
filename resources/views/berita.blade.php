@@ -20,21 +20,23 @@
     {{-- Header --}}
     @include('header')
 
-    {{-- Hero Section --}}
-    <section class="hero-berita-section py-5 bg-light border-bottom">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h1 class="fw-bold display-4 mb-3 text-primary">Berita & Pengumuman</h1>
-                    <h2 class="h5 text-muted mb-4">HKBP Sinambela Simanullang</h2>
-                    <p class="lead text-secondary">"Mengabarkan kasih Tuhan lewat informasi dan kegiatan."</p>
-                </div>
-                <div class="col-lg-6 text-center">
-                    <img src="{{ asset('images/bg1.jpg') }}" alt="Ilustrasi Berita" class="img-fluid rounded-4 shadow-sm" style="max-height: 320px;">
-                </div>
+{{-- Hero Section --}}
+<section class="hero-berita-custom">
+    <div class="top-bar"></div>
+    <div class="container hero-content">
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-section">
+                <h1>Berita & Pengumuman<br>HKBP Sinambela Simanullang</h1>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="{{ asset('images/bg1.jpg') }}" alt="Ilustrasi Berita" class="hero-image">
             </div>
         </div>
-    </section>
+
+        <!-- Pindahkan bottom bar ke dalam container -->
+        <div class="bottom-bar-1"></div>
+    </div>
+</section>
 
     {{-- Berita Section --}}
     <section class="content-section py-5">

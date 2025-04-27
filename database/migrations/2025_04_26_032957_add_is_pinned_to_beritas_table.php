@@ -9,7 +9,7 @@ class AddIsPinnedToBeritasTable extends Migration
     public function up()
     {
         Schema::table('beritas', function (Blueprint $table) {
-            $table->boolean('is_pinned')->default(false); // Menambahkan kolom is_pinned
+            $table->boolean('is_pinned')->default(false); 
         });
     }
 

@@ -1,13 +1,13 @@
 /* Global Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f4f6f9; /* Latar belakang lebih lembut */
-    margin-top: 60px; /* Menurunkan body ke bawah */
+    background-color: #f4f6f9;
+    margin-top: 60px;
 }
 
 /* Detail Berita Section */
 .detail-berita-section {
-    background: linear-gradient(135deg, #ffffff, #f0f8ff); /* Gradien halus di latar belakang */
+    background: linear-gradient(135deg, #ffffff, #e0f7fa);
     padding: 80px 0;
     border-radius: 15px;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
@@ -17,20 +17,25 @@ body {
 
 /* Judul Berita */
 .detail-berita-section h1 {
-    color: #2c3e50; /* Warna judul lebih gelap dan elegan */
+    color: #2c3e50;
     font-weight: 800;
     font-size: 3rem;
     text-align: center;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 2px;
+    transition: color 0.3s ease-in-out;
+}
+
+.detail-berita-section h1:hover {
+    color: #007bff;
 }
 
 /* Tanggal */
 .detail-berita-section .text-muted {
     font-size: 1.2rem;
     text-align: center;
-    color: #7f8c8d; /* Warna abu-abu lembut untuk tanggal */
+    color: #072151;
     margin-bottom: 30px;
     font-style: italic;
 }
@@ -47,7 +52,7 @@ body {
 }
 
 .detail-berita-section img:hover {
-    transform: scale(1.05); /* Efek zoom saat hover untuk gambar */
+    transform: scale(1.05);
 }
 
 /* Deskripsi Konten */
@@ -79,7 +84,7 @@ body {
 
 .detail-berita-section .back-button:hover {
     background-color: #0056b3;
-    transform: translateY(-3px); /* Efek angkat tombol saat hover */
+    transform: translateY(-3px);
 }
 
 /* Responsiveness */
@@ -100,5 +105,28 @@ body {
     .detail-berita-section .back-button {
         font-size: 1rem;
         padding: 10px 25px;
+    }
+}
+
+@media (max-width: 576px) {
+    .detail-berita-section {
+        padding: 40px 20px;
+    }
+
+    .detail-berita-section h1 {
+        font-size: 1.8rem;
+    }
+
+    .detail-berita-section .content-description {
+        font-size: 0.9rem;
+    }
+
+    .detail-berita-section img {
+        max-height: 400px;
+    }
+
+    .detail-berita-section .back-button {
+        font-size: 1rem;
+        padding: 10px 20px;
     }
 }
