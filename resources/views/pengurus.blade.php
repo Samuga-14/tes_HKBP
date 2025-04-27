@@ -25,9 +25,8 @@
     <div class="container person-grid">
       @foreach ($pendeta as $item)
         <div class="person-card">
-          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}">
-          <h5>{{ $item->nama }}</h5>
-          <span>{{ $item->jabatan }}</span>
+          <img src="{{ asset('images/struktur/' . $item->gambar) }}" alt="{{ $item->nama }}">
+          <h5>{{ $item->nama }}</h5>          <span>{{ $item->jabatan }}</span>
         </div>
       @endforeach
     </div>
