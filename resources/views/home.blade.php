@@ -41,7 +41,7 @@
       <div class="row align-items-center g-4">
         <div class="col-lg-6">
           <div class="service-card">
-            <h3 class="service-card-title h4 mb-4">Kami Menyediakan</h3>
+            <h3 class="service-card-title h4 mb-4">Gereja Melayani</h3>
             <ul class="service-list">
               <li class="service-item">
                 <span class="service-icon">

@@ -39,8 +39,8 @@
     <div class="container person-grid">
       @foreach ($fungsionaris as $item)
         <div class="person-card">
-          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}">
-          <h5>{{ $item->nama }}</h5>
+        <img src="{{ asset('images/struktur/' . $item->gambar) }}" alt="{{ $item->nama }}">
+        <h5>{{ $item->nama }}</h5>
           <span>{{ $item->jabatan }}</span>
         </div>
       @endforeach
@@ -54,8 +54,8 @@
     <div class="container person-grid">
       @foreach ($marturia as $item)
         <div class="person-card">
-          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}">
-          <h5>{{ $item->nama }}</h5>
+        <img src="{{ asset('images/struktur/' . $item->gambar) }}" alt="{{ $item->nama }}">
+        <h5>{{ $item->nama }}</h5>
           <span>{{ $item->jabatan }}</span>
         </div>
       @endforeach
@@ -68,8 +68,8 @@
     <div class="container person-grid">
       @foreach ($diakonia as $item)
         <div class="person-card">
-          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}">
-          <h5>{{ $item->nama }}</h5>
+        <img src="{{ asset('images/struktur/' . $item->gambar) }}" alt="{{ $item->nama }}">
+        <h5>{{ $item->nama }}</h5>
           <span>{{ $item->jabatan }}</span>
         </div>
       @endforeach
@@ -82,8 +82,8 @@
     <div class="container person-grid">
       @foreach ($koinonia as $item)
         <div class="person-card">
-          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}">
-          <h5>{{ $item->nama }}</h5>
+        <img src="{{ asset('images/struktur/' . $item->gambar) }}" alt="{{ $item->nama }}">
+        <h5>{{ $item->nama }}</h5>
           <span>{{ $item->jabatan }}</span>
         </div>
       @endforeach
@@ -96,8 +96,8 @@
     <div class="container person-grid">
       @foreach ($calonsintua as $item)
         <div class="person-card">
-          <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama }}">
-          <h5>{{ $item->nama }}</h5>
+        <img src="{{ asset('images/struktur/' . $item->gambar) }}" alt="{{ $item->nama }}">
+        <h5>{{ $item->nama }}</h5>
           <span>{{ $item->jabatan }}</span>
         </div>
       @endforeach
