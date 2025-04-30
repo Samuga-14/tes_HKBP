@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>HKBP Sinambela Simanullang</title>
+  <link rel="  website icon" href="{{ asset('images/hkbplogo.png') }}" type="image/png">
+
 
   <!-- Bootstrap & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -83,7 +85,7 @@
             <div class="service-image-overlay">
               <div class="service-image-content">
                 <h4>Bergabunglah bersama kami</h4>
-                <a href="#jadwal" class="btn btn-light btn-sm mt-3">Lihat Jadwal</a>
+                <a href="/ayat" class="btn btn-light btn-sm mt-3">Lihat Jadwal</a>
               </div>
             </div>
           </div>
