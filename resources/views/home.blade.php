@@ -18,22 +18,39 @@
   <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
 </head>
 <body>
-
+  
   <!-- Header -->
   @include('header')
 
   <!-- Hero Section -->
   <section class="hero">
         <div class="hero-content">
-          <h1 class="hero-title">Selamat Datang di HKBP<br>Sinambela Simanullang</h1>
+          <h1 class="hero-title">SELAMAT DATANG DI HKBP<br>SINAMBELA SIMANULLANG</h1>
           <p class="hero-subtitle">Jahowa Do Si Parmahan Au</p>
         </div>
   </section>
   <section class="section-title">
-</section>
-  <!-- Layanan Section -->
+  </section>
+  <!-- Bible Verse Section -->
+  <section class="bible-verse py-4">
+      <div class="container text-center">
+          <p class="fs-1" style="color: black; font-size: 2.5rem !important;">
+              <strong>J</strong>ALA
+              <strong>D</strong>AME
+              <strong>N</strong>I
+              <strong>K</strong>RISTUS
+              <strong>I</strong>
+              <strong>M</strong>A<br>
+              <strong>M</strong>ANGARAJAI
+              <strong>D</strong>I
+              <strong>B</strong>AGASAN<br>
+              <strong>R</strong>OHA
+              <strong>M</strong>UNA
+          </p>
+      </div>
+  </section>  <!-- Layanan Section -->
 <section class="service-section py-6" id="layanan">
-    <div class="container">
+    <div class="container-fluid">
       <div class="section-header text-center mb-5">
         <h2 class="section-title fw-bold">Layanan Ibadah</h2>
         <div class="section-divider mx-auto"></div>
@@ -115,8 +132,8 @@
       <h2 class="text-center fw-bold mb-4 text-primary">Lokasi Gereja HKBP Sinambela Simanullang</h2>
       <div class="ratio ratio-16x9 shadow rounded">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.512070773479!2d98.81977207496813!3d2.3214990976582306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e226455099785%3A0xce46d89250ac32d0!2sHKBP%20Sinambela!5e1!3m2!1sid!2sid!4v1745199322586!5m2!1sid!2sid"
-        width="600"
-        height="450"
+        width="300"
+        height="150"
         style="border:0;"
         allowfullscreen=""
         loading="lazy"
