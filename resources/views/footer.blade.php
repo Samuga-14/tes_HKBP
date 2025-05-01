@@ -154,7 +154,6 @@
           <p class="fw-semibold mb-0">Institut Teknologi Del</p>
         </div>
       </div>
-
       <hr />
       <p class="text-center mt-2 mb-0">COPYRIGHT © 2025 HKBP SINAMBELA SIMANULLANG</p>
     </div>
