@@ -114,10 +114,10 @@
   <!-- Visi & Misi -->
   <section class="py-5 text-center bg-white">
     <div class="container">
-      <h2 class="fw-bold text-primary mb-4">VISI</h2>
-      <p class="fs-5 mx-auto" style="max-width: 750px;">Menjadi gereja yang hidup dalam iman, kasih, dan pelayanan demi kemuliaan Tuhan.</p>
-      <h2 class="fw-bold text-primary mt-5 mb-4">MISI</h2>
-      <p class="fs-5 mx-auto" style="max-width: 750px;">Menghidupi ajaran Kristus dalam kehidupan sehari-hari melalui ibadah, penginjilan, dan pelayanan sosial yang membangun komunitas yang berlandaskan kasih.</p>
+    <h2 class="fw-bold mb-4" style="color: #002147;">VISI</h2>
+    <p class="fs-5 mx-auto" style="max-width: 750px;">Menjadi gereja yang hidup dalam iman, kasih, dan pelayanan demi kemuliaan Tuhan.</p>
+    <h2 class="fw-bold mt-5 mb-4" style="color: #002147;">MISI</h2>
+          <p class="fs-5 mx-auto" style="max-width: 750px;">Menghidupi ajaran Kristus dalam kehidupan sehari-hari melalui ibadah, penginjilan, dan pelayanan sosial yang membangun komunitas yang berlandaskan kasih.</p>
     </div>
   </section>
 
@@ -129,8 +129,8 @@
   <!-- Lokasi -->
   <section class="py-5 bg-light">
     <div class="container">
-      <h2 class="text-center fw-bold mb-4 text-primary">Lokasi Gereja HKBP Sinambela Simanullang</h2>
-      <div class="ratio ratio-16x9 shadow rounded">
+    <h2 class="text-center fw-bold mb-4" style="color: #002147;">Lokasi Gereja HKBP Sinambela Simanullang</h2>
+    <div class="ratio ratio-16x9 shadow rounded">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.512070773479!2d98.81977207496813!3d2.3214990976582306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e226455099785%3A0xce46d89250ac32d0!2sHKBP%20Sinambela!5e1!3m2!1sid!2sid!4v1745199322586!5m2!1sid!2sid"
         width="300"
         height="150"

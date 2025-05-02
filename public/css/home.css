@@ -17,8 +17,9 @@
         justify-content: flex-end;
         padding: 2rem;
         color: white;
+        opacity: 0.9;
     }
-
+  
     .hero::before {
         content: '';
         position: absolute;
@@ -66,7 +67,7 @@
         background-color: #3949ab;
     }
     .section-title {
-        background-color: #3498db;
+        background-color: #002147;
         color: white;
         padding: 2rem;
     }
@@ -93,7 +94,7 @@
   .section-divider {
     width: 80px;
     height: 4px;
-    background: linear-gradient(90deg, #e0e3e8, #6e8cd5);
+    background: #002147;
     border-radius: 2px;
     margin-top: 1rem;
   }
