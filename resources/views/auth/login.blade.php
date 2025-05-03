@@ -46,9 +46,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="submit" class="btn btn-primary">Masuk</button>
                     @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                            Lupa Password?
-                        </a>
+                        
                     @endif
                 </div>
             </form>

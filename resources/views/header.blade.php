@@ -101,7 +101,35 @@
         border: 2px solid #002147 !important;
         transform: scale(1.05);
     }
-    
 
-    /* Mobile hamburger animation optional (next upgrade) */
+
+    @media (max-width: 991.98px) {
+    .navbar-collapse {
+        text-align: left;
+    }
+
+    .navbar-nav {
+        align-items: flex-end !important;
+    }
+
+    .navbar-nav .nav-item {
+        width: 100%;
+    }
+
+    .navbar-nav .nav-link {
+        display: inline-block;
+        width: auto;
+    }
+
+    .btn-login {
+        margin-right: auto;
+    }
+
+    .navbar .d-flex.ms-4 {
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
 </style>

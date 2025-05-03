@@ -11,11 +11,38 @@
         </div>
     </div>
     <div class="card-body p-4">
-        <div class="mb-4">
+        <div class="mb-4 d-flex justify-content-between flex-wrap gap-3">
             <a href="{{ route('admin.jemaat.create') }}" class="btn btn-primary">
                 <i class="fas fa-plus me-2"></i> Tambah jemaat
             </a>
         </div>
+        <div class="mb-3">
+            <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex flex-wrap align-items-center" role="search">
+                <input type="text"
+                       name="search"
+                       class="form-control"
+                       placeholder="Cari nama jemaat..."
+                       value="{{ request('search') }}"
+                       style="max-width: 990px; border-radius: 80px; margin-right: 25px;" />
+
+                <button type="submit"
+                        class="btn btn-primary d-flex align-items-center gap-1"
+                        style="border-radius: 80px;">
+                    <i class="fas fa-search"></i>
+                    <span>Cari</span>
+                </button>
+
+                @if(request('search'))
+                    <a href="{{ route('admin.jemaat.index') }}"
+                       class="btn btn-secondary d-flex align-items-center gap-1 ms-2"
+                       style="border-radius: 80px;">
+                        <i class="fas fa-times"></i>
+                        <span>Reset</span>
+                    </a>
+                @endif
+            </form>
+        </div>
+
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
@@ -71,3 +98,4 @@
     </div>
 </div>
 @endsection
+
