@@ -116,11 +116,11 @@
       <div class="container-fluid">
           <div class="text-center mb-5">
               <h2 class="section1-title text-primary fw-bold position-relative d-flex align-items-center justify-content-center">
-                <span class="d-inline-block border-bottom border-3 border-primary pb-3 me-3">Visi & Misi</span>
-                <span class="mx-2">|</span>
+                <span class="d-inline-block border-bottom border-3 border-primary pb-3 me-3">Visi & <br> Misi</span>
+                <span class="mx-4 fs-1">|</span>
                 <span class="h3 text-secondary">HKBP Sinambela - Simanullang Bakkara</span>
               </h2>
-          </div>
+      </div>
           <div class="row align-items-center g-5">              <div class="col-md-6 mb-4 mb-md-0">
                   <div class="vision-image overflow-hidden rounded">
                       <img src="{{ asset('images/jemaat.jpeg') }}" alt="Visi Misi Gereja" class="img-fluid">
@@ -157,15 +157,15 @@
 
   <!-- Lokasi -->
   <section class="py-5 bg-light">
-    <div class="container-fluid">
-      <h2 class="text-center fw-bold mb-4 text-primary">Lokasi Gereja HKBP Sinambela Simanullang</h2>
-      <div class="ratio ratio-21x9 shadow rounded" style="max-width: 1200px; margin: 0 auto;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4007.3069899194097!2d98.81977207496813!3d2.3214990976582306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e226455099785%3A0xce46d89250ac32d0!2sHKBP%20Sinambela!5e1!3m2!1sid!2sid!4v1746175688268!5m2!1sid!2sid" 
-        width="1200" 
-        height="1000" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
+    <div class="container">
+    <h2 class="text-center fw-bold mb-4" style="color: #002147;">Lokasi Gereja HKBP Sinambela Simanullang</h2>
+    <div class="ratio ratio-16x9 shadow rounded">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.512070773479!2d98.81977207496813!3d2.3214990976582306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x302e226455099785%3A0xce46d89250ac32d0!2sHKBP%20Sinambela!5e1!3m2!1sid!2sid!4v1745199322586!5m2!1sid!2sid"
+        width="300"
+        height="150"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
       </iframe>
       </div>
