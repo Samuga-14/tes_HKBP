@@ -66,7 +66,7 @@
         background-color: #3949ab;
     }
     .section-title {
-        background-color: #3498db;
+        background-color: #002147;
         color: white;
         padding: 2rem;
     }
@@ -326,4 +326,5 @@ section {
         opacity: 1;
         transform: translateY(0);
         }
+
     }
