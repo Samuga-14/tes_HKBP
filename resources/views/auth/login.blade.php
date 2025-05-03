@@ -8,7 +8,7 @@
     </div>
 
     <div class="card login-card border-0 shadow-none">
-        <div class="card-body p-0">
+        <!-- <div class="card-body p-0"> -->
             <!-- FORM LOGIN MULAI -->
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -46,12 +46,13 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="submit" class="btn btn-primary">Masuk</button>
                     @if (Route::has('password.request'))
-                        
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                        </a>
                     @endif
                 </div>
             </form>
             <!-- FORM LOGIN AKHIR -->
-        </div>
+        <!-- </div> -->
     </div>
 </div>
 @endsection

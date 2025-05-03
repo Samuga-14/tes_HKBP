@@ -112,16 +112,45 @@
   </section>
 
   <!-- Visi & Misi -->
-  <section class="py-5 text-center bg-white">
-    <div class="container">
-    <h2 class="fw-bold mb-4" style="color: #002147;">VISI</h2>
-    <p class="fs-5 mx-auto" style="max-width: 750px;">Menjadi gereja yang hidup dalam iman, kasih, dan pelayanan demi kemuliaan Tuhan.</p>
-    <h2 class="fw-bold mt-5 mb-4" style="color: #002147;">MISI</h2>
-          <p class="fs-5 mx-auto" style="max-width: 750px;">Menghidupi ajaran Kristus dalam kehidupan sehari-hari melalui ibadah, penginjilan, dan pelayanan sosial yang membangun komunitas yang berlandaskan kasih.</p>
-    </div>
-  </section>
+  <section class="vision-section py-5">
+      <div class="container-fluid">
+          <div class="text-center mb-5">
+              <h2 class="section1-title text-primary fw-bold position-relative d-flex align-items-center justify-content-center">
+                <span class="d-inline-block border-bottom border-3 border-primary pb-3 me-3">Visi & <br> Misi</span>
+                <span class="mx-4 fs-1">|</span>
+                <span class="h3 text-secondary">HKBP Sinambela - Simanullang Bakkara</span>
+              </h2>
+      </div>
+          <div class="row align-items-center g-5">              <div class="col-md-6 mb-4 mb-md-0">
+                  <div class="vision-image overflow-hidden rounded">
+                      <img src="{{ asset('images/jemaat.jpeg') }}" alt="Visi Misi Gereja" class="img-fluid">
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="vision-content p-4">
+                      <h3 class="fw-bold text-primary mb-4">Visi HKBP Sin - Sim</h3>
+                      <p class="fst-italic mb-5" style="color: #495057; font-size: 1.1rem; line-height: 1.6;">"Menjadi gereja yang hidup dalam iman, kasih, dan pelayanan demi kemuliaan Tuhan"</p>
 
-  <!-- Divider -->
+                      <h4 class="fw-bold text-primary mt-4">Misi HKBP Sin - Sim</h4>
+                      <div class="mt-4">
+                          <div class="mission-item">
+                              Memberitakan Injil Kristus kepada semua lapisan masyarakat dengan pelayanan yang tulus
+                          </div>
+                          <div class="mission-item">
+                              Meningkatkan pembinaan rohani melalui ibadah, pendidikan jemaat, dan pelayanan sakramen, katekisasi, komisi bapak, ibu dan anak
+                          </div>
+                          <div class="mission-item">
+                              Menjadi garam dan terang bagi lingkungan sekitar melalui pelayanan sosial, pendidikan, dan kepedulian terhadap sesama
+                          </div>
+                          <div class="mission-item">
+                              Melestarikan nilai-nilai budaya Batak yang mendukung kehidupan iman
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>  <!-- Divider -->
   <div class="container my-5">
     <hr class="my-4" />
   </div>
@@ -138,12 +167,10 @@
         allowfullscreen=""
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+      </iframe>
       </div>
     </div>
-  </section>
-
-  <!-- Footer -->
+  </section>  <!-- Footer -->
   @include('footer')
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
