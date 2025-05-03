@@ -17,7 +17,7 @@ return new class extends Migration
         $table->date('tanggal_lahir');
         $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
         $table->text('alamat');
-        $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah']);
+        $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah', 'Janda', 'Duda']);
         $table->string('nama_pasangan')->nullable();
         $table->integer('jumlah_anak')->default(0);
         $table->timestamps();

@@ -42,7 +42,8 @@
                                 <option value="">Pilih Status Pernikahan</option>
                                 <option value="Belum Menikah">Belum Menikah</option>
                                 <option value="Menikah">Menikah</option>
-                                <option value="Cerai">Cerai</option>
+                                <option value="Janda">Janda</option>
+                                <option value="Duda">Duda</option>      
                             </select>
                         </div>
 

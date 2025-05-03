@@ -15,7 +15,24 @@
             <a href="{{ route('admin.jemaat.create') }}" class="btn btn-primary">
                 <i class="fas fa-plus me-2"></i> Tambah jemaat
             </a>
+            
+            <!-- Form untuk mengubah jumlah item per halaman -->
+            <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex align-items-center">
+                <label for="perPage" class="me-2 mb-0">Item per halaman:</label>
+                <select name="perPage" id="perPage" class="form-select" style="width: 80px;" onchange="this.form.submit()">
+                    <option value="10" {{ request('perPage') == 10 ? 'selected' : '' }}>10</option>
+                    <option value="25" {{ request('perPage') == 25 ? 'selected' : '' }}>25</option>
+                    <option value="50" {{ request('perPage') == 50 ? 'selected' : '' }}>50</option>
+                    <option value="100" {{ request('perPage') == 100 ? 'selected' : '' }}>100</option>
+                </select>
+                
+                <!-- Simpan parameter pencarian saat mengubah pagination -->
+                @if(request('search'))
+                    <input type="hidden" name="search" value="{{ request('search') }}">
+                @endif
+            </form>
         </div>
+        
         <div class="mb-3">
             <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex flex-wrap align-items-center" role="search">
                 <input type="text"
@@ -39,6 +56,11 @@
                         <i class="fas fa-times"></i>
                         <span>Reset</span>
                     </a>
+                @endif
+                
+                <!-- Simpan parameter perPage saat melakukan pencarian -->
+                @if(request('perPage'))
+                    <input type="hidden" name="perPage" value="{{ request('perPage') }}">
                 @endif
             </form>
         </div>
@@ -95,7 +117,16 @@
                 </tbody>
             </table>
         </div>
+        
+        <!-- Pagination -->
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="text-muted">
+                Menampilkan {{ $jemaats->firstItem() }} - {{ $jemaats->lastItem() }} dari {{ $jemaats->total() }} item
+            </div>
+            <div>
+                {{ $jemaats->appends(request()->query())->links() }}
+            </div>
+        </div>
     </div>
 </div>
 @endsection
-

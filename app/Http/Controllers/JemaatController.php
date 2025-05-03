@@ -27,7 +27,7 @@ class JemaatController extends Controller
         $request->validate([
             'nama' => 'required',
             'jenis_kelamin' => 'required',
-            'tanggal_lahir' => 'required|date',
+            'tanggal_lahir' => 'nullable|date',
             'alamat' => 'required',
             'status_pernikahan' => 'required',
             'nama_pasangan' => 'nullable|string',
@@ -49,7 +49,7 @@ class JemaatController extends Controller
         $request->validate([
             'nama' => 'required',
             'jenis_kelamin' => 'required',
-            'tanggal_lahir' => 'required|date',
+            'tanggal_lahir' => 'nullable|date',
             'alamat' => 'required',
             'status_pernikahan' => 'required',
             'nama_pasangan' => 'nullable|string',
