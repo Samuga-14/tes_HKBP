@@ -45,8 +45,7 @@
                                 <option value="">Pilih Status Pernikahan</option>
                                 <option value="Belum Menikah" {{ old('status_pernikahan', $jemaat->status_pernikahan) == 'Belum Menikah' ? 'selected' : '' }}>Belum Menikah</option>
                                 <option value="Menikah" {{ old('status_pernikahan', $jemaat->status_pernikahan) == 'Menikah' ? 'selected' : '' }}>Menikah</option>
-                                <option value="Janda" {{ old('status_pernikahan', $jemaat->status_pernikahan) == 'Janda' ? 'selected' : '' }}>Janda</option>
-                                <option value="Duda" {{ old('status_pernikahan', $jemaat->status_pernikahan) == 'Duda' ? 'selected' : '' }}>Duda</option>
+                                <option value="Cerai" {{ old('status_pernikahan', $jemaat->status_pernikahan) == 'Cerai' ? 'selected' : '' }}>Cerai</option>
                             </select>
                         </div>
 

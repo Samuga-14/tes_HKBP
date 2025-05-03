@@ -118,13 +118,16 @@
             </table>
         </div>
         
-        <!-- Pagination -->
-        <div class="d-flex justify-content-between align-items-center mt-3">
-            <div class="text-muted">
-                Menampilkan {{ $jemaats->firstItem() }} - {{ $jemaats->lastItem() }} dari {{ $jemaats->total() }} item
+        <!-- Pagination with improved styling -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <div class="text-muted small">
+                Menampilkan <span class="fw-semibold">{{ $jemaats->firstItem() ?? 0 }}</span> - 
+                <span class="fw-semibold">{{ $jemaats->lastItem() ?? 0 }}</span> dari 
+                <span class="fw-semibold">{{ $jemaats->total() }}</span> jemaat
             </div>
-            <div>
-                {{ $jemaats->appends(request()->query())->links() }}
+            
+            <div class="d-flex">
+                {{ $jemaats->appends(request()->query())->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </div>

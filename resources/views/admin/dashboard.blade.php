@@ -3,79 +3,210 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid px-4 py-6">
 
-    <!-- Selamat Datang Admin -->
+    <!-- Welcome Card -->
+    <div class="card mb-6">
+        < class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="card-title">Selamat Datang, {{ Auth::user()->name }}!</h2>
+                <span class="text-primary">Hari ini: {{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM Y') }}</span>
+            </div> 
+        <div class="card-body">
+            <p class="text-muted">Semoga harimu menyenangkan 🌟</p>
+        </div>
+    </div>
+
+    <!-- Stats Overview -->
     <div class="row mb-4">
-        <div class="col-12">
-            <div class="card shadow-sm text-center p-4 bg-light">
-            <h1 class="display-5 font-weight-bold mb-2">Selamat Datang, {{ Auth::user()->name }}!</h1>
-            <p class="lead text-muted">Semoga harimu menyenangkan 🌟</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Kartu Statistik -->
-    <div class="row">
         <div class="col-md-4 mb-4">
-            <div class="card bg-primary text-white text-center shadow-sm hover-scale transition-all">
+            <div class="card">
                 <div class="card-body">
-                    <i class="fas fa-user-shield fa-3x mb-3 floating-icon"></i>
-                    <h5 class="card-title">Total Pengguna</h5>
-                    <h2 class="card-text counter-animation">150</h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <div class="card bg-success text-white text-center shadow-sm hover-scale transition-all">
-                <div class="card-body">
-                    <i class="fas fa-shopping-cart fa-3x mb-3 pulse-animation"></i>
-                    <h5 class="card-title">Total Transaksi</h5>
-                    <h2 class="card-text counter-animation">50</h2>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <div class="card bg-info text-white text-center shadow-sm hover-scale transition-all">
-                <div class="card-body">
-                    <i class="fas fa-chart-line fa-3x mb-3"></i>
-                    <h5 class="card-title">Statistik Kunjungan</h5>
-                    <h2 class="card-text counter-animation">75%</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Aktivitas Terkini -->
-    <div class="row">
-        <div class="col-12">
-            <div class="card shadow-lg hover-lift">
-                <div class="card-header bg-white border-0">
-                    <h5 class="card-title mb-0 font-weight-bold">
-                        <i class="fas fa-history text-primary me-2"></i>
-                        Aktivitas Terkini
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <div class="timeline">
-                        <div class="timeline-item fade-in-up">
-                            <i class="fas fa-circle text-primary pulse"></i>
-                            <p class="mb-2 font-weight-bold">Pengguna baru mendaftar</p>
-                            <small class="text-muted"><i class="fas fa-clock me-1"></i>5 menit yang lalu</small>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="text-muted small">Total Jemaat</h3>
+                            <p class="h3">1,248</p>
                         </div>
-                        <div class="timeline-item fade-in-up" style="animation-delay: 0.2s;">
-                            <i class="fas fa-circle text-success pulse"></i>
-                            <p class="mb-2 font-weight-bold">Transaksi berhasil</p>
-                            <small class="text-muted"><i class="fas fa-clock me-1"></i>1 jam yang lalu</small>
-                        </div>
-                        <div class="timeline-item fade-in-up" style="animation-delay: 0.4s;">
-                            <i class="fas fa-circle text-warning pulse"></i>
-                            <p class="mb-2 font-weight-bold">Pembaruan sistem</p>
-                            <small class="text-muted"><i class="fas fa-clock me-1"></i>2 jam yang lalu</small>
+                        <div class="bg-primary bg-opacity-10 p-3 rounded-circle">
+                            <i class="fas fa-users text-primary"></i>
                         </div>
                     </div>
+                    <div class="mt-3 small text-muted">
+                        <span class="text-success">+12%</span> dari bulan lalu
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="text-muted small">Berita Terbit</h3>
+                            <p class="h3">24</p>
+                        </div>
+                        <div class="bg-success bg-opacity-10 p-3 rounded-circle">
+                            <i class="fas fa-newspaper text-success"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 small text-muted">
+                        <span class="text-success">+3 baru</span> minggu ini
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="text-muted small">Kegiatan Terakhir</h3>
+                            <p class="h3">5</p>
+                        </div>
+                        <div class="bg-info bg-opacity-10 p-3 rounded-circle">
+                            <i class="fas fa-calendar-check text-info"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 small text-muted">
+                        <span class="text-success">2 aktif</span> saat ini
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Access Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4 mb-4">
+            <a href="{{ route('admin.dashboard') }}" class="card text-decoration-none h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="fas fa-tachometer-alt text-primary"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title mb-1">Dashboard</h3>
+                        <p class="text-muted small mb-0">Menu Utama</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="{{ route('admin.berita.index') }}" class="card text-decoration-none h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="fas fa-newspaper text-success"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title mb-1">Berita</h3>
+                        <p class="text-muted small mb-0">Informasi<br>jemaat</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="{{ route('admin.galeri.index') }}" class="card text-decoration-none h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-info bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="fas fa-images text-info"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title mb-1">Galeri Kegiatan</h3>
+                        <p class="text-muted small mb-0">Dokumentasi</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="{{ route('admin.jemaat.index') }}" class="card text-decoration-none h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="fas fa-users text-warning"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title mb-1">Data Jemaat</h3>
+                        <p class="text-muted small mb-0">Anggota Gereja</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="{{ route('admin.struktur.index') }}" class="card text-decoration-none h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-danger bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="fas fa-sitemap text-danger"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title mb-1">Struktur Kepengurusan</h3>
+                        <p class="text-muted small mb-0">Organisasi</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <a href="{{ route('admin.warta.index') }}" class="card text-decoration-none h-100">
+                <div class="card-body d-flex align-items-center">
+                    <div class="bg-purple bg-opacity-10 p-3 rounded-circle me-3">
+                        <i class="fas fa-church text-purple"></i>
+                    </div>
+                    <div>
+                        <h3 class="card-title mb-1">Warta Jemaat</h3>
+                        <p class="text-muted small mb-0">Pengumuman</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Aktivitas Terkini</h2>
+        </div>
+        <div class="card-body">
+            <div class="d-flex align-items-start mb-4">
+                <div class="bg-primary bg-opacity-10 p-2 rounded-circle me-3">
+                    <i class="fas fa-user-plus text-primary"></i>
+                </div>
+                <div>
+                    <h4 class="mb-1">Pengguna baru mendaftar</h4>
+                    <p class="text-muted small mb-0">5 menit yang lalu</p>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-start mb-4">
+                <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3">
+                    <i class="fas fa-check-circle text-success"></i>
+                </div>
+                <div>
+                    <h4 class="mb-1">Transaksi berhasil</h4>
+                    <p class="text-muted small mb-0">1 jam yang lalu</p>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-start mb-4">
+                <div class="bg-warning bg-opacity-10 p-2 rounded-circle me-3">
+                    <i class="fas fa-sync-alt text-warning"></i>
+                </div>
+                <div>
+                    <h4 class="mb-1">Pembaruan sistem</h4>
+                    <p class="text-muted small mb-0">2 jam yang lalu</p>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-start">
+                <div class="bg-info bg-opacity-10 p-2 rounded-circle me-3">
+                    <i class="fas fa-edit text-info"></i>
+                </div>
+                <div>
+                    <h4 class="mb-1">Berita diperbarui</h4>
+                    <p class="text-muted small mb-0">3 jam yang lalu</p>
                 </div>
             </div>
         </div>
@@ -83,83 +214,31 @@
 
 </div>
 
-<!-- Style animasi sama kayak sebelumnya -->
 <style>
-.hover-scale:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-
-.hover-lift:hover {
-    transform: translateY(-5px);
-    transition: transform 0.3s ease;
-}
-
-.transition-all {
-    transition: all 0.3s ease;
-}
-
-.floating-icon {
-    animation: float 3s ease-in-out infinite;
-}
-
-.pulse-animation {
-    animation: pulse 2s infinite;
-}
-
-.counter-animation {
-    opacity: 0;
-    animation: countUp 1s forwards;
-}
-
-.fade-in-up {
-    opacity: 0;
-    animation: fadeInUp 0.5s forwards;
-}
-
-.pulse {
-    animation: pulse 2s infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-@keyframes countUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.timeline-item {
-    position: relative;
-    padding-left: 30px;
-    margin-bottom: 20px;
-}
-
-.timeline-item i.fas.fa-circle {
-    position: absolute;
-    left: 0;
-    top: 5px;
-    font-size: 12px;
-}
-
 .card {
-    border: none;
-    border-radius: 15px;
-    overflow: hidden;
+    border: 1px solid rgba(0,0,0,.125);
+    transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-title {
+    margin-bottom: 0;
+    font-size: 1.25rem;
+}
+
+.text-purple {
+    color: #6f42c1;
+}
+
+.bg-purple {
+    background-color: #6f42c1;
+}
+
+.rounded-circle {
+    border-radius: 50%!important;
 }
 </style>
 @endsection

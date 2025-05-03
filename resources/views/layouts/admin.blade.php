@@ -7,140 +7,241 @@
 
     <!-- Font dan Icon -->
     <link rel="stylesheet" href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/adminlte.min.css') }}">
 
     <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --danger: #ef4444;
+            --danger-hover: #dc2626;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-700: #374151;
+            --gray-900: #111827;
+        }
+        
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--gray-50);
         }
+        
+        /* Sidebar Redesign */
         .main-sidebar {
-            background-color: #1778C1;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: white;
+            border-right: 1px solid var(--gray-200);
             width: 250px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: none;
         }
-        .sidebar-mini.sidebar-collapse .main-sidebar {
-            width: 4.6rem;
-            transform: translateX(0);
-        }
+        
         .brand-link {
-            background-color: #102A63;
-            text-align: center;
-            font-weight: bold;
-            font-size: 18px;
-            padding: 18px;
-            letter-spacing: 0.8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            color: #ffffff !important;
-            text-transform: uppercase;
+            background-color: white;
+            color: var(--gray-900) !important;
+            font-weight: 700;
+            font-size: 1.25rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+            text-transform: none;
+            letter-spacing: normal;
         }
-        .nav-sidebar {
-            padding: 0 12px;
-        }
+        
         .nav-sidebar .nav-link {
-            color: #fff;
+            color: var(--gray-700);
             font-weight: 500;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 14.5px;
-            padding: 14px 16px;
-            margin: 5px 0;
-            border-radius: 10px;
+            font-size: 0.875rem;
+            padding: 0.75rem 1rem;
+            margin: 0.25rem 0;
+            border-radius: 0.375rem;
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.2s ease;
         }
-        .nav-sidebar .nav-link::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(-100%);
-            transition: transform 0.4s ease;
-        }
-        .nav-sidebar .nav-link:hover::before {
-            transform: translateX(0);
-        }
-        .nav-sidebar .nav-link i {
-            margin-right: 12px;
-            width: 22px;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-        .nav-sidebar .nav-link.active {
-            background-color: rgba(255, 255, 255, 0.95);
-            color:rgb(8, 13, 157);
-            transform: translateX(4px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
+        
         .nav-sidebar .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #1778C1;
-            transform: translateX(8px);
+            background-color: var(--gray-100);
+            color: var(--primary);
+            transform: none;
         }
-        .nav-sidebar .nav-link:hover i {
-            transform: rotate(8deg) scale(1.1);
+        
+        .nav-sidebar .nav-link.active {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: none;
+            transform: none;
         }
+        
+        .nav-sidebar .nav-link i {
+            margin-right: 0.75rem;
+            width: 1.25rem;
+            text-align: center;
+            transition: none;
+        }
+        
+        /* Header Redesign */
         .main-header {
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
+            background-color: white;
+            border-bottom: 1px solid var(--gray-200);
+            padding: 0.75rem 1.5rem;
+            box-shadow: none;
+        }
+        
+        .main-header .user-panel {
+            gap: 0.75rem;
+        }
+        
+        .main-header .user-panel img {
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--gray-200);
+        }
+        
+        /* Content Area */
+        .content-wrapper {
+            background-color: var(--gray-50);
+        }
+        
+        /* Card Styles */
+        .filament-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--gray-200);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 25px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
-        .main-header .user-panel {
-            display: flex;
+        
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--gray-900);
+            margin: 0;
+        }
+        
+        /* Button Styles */
+        .filament-button {
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
         }
-        .main-header .user-panel:hover {
-            transform: translateY(-2px);
+        
+        .button-primary {
+            background-color: var(--primary);
+            color: white;
         }
-        .main-header .user-panel img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-            border: 2px solid #1778C1;
-            transition: all 0.3s ease;
+        
+        .button-primary:hover {
+            background-color: var(--primary-hover);
         }
-        .main-header .user-panel img:hover {
-            transform: rotate(360deg);
+        
+        /* Table Styles */
+        .filament-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .content-wrapper {
-            background: #f8f9fa;
-            transition: all 0.3s ease;
+        
+        .filament-table thead tr {
+            background-color: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
         }
-        .main-footer {
-            background: #fff;
-            text-align: center;
-            padding: 18px;
-            font-size: 14px;
-            border-top: 1px solid #eee;
-            transition: all 0.3s ease;
+        
+        .filament-table th {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
+        
+        .filament-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+            vertical-align: middle;
+        }
+        
+        /* Form Styles */
+        .filament-form-input {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            border: 1px solid var(--gray-300);
+            background-color: white;
+            transition: all 0.2s;
+        }
+        
+        .filament-form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px var(--primary);
+        }
+        
+        /* Pagination */
+        .filament-pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .pagination-info {
+            font-size: 0.875rem;
+            color: var(--gray-700);
+        }
+        
+        .pagination-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .page-link {
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            background-color: white;
+            border: 1px solid var(--gray-200);
+            color: var(--gray-700);
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+        
+        .page-link.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        /* Logout Button */
         .nav-link.logout {
-            color: #fff !important;
-            background-color: #102A63;
-            margin: 15px 15px;
-            border-radius: 10px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: center;
-            font-size: 14px;
-            padding: 14px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            background-color: var(--gray-100);
+            color: var(--gray-700) !important;
+            margin: 0.5rem;
+            border-radius: 0.375rem;
+            transition: all 0.2s ease;
         }
+        
         .nav-link.logout:hover {
-            background-color: #1a3a7a;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background-color: var(--gray-200);
+            color: var(--gray-900) !important;
+            transform: none;
         }
     </style>
 </head>
@@ -155,21 +256,22 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
-        <h4 class="mb-0">Dashboard</h4>
+        <h4 class="mb-0" style="font-weight: 600;">@yield('title', 'Dashboard')</h4>
         <div class="user-panel">
             <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="User Image">
-            <span style="font-weight:600;">Admin Hkbp Sin-Sim</span>
+            <span style="font-weight:500;">Admin HKBP</span>
         </div>
     </nav>
 
     <!-- Sidebar -->
     <aside class="main-sidebar elevation-4">
         <a href="#" class="brand-link">
-            HKBP SIN - SIM
+            <i class="fas fa-church mr-2"></i>
+            <span>HKBP SIN-SIM</span>
         </a>
 
         <div class="sidebar">
-            <nav class="mt-3">
+            <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
                     <li class="nav-item">
                         <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
@@ -207,17 +309,15 @@
                             <p>Warta Jemaat</p>
                         </a>
                     </li>
-                    <div>
-                    <li class="nav-item mt-auto">
+                    <li class="nav-item mt-3">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
-                            <a href="#" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link">
+                            <a href="#" onclick="event.preventDefault(); this.closest('form').submit();" class="nav-link logout">
                                 <i class="nav-icon fas fa-sign-out-alt"></i>
                                 <p>Logout</p>
                             </a>
                         </form>
-                    </li>
-                    </div>                    
+                    </li>                  
                 </ul>
             </nav>
         </div>
@@ -225,7 +325,7 @@
 
     <!-- Content -->
     <div class="content-wrapper">
-        <section class="content pt-3">
+        <section class="content pt-4">
             <div class="container-fluid">
                 @yield('content')
             </div>
@@ -233,8 +333,8 @@
     </div>
 
     <!-- Footer -->
-    <footer class="main-footer">
-        <strong>Copyright 2025</strong> Institut Teknologi Del | Kelompok PA 1
+    <footer class="main-footer" style="background-color: white; border-top: 1px solid var(--gray-200);">
+        <strong>Copyright © 2025</strong> Institut Teknologi Del | Kelompok PA 1
     </footer>
 
 </div>
