@@ -7,12 +7,16 @@
 
     <!-- Welcome Card -->
     <div class="card mb-6">
-        < class="card-header">
+        <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
-                <h2 class="card-title">Selamat Datang, {{ Auth::user()->name }}!</h2>
-                <span class="text-primary">Hari ini: {{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM Y') }}</span>
+                <div>
+                    <h2 class="card-title mb-2">Selamat Datang, {{ Auth::user()->name }}!</h2>
+                    <div>
+                        <span class="text-primary">Hari ini: {{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM Y') }}</span>
+                    </div>
+                </div>
             </div> 
-        <div class="card-body">
+        </div>        <div class="card-body">
             <p class="text-muted">Semoga harimu menyenangkan 🌟</p>
         </div>
     </div>
@@ -24,15 +28,15 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h3 class="text-muted small">Total Jemaat</h3>
-                            <p class="h3">1,248</p>
+                            <h3 class="text-muted small">Total KK Jemaat</h3>
+                            <p class="h3">{{ \App\Models\Jemaat::count() }}</p>
                         </div>
                         <div class="bg-primary bg-opacity-10 p-3 rounded-circle">
                             <i class="fas fa-users text-primary"></i>
                         </div>
                     </div>
                     <div class="mt-3 small text-muted">
-                        <span class="text-success">+12%</span> dari bulan lalu
+                        Total data KK jemaat terdaftar
                     </div>
                 </div>
             </div>
@@ -43,15 +47,15 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h3 class="text-muted small">Berita Terbit</h3>
-                            <p class="h3">24</p>
+                            <h3 class="text-muted small">Total Berita</h3>
+                            <p class="h3">{{ \App\Models\Berita::count() }}</p>
                         </div>
                         <div class="bg-success bg-opacity-10 p-3 rounded-circle">
                             <i class="fas fa-newspaper text-success"></i>
                         </div>
                     </div>
                     <div class="mt-3 small text-muted">
-                        <span class="text-success">+3 baru</span> minggu ini
+                        Total berita yang dipublikasikan
                     </div>
                 </div>
             </div>
@@ -62,21 +66,39 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h3 class="text-muted small">Kegiatan Terakhir</h3>
-                            <p class="h3">5</p>
+                            <h3 class="text-muted small">Total Galeri</h3>
+                            <p class="h3">{{ \App\Models\GaleriKegiatan::count() }}</p>
                         </div>
                         <div class="bg-info bg-opacity-10 p-3 rounded-circle">
-                            <i class="fas fa-calendar-check text-info"></i>
+                            <i class="fas fa-images text-info"></i>
                         </div>
                     </div>
                     <div class="mt-3 small text-muted">
-                        <span class="text-success">2 aktif</span> saat ini
+                        Total foto kegiatan
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h3 class="text-muted small">Jumlah Pengurus Gereja</h3>
+                            <p class="h3">{{ \App\Models\StrukturKepengurusan::count() }}</p>
+                        </div>
+                        <div class="bg-info bg-opacity-10 p-3 rounded-circle">
+                            <i class="fas fa-images text-info"></i>
+                        </div>
+                    </div>
+                    <div class="mt-3 small text-muted">
+                        Total Jumlah pengurus gereja
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- Quick Access Cards -->
     <div class="row mb-4">
         <div class="col-md-4 mb-4">
@@ -163,55 +185,6 @@
             </a>
         </div>
     </div>
-
-    <!-- Recent Activity -->
-    <div class="card">
-        <div class="card-header">
-            <h2 class="card-title">Aktivitas Terkini</h2>
-        </div>
-        <div class="card-body">
-            <div class="d-flex align-items-start mb-4">
-                <div class="bg-primary bg-opacity-10 p-2 rounded-circle me-3">
-                    <i class="fas fa-user-plus text-primary"></i>
-                </div>
-                <div>
-                    <h4 class="mb-1">Pengguna baru mendaftar</h4>
-                    <p class="text-muted small mb-0">5 menit yang lalu</p>
-                </div>
-            </div>
-
-            <div class="d-flex align-items-start mb-4">
-                <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3">
-                    <i class="fas fa-check-circle text-success"></i>
-                </div>
-                <div>
-                    <h4 class="mb-1">Transaksi berhasil</h4>
-                    <p class="text-muted small mb-0">1 jam yang lalu</p>
-                </div>
-            </div>
-
-            <div class="d-flex align-items-start mb-4">
-                <div class="bg-warning bg-opacity-10 p-2 rounded-circle me-3">
-                    <i class="fas fa-sync-alt text-warning"></i>
-                </div>
-                <div>
-                    <h4 class="mb-1">Pembaruan sistem</h4>
-                    <p class="text-muted small mb-0">2 jam yang lalu</p>
-                </div>
-            </div>
-
-            <div class="d-flex align-items-start">
-                <div class="bg-info bg-opacity-10 p-2 rounded-circle me-3">
-                    <i class="fas fa-edit text-info"></i>
-                </div>
-                <div>
-                    <h4 class="mb-1">Berita diperbarui</h4>
-                    <p class="text-muted small mb-0">3 jam yang lalu</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 
 <style>

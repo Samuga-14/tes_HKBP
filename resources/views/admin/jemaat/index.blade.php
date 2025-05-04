@@ -18,14 +18,6 @@
             
             <!-- Form untuk mengubah jumlah item per halaman -->
             <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex align-items-center">
-                <label for="perPage" class="me-2 mb-0">Item per halaman:</label>
-                <select name="perPage" id="perPage" class="form-select" style="width: 80px;" onchange="this.form.submit()">
-                    <option value="10" {{ request('perPage') == 10 ? 'selected' : '' }}>10</option>
-                    <option value="25" {{ request('perPage') == 25 ? 'selected' : '' }}>25</option>
-                    <option value="50" {{ request('perPage') == 50 ? 'selected' : '' }}>50</option>
-                    <option value="100" {{ request('perPage') == 100 ? 'selected' : '' }}>100</option>
-                </select>
-                
                 <!-- Simpan parameter pencarian saat mengubah pagination -->
                 @if(request('search'))
                     <input type="hidden" name="search" value="{{ request('search') }}">
