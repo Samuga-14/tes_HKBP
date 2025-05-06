@@ -27,7 +27,7 @@ class WartaController extends Controller
             'judul' => 'required',
             'deskripsi' => 'required',
             'tanggal_publikasi' => 'required|date',
-            'file_pdf' => 'required|mimes:pdf|max:2048',
+            'file_pdf' => 'required|mimes:pdf|max:16384',
         ]);
 
         $filePath = $request->file('file_pdf')->store('uploads/pdf', 'public');
@@ -53,7 +53,7 @@ class WartaController extends Controller
             'judul' => 'required',
             'deskripsi' => 'required',
             'tanggal_publikasi' => 'required|date',
-            'file_pdf' => 'mimes:pdf|max:2048',
+            'file_pdf' => 'mimes:pdf|max:16384',
         ]);
 
         if ($request->hasFile('file_pdf')) {

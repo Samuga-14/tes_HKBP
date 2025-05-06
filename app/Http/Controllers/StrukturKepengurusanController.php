@@ -58,7 +58,7 @@ public function index2()
     $calonsintua = $struktur->filter(function ($item) {
         return in_array($item->jabatan, [
             'Learning',
-            'Calon sintua'
+            'Calon Sintua'
         ]);
     });
 
@@ -77,7 +77,7 @@ public function index2()
         $request->validate([
             'nama' => 'required',
             'jabatan' => 'required',
-            'gambar' => 'required|mimes:jpg,jpeg,png,gif,svg|max:2048',
+            'gambar' => 'required|mimes:jpg,jpeg,png,gif,svg|max:8192',
         ]);
 
         $data = $request->all();
@@ -105,7 +105,7 @@ public function index2()
         $request->validate([
             'nama' => 'required',
             'jabatan' => 'required',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:8192',
         ]);
 
         $struktur = StrukturKepengurusan::findOrFail($id);
