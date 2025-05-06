@@ -27,8 +27,8 @@ class GaleriKegiatanController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'video' => 'nullable|mimes:mp4,webm,ogg|max:10240',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
+            'video' => 'nullable|mimes:mp4,webm,ogg|max:32768',
             'tanggal_unggah' => 'required|date',
         ]);
 
@@ -64,8 +64,8 @@ class GaleriKegiatanController extends Controller
     $request->validate([
         'judul' => 'required|string|max:255',
         'deskripsi' => 'required|string',
-        'gambar' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:5048',
-        'video' => 'nullable|mimes:mp4,webm,ogg|max:10240',
+        'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
+        'video' => 'nullable|mimes:mp4,webm,ogg|max:32768',
         'tanggal_unggah' => 'required|date',
     ]);
 

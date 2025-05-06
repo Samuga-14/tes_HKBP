@@ -30,7 +30,7 @@ class BeritaController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
             'tanggal_publikasi' => 'required|date',
         ]);
 
@@ -68,7 +68,7 @@ class BeritaController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'tanggal_publikasi' => 'required|date',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192'
         ]);
 
         $data = $request->only(['judul', 'deskripsi', 'tanggal_publikasi']);
