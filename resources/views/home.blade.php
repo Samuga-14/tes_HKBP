@@ -48,8 +48,42 @@
               <strong>M</strong>UNA
           </p>
       </div>
-  </section>  <!-- Layanan Section -->
-<section class="service-section py-6" id="layanan">
+  </section> 
+  <!-- Tampilan Ulang Tahun di Home User -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-4">
+    <!-- Hari Ini -->
+    <div class="border border-yellow-100 rounded-lg overflow-hidden">
+        <div class="px-3 py-2 bg-yellow-50 border-b border-yellow-100">
+            <h3 class="font-medium text-sm text-yellow-800 flex items-center gap-1">
+                <i class="fas fa-birthday-cake text-xs"></i>
+                <!-- <span>Hari Ini ({{ now()->format('d/m/Y') }})</span> -->
+            </h3>
+        </div>
+        @include('components.ulang-tahun', [
+            'jemaats' => App\Models\Jemaat::ulangTahunHariIni()->get(),
+            'hariIni' => true
+        ])
+    </div>
+          <br>
+    <!-- Bulan Ini -->
+    <div class="border border-blue-100 rounded-lg overflow-hidden">
+        <div class="px-3 py-2 bg-blue-50 border-b border-blue-100">
+            <h3 class="font-medium text-sm text-blue-800 flex items-center gap-1">
+                <i class="fas fa-calendar-alt text-xs"></i>
+                <!-- <span>Bulan {{ now()->format('m/Y') }}</span> -->
+            </h3>
+        </div>
+        @include('components.ulang-tahun', [
+            'jemaats' => App\Models\Jemaat::ulangTahunBulanIni()
+                ->whereDay('tanggal_lahir', '>', now()->day)
+                ->limit(5)
+                ->get(),
+            'hariIni' => false
+        ])
+    </div>
+</div>
+    <!-- Layanan Section -->
+    <section class="service-section py-6" id="layanan">
     <div class="container-fluid">
       <div class="section-header text-center mb-5">
         <h2 class="section-title fw-bold">Layanan Ibadah</h2>
@@ -83,7 +117,7 @@
               <li class="service-item">
                 <span class="service-icon">
                   <i class="bi bi-cup-hot"></i>
-                </span>
+             </span>
                 <span>Perjamuan Kudus</span>
               </li>
               <li class="service-item">
@@ -103,7 +137,7 @@
               <div class="service-image-content">
                 <h4>Bergabunglah bersama kami</h4>
                 <a href="/ayat" class="btn btn-light btn-sm mt-3">Lihat Jadwal</a>
-              </div>
+       </div>
             </div>
           </div>
         </div>

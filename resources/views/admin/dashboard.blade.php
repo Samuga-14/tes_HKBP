@@ -20,8 +20,47 @@
             <p class="text-muted">Semoga harimu menyenangkan 🌟</p>
         </div>
     </div>
-
+    <!-- Ulang Tahun -->
+    <div class="space-y-3">
+        <!-- Hari Ini + Stats -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
+            <!-- Hari Ini -->
+            <div class="lg:col-span-1 border border-gray-200 rounded-lg overflow-hidden">
+                <div class="px-3 py-2 bg-gray-50 border-b border-gray-200">
+                    <h3 class="font-medium text-sm text-gray-800 flex items-center gap-1">
+                        <i class="fas fa-birthday-cake text-xs text-yellow-600"></i>
+                        <!-- <span>Hari Ini ({{ now()->format('d/m/Y') }})</span> -->
+                    </h3>
+                </div>
+                @include('components.ulang-tahun', [
+                    'jemaats' => App\Models\Jemaat::ulangTahunHariIni()->get(),
+                    'hariIni' => true
+                ])
+            </div>
+        </div>
+        <br>                
+        <!-- Bulan Ini -->
+        <div class="space-y-3">
+            <div class="border border-gray-200 rounded-lg overflow-hidden">
+                <div class="px-3 py-2 bg-gray-50 border-b border-gray-200">
+                    <h3 class="font-medium text-sm text-gray-800 flex items-center gap-1">
+                        <i class="fas fa-calendar-alt text-xs text-blue-600"></i>
+                        <!-- <span>Bulan {{ now()->format('m/Y') }}</span> -->
+                    </h3>
+                </div>
+                @include('components.ulang-tahun', [
+                    'jemaats' => App\Models\Jemaat::ulangTahunBulanIni()->limit(10)->get(),
+                    'hariIni' => false
+                ])
+            </div>
+        </div>
+    </div>            
+    <br><br>
     <!-- Stats Overview -->
+    <div class="lg:col-span-2 bg-white border border-gray-200 rounded-lg p-3">
+            <h3 class="font-medium text-sm mb-2">📊 Statistik</h3>
+            <!-- Isi stats di sini -->
+        </div>
     <div class="row mb-4">
         <div class="col-md-4 mb-4">
             <div class="card">
