@@ -1,51 +1,50 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="fas fa-newspaper me-2"></i>Tambah Berita</h4>
-                </div>
-                <div class="card-body bg-light">
-                    <form action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
+<div class="container-fluid py-4 px-5" style="background-color: #f9f9f9;">
+    <div class="bg-white p-4" style="border: 1px solid #e0e0e0;">
+        <h6 class="fw-semibold mb-4">Tambah Berita</h6>
+        <form action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
 
-                        <div class="form-group mb-4">
-                            <label for="judul" class="form-label fw-bold"><i class="fas fa-heading me-1"></i>Judul</label>
-                            <input type="text" name="judul" id="judul" class="form-control form-control-lg shadow-sm" placeholder="Masukkan judul berita" required>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="deskripsi" class="form-label fw-bold"><i class="fas fa-align-left me-1"></i>Deskripsi</label>
-                            <textarea name="deskripsi" id="deskripsi" class="form-control shadow-sm" rows="6" placeholder="Tulis deskripsi berita di sini" required></textarea>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="gambar" class="form-label fw-bold"><i class="fas fa-image me-1"></i>Gambar</label>
-                            <input type="file" name="gambar" id="gambar" class="form-control shadow-sm" accept="image/*">
-                            <small class="text-muted">Format yang didukung: JPG, PNG, GIF (Max: 2MB)</small>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="tanggal_publikasi" class="form-label fw-bold"><i class="fas fa-calendar-alt me-1"></i>Tanggal Publikasi</label>
-                            <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control shadow-sm" required>
-                        </div>
-
-                        <div class="d-flex gap-3">
-                            <button type="submit" class="btn btn-primary px-4">
-                                <i class="fas fa-save me-1"></i> Simpan
-                            </button>
-                            <a href="{{ route('admin.berita.index') }}" class="btn btn-danger px-4">
-                                <i class="fas fa-times me-1"></i> Batal
-                            </a>
-                        </div>
-                    </form>
-                </div>
+            <div class="mb-3">
+                <label for="judul" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Judul</label>
+                <input type="text" class="form-control" name="judul" id="judul" required>
             </div>
+            
+            <div class="mb-3">
+    <label for="gambar" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Gambar</label>
+    <div class="d-flex" style="border: 1px solid #ccc; border-radius: 12px; overflow: hidden; height: 44px;">
+        <label for="gambar" class="btn btn-light mb-0" style="border: none; border-right: 1px solid #ccc; border-radius: 0; padding: 0 20px; display: flex; align-items: center;">
+            Choose File
+        </label>
+        <div id="file-name" class="d-flex align-items-center px-3 text-muted" style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+            No File Choosen
         </div>
     </div>
+    <input type="file" name="gambar" id="gambar" accept="image/*" class="d-none">
 </div>
-@endsection
 
+
+
+            <div class="mb-3">
+                <label for="deskripsi" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Deskripsi</label>
+                <textarea class="form-control" name="deskripsi" id="deskripsi" rows="5"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="tanggal_publikasi" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Tanggal Unggah</label>
+                <div class="input-group">
+                    <input type="date" class="form-control" name="tanggal_publikasi" id="tanggal_publikasi" required>
+                    <span class="input-group-text bg-white"><i class="fas fa-calendar-alt"></i></span>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                <button type="submit" class="btn btn-primary" style="padding: 6px 20px; font-size: 14px;">Tambahkan</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@endsection

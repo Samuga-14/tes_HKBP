@@ -1,61 +1,222 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mt-4">
+<style>
+    .form-wrapper {
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        margin-top: 40px;
+        margin-bottom: 40px;
+        max-width: 100%;
+    }
+
+    .form-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 32px;
+    }
+
+    .form-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #666;
+        margin-bottom: 8px;
+    }
+
+    .form-control,
+    textarea {
+        border-radius: 8px;
+        font-size: 14px;
+        padding: 10px 14px;
+        border: 1px solid #ccc;
+    }
+
+    textarea.form-control {
+        resize: none;
+    }
+
+    .form-group {
+        margin-bottom: 24px;
+    }
+
+    .btn-submit {
+        background-color: #1976d2;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 36px;
+        font-size: 14px;
+    }
+
+    .btn-submit:hover {
+        background-color: #155fa0;
+    }
+
+    .form-footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 40px;
+    }
+
+    @media (min-width: 768px) {
+        .form-wrapper {
+            padding: 48px 60px;
+        }
+    }
+</style>
+
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-header bg-warning text-white">
-                    <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Berita</h4>
-                </div>
-                <div class="card-body bg-light">
-                <form action="{{ route('admin.berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
+        <div class="col-md-12">
+            <div class="form-wrapper">
+                <div class="form-title">Edit Berita</div>
+
+                <form id="form-edit" action="{{ route('admin.berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                     @method('PUT')
+                    @method('PUT')
 
+                    <!-- Judul -->
+                    <div class="form-group">
+                        <label for="judul" class="form-label">Judul</label>
+                        <input type="text" name="judul" id="judul" class="form-control"
+                            value="{{ old('judul', $berita->judul) }}" required>
+                    </div>
 
-                        <div class="form-group mb-4">
-                            <label for="judul" class="form-label fw-bold"><i class="fas fa-heading me-1"></i>Judul</label>
-                            <input type="text" name="judul" id="judul" class="form-control form-control-lg shadow-sm"
-                                   value="{{ old('judul', $berita->judul) }}" required>
+                    <!-- Gambar -->
+                    <div class="mb-3">
+                        <label for="gambar" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Gambar</label>
+                        <div class="d-flex" style="border: 1px solid #ccc; border-radius: 12px; overflow: hidden; height: 44px;">
+                            <label for="gambar" class="btn btn-light mb-0" style="border: none; border-right: 1px solid #ccc; border-radius: 0; padding: 0 20px; display: flex; align-items: center;">
+                                Choose File
+                            </label>
+                            <div id="file-name" class="d-flex align-items-center px-3 text-muted" style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                No File Choosen
+                            </div>
                         </div>
+                        <input type="file" name="gambar" id="gambar" accept="image/*" class="d-none">
+                    </div>
 
-                        <div class="form-group mb-4">
-                            <label for="deskripsi" class="form-label fw-bold"><i class="fas fa-align-left me-1"></i>Deskripsi</label>
-                            <textarea name="deskripsi" id="deskripsi" class="form-control shadow-sm" rows="6" required>{{ old('deskripsi', $berita->deskripsi) }}</textarea>
-                        </div>
+                    <!-- Deskripsi -->
+                    <div class="form-group">
+                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                        <textarea name="deskripsi" id="deskripsi" class="form-control" rows="5" required>{{ old('deskripsi', $berita->deskripsi) }}</textarea>
+                    </div>
 
-                        <div class="form-group mb-4">
-                            <label for="gambar" class="form-label fw-bold"><i class="fas fa-image me-1"></i>Gambar</label>
-                            <input type="file" name="gambar" id="gambar" class="form-control shadow-sm" accept="image/*">
-                            <small class="text-muted">Format yang didukung: JPG, PNG, GIF (Max: 2MB)</small><br>
+                    <!-- Tanggal Unggah -->
+                    <div class="form-group">
+                        <label for="tanggal_publikasi" class="form-label">Tanggal Unggah</label>
+                        <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control"
+                            value="{{ old('tanggal_publikasi', $berita->tanggal_publikasi ? date('Y-m-d', strtotime($berita->tanggal_publikasi)) : '') }}" required>
+                    </div>
 
-                            @if ($berita->gambar)
-                                <div class="mt-3">
-                                    <strong>Gambar Saat Ini:</strong><br>
-                                    <img src="{{ asset($berita->gambar) }}" alt="Gambar Berita" class="img-thumbnail mt-2" width="200">
-                                </div>
-                            @endif
-                        </div>
+                    <!-- Tombol -->
+                    <div class="form-footer">
+                        <button type="button" id="btn-edit" class="btn-submit">Edit</button>
+                    </div>
+                </form>
 
-                        <div class="form-group mb-4">
-                            <label for="tanggal_publikasi" class="form-label fw-bold"><i class="fas fa-calendar-alt me-1"></i>Tanggal Publikasi</label>
-                            <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control shadow-sm"
-                                   value="{{ old('tanggal_publikasi', $berita->tanggal_publikasi ? date('Y-m-d', strtotime($berita->tanggal_publikasi)) : '') }}" required>
-                        </div>
-
-                        <div class="d-flex gap-3">
-                            <button type="submit" class="btn btn-warning px-4 text-white">
-                                <i class="fas fa-save me-1"></i> Update
-                            </button>
-                            <a href="{{ route('admin.berita.index') }}" class="btn btn-secondary px-4">
-                                <i class="fas fa-arrow-left me-1"></i> Kembali
-                            </a>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- SweetAlert Logic -->
+<script>
+    // File name tampil
+    document.getElementById('gambar').addEventListener('change', function () {
+        const fileName = this.files[0]?.name || 'No File Choosen';
+        document.getElementById('file-name').textContent = fileName;
+    });
+
+    // SweetAlert konfirmasi dengan AJAX
+    document.getElementById('btn-edit').addEventListener('click', function (e) {
+        e.preventDefault();
+
+        Swal.fire({
+            title: 'Apakah Anda yakin ingin mengedit data berita?',
+            text: "Perubahan yang Anda buat tidak bisa dibatalkan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Ya, Edit!',
+            cancelButtonText: 'Tidak, Batalkan',
+            reverseButtons: true,
+            customClass: {
+                confirmButton: 'btn btn-danger me-2',
+                cancelButton: 'btn btn-primary'
+            },
+            buttonsStyling: false
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Kirim data menggunakan AJAX
+                const form = document.getElementById('form-edit');
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: form.method,
+                    body: formData,
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            title: 'Berhasil!',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            customClass: {
+                                confirmButton: 'btn btn-primary'
+                            },
+                            buttonsStyling: false
+                        }).then(() => {
+                            window.location.href = data.redirect_url; // Redirect jika perlu
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Gagal!',
+                            text: data.message,
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                            customClass: {
+                                confirmButton: 'btn btn-primary'
+                            },
+                            buttonsStyling: false
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire({
+                        title: 'Terjadi Kesalahan!',
+                        text: 'Silakan coba lagi.',
+                        icon: 'error',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            confirmButton: 'btn btn-primary'
+                        },
+                        buttonsStyling: false
+                    });
+                });
+            }
+        });
+    });
+
+    // Jika berhasil (dari flash session)
+    @if (session('success'))
+        Swal.fire({
+            title: 'Berhasil!',
+            text: "{{ session('success') }}",
+            icon: 'success',
+            confirmButtonText: 'OK',
+            customClass: {
+                confirmButton: 'btn btn-primary'
+            },
+            buttonsStyling: false
+        });
+    @endif
+</script>
 @endsection
