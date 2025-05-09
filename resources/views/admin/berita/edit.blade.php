@@ -1,73 +1,103 @@
 @extends('layouts.admin')
 
 @section('content')
+<!-- Font Kumbh Sans -->
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
+    * {
+        font-family: 'Kumbh Sans', sans-serif;
+    }
+
     .form-wrapper {
         background-color: #fff;
-        border-radius: 12px;
+        border-radius: 20px;
         padding: 40px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        margin-top: 40px;
-        margin-bottom: 40px;
-        max-width: 100%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin: 40px 0;
     }
 
     .form-title {
-        font-size: 18px;
+        font-size: 24px;
         font-weight: 600;
+        color: #222;
         margin-bottom: 32px;
     }
 
     .form-label {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 600;
-        color: #666;
-        margin-bottom: 8px;
+        color: #333;
+        margin-bottom: 6px;
     }
 
     .form-control,
     textarea {
-        border-radius: 8px;
+        border-radius: 10px;
         font-size: 14px;
         padding: 10px 14px;
         border: 1px solid #ccc;
     }
 
     textarea.form-control {
-        resize: none;
+        resize: vertical;
     }
 
     .form-group {
         margin-bottom: 24px;
     }
 
+    .file-input-wrapper {
+        display: flex;
+        align-items: center;
+        height: 44px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .file-input-wrapper label {
+        background-color: #f8f9fa;
+        padding: 0 20px;
+        margin: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid #ccc;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .file-input-wrapper #file-name {
+        padding-left: 16px;
+        color: #666;
+        font-size: 14px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
     .btn-submit {
-        background-color: #1976d2;
+        background-color: #0d6efd;
         color: #fff;
         border: none;
-        border-radius: 6px;
-        padding: 10px 36px;
+        border-radius: 8px;
+        padding: 10px 28px;
         font-size: 14px;
+        font-weight: 600;
     }
 
     .btn-submit:hover {
-        background-color: #155fa0;
+        background-color: #0b5ed7;
     }
 
     .form-footer {
         display: flex;
         justify-content: flex-end;
-        margin-top: 40px;
-    }
-
-    @media (min-width: 768px) {
-        .form-wrapper {
-            padding: 48px 60px;
-        }
+        margin-top: 32px;
     }
 </style>
 
-<!-- SweetAlert2 CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="container">
@@ -88,15 +118,11 @@
                     </div>
 
                     <!-- Gambar -->
-                    <div class="mb-3">
-                        <label for="gambar" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Gambar</label>
-                        <div class="d-flex" style="border: 1px solid #ccc; border-radius: 12px; overflow: hidden; height: 44px;">
-                            <label for="gambar" class="btn btn-light mb-0" style="border: none; border-right: 1px solid #ccc; border-radius: 0; padding: 0 20px; display: flex; align-items: center;">
-                                Choose File
-                            </label>
-                            <div id="file-name" class="d-flex align-items-center px-3 text-muted" style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                                No File Choosen
-                            </div>
+                    <div class="form-group">
+                        <label for="gambar" class="form-label">Gambar</label>
+                        <div class="file-input-wrapper">
+                            <label for="gambar">Choose File</label>
+                            <div id="file-name">No File Chosen</div>
                         </div>
                         <input type="file" name="gambar" id="gambar" accept="image/*" class="d-none">
                     </div>
@@ -125,15 +151,14 @@
     </div>
 </div>
 
-<!-- SweetAlert Logic -->
 <script>
     // File name tampil
     document.getElementById('gambar').addEventListener('change', function () {
-        const fileName = this.files[0]?.name || 'No File Choosen';
+        const fileName = this.files[0]?.name || 'No File Chosen';
         document.getElementById('file-name').textContent = fileName;
     });
 
-    // SweetAlert konfirmasi dengan AJAX
+    // SweetAlert konfirmasi
     document.getElementById('btn-edit').addEventListener('click', function (e) {
         e.preventDefault();
 
@@ -143,7 +168,7 @@
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Ya, Edit!',
-            cancelButtonText: 'Tidak, Batalkan',
+            cancelButtonText: 'Batal',
             reverseButtons: true,
             customClass: {
                 confirmButton: 'btn btn-danger me-2',
@@ -152,60 +177,11 @@
             buttonsStyling: false
         }).then((result) => {
             if (result.isConfirmed) {
-                // Kirim data menggunakan AJAX
-                const form = document.getElementById('form-edit');
-                const formData = new FormData(form);
-
-                fetch(form.action, {
-                    method: form.method,
-                    body: formData,
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            title: 'Berhasil!',
-                            text: data.message,
-                            icon: 'success',
-                            confirmButtonText: 'OK',
-                            customClass: {
-                                confirmButton: 'btn btn-primary'
-                            },
-                            buttonsStyling: false
-                        }).then(() => {
-                            window.location.href = data.redirect_url; // Redirect jika perlu
-                        });
-                    } else {
-                        Swal.fire({
-                            title: 'Gagal!',
-                            text: data.message,
-                            icon: 'error',
-                            confirmButtonText: 'OK',
-                            customClass: {
-                                confirmButton: 'btn btn-primary'
-                            },
-                            buttonsStyling: false
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    Swal.fire({
-                        title: 'Terjadi Kesalahan!',
-                        text: 'Silakan coba lagi.',
-                        icon: 'error',
-                        confirmButtonText: 'OK',
-                        customClass: {
-                            confirmButton: 'btn btn-primary'
-                        },
-                        buttonsStyling: false
-                    });
-                });
+                document.getElementById('form-edit').submit();
             }
         });
     });
 
-    // Jika berhasil (dari flash session)
     @if (session('success'))
         Swal.fire({
             title: 'Berhasil!',

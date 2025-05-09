@@ -1,127 +1,94 @@
 @extends('layouts.admin')
 
-@section('title', 'Data jemaat')
+@section('title', 'Data Jemaat')
 
 @section('content')
-<div class="card shadow-sm">
-    <div class="card-header bg-gradient-primary text-white d-flex justify-content-between align-items-center py-3">
+<div class="container py-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <!-- Filter & Search -->
         <div class="d-flex align-items-center gap-3">
-            <i class="fas fa-newspaper"></i>
-            <h5 class="mb-0">Daftar jemaat</h5>
+            <div class="d-flex align-items-center gap-2">
+                <label class="fw-semibold mb-0">Show</label>
+                <select class="form-select rounded-3 px-3 py-2 shadow-sm border-0" style="width: 100px; background-color: #f2f2f2;">
+                    <option selected>20</option>
+                    <option>50</option>
+                    <option>100</option>
+                </select>
+            </div>
+
+            <form action="{{ route('admin.jemaat.index') }}" method="GET" style="max-width: 350px;">
+                <input type="text" name="search" class="form-control rounded-3 px-3 py-2 shadow-sm border-0" style="background-color: #f2f2f2;" placeholder="Cari berdasarkan nama" value="{{ request('search') }}">
+            </form>
         </div>
+
+        <!-- Add New Button -->
+        <a href="{{ route('admin.jemaat.create') }}" class="btn btn-primary rounded-2 px-3 d-flex align-items-center gap-2">
+            <i class="fas fa-plus"></i> Add New
+        </a>
     </div>
-    <div class="card-body p-4">
-        <div class="mb-4 d-flex justify-content-between flex-wrap gap-3">
-            <a href="{{ route('admin.jemaat.create') }}" class="btn btn-primary">
-                <i class="fas fa-plus me-2"></i> Tambah jemaat
-            </a>
-            
-            <!-- Form untuk mengubah jumlah item per halaman -->
-            <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex align-items-center">
-                <!-- Simpan parameter pencarian saat mengubah pagination -->
-                @if(request('search'))
-                    <input type="hidden" name="search" value="{{ request('search') }}">
-                @endif
-            </form>
-        </div>
-        
-        <div class="mb-3">
-            <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex flex-wrap align-items-center" role="search">
-                <input type="text"
-                       name="search"
-                       class="form-control"
-                       placeholder="Cari nama jemaat..."
-                       value="{{ request('search') }}"
-                       style="max-width: 990px; border-radius: 80px; margin-right: 25px;" />
 
-                <button type="submit"
-                        class="btn btn-primary d-flex align-items-center gap-1"
-                        style="border-radius: 80px;">
-                    <i class="fas fa-search"></i>
-                    <span>Cari</span>
-                </button>
-
-                @if(request('search'))
-                    <a href="{{ route('admin.jemaat.index') }}"
-                       class="btn btn-secondary d-flex align-items-center gap-1 ms-2"
-                       style="border-radius: 80px;">
-                        <i class="fas fa-times"></i>
-                        <span>Reset</span>
-                    </a>
-                @endif
-                
-                <!-- Simpan parameter perPage saat melakukan pencarian -->
-                @if(request('perPage'))
-                    <input type="hidden" name="perPage" value="{{ request('perPage') }}">
-                @endif
-            </form>
-        </div>
-
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr class="bg-primary text-white">
-                        <th class="text-center">Nama</th>
-                        <th class="text-center">Jenis Kelamin</th>
-                        <th class="text-center">Tanggal Lahir</th>
-                        <th class="text-center">Alamat</th>
-                        <th class="text-center">Status Pernikahan</th>
-                        <th class="text-center">Nama Pasangan</th>
-                        <th class="text-center">Jumlah Anak</th>
-                        <th class="text-center">Aksi</th>
+    <!-- Tabel -->
+    <div class="table-responsive">
+        <table class="table align-middle table-borderless small">
+            <thead class="border-bottom border-dark text-secondary">
+                <tr>
+                    <th>No.</th>
+                    <th>Nama</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Jumlah Anak</th>
+                    <th>Alamat</th>
+                    <th>Tanggal Lahir</th>
+                    <th>Nama Pasangan</th>
+                    <th>Status Pernikahan</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($jemaats as $index => $item)
+                    <tr style="{{ $index % 2 == 1 ? 'background-color: #f2f2f2;' : '' }}">
+                        <td>{{ $jemaats->firstItem() + $index }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>{{ $item->jenis_kelamin }}</td>
+                        <td>{{ $item->jumlah_anak }}</td>
+                        <td>{{ $item->alamat }}</td>
+                        <td class="fw-semibold">{{ \Carbon\Carbon::parse($item->tanggal_lahir)->translatedFormat('d F Y') }}</td>
+                        <td>{{ $item->nama_pasangan }}</td>
+                        <td>{{ $item->status_pernikahan }}</td>
+                        <td class="text-center">
+                            <a href="{{ route('admin.jemaat.edit', $item->id) }}" class="btn btn-link text-primary p-0" title="Edit">
+                                <i class="fas fa-pen fa-lg"></i>
+                            </a>
+                            <form action="{{ route('admin.jemaat.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-link text-danger p-0 ms-2" title="Hapus">
+                                    <i class="fas fa-trash fa-lg"></i>
+                                </button>
+                            </form>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @forelse ($jemaats as $item)
-                        <tr class="align-middle">
-                            <td>{{ $item->nama }}</td>
-                            <td>{{ $item->jenis_kelamin }}</td>
-                            <td>{{ $item->tanggal_lahir }}</td>
-                            <td>{{ $item->alamat }}</td>
-                            <td>{{ $item->status_pernikahan }}</td>
-                            <td>{{ $item->nama_pasangan }}</td>
-                            <td>{{ $item->jumlah_anak }}</td>
-                            <td class="text-center">
-                                <div class="btn-group" role="group">
-                                    <a href="{{ route('admin.jemaat.edit', $item->id) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" title="Edit">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form action="{{ route('admin.jemaat.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin mau hapus jemaat ini?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" title="Hapus">
-                                            <i class="fas fa-trash"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="8" class="text-center py-4">
-                                <div class="text-muted">
-                                    <i class="fas fa-inbox fa-3x mb-3"></i>
-                                    <p>Tidak ada data jemaat</p>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                @empty
+                    <tr>
+                        <td colspan="9" class="text-center text-muted py-4">
+                            <i class="fas fa-inbox fa-2x mb-2"></i>
+                            <p class="m-0">Tidak ada data jemaat</p>
+                        </td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-between align-items-center mt-4 small">
+        <div>
+            Menampilkan <strong>{{ $jemaats->firstItem() ?? 0 }}</strong> - <strong>{{ $jemaats->lastItem() ?? 0 }}</strong> dari <strong>{{ $jemaats->total() }}</strong> jemaat
         </div>
-        
-        <!-- Pagination with improved styling -->
-        <div class="d-flex justify-content-between align-items-center mt-4">
-            <div class="text-muted small">
-                Menampilkan <span class="fw-semibold">{{ $jemaats->firstItem() ?? 0 }}</span> - 
-                <span class="fw-semibold">{{ $jemaats->lastItem() ?? 0 }}</span> dari 
-                <span class="fw-semibold">{{ $jemaats->total() }}</span> jemaat
-            </div>
-            
-            <div class="d-flex">
-                {{ $jemaats->appends(request()->query())->links('pagination::bootstrap-4') }}
-            </div>
+        <div>
+            {{ $jemaats->appends(request()->query())->links('pagination::bootstrap-4') }}
         </div>
     </div>
 </div>
 @endsection
+ 

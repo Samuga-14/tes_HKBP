@@ -4,8 +4,11 @@
 
 @section('content')
 <style>
-    .table-no-border th,
-    .table-no-border td {
+    body {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .table-no-border th, .table-no-border td {
         border: none !important;
     }
 
@@ -14,11 +17,49 @@
     }
 
     .table-alternating tbody tr:nth-child(even) {
-        background-color: #f0f8ff; /* biru muda */
+        background-color: #e6f0fa; /* biru muda */
     }
 
     .table-alternating tbody tr:hover {
-        background-color: #dbeeff;
+        background-color: #d0e7ff; /* hover */
+    }
+
+    .rounded-container {
+        border-radius: 20px;
+        padding: 30px;
+        background-color: white;
+    }
+
+    .add-button {
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-size: 14px;
+        background-color: #0d6efd;
+        color: white;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+
+    .add-button i {
+        font-size: 14px;
+    }
+
+    .table th, .table td {
+        padding: 14px 16px;
+        vertical-align: middle;
+    }
+
+    .table th {
+        background-color: #f4f4f4;
+        font-size: 14px;
+        color: #000;
+    }
+
+    .table td {
+        font-size: 13px;
     }
 
     .icon-btn {
@@ -32,61 +73,18 @@
         font-size: 1.2rem;
     }
 
-    .rounded-container {
-        border-radius: 20px;
-        padding: 20px;
-        background-color: white;
-    }
-
-    .add-button {
-        border-radius: 8px;
-        padding: 8px 20px;
-        font-size: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #007bff;
-        color: white;
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    .add-button i {
-        margin-left: 8px;
-    }
-
-    .table th, .table td {
-        padding: 12px 15px;
-    }
-
-    .table th {
-        background-color: #f4f4f4;
-        font-size: 14px;
-        color: #000;
-    }
-
-    .table td {
-        font-size: 13px;
-    }
-
-    .table .text-center {
-        text-align: center;
-    }
-
-    .table td i {
-        font-size: 1.2rem;
-        cursor: pointer;
-    }
-
-    .container-fluid {
-        padding: 30px;
+    .table img {
+        width: 36px;
+        height: 36px;
+        object-fit: cover;
+        border-radius: 6px;
     }
 </style>
+
 
 <div class="container-fluid py-3 px-4 rounded-container shadow-sm">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold mb-0" style="font-size: 24px;">Data Berita</h2>
-
         <a href="{{ route('admin.berita.create') }}" class="add-button">
             Add New <i class="fas fa-plus"></i>
         </a>
@@ -112,9 +110,9 @@
                     <td>{{ Str::limit(strip_tags($item->deskripsi), 100) }}</td>
                     <td class="text-center">
                         @if ($item->gambar)
-                        <img src="{{ asset($item->gambar) }}" alt="Gambar" style="width: 40px; height: 40px; object-fit: cover; border-radius: 5px;">
+                            <img src="{{ asset($item->gambar) }}" alt="Gambar">
                         @else
-                        <i class="fas fa-image fa-2x" style="color: #007bff;"></i>
+                            <i class="fas fa-image fa-2x" style="color: #0d6efd;"></i>
                         @endif
                     </td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}</td>
