@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
         body {
+            display: flex;
+            flex-direction: column;
             font-family: 'Segoe UI', sans-serif;
             background-color: #F8F9FA;
-            margin: 0;
-            padding: 0;
         }
 
         .sidebar {
@@ -38,7 +43,6 @@
             color: white;
             text-decoration: none;
             transition: background 0.3s, color 0.3s;
-            cursor: pointer;
         }
 
         .sidebar a:hover, .sidebar a.active {
@@ -46,23 +50,34 @@
             color: #ffffff;
         }
 
-        .main-content {
+        .layout-wrapper {
+            display: flex;
+            flex-direction: column;
             margin-left: 250px;
-            padding: 20px 40px;
             min-height: 100vh;
             background-color: white;
+            flex: 1;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px 40px;
         }
 
         .topbar {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding-bottom: 20px;
+            justify-content: flex-start; /* Align to left */
+            padding: 10px 20px;
             border-bottom: 2px solid #e0e0e0;
+            background-color: #ffffff;
         }
 
         .topbar h3 {
             font-weight: bold;
+            margin-left: 15px;
+            margin-right: 0; /* Ensure there's no margin on the right */
+            flex-grow: 1; /* Take available space */
         }
 
         .profile {
@@ -76,6 +91,17 @@
             height: 40px;
             background-color: #ddd;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hamburger icon styles */
+        .hamburger-icon {
+            font-size: 24px;
+            cursor: pointer;
+            display: block;
+            margin-right: 10px; /* Ensure it has margin to the right */
         }
 
         footer {
@@ -83,6 +109,8 @@
             color: #555;
             text-align: center;
             padding: 20px 0;
+            background-color: #f8f9fa;
+            border-top: 1px solid #ddd;
         }
 
         @media (max-width: 768px) {
@@ -92,14 +120,33 @@
                 position: relative;
             }
 
-            .main-content {
+            .layout-wrapper {
                 margin-left: 0;
+            }
+
+            .main-content {
                 padding: 15px;
+            }
+
+            .hamburger-icon {
+                display: block;
+                margin-right: 10px;
+            }
+
+            .topbar {
+                justify-content: space-between;
+                padding: 10px;
+            }
+
+            .topbar h3 {
+                font-size: 1.2rem;
+                margin-left: 0;
             }
         }
     </style>
 </head>
 <body>
+
     <!-- Sidebar -->
     <div class="sidebar">
         <h4>HKBP SIN - SIM</h4>
@@ -124,12 +171,15 @@
         </a>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content">
+    <!-- Layout Wrapper (Main + Footer) -->
+    <div class="layout-wrapper">
         <div class="topbar">
+            <div class="hamburger-icon">
+                <i class="fas fa-bars"></i>
+            </div>
             <h3>@yield('title')</h3>
             <div class="profile">
-                <div class="profile-icon d-flex align-items-center justify-content-center">
+                <div class="profile-icon">
                     <i class="fas fa-user"></i>
                 </div>
                 <strong>Admin Hkbp Sin-Sim</strong>
@@ -140,7 +190,7 @@
         @yield('content')
 
         <!-- Footer -->
-        <footer class="mt-5">
+        <footer>
             <strong>Copyright 2025.</strong> Institut Teknologi Del Kelompok PA 1
         </footer>
     </div>

@@ -39,11 +39,11 @@
             </div>
 
             <div class="d-flex justify-content-end mt-4">
-                <button type="submit" class="btn btn-primary" style="padding: 6px 20px; font-size: 14px;">Tambahkan</button>
-            </div>
-        </form>
-    </div>
+    <button type="submit" class="btn btn-primary" style="padding: 6px 20px; font-size: 14px;">
+        Tambahkan <span class="ms-2">+</span>
+    </button>
 </div>
+
 
 @endsection  
 

@@ -9,8 +9,16 @@
         border: none !important;
     }
 
+    .table-alternating tbody tr:nth-child(odd) {
+        background-color: #ffffff; /* putih */
+    }
+
     .table-alternating tbody tr:nth-child(even) {
-        background-color: #e8f0fa;
+        background-color: #f0f8ff; /* biru muda */
+    }
+
+    .table-alternating tbody tr:hover {
+        background-color: #dbeeff;
     }
 
     .icon-btn {
@@ -29,29 +37,64 @@
         padding: 20px;
         background-color: white;
     }
-    .table-alternating tbody tr:nth-child(odd) {
-    background-color: #ffffff;
-}
-.table-alternating tbody tr:nth-child(even) {
-    background-color: #e8f0fa;
-}
 
+    .add-button {
+        border-radius: 8px;
+        padding: 8px 20px;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .add-button i {
+        margin-left: 8px;
+    }
+
+    .table th, .table td {
+        padding: 12px 15px;
+    }
+
+    .table th {
+        background-color: #f4f4f4;
+        font-size: 14px;
+        color: #000;
+    }
+
+    .table td {
+        font-size: 13px;
+    }
+
+    .table .text-center {
+        text-align: center;
+    }
+
+    .table td i {
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+
+    .container-fluid {
+        padding: 30px;
+    }
 </style>
 
 <div class="container-fluid py-3 px-4 rounded-container shadow-sm">
     <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="fw-bold mb-0" style="font-size: 24px;">Data Berita</h2>
+        <h2 class="fw-bold mb-0" style="font-size: 24px;">Data Berita</h2>
 
-        <a href="{{ route('admin.berita.create') }}" class="btn btn-primary fw-semibold" style="border-radius: 8px;">
-            Add New <i class="fas fa-plus ms-1"></i>
+        <a href="{{ route('admin.berita.create') }}" class="add-button">
+            Add New <i class="fas fa-plus"></i>
         </a>
     </div>
 
     <div class="table-responsive">
         <table class="table table-no-border table-alternating align-middle">
-        <thead style="background-color: #f4f4f4; font-size: 14px; color: #000;">
-
-
+            <thead>
                 <tr>
                     <th style="width: 5%;">No.</th>
                     <th style="width: 20%;">Judul</th>
@@ -66,14 +109,12 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $item->judul }}</td>
-                    <td style="white-space: normal;">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</td>
+                    <td>{{ Str::limit(strip_tags($item->deskripsi), 100) }}</td>
                     <td class="text-center">
                         @if ($item->gambar)
                         <img src="{{ asset($item->gambar) }}" alt="Gambar" style="width: 40px; height: 40px; object-fit: cover; border-radius: 5px;">
-
                         @else
-                            <i class="fas fa-image fa-2x" style="color: #000;"></i>
-
+                        <i class="fas fa-image fa-2x" style="color: #007bff;"></i>
                         @endif
                     </td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}</td>
@@ -103,10 +144,5 @@
             </tbody>
         </table>
     </div>
-
-    <footer class="mt-5 text-center text-muted small py-3">
-    <strong>Copyright 2025</strong>. Institut Teknologi Del Kelompok PA 1
-</footer>
-
 </div>
 @endsection
