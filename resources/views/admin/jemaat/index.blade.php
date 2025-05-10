@@ -24,7 +24,7 @@
 
         <!-- Add New Button -->
         <a href="{{ route('admin.jemaat.create') }}" class="btn btn-primary rounded-2 px-3 d-flex align-items-center gap-2">
-            <i class="fas fa-plus"></i> Add New
+            Add New
         </a>
     </div>
 
@@ -56,16 +56,19 @@
                         <td>{{ $item->nama_pasangan }}</td>
                         <td>{{ $item->status_pernikahan }}</td>
                         <td class="text-center">
-                            <a href="{{ route('admin.jemaat.edit', $item->id) }}" class="btn btn-link text-primary p-0" title="Edit">
-                                <i class="fas fa-pen fa-lg"></i>
-                            </a>
-                            <form action="{{ route('admin.jemaat.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-link text-danger p-0 ms-2" title="Hapus">
-                                    <i class="fas fa-trash fa-lg"></i>
-                                </button>
-                            </form>
+                            <!-- Edit and Delete actions as buttons with text -->
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="{{ route('admin.jemaat.edit', $item->id) }}" class="btn btn-sm btn-outline-primary rounded-2 px-3 py-1">
+                                    Edit
+                                </a>
+                                <form action="{{ route('admin.jemaat.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data ini?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-outline-danger rounded-2 px-3 py-1">
+                                        Hapus
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @empty
@@ -91,4 +94,3 @@
     </div>
 </div>
 @endsection
- 

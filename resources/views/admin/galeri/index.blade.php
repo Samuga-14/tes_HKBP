@@ -91,9 +91,10 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h5 class="table-title">Data Galeri Kegiatan</h5>
         <a href="{{ route('admin.galeri.create') }}" class="btn-add">
-            <i class="fas fa-plus"></i> Add New
+            Add New <i class="fas fa-plus"></i>
         </a>
     </div>
+</div>
 
     <div class="table-responsive">
         <table class="table align-middle">

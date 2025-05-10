@@ -150,28 +150,38 @@
 <body>
 
     <!-- Sidebar -->
-    <div class="sidebar">
-        <h4>HKBP SIN - SIM</h4>
-        <hr style="border-color: #ffffff44;">
-        <a href="{{ route('admin.dashboard') }}" class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
-            <i class="fas fa-home me-2"></i> Dashboard
-        </a>
-        <a href="{{ route('admin.berita.index') }}" class="{{ request()->is('admin/berita*') ? 'active' : '' }}">
-            <i class="fas fa-newspaper me-2"></i> Berita
-        </a>
-        <a href="{{ route('admin.galeri.index') }}" class="{{ request()->is('admin/galeri*') ? 'active' : '' }}">
-            <i class="fas fa-images me-2"></i> Galeri Kegiatan
-        </a>
-        <a href="{{ route('admin.jemaat.index') }}" class="{{ request()->is('admin/jemaat*') ? 'active' : '' }}">
-            <i class="fas fa-users me-2"></i> Data Jemaat
-        </a>
-        <a href="{{ route('admin.struktur.index') }}" class="{{ request()->is('admin/struktur*') ? 'active' : '' }}">
-            <i class="fas fa-sitemap me-2"></i> Struktur Kepengurusan
-        </a>
-        <a href="{{ route('admin.warta.index') }}" class="{{ request()->is('admin/warta*') ? 'active' : '' }}">
-            <i class="fas fa-book me-2"></i> Warta Jemaat
-        </a>
-    </div>
+<!-- Sidebar -->
+<div class="sidebar d-flex flex-column">
+    <h4>HKBP SIN - SIM</h4>
+    <hr style="border-color: #ffffff44;">
+    <a href="{{ route('admin.dashboard') }}" class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
+        <i class="fas fa-home me-2"></i> Dashboard
+    </a>
+    <a href="{{ route('admin.berita.index') }}" class="{{ request()->is('admin/berita*') ? 'active' : '' }}">
+        <i class="fas fa-newspaper me-2"></i> Berita
+    </a>
+    <a href="{{ route('admin.galeri.index') }}" class="{{ request()->is('admin/galeri*') ? 'active' : '' }}">
+        <i class="fas fa-images me-2"></i> Galeri Kegiatan
+    </a>
+    <a href="{{ route('admin.jemaat.index') }}" class="{{ request()->is('admin/jemaat*') ? 'active' : '' }}">
+        <i class="fas fa-users me-2"></i> Data Jemaat
+    </a>
+    <a href="{{ route('admin.struktur.index') }}" class="{{ request()->is('admin/struktur*') ? 'active' : '' }}">
+        <i class="fas fa-sitemap me-2"></i> Struktur Kepengurusan
+    </a>
+    <a href="{{ route('admin.warta.index') }}" class="{{ request()->is('admin/warta*') ? 'active' : '' }}">
+        <i class="fas fa-book me-2"></i> Warta Jemaat
+    </a>
+
+    <!-- Tombol Logout -->
+    <form action="{{ route('logout') }}" method="POST" class="mt-auto px-3">
+        @csrf
+        <button type="submit" class="btn btn-outline-light w-100 mt-4">
+            <i class="fas fa-sign-out-alt me-2"></i> Logout
+        </button>
+    </form>
+</div>
+
 
     <!-- Layout Wrapper (Main + Footer) -->
     <div class="layout-wrapper">
