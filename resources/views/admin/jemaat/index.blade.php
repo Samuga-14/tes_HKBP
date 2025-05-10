@@ -23,9 +23,11 @@
         </div>
 
         <!-- Add New Button -->
-        <a href="{{ route('admin.jemaat.create') }}" class="btn btn-primary rounded-2 px-3 d-flex align-items-center gap-2">
-            Add New
-        </a>
+       <a href="{{ route('admin.jemaat.create') }}" class="btn btn-primary rounded-2 px-3 d-flex align-items-center gap-2">
+    Add New <i class="fas fa-plus"></i>
+</a>
+
+
     </div>
 
     <!-- Tabel -->
@@ -57,19 +59,21 @@
                         <td>{{ $item->status_pernikahan }}</td>
                         <td class="text-center">
                             <!-- Edit and Delete actions as buttons with text -->
-                            <div class="d-flex justify-content-center gap-2">
-                                <a href="{{ route('admin.jemaat.edit', $item->id) }}" class="btn btn-sm btn-outline-primary rounded-2 px-3 py-1">
-                                    Edit
-                                </a>
-                                <form action="{{ route('admin.jemaat.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data ini?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger rounded-2 px-3 py-1">
-                                        Hapus
-                                    </button>
-                                </form>
-                            </div>
-                        </td>
+                           <td class="text-center">
+    <div class="d-flex justify-content-center gap-3">
+        <a href="{{ route('admin.jemaat.edit', $item->id) }}" title="Edit">
+            <i class="fas fa-pen-to-square text-primary fs-5"></i>
+        </a>
+        <form action="{{ route('admin.jemaat.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin hapus data ini?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="border-0 bg-transparent p-0" title="Hapus">
+                <i class="fas fa-trash-can text-danger fs-5"></i>
+            </button>
+        </form>
+    </div>
+</td>
+
                     </tr>
                 @empty
                     <tr>
