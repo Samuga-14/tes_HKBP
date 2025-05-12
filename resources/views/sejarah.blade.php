@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC&display=swap" rel="stylesheet">
+
     <!-- Link ke file CSS external -->
     <link href="{{ asset('css/sejarah.css') }}" rel="stylesheet">
 </head>
@@ -18,11 +20,20 @@
 
     {{-- Hero Section --}}
     <section class="hero-sejarah">
-        <div class="hero-text">
-            <h1 class="display-5 fw-bold">SELAMAT DATANG DI HKBP SINAMBELA SIMANULLANG</h1>
-            <p class="lead">Jahowa Do Si Parmaluan Au</p>
+        <div class="hero-container">
+            <div class="hero-image">
+                <img src="{{ asset('images/nomensen.jpg') }}" alt="Ingwer Ludwig Nommensen" class="img-fluid oval-frame">
+            </div>
+            <div class="hero-text">
+                <p class="lead">SEJARAH</p>
+                <h1 class="display-5 fw-bold">HKBP Sin - Sim</h1>
+                <p class="hero-description">
+                    Sekitar pertengahan abad ke-19, gereja-gereja mulai didirikan di sekitar Danau Toba, dan salah satu jemaat yang tumbuh dari proses ini adalah HKBP Bakkara. Jemaat ini menjadi simbol keberhasilan penyebaran agama Kristen Protestan di wilayah yang dulunya sangat kuat memegang adat Batak.
+                </p>
+            </div>
         </div>
     </section>
+
 
     {{-- Section Judul --}}
     <section class="section-title">
