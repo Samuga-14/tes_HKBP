@@ -1,62 +1,142 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Kepengurusan')
+@section('title', 'Data Struktur Kepengurusan')
 
 @section('content')
-<div class="container-fluid px-4">
-    <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4 class="fw-semibold mb-0">Data Kepengurusan</h4>
-        <a href="{{ route('admin.struktur.create') }}" class="btn btn-primary d-flex align-items-center gap-2">
-            <i class="fas fa-plus"></i> Add New
+
+<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        font-family: 'Kumbh Sans', sans-serif;
+    }
+
+    .table-container {
+        background: #fff;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .table-title {
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .btn-add {
+        background-color: #0d6efd;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 10px;
+        font-weight: 500;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+
+    .table th {
+        background-color: #f4f4f4;
+        font-size: 15px;
+        padding: 14px 12px;
+        color: #000;
+        font-weight: 600;
+    }
+
+    table tr {
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    table td, table th {
+        vertical-align: middle;
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .img-thumbnail {
+        border-radius: 10px;
+        object-fit: cover;
+        width: 55px;
+        height: 55px;
+    }
+
+    .icon-action {
+        background: none;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        margin: 0 4px;
+    }
+
+    .pagination {
+        justify-content: end;
+        margin-top: 25px;
+    }
+
+    .pagination .page-item .page-link {
+        border-radius: 10px;
+        margin: 0 4px;
+    }
+
+    .icon-label i {
+        font-size: 18px;
+    }
+</style>
+
+<div class="table-container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="table-title">Data Struktur Kepengurusan</h5>
+        <a href="{{ route('admin.struktur.create') }}" class="btn-add">
+            Add New <i class="fas fa-plus"></i>
         </a>
     </div>
 
-    <!-- Table -->
     <div class="table-responsive">
-        <table class="table table-bordered align-middle">
-            <thead class="table-light text-center">
+        <table class="table align-middle">
+            <thead>
                 <tr>
-                    <th style="width: 50px;">No.</th>
-                    <th style="width: 80px;">Gambar</th>
-                    <th>Nama Anggota</th>
-                    <th>Kepengurusan</th>
-                    <th>Nama Jabatan</th>
-                    <th style="width: 100px;">Aksi</th>
+                    <th>No</th>
+                    <th>Nama</th>
+                    <th>Gambar</th>
+                    <th>Jabatan</th>
+                    <th class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse ($struktur as $index => $item)
-                    <tr @if($index % 2 == 0) style="background-color: #f9f9fb;" @endif>
-                        <td class="text-center">{{ $struktur->firstItem() + $index }}</td>
-                        <td class="text-center">
+                    <tr>
+                        <td>{{ $struktur->firstItem() + $index }}</td>
+                        <td>{{ $item->nama }}</td>
+                        <td>
                             @if ($item->gambar)
-                                <img src="{{ asset('images/struktur/' . $item->gambar) }}" alt="gambar" class="rounded-circle" width="50" height="50" style="object-fit: cover;">
+                                <img src="{{ asset('images/struktur/' . $item->gambar) }}" alt="gambar" class="img-thumbnail">
                             @else
-                                <span class="text-muted">Tidak ada</span>
+                                <span class="text-muted">-</span>
                             @endif
                         </td>
-                        <td>{{ $item->nama }}</td>
-                        <td>{{ $item->kepengurusan }}</td>
                         <td>{{ $item->jabatan }}</td>
                         <td class="text-center">
-                            <a href="{{ route('admin.struktur.edit', $item->id) }}" class="text-primary me-2" title="Edit">
-                                <i class="fas fa-pen-to-square"></i>
-                            </a>
-                            <form action="{{ route('admin.struktur.destroy', $item->id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Yakin ingin menghapus?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-link p-0 m-0 text-danger" title="Hapus">
-                                    <i class="fas fa-trash-can"></i>
-                                </button>
-                            </form>
+                            <div class="d-flex justify-content-center">
+                                <a href="{{ route('admin.struktur.edit', $item->id) }}" class="icon-action text-primary" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form action="{{ route('admin.struktur.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="icon-action text-danger" title="Hapus">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="6" class="text-center py-5 text-muted">
+                        <td colspan="5" class="text-center text-muted py-4">
                             <i class="fas fa-inbox fa-2x mb-2"></i>
-                            <p class="mb-0">Data belum tersedia</p>
+                            <p>Data belum tersedia</p>
                         </td>
                     </tr>
                 @endforelse
@@ -64,7 +144,7 @@
         </table>
     </div>
 
-    <!-- Pagination -->
+    {{-- Pagination --}}
     <div class="d-flex justify-content-between align-items-center mt-4">
         <small>
             Menampilkan {{ $struktur->firstItem() }} - {{ $struktur->lastItem() }} dari {{ $struktur->total() }} data
@@ -73,30 +153,5 @@
             {{ $struktur->links() }}
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="text-center mt-4">
-        <small>
-            <strong>Copyright 2025.</strong> Institut Teknologi Del Kelompok PA 1
-        </small>
-    </footer>
 </div>
 @endsection
-
-<!-- Tambahan CSS -->
-@push('styles')
-<style>
-    body {
-        background-color: #f3f4f6;
-    }
-    .table th, .table td {
-        vertical-align: middle;
-    }
-    .table td img {
-        border: 2px solid #ddd;
-    }
-    .btn i, .btn-link i {
-        font-size: 1rem;
-    }
-</style>
-@endpush

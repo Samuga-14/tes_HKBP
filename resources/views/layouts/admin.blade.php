@@ -61,15 +61,10 @@
             flex: 1;
         }
 
-        .main-content {
-            flex: 1;
-            padding: 20px 40px;
-        }
-
         .topbar {
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Align to left */
+            justify-content: flex-start;
             padding: 10px 20px;
             border-bottom: 2px solid #e0e0e0;
             background-color: #ffffff;
@@ -78,8 +73,8 @@
         .topbar h3 {
             font-weight: bold;
             margin-left: 15px;
-            margin-right: 0; /* Ensure there's no margin on the right */
-            flex-grow: 1; /* Take available space */
+            margin-right: 0;
+            flex-grow: 1;
         }
 
         .profile {
@@ -98,12 +93,18 @@
             justify-content: center;
         }
 
-        /* Hamburger icon styles */
         .hamburger-icon {
             font-size: 24px;
             cursor: pointer;
             display: block;
-            margin-right: 10px; /* Ensure it has margin to the right */
+            margin-right: 10px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px 40px;
+            position: relative;
+            padding-bottom: 120px; /* beri ruang agar tombol tidak timpa footer */
         }
 
         footer {
@@ -149,7 +150,6 @@
 </head>
 <body>
 
-    <!-- Sidebar -->
 <!-- Sidebar -->
 <div class="sidebar d-flex flex-column">
     <h4>HKBP SIN - SIM</h4>
@@ -173,7 +173,6 @@
         <i class="fas fa-book me-2"></i> Warta Jemaat
     </a>
 
-    <!-- Tombol Logout -->
     <form action="{{ route('logout') }}" method="POST" class="mt-auto px-3">
         @csrf
         <button type="submit" class="btn btn-outline-light w-100 mt-4">
@@ -182,32 +181,30 @@
     </form>
 </div>
 
-
-    <!-- Layout Wrapper (Main + Footer) -->
-    <div class="layout-wrapper">
-        <div class="topbar">
-            <div class="hamburger-icon">
-                <i class="fas fa-bars"></i>
-            </div>
-            <h3>@yield('title')</h3>
-            <div class="profile">
-                <div class="profile-icon">
-                    <i class="fas fa-user"></i>
-                </div>
-                <strong>Admin Hkbp Sin-Sim</strong>
-            </div>
+<!-- Layout Wrapper -->
+<div class="layout-wrapper">
+    <div class="topbar">
+        <div class="hamburger-icon">
+            <i class="fas fa-bars"></i>
         </div>
-
-        <!-- Content -->
-        @yield('content')
-
-        <!-- Footer -->
-        <footer>
-            <strong>Copyright 2025.</strong> Institut Teknologi Del Kelompok PA 1
-        </footer>
+        <h3>@yield('title')</h3>
+        <div class="profile">
+            <div class="profile-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <strong>Admin Hkbp Sin-Sim</strong>
+        </div>
     </div>
 
-    <!-- Script -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="main-content">
+        @yield('content')
+    </div>
+
+    <footer>
+        <strong>Copyright 2025.</strong> Institut Teknologi Del Kelompok PA 1
+    </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
