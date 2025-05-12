@@ -79,43 +79,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Kontainer Berita 3 -->
-            <div class="col-12 mb-4">
-                <div class="berita-card shadow-lg rounded-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-5">
-                            <img src="{{ asset('images/berita/festbud.jpg') }}" alt="Berita 3" class="img-fluid rounded-3 berita-image">
-                        </div>
-                        <div class="col-md-7">
-                            <h3 class="berita-title">Festival Budaya Tahunan Sekabupaten Humbang Yang Diikuti Oleh Naposo Bulung Hkbp Sinambela-Simanullang</h3>
-                            <p class="berita-desc">Festival Budaya HKBP se-Kabupaten Humbang adalah ajang tahunan yang empertemukan berbagai jemaat HKBP dari seluruh wilayah 
-                                Humbang Hasundutan dalam perayaan budaya, iman, dan kebersamaan. Acara ini menampilkan berbagai pertunjukan seni tradisional Batak, seperti tortor, gondang, 
-                                dan vokal grup rohani serta perlombaan bernuansa budaya dan kekristenan. Festival ini menjadi momen penting untuk mempererat tali persaudaraan, melestarikan warisan budaya, 
-                                dan memperkuat semangat pelayanan di tengah masyarakat.</p>
-                            <a href="#" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Kontainer Berita 4 -->
-            <div class="col-12 mb-4">
-                <div class="berita-card shadow-lg rounded-4">
-                    <div class="row align-items-center">
-                        <div class="col-md-5">
-                            <img src="{{ asset('images/berita/jalansalib.jpg') }}" alt="Berita 4" class="img-fluid rounded-3 berita-image">
-                        </div>
-                        <div class="col-md-7">
-                            <h3 class="berita-title">Jalan Salib HKBP Sinambela Simanullang</h3>
-                            <p class="berita-desc">Jalan Salib HKBP Sinambela Simanullang adalah perayaan iman yang dilaksanakan dengan penuh khidmat oleh jemaat HKBP di Desa Sinambela, Baktiraja. 
-                                Diadakan setiap Jumat Agung. prosesi ini menggambarkan perjalanan Yesus menuju penyaliban melalui 14 perhentian, dengan partisipasi aktif jemaat dari berbagai usia Selain menjadi momen refleksi spiritual, 
-                                kegiatan ini juga memperkuat ikatan komunitas dan melestarikan kekayaan tradisi rohani Batak yang telah mengakar sejak berdirinya gereja pada tahun 1907.</p>
-                            <a href="#" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
