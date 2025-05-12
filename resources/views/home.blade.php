@@ -82,12 +82,11 @@
               <strong>M</strong>UNA
           </p>
       </div>
-<<<<<<< HEAD
   </section>  
 
   <!-- Layanan Section -->
   <section class="service-section py-6" id="layanan">
-=======
+
   </section> 
   <!-- Tampilan Ulang Tahun di Home User -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-4">
@@ -124,7 +123,6 @@
 </div>
     <!-- Layanan Section -->
     <section class="service-section py-6" id="layanan">
->>>>>>> 8778eaf94ea0e3d09dc104384f763a6d8f4ae752
     <div class="container-fluid">
       <div class="section-header text-center mb-5">
         <h2 class="section-title fw-bold scroll-animate">Layanan Ibadah</h2>
