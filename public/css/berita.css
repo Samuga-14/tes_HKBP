@@ -143,15 +143,15 @@ body {
     margin-top: auto; /* Menempatkan tombol di bagian bawah */
     font-size: 0.95rem;
     font-weight: 500;
-    border-color: #3498db;
-    color: #3498db;
+    border-color: #0f1f29;
+    color: #0c1b25;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .berita-card .btn:hover {
-    background-color: #3498db;
+    background-color: #0d1c26;
     color: #fff;
-    border-color: #3498db;
+    border-color: #0d1c26;
 }
 
 /* Responsif tambahan untuk hero-section */
