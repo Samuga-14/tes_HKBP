@@ -86,113 +86,66 @@ body {
 /* ======================
    BERITA SECTION
 ====================== */
-/* Section Berita Gereja */
-/* Berita Section */
-.berita-gereja-section {
-    background-color: #f9fafc;
+/* === Berita Section === */
+.content-section {
+    background: linear-gradient(135deg, #f0f4ff, #ffffff);
 }
 
-.berita-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Menjaga elemen di atas dan tombol di bawah */
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+.berita-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 6px solid #0d6efd33;
+    position: relative;
 }
 
-.berita-card:hover {
+.berita-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    border-left-color: #0d6efd;
+    background-color: #fefefe;
 }
 
-/* Gambar Berita */
-.berita-image {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+.berita-box img {
+    border: 3px solid #0d6efd22;
     transition: transform 0.3s ease;
 }
 
-.berita-image:hover {
+.berita-box:hover img {
     transform: scale(1.05);
 }
 
-/* Judul Berita */
-.berita-title {
-    font-size: 1.6rem;
+.berita-box h5 {
+    color: #0d2c5a;
     font-weight: 600;
-    color: #34495e;
-    margin-bottom: 15px;
-    line-height: 1.4;
+    margin-bottom: 0.5rem;
 }
 
-/* Deskripsi Berita */
-.berita-desc {
-    font-size: 1rem;
-    color: #7f8c8d;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-/* Tombol Lihat Selengkapnya */
-.berita-card .btn {
-    align-self: flex-end; /* Memastikan tombol berada di kanan bawah */
-    margin-top: auto; /* Menempatkan tombol di bagian bawah */
+.berita-box p {
+    color: #555;
     font-size: 0.95rem;
-    font-weight: 500;
-    border-color: #0f1f29;
-    color: #0c1b25;
-    transition: background-color 0.3s, color 0.3s;
 }
 
-.berita-card .btn:hover {
-    background-color: #0d1c26;
+.berita-box small {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.berita-box .btn-outline-primary {
+    border-radius: 20px;
+    font-size: 0.85rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.berita-box .btn-outline-primary:hover {
+    background-color: #0d6efd;
     color: #fff;
-    border-color: #0d1c26;
 }
 
-/* Responsif tambahan untuk hero-section */
-@media (max-width: 992px) {
-    .hero-berita-section h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-berita-section p {
-        font-size: 1.1rem;
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .hero-berita-section {
-        padding: 60px 0;
-    }
-
-    .hero-berita-section h1 {
-        font-size: 2rem;
-    }
-
-    .hero-berita-section .col-lg-6 {
-        margin-bottom: 20px;
-    }
-}
-
-/* Responsif tambahan untuk berita-box */
 @media (max-width: 768px) {
     .berita-box {
-        flex-direction: column;
-        padding: 20px;
+        text-align: center;
     }
-
-    .berita-box .flex-shrink-0 {
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .berita-box .flex-grow-1 {
-        margin-left: 0;
+    .berita-box img {
+        width: 100%;
+        height: auto;
     }
 }
