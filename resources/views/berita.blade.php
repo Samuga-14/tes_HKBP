@@ -61,7 +61,34 @@
             @endforeach
         </div>
     </section>
+   {{-- Berita Section --}}
+<section class="content-section py-5">
+    <div class="container">
+        <h2 class="mb-5 text-center fw-bold">Berita Terbaru</h2>
+        @foreach ($beritas->sortByDesc('tanggal_publikasi') as $item)
+        <div class="berita-box d-flex flex-column flex-md-row gap-3 mb-4 p-4 bg-white shadow-lg rounded-4">
+            {{-- Gambar --}}
+            <div class="flex-shrink-0">
+                <img src="{{ asset('images/berita/' . $item->gambar) }}" alt="{{ $item->judul }}" class="img-fluid rounded-3" style="width: 220px; height: 140px; object-fit: cover;">
+            </div>
 
+            {{-- Teks --}}
+            <div class="flex-grow-1 d-flex flex-column justify-content-between">
+                <div>
+                    <h5 class="fw-semibold">{{ $item->judul }}</h5>
+                    <p class="mb-2">{{ Str::limit(strip_tags($item->deskripsi), 150) }}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2">
+                    <small class="text-muted">
+                        Dipublikasikan pada {{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}
+                    </small>
+                    <a href="{{ route('detail', $item->id) }}" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</section>
     {{-- Footer --}}
     @include('footer')
 
