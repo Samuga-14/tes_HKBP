@@ -87,6 +87,7 @@ body {
    BERITA SECTION
 ====================== */
 /* === Berita Section === */
+/* === Berita Section === */
 .content-section {
     background: linear-gradient(135deg, #f0f4ff, #ffffff);
 }
@@ -95,18 +96,25 @@ body {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-left: 6px solid #0d6efd33;
     position: relative;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
 }
 
 .berita-box:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
-    border-left-color: #0d6efd;
+    border-left-color: #0d2c5a;
     background-color: #fefefe;
 }
 
 .berita-box img {
     border: 3px solid #0d6efd22;
     transition: transform 0.3s ease;
+    width: 220px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 0.75rem;
 }
 
 .berita-box:hover img {
@@ -122,6 +130,7 @@ body {
 .berita-box p {
     color: #555;
     font-size: 0.95rem;
+    margin-bottom: 0.75rem;
 }
 
 .berita-box small {
@@ -136,16 +145,24 @@ body {
 }
 
 .berita-box .btn-outline-primary:hover {
-    background-color: #0d6efd;
+    background-color: #1c2a40;
     color: #fff;
 }
 
+/* Responsive - Stack Konten Vertikal di HP */
 @media (max-width: 768px) {
     .berita-box {
+        flex-direction: column;
         text-align: center;
     }
+
     .berita-box img {
         width: 100%;
         height: auto;
+    }
+
+    .berita-box .d-flex.justify-content-between {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 }
