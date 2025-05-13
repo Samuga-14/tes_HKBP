@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mt-3 mb-5 position-relative">
+<div class="container py-4 position-relative">
     <div class="row">
         <div class="col-lg-6">
             <h6 class="fw-semibold mb-4" style="font-size: 18px;">Tambah Berita</h6>
@@ -16,7 +16,6 @@
                 </div>
             @endif
 
-            <!-- Form -->
             <form id="formBerita" action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
 
@@ -31,20 +30,19 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="gambar" class="form-label fw-semibold">Gambar</label>
-                    <input type="file" name="gambar" id="gambar" class="form-control custom-form-control" accept="image/*">
+                    <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
+                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control custom-form-control" value="{{ old('tanggal_publikasi') }}" required>
                 </div>
 
                 <div class="mb-4">
-                    <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
-                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control custom-form-control" value="{{ old('tanggal_publikasi') }}" required>
+                    <label for="gambar" class="form-label fw-semibold">Gambar</label>
+                    <input type="file" name="gambar" id="gambar" class="form-control custom-form-control" accept="image/*">
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Tombol fixed kanan bawah, dinaikkan dan digeser sedikit ke kiri -->
-    <div class="position-fixed" style="bottom: 150px; right: 60px; z-index: 999;">
+    <div class="d-flex justify-content-end">
         <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formBerita">
             Tambahkan
         </button>
@@ -54,9 +52,37 @@
 
 @section('styles')
 <style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+
     .custom-form-control {
-        height: 45px; /* Menyesuaikan tinggi input */
-        font-size: 16px; /* Menyesuaikan ukuran font */
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .container {
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .d-flex.justify-content-end {
+        margin-bottom: 0 !important;
     }
 </style>
 @endsection

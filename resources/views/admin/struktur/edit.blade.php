@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mt-3 mb-5 position-relative">
+<div class="container mt-3 mb-0 position-relative">
     <div class="row">
         <div class="col-lg-6">
             <h6 class="fw-semibold mb-4" style="font-size: 18px;">Edit Pengurus</h6>
@@ -16,21 +16,19 @@
                 </div>
             @endif
 
-            <!-- Form -->
+            <!-- Form Edit Pengurus -->
             <form id="formStruktur" action="{{ route('admin.struktur.update', $struktur->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="mb-4">
                     <label for="nama" class="form-label fw-semibold">Nama</label>
-                    <input type="text" name="nama" id="nama" class="form-control custom-form-control"
-                        value="{{ old('nama', $struktur->nama) }}" required>
+                    <input type="text" name="nama" id="nama" class="form-control custom-form-control" value="{{ old('nama', $struktur->nama) }}" required>
                 </div>
 
                 <div class="mb-4">
                     <label for="jabatan" class="form-label fw-semibold">Jabatan</label>
-                    <input type="text" name="jabatan" id="jabatan" class="form-control custom-form-control"
-                        value="{{ old('jabatan', $struktur->jabatan) }}" required>
+                    <input type="text" name="jabatan" id="jabatan" class="form-control custom-form-control" value="{{ old('jabatan', $struktur->jabatan) }}" required>
                 </div>
 
                 <div class="mb-4">
@@ -43,17 +41,17 @@
                     @endif
                     <input type="file" name="gambar" id="gambar" class="form-control custom-form-control" accept="image/*">
                 </div>
+
             </form>
         </div>
     </div>
 
-    <!-- Tombol fixed kanan bawah, dinaikkan dan digeser sedikit ke kiri -->
-<div class="position-fixed" style="bottom: 150px; right: 60px; z-index: 999;">
-    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
-       Edit
-    </button>
-</div>
-
+    <!-- Tombol untuk Submit -->
+    <div class="d-flex justify-content-end mt-5 mb-0">
+        <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
+            Edit
+        </button>
+    </div>
 </div>
 @endsection
 
