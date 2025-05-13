@@ -1,45 +1,60 @@
-@extends('layouts.admin')
+    @extends('layouts.admin')
 
-@section('content')
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="fas fa-newspaper me-2"></i>Tambah struktur</h4>
-                </div>
-                <div class="card-body bg-light">
-                    <form action="{{ route('admin.struktur.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
+    @section('content')
+    <div class="container mt-3 mb-5 position-relative">
+        <div class="row">
+            <div class="col-lg-6">
+                <h6 class="fw-semibold mb-4" style="font-size: 18px;">Tambah Pengurus</h6>
 
-                        <div class="form-group mb-4">
-                            <label for="nama" class="form-label fw-bold"><i class="fas fa-user me-1"></i>Nama</label>
-                            <input type="text" name="nama" id="nama" class="form-control form-control-lg shadow-sm" placeholder="Masukkan nama pengurus" required>
-                        </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger py-2 px-3" style="font-size: 14px;">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
-                        <div class="form-group mb-4">
-                            <label for="jabatan" class="form-label fw-bold"><i class="fas fa-briefcase me-1"></i>Jabatan</label>
-                            <input type="text" name="jabatan" id="jabatan" class="form-control form-control-lg shadow-sm" placeholder="Masukkan jabatan" required>
-                        </div>
+                <!-- Form -->
+                <form id="formStruktur" action="{{ route('admin.struktur.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
 
-                        <div class="form-group mb-4">
-                            <label for="gambar" class="form-label fw-bold"><i class="fas fa-image me-1"></i>Gambar</label>
-                            <input type="file" name="gambar" id="gambar" class="form-control shadow-sm" accept="image/*">
-                            <small class="text-muted">Format yang didukung: JPG, PNG, GIF (Max: 2MB)</small>
-                        </div>
+                    <div class="mb-4">
+                        <label for="nama" class="form-label fw-semibold">Nama</label>
+                        <input type="text" name="nama" id="nama" class="form-control custom-form-control" required>
+                    </div>
 
-                        <div class="d-flex gap-3">
-                            <button type="submit" class="btn btn-primary px-4">
-                                <i class="fas fa-save me-1"></i> Simpan
-                            </button>
-                            <a href="{{ route('admin.struktur.index') }}" class="btn btn-danger px-4">
-                                <i class="fas fa-times me-1"></i> Batal
-                            </a>
-                        </div>
-                    </form>
-                </div>
+                    <div class="mb-4">
+                        <label for="jabatan" class="form-label fw-semibold">Jabatan</label>
+                        <input type="text" name="jabatan" id="jabatan" class="form-control custom-form-control" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="gambar" class="form-label fw-semibold">Gambar</label>
+                        <input type="file" name="gambar" id="gambar" class="form-control custom-form-control" accept="image/*" required>
+                    </div>
+                </form>
             </div>
         </div>
-    </div>
+
+   <!-- Tombol fixed kanan bawah, dinaikkan dan digeser sedikit ke kiri -->
+<div class="position-fixed" style="bottom: 150px; right: 60px; z-index: 999;">
+    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
+        Tambahkan
+    </button>
 </div>
-@endsection
+
+
+    </div>
+
+    @endsection
+
+    @section('styles')
+    <style>
+        .custom-form-control {
+            height: 45px; /* Menyesuaikan tinggi input */
+            font-size: 16px; /* Menyesuaikan ukuran font */
+        }
+    </style>
+    @endsection
