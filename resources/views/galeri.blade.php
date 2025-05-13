@@ -42,63 +42,37 @@
         Dokumentasi Kegiatan Terbaru
     </section>
 
-    {{-- Galeri Section --}}
-    <section class="galeri-section">
-        <div class="galeri-card">
-            <div class="galeri-image">
-                <img src="{{ asset('images/galeri/biblecamp.jpg') }}" alt="Foto Kegiatan">
-            </div>
-            <div class="galeri-content">
-                <div class="galeri-header">
-                    <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="galeri-logo">
-                    <span class="galeri-church">HKBP SINAMBELA</span>
-                </div>
-                <p class="galeri-text">
-                        Kegiatan Bible Camp 2024 yang Diikuti oleh <br>
-                        Remaja & Naposo Bulung Gereja HKBP Sinambela - Simanullang
-                </p>
-                <div class="galeri-date">9 APRIL 2024</div>
-
-                {{-- Pindahkan tombol ke dalam konten --}}
-                <div class="galeri-button-wrapper">
-                    <a href="https://photos.app.goo.gl/qua62nz3WXFpLimWA" class="galeri-button" target="_blank"
-                     rel="noopener noreferrer"> Lihat Galeri </a>
-
-                </div>
-            </div>
-    </section>
-    <section>
-            <div class="galeri-card">
-            <div class="galeri-image">
-                <img src="{{ asset('images/galeri/volley.jpg') }}" alt="Foto Kegiatan">
-            </div>
-            <div class="galeri-content">
-                <div class="galeri-header">
-                    <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="galeri-logo">
-                    <span class="galeri-church">HKBP SINAMBELA</span>
-                </div>
-                <p class="galeri-text">
-                        Perlombaan Volly Jetun Games yang oleh <br>
-                        Diikuti Naposo Bulung HKBP Sinambela - Simanullang
-                </p>
-                <div class="galeri-date"> 2 MEI 2025</div>
-
-                {{-- Pindahkan tombol ke dalam konten --}}
-                <div class="galeri-button-wrapper">
-                    <a href="https://photos.app.goo.gl/qua62nz3WXFpLimWA" class="galeri-button" target="_blank"
-                     rel="noopener noreferrer"> Lihat Galeri </a>
-
+  {{-- Galeri Section --}}
+<section class="content-section py-5">
+    <div class="container">
+        <h2 class="mb-5 text-center fw-bold">Galeri Kegiatan</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            @foreach ($galeri as $item)
+            <div class="col">
+                <div class="galeri-card p-3 shadow-sm rounded-4 bg-white h-100 d-flex flex-column">
+                    <div class="galeri-img-wrapper mb-3">
+                        <img src="{{ asset('images/galeri/' . $item->gambar) }}" alt="{{ $item->judul }}" class="img-fluid rounded-3">
+                    </div>
+                    <div class="galeri-text flex-grow-1">
+                        <div class="d-flex align-items-center mb-2">
+                            <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="logo-galeri-mini me-2">
+                            <span class="text-muted small">HKBP SINAMBELA SIMANULLANG</span>
+                        </div>
+                        <h5 class="judul-galeri">{{ $item->judul }}</h5>
+                        <p class="deskripsi-galeri">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <small class="text-muted">
+                            {{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}
+                        </small>
+                        <a href="{{ asset('images/galeri/' . $item->gambar) }}" class="btn btn-sm btn-outline-primary" download>
+                            <i class="bi bi-download"></i> Unduh
+                        </a>
+                    </div>
                 </div>
             </div>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
 
-
-
-
-    {{-- Footer --}}
-    @include('footer')
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
