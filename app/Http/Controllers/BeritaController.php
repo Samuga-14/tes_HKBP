@@ -108,4 +108,12 @@ class BeritaController extends Controller
 
         return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil dihapus.');
     }
+    public function home()
+    {
+        $ayatHarian = Berita::where('judul', 'like', '%Ayat Harian%')
+                        ->orderBy('tanggal_publikasi', 'desc')
+                        ->first(); // ambil 1 yang terbaru
+        return view('home', compact('ayatHarian'));
+    }
+
 }
