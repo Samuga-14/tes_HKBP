@@ -1,12 +1,13 @@
 body {
     margin: 0;
+    padding: 0;
     min-height: 100vh;
     background: url('/images/gambar12.jpg') no-repeat center center fixed;
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     position: relative;
 }
 
@@ -14,74 +15,86 @@ body::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(67, 62, 62, 0.4);
+    background-color: rgba(255, 255, 255, 0.3); /* overlay putih transparan */
     z-index: 0;
 }
 
-.login-wrapper {
+.auth-card {
     position: relative;
     z-index: 1;
     width: 100%;
-    max-width: 650px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 30px 65px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    padding: 40px 50px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
+.auth-card img {
+    display: block;
+    margin: 0 auto 20px;
+    max-height: 70px;
+}
 
-.login-title {
-    font-size: 1.5rem;
+.auth-title {
+    font-size: 1.8rem;
     font-weight: bold;
-    color: #fff;
+    color: #2a2a2a;
     text-align: center;
-    margin-bottom: 25px;
-    text-shadow: 1px 1px 2px #000;
+    margin-bottom: 30px;
 }
 
-.login-card label {
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
     font-weight: 600;
-    margin-bottom: 5px;
+    font-size: 14px;
+    margin-bottom: 8px;
     display: block;
 }
 
-.login-card .form-control {
-    border-radius: 8px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    font-size: 0.95rem;
-    background-color: #f7f9fc;
-}
-
-.login-card .form-control:focus {
-    border-color: #0066ff;
-    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.2);
-}
-
-.login-card .form-check {
-    margin-top: 15px;
-    font-size: 0.9rem;
-}
-
-.login-card button.btn-primary {
-    background-color: #0066ff;
+.form-control {
+    width: 100%;
+    background-color: #eaf1ff;
     border: none;
-    padding: 10px 25px;
+    border-radius: 12px;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.25);
+}
+
+.btn.btn-primary {
+    background-color: #16376e;
+    border: none;
+    padding: 12px;
     font-weight: 600;
-    border-radius: 8px;
-    transition: 0.3s;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s;
 }
 
-.login-card button.btn-primary:hover {
-    background-color: #004dcc;
+.btn.btn-primary:hover {
+    background-color: #0d2b57;
 }
 
-.login-card .btn-link {
-    font-size: 0.9rem;
-    text-decoration: none;
-    color: #0066ff;
+input[type="checkbox"] {
+    transform: scale(1.2);
+    margin-right: 6px;
 }
 
-.login-card .btn-link:hover {
-    text-decoration: underline;
+label[for="remember"] {
+    font-size: 13px;
+    color: #333;
 }
