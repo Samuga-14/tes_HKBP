@@ -8,5 +8,5 @@ class GaleriKegiatan extends Model
 {
     use HasFactory;
     protected $table = 'galeri_kegiatans';
-    protected $fillable = ['judul', 'deskripsi', 'gambar', 'video', 'tanggal_unggah'];
+    protected $fillable = ['judul', 'deskripsi', 'gambar', 'video', 'tanggal_unggah', 'link_google_foto'];
 }

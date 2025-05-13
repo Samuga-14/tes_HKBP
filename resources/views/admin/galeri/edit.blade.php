@@ -61,6 +61,11 @@
                             <input type="file" name="video" id="video" class="form-control custom-form-control" accept="video/*">
                             <small class="text-muted" style="font-size: 13px;">Kosongkan jika tidak ingin mengubah video.</small>
                         </div>
+                        <div class="mb-4">
+                            <label for="link_google_foto" class="form-label fw-semibold">Link Google Foto</label>
+                            <input type="url" name="link_google_foto" id="link_google_foto" class="form-control" value="{{ old('link_google_foto', $galeri->link_google_foto) }}">
+                        </div>
+
                     </div>
                 </div>
 

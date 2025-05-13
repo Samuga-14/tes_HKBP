@@ -65,9 +65,11 @@
                         <small class="text-muted">
                             {{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}
                         </small>
-                        <a href="{{ asset('images/galeri/' . $item->gambar) }}" class="btn btn-sm btn-outline-primary" download>
-                            <i class="bi bi-download"></i> Unduh
-                        </a>
+                       @if ($item->link_google_foto)
+                            <a href="{{ $item->link_google_foto }}" class="btn-google-foto mt-2" target="_blank">
+                                <i class="bi bi-box-arrow-up-right"></i> Lihat Foto
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>

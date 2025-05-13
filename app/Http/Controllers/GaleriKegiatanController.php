@@ -29,10 +29,13 @@ class GaleriKegiatanController extends Controller
             'deskripsi' => 'required|string',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
             'video' => 'nullable|mimes:mp4,webm,ogg|max:32768',
+            'link_google_foto' => 'nullable|url|max:2048',
         ]);
 
         $data = $request->only(['judul', 'deskripsi']);
         $data['tanggal_unggah'] = now();
+        $data['link_google_foto'] = $request->input('link_google_foto');
+
 
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
@@ -66,10 +69,12 @@ class GaleriKegiatanController extends Controller
         'deskripsi' => 'required|string',
         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
         'video' => 'nullable|mimes:mp4,webm,ogg|max:32768',
+        'link_google_foto' => 'nullable|url|max:2048',
     ]);
 
     $data = $request->only(['judul', 'deskripsi']);
-   
+    $data['link_google_foto'] = $request->input('link_google_foto');
+
 
     if ($request->hasFile('gambar')) {
         $gambar = $request->file('gambar');
