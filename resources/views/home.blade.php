@@ -15,7 +15,7 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
-  
+
   <style>
     /* Animasi untuk elemen yang akan muncul saat scroll */
     .scroll-animate {
@@ -23,26 +23,26 @@
       transform: translateY(30px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-    
+
     .scroll-animate.animate {
       opacity: 1;
       transform: translateY(0);
     }
-    
+
     /* Delay untuk animasi bertahap */
     .delay-1 { transition-delay: 0.2s; }
     .delay-2 { transition-delay: 0.4s; }
     .delay-3 { transition-delay: 0.6s; }
     .delay-4 { transition-delay: 0.8s; }
     .delay-5 { transition-delay: 1s; }
-    
+
     /* Animasi khusus untuk hero section */
     .hero-content {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 1s ease-out, transform 1s ease-out;
     }
-    
+
     .hero-content.animate {
       opacity: 1;
       transform: translateY(0);
@@ -50,7 +50,7 @@
   </style>
 </head>
 <body>
-  
+
   <!-- Header -->
   @include('header')
 
@@ -61,10 +61,10 @@
           <p class="hero-subtitle">Jahowa Do Si Parmahan Au</p>
         </div>
   </section>
-  
+
   <section class="section-title">
   </section>
-  
+
   <!-- Bible Verse Section -->
   <section class="bible-verse py-4">
       <div class="container text-center">
@@ -82,12 +82,12 @@
               <strong>M</strong>UNA
           </p>
       </div>
-  </section>  
+  </section>
 
   <!-- Layanan Section -->
   <section class="service-section py-6" id="layanan">
 
-  </section> 
+  </section>
   <!-- Tampilan Ulang Tahun di Home User -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-3 p-4">
     <!-- Hari Ini -->
@@ -132,36 +132,28 @@
 
       <div class="row align-items-center g-4">
         <div class="col-lg-6">
-          <div class="service-card scroll-animate delay-1">
-            <h3 class="service-card-title h4 mb-4">Gereja Melayani</h3>
-            <ul class="service-list">
-              <li class="service-item scroll-animate delay-2">
-                <span class="service-icon">
-                  <i class="bi bi-calendar-check"></i>
-                </span>
-                <span>Ibadah Minggu</span>
-              </li>
-              <li class="service-item scroll-animate delay-3">
-                <span class="service-icon">
-                  <i class="bi bi-people"></i>
-                </span>
-                <span>Ibadah Tamu</span>
-              </li>
-              <li class="service-item scroll-animate delay-4">
-                <span class="service-icon">
-                  <i class="bi bi-water"></i>
-                </span>
-                <span>Baptisan Kudus</span>
-              </li>
-              <li class="service-item scroll-animate delay-5">
-                <span class="service-icon">
-                  <i class="bi bi-cup-hot"></i>
-             </span>
-                <span>Perjamuan Kudus</span>
-              </li>
-            </ul>
+            <div class="service-card scroll-animate delay-1">
+              <h3 class="service-card-title h4 mb-4">Ayat Harian</h3>
+
+              @if($ayatHarian)
+                <div class="mb-3">
+                  <h5 class="fw-bold">{{ $ayatHarian->judul }}</h5>
+                  <p>{{ $ayatHarian->deskripsi }}</p>
+                  <small class="text-muted">
+                    {{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}
+                  </small>
+
+                  @if($ayatHarian->gambar)
+                    <div class="mt-3">
+                      <img src="{{ asset('images/berita/' . $ayatHarian->gambar) }}" alt="Gambar Ayat Harian" class="img-fluid rounded shadow">
+                    </div>
+                  @endif
+                </div>
+              @else
+                <p class="text-muted">Belum ada ayat harian tersedia saat ini.</p>
+              @endif
+            </div>
           </div>
-        </div>
 
         <div class="col-lg-6">
           <div class="service-image scroll-animate delay-2">
@@ -243,7 +235,7 @@
   @include('footer')
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Animasi untuk hero section saat halaman dimuat
@@ -253,25 +245,25 @@
           heroContent.classList.add('animate');
         }, 300);
       }
-      
+
       // Fungsi untuk menangani animasi scroll
       function handleScrollAnimation() {
         const elements = document.querySelectorAll('.scroll-animate');
         const windowHeight = window.innerHeight;
         const triggerPoint = windowHeight * 0.85;
-        
+
         elements.forEach(element => {
           const elementPosition = element.getBoundingClientRect().top;
-          
+
           if (elementPosition < triggerPoint) {
             element.classList.add('animate');
           }
         });
       }
-      
+
       // Jalankan sekali saat halaman dimuat
       handleScrollAnimation();
-      
+
       // Jalankan saat scroll
       window.addEventListener('scroll', handleScrollAnimation);
     });

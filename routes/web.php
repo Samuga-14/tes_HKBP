@@ -9,9 +9,7 @@ use App\Http\Controllers\WartaController;
 use App\Http\Controllers\JemaatController;
 use App\Models\GaleriKegiatan;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [BeritaController::class, 'home'])->name('home');
 
 Route::get('/sejarah', function () {
     return view('sejarah');
