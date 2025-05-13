@@ -26,7 +26,6 @@ class WartaController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'tanggal_publikasi' => 'required|date',
             'file_pdf' => 'required|mimes:pdf|max:16384',
         ]);
 
@@ -35,7 +34,7 @@ class WartaController extends Controller
         Warta::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'tanggal_publikasi' => $request->tanggal_publikasi,
+            'tanggal_publikasi' => now(),
             'file_pdf' => $filePath,
         ]);
 
@@ -52,7 +51,6 @@ class WartaController extends Controller
         $request->validate([
             'judul' => 'required',
             'deskripsi' => 'required',
-            'tanggal_publikasi' => 'required|date',
             'file_pdf' => 'mimes:pdf|max:16384',
         ]);
 
@@ -64,7 +62,6 @@ class WartaController extends Controller
         $warta->update([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'tanggal_publikasi' => $request->tanggal_publikasi,
         ]);
 
         return redirect()->route('admin.warta.index')->with('success', 'Warta berhasil diperbarui!');

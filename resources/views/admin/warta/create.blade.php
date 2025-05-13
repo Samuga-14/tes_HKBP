@@ -31,12 +31,6 @@
                     <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4" required></textarea>
                 </div>
 
-                <!-- Input Tanggal Publikasi -->
-                <div class="mb-3">
-                    <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
-                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control custom-form-control" required>
-                </div>
-
                 <!-- Input File PDF -->
                 <div class="mb-3">
                     <label for="file_pdf" class="form-label fw-semibold">File PDF</label>

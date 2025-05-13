@@ -31,11 +31,10 @@ class BeritaController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-            'tanggal_publikasi' => 'required|date',
         ]);
 
-        $data = $request->only(['judul', 'deskripsi', 'tanggal_publikasi']);
-
+        $data = $request->only(['judul', 'deskripsi']);
+        $data['tanggal_publikasi'] = now();
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
@@ -67,11 +66,10 @@ class BeritaController extends Controller
         $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'tanggal_publikasi' => 'required|date',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192'
         ]);
 
-        $data = $request->only(['judul', 'deskripsi', 'tanggal_publikasi']);
+        $data = $request->only(['judul', 'deskripsi']);
 
         if ($request->hasFile('gambar')) {
             // Hapus gambar lama

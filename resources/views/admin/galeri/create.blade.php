@@ -43,11 +43,6 @@
                             <label for="video" class="form-label fw-semibold">Video</label>
                             <input type="file" name="video" id="video" class="form-control" accept="video/*">
                         </div>
-
-                        <div class="mb-3">
-                            <label for="tanggal_unggah" class="form-label fw-semibold">Tanggal Unggah</label>
-                            <input type="date" name="tanggal_unggah" id="tanggal_unggah" class="form-control" required>
-                        </div>
                     </div>
                 </div>
 

@@ -32,14 +32,6 @@
                             </div>
 
                             <div class="mb-4">
-                                <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
-                                <input type="date" name="tanggal_publikasi" id="tanggal_publikasi"
-                                    class="form-control custom-form-control"
-                                    value="{{ old('tanggal_publikasi', $berita->tanggal_publikasi ? \Carbon\Carbon::parse($berita->tanggal_publikasi)->format('Y-m-d') : '') }}"
-                                    required>
-                            </div>
-
-                            <div class="mb-4">
                                 <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>
                                 <textarea name="deskripsi" id="deskripsi" class="form-control" rows="6" required>{{ old('deskripsi', $berita->deskripsi) }}</textarea>
                             </div>

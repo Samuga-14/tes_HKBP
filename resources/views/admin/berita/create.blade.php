@@ -30,11 +30,6 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
-                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control custom-form-control" required>
-                </div>
-
-                <div class="mb-4">
                     <label for="gambar" class="form-label fw-semibold">Gambar (Opsional)</label>
                     <input type="file" name="gambar" id="gambar" class="form-control custom-form-control" accept="image/*">
                 </div>

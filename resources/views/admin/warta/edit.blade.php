@@ -31,15 +31,6 @@
                                 value="{{ old('judul', $warta->judul) }}" required>
                         </div>
 
-                        <!-- Input Tanggal Publikasi -->
-                        <div class="mb-3">
-                            <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
-                            <input type="date" name="tanggal_publikasi" id="tanggal_publikasi"
-                                class="form-control custom-form-control"
-                                value="{{ old('tanggal_publikasi', $warta->tanggal_publikasi ? \Carbon\Carbon::parse($warta->tanggal_publikasi)->format('Y-m-d') : '') }}"
-                                required>
-                        </div>
-
                         <!-- Input Deskripsi -->
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>

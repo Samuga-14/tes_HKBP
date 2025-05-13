@@ -29,10 +29,10 @@ class GaleriKegiatanController extends Controller
             'deskripsi' => 'required|string',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
             'video' => 'nullable|mimes:mp4,webm,ogg|max:32768',
-            'tanggal_unggah' => 'required|date',
         ]);
 
-        $data = $request->only(['judul', 'deskripsi', 'tanggal_unggah']);
+        $data = $request->only(['judul', 'deskripsi']);
+        $data['tanggal_unggah'] = now();
 
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
@@ -66,10 +66,10 @@ class GaleriKegiatanController extends Controller
         'deskripsi' => 'required|string',
         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
         'video' => 'nullable|mimes:mp4,webm,ogg|max:32768',
-        'tanggal_unggah' => 'required|date',
     ]);
 
-    $data = $request->only(['judul', 'deskripsi', 'tanggal_unggah']);
+    $data = $request->only(['judul', 'deskripsi']);
+   
 
     if ($request->hasFile('gambar')) {
         $gambar = $request->file('gambar');

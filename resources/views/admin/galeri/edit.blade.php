@@ -30,15 +30,6 @@
                             <input type="text" name="judul" id="judul" class="form-control custom-form-control"
                                 value="{{ old('judul', $galeri->judul) }}" required>
                         </div>
-
-                        <div class="mb-4">
-                            <label for="tanggal_unggah" class="form-label fw-semibold">Tanggal Unggah</label>
-                            <input type="date" name="tanggal_unggah" id="tanggal_unggah"
-                                class="form-control custom-form-control"
-                                value="{{ old('tanggal_unggah', $galeri->tanggal_unggah ? \Carbon\Carbon::parse($galeri->tanggal_unggah)->format('Y-m-d') : '') }}"
-                                required>
-                        </div>
-
                         <div class="mb-4">
                             <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>
                             <textarea name="deskripsi" id="deskripsi" class="form-control" rows="6" required>{{ old('deskripsi', $galeri->deskripsi) }}</textarea>
