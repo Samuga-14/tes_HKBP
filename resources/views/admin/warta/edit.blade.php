@@ -1,58 +1,97 @@
 @extends('layouts.admin')
 
-@section('title', 'Edit Warta')
-
 @section('content')
-<div class="card shadow-sm">
-    <div class="card-header bg-gradient-primary text-white d-flex justify-content-between align-items-center py-3">
-        <div class="d-flex align-items-center gap-3">
-            <i class="fas fa-edit"></i>
-            <h5 class="mb-0">Edit Warta</h5>
+<div class="container mt-3 mb-0 position-relative">
+    <div class="row">
+        <div class="col-12">
+            <h6 class="fw-semibold mb-4" style="font-size: 18px;">Edit Warta</h6>
+
+            @if ($errors->any())
+                <div class="alert alert-danger py-2 px-3" style="font-size: 14px;">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <!-- Form Edit Warta -->
+            <form id="formWarta" action="{{ route('admin.warta.update', $warta->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+
+                <div class="row g-4">
+                    <!-- Kolom Kiri -->
+                    <div class="col-md-6 pe-md-4">
+                        <!-- Input Judul -->
+                        <div class="mb-3">
+                            <label for="judul" class="form-label fw-semibold">Judul</label>
+                            <input type="text" name="judul" id="judul" class="form-control custom-form-control"
+                                value="{{ old('judul', $warta->judul) }}" required>
+                        </div>
+
+                        <!-- Input Tanggal Publikasi -->
+                        <div class="mb-3">
+                            <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
+                            <input type="date" name="tanggal_publikasi" id="tanggal_publikasi"
+                                class="form-control custom-form-control"
+                                value="{{ old('tanggal_publikasi', $warta->tanggal_publikasi ? \Carbon\Carbon::parse($warta->tanggal_publikasi)->format('Y-m-d') : '') }}"
+                                required>
+                        </div>
+
+                        <!-- Input Deskripsi -->
+                        <div class="mb-3">
+                            <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>
+                            <textarea name="deskripsi" id="deskripsi" class="form-control" rows="5" required>{{ old('deskripsi', $warta->deskripsi) }}</textarea>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Kanan -->
+                    <div class="col-md-6 ps-md-4">
+                        <!-- Input File PDF -->
+                        <div class="mb-3">
+                            <label for="file_pdf" class="form-label fw-semibold">File PDF</label>
+                            <input type="file" name="file_pdf" id="file_pdf" class="form-control custom-form-control" accept="application/pdf">
+                            <small class="text-muted" style="font-size: 13px;">Kosongkan jika tidak ingin mengubah file PDF.</small>
+
+                            @if ($warta->file_pdf)
+                                <div class="mt-3 p-2 border rounded d-flex align-items-center justify-content-between" style="background-color: #f8f9fa;">
+                                    <div class="d-flex align-items-center" style="font-size: 14px;">
+                                        <i class="fas fa-file-pdf text-danger me-2 fa-lg"></i>
+                                        <span>
+                                            <strong>File saat ini:</strong>
+                                            <a href="{{ asset('storage/' . $warta->file_pdf) }}" target="_blank">
+                                                {{ basename($warta->file_pdf) }}
+                                            </a>
+                                        </span>
+                                    </div>
+                                    <a href="{{ asset('storage/' . $warta->file_pdf) }}" target="_blank" class="btn btn-sm btn-outline-primary ms-2">
+                                        Lihat
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tombol Submit -->
+                <div class="d-flex justify-content-end mt-4 mb-0">
+                    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;">
+                        Simpan Perubahan
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="card-body p-4">
-            <form action="{{ route('admin.warta.update', $warta->id) }}" method="POST" enctype="multipart/form-data">
-
-            @csrf
-            @method('PUT')
-
-            <div class="mb-3">
-                <label for="judul" class="form-label fw-bold">Judul Warta</label>
-                <input type="text" name="judul" id="judul" class="form-control" value="{{ old('judul', $warta->judul) }}" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="deskripsi" class="form-label fw-bold">Deskripsi</label>
-                <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4" required>{{ old('deskripsi', $warta->deskripsi) }}</textarea>
-            </div>
-
-            <div class="mb-3">
-                <label for="tanggal_publikasi" class="form-label fw-bold">Tanggal Publikasi</label>
-                <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control" value="{{ old('tanggal_publikasi', $warta->tanggal_publikasi) }}" required>
-            </div>
-
-            <div class="mb-3">
-                <label for="file_pdf" class="form-label fw-bold">Ganti File PDF (Optional)</label>
-                <input type="file" name="file_pdf" id="file_pdf" class="form-control">
-                @if ($warta->file_pdf)
-                    <div class="mt-2">
-                        <a href="{{ asset('storage/' . $warta->file_pdf) }}" target="_blank" class="btn btn-sm btn-outline-primary">
-                            <i class="fas fa-file-pdf me-1"></i> Lihat File Sebelumnya
-                        </a>
-                    </div>
-                @endif
-                <small class="text-muted">Biarkan kosong jika tidak ingin mengganti file.</small>
-            </div>
-
-            <div class="d-flex gap-3">
-                <button type="submit" class="btn btn-success px-4">
-                    <i class="fas fa-save me-1"></i> Simpan Perubahan
-                </button>
-                <a href="{{ route('admin.warta.index') }}" class="btn btn-secondary px-4">
-                    <i class="fas fa-arrow-left me-1"></i> Kembali
-                </a>
-            </div>
-        </form>
-    </div>
 </div>
+@endsection
+
+@section('styles')
+<style>
+    .custom-form-control {
+        height: 45px;
+        font-size: 16px;
+    }
+</style>
 @endsection

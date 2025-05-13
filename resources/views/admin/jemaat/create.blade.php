@@ -1,75 +1,83 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid px-4 pt-3 pb-5"> {{-- Tambah padding bawah --}}
+<div class="container mt-3 mb-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-12 ps-4">
+            <h6 class="fw-semibold mb-4" style="font-size: 18px; margin-left: 4px;">Tambah Jemaat</h6>
 
-    {{-- Header Judul --}}
-    <div class="mb-4 pb-2 pt-4 border-bottom"> {{-- Menurunkan sedikit header judul --}}
-        <h3 class="fw-semibold text-dark">Tambah Data Jemaat</h3> {{-- Perbesar ukuran tulisan judul --}}
+            @if ($errors->any())
+                <div class="alert alert-danger py-2 px-3" style="font-size: 14px;">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('admin.jemaat.store') }}" method="POST">
+                @csrf
+                <div class="row">
+                    <!-- Kolom Kiri -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="nama" class="form-label fw-semibold">Nama</label>
+                            <input type="text" name="nama" id="nama" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="jenis_kelamin" class="form-label fw-semibold">Jenis Kelamin</label>
+                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
+                                <option value="">-- Pilih Jenis Kelamin --</option>
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="tanggal_lahir" class="form-label fw-semibold">Tanggal Lahir</label>
+                            <input type="date" name="tanggal_lahir" id="tanggal_lahir" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label fw-semibold">Alamat</label>
+                            <textarea name="alamat" id="alamat" rows="3" class="form-control" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Kanan -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="status_pernikahan" class="form-label fw-semibold">Status Pernikahan</label>
+                            <select name="status_pernikahan" id="status_pernikahan" class="form-control" required>
+                                <option value="">-- Pilih Status --</option>
+                                <option value="Belum Menikah">Belum Menikah</option>
+                                <option value="Menikah">Menikah</option>
+                                <option value="Cerai">Cerai</option>
+                                <option value="Duda / Janda">Duda / Janda</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="nama_pasangan" class="form-label fw-semibold">Nama Pasangan (Opsional)</label>
+                            <input type="text" name="nama_pasangan" id="nama_pasangan" class="form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="jumlah_anak" class="form-label fw-semibold">Jumlah Anak</label>
+                            <input type="number" name="jumlah_anak" id="jumlah_anak" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-4">
+                    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;">
+                        Tambahkan
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-
-    {{-- Form Input Data Jemaat --}}
-    <form action="{{ route('admin.jemaat.store') }}" method="POST">
-        @csrf
-        <div class="row g-4">
-
-            {{-- Nama Jemaat --}}
-            <div class="col-md-6">
-                <label for="nama" class="form-label fw-semibold">Nama Jemaat</label>
-                <input type="text" class="form-control" id="nama" name="nama" required>
-            </div>
-
-            {{-- Nama Pasangan --}}
-            <div class="col-md-6">
-                <label for="nama_pasangan" class="form-label fw-semibold">Nama Pasangan</label>
-                <input type="text" class="form-control" id="nama_pasangan" name="nama_pasangan">
-            </div>
-
-            {{-- Tanggal Lahir --}}
-            <div class="col-md-6">
-                <label for="tanggal_lahir" class="form-label fw-semibold">Tanggal Lahir</label>
-                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" required>
-            </div>
-
-            {{-- Jumlah Anak --}}
-            <div class="col-md-6">
-                <label for="jumlah_anak" class="form-label fw-semibold">Jumlah Anak</label>
-                <input type="number" class="form-control" id="jumlah_anak" name="jumlah_anak" min="0" value="0">
-            </div>
-
-            {{-- Jenis Kelamin --}}
-            <div class="col-md-6">
-                <label for="jenis_kelamin" class="form-label fw-semibold">Jenis Kelamin</label>
-                <select class="form-select" id="jenis_kelamin" name="jenis_kelamin" required>
-                    <option value="">Pilih Jenis Kelamin</option>
-                    <option value="Laki-laki">Laki-laki</option>
-                    <option value="Perempuan">Perempuan</option>
-                </select>
-            </div>
-
-            {{-- Alamat --}}
-            <div class="col-md-6">
-                <label for="alamat" class="form-label fw-semibold">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" required>
-            </div>
-
-            {{-- Status Pernikahan --}}
-            <div class="col-md-6">
-                <label for="status_pernikahan" class="form-label fw-semibold">Status Pernikahan</label>
-                <select class="form-select" id="status_pernikahan" name="status_pernikahan" required>
-                    <option value="">Pilih Status Pernikahan</option>
-                    <option value="Menikah">Menikah</option>
-                    <option value="Belum Menikah">Belum Menikah</option>
-                    <option value="Tidak Menikah">Cerai</option>
-                </select>
-            </div>
-        </div>
-
-        {{-- Tombol Submit --}}
-        <div class="d-flex justify-content-end mt-5"> {{-- Menurunkan tombol lebih sedikit --}}
-            <button type="submit" class="btn btn-primary px-4 py-2">Tambahkan</button>
-        </div>
-    </form>
-
 </div>
 @endsection

@@ -1,78 +1,132 @@
 @extends('layouts.admin')
 
-@section('title', 'Data warta')
+@section('title', 'Data Warta')
 
 @section('content')
-<div class="card shadow-sm">
-    <div class="card-header bg-gradient-primary text-white d-flex justify-content-between align-items-center py-3">
-        <div class="d-flex align-items-center gap-3">
-            <i class="fas fa-newspaper"></i>
-            <h5 class="mb-0">Daftar warta</h5>
-        </div>
-    </div>
-    <div class="card-body p-4">
-        <div class="mb-4">
-            <a href="{{ route('admin.warta.create') }}" class="btn btn-primary">
-                <i class="fas fa-plus me-2"></i> Tambah warta
-            </a>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr class="bg-primary text-white">
-                        <th class="text-center">Judul</th>
-                        <th class="text-center">Deskripsi</th>
-                        <th class="text-center">File PDF</th>
-                        <th class="text-center">Tanggal Publikasi</th>
-                        <th class="text-center">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($wartas as $item)
-                        <tr class="align-middle">
-                            <td>{{ $item->judul }}</td>
-                            <td>{{ Str::limit($item->deskripsi, 50) }}</td>
-                            <td class="text-center">
-                                @if ($item->file_pdf)
-                                    <a href="{{ asset('storage/' . $item->file_pdf) }}" class="btn btn-sm btn-info" target="_blank">
-                                        <i class="fas fa-file-pdf"></i> Lihat PDF
-                                    </a>
-                                @else
-                                    <span class="badge bg-secondary">Tidak ada</span>
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                <span class="badge bg-info">{{ $item->tanggal_publikasi }}</span>
-                            </td>
-                            <td class="text-center">
-                                <div class="btn-group" role="group">
-                                    <a href="{{ route('admin.warta.edit', $item->id) }}" class="btn btn-warning btn-sm" data-bs-toggle="tooltip" title="Edit">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form action="{{ route('admin.warta.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin mau hapus warta ini?')">
-    @csrf
-    @method('DELETE')
-    <button class="btn btn-danger btn-sm" data-bs-toggle="tooltip" title="Hapus">
-        <i class="fas fa-trash"></i>
-    </button>
-</form>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap');
 
-                                </div>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="5" class="text-center py-4">
-                                <div class="text-muted">
-                                    <i class="fas fa-inbox fa-3x mb-3"></i>
-                                    <p>Tidak ada data warta</p>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+    body {
+        font-family: 'Kumbh Sans', sans-serif;
+    }
+
+    .table-no-border th, .table-no-border td {
+        border: none !important;
+    }
+
+    .table-alternating tbody tr:nth-child(odd) {
+        background-color: #ffffff;
+    }
+
+    .table-alternating tbody tr:nth-child(even) {
+        background-color: #e6f0fa;
+    }
+
+    .table-alternating tbody tr:hover {
+        background-color: #d0e7ff;
+    }
+
+    .rounded-container {
+        border-radius: 20px;
+        padding: 30px;
+        background-color: white;
+    }
+
+    .add-button {
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-size: 14px;
+        background-color: #0d6efd;
+        color: white;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+
+    .add-button i {
+        font-size: 14px;
+    }
+
+    .table th, .table td {
+        padding: 14px 16px;
+        vertical-align: middle;
+    }
+
+    .table th {
+        background-color: #f4f4f4;
+        font-size: 14px;
+        color: #000;
+    }
+
+    .table td {
+        font-size: 13px;
+    }
+
+    .icon-btn {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    .icon-btn i {
+        font-size: 1.2rem;
+    }
+</style>
+
+<div class="container-fluid py-3 px-4 rounded-container shadow-sm">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold mb-0" style="font-size: 24px;">Data Warta</h2>
+        <a href="{{ route('admin.warta.create') }}" class="add-button">
+            Tambah Warta <i class="fas fa-plus"></i>
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-no-border table-alternating align-middle">
+            <thead>
+                <tr>
+                    <th style="width: 5%;">No.</th>
+                    <th style="width: 25%;">Judul</th>
+                    <th style="width: 40%;">Deskripsi</th>
+                    <th style="width: 15%;" class="text-center">Tanggal Publikasi</th>
+                    <th style="width: 15%;" class="text-center">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($wartas as $index => $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item->judul }}</td>
+                    <td>{{ Str::limit(strip_tags($item->deskripsi), 100) }}</td>
+                    <td class="text-center">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}</td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="{{ route('admin.warta.edit', $item->id) }}" class="text-primary" title="Edit">
+                                <i class="fas fa-edit fa-lg"></i>
+                            </a>
+                            <form action="{{ route('admin.warta.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus warta ini?')" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="icon-btn text-danger" title="Hapus">
+                                    <i class="fas fa-trash-alt fa-lg"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="5" class="text-center text-muted py-4">
+                        <i class="fas fa-inbox fa-3x mb-2"></i><br>
+                        Tidak ada data warta.
+                    </td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 </div>
 @endsection

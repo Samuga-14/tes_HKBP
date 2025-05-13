@@ -1,50 +1,66 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-sm">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0"><i class="fas fa-newspaper me-2"></i>Tambah warta</h4>
+<div class="container mt-3 mb-0 position-relative">
+    <div class="row">
+        <div class="col-lg-8">
+            <h6 class="fw-semibold mb-3" style="font-size: 18px;">Tambah Warta</h6>
+
+            @if ($errors->any())
+                <div class="alert alert-danger py-2 px-3" style="font-size: 14px;">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                <div class="card-body bg-light">
-                    <form action="{{ route('admin.warta.store') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
+            @endif
 
-                        <div class="form-group mb-4">
-                            <label for="judul" class="form-label fw-bold"><i class="fas fa-heading me-1"></i>Judul</label>
-                            <input type="text" name="judul" id="judul" class="form-control form-control-lg shadow-sm" placeholder="Masukkan judul warta" required>
-                        </div>
+            <form id="formWarta" action="{{ route('admin.warta.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
 
-                        <div class="form-group mb-4">
-                            <label for="deskripsi" class="form-label fw-bold"><i class="fas fa-align-left me-1"></i>Deskripsi</label>
-                            <textarea name="deskripsi" id="deskripsi" class="form-control shadow-sm" rows="6" placeholder="Tulis deskripsi warta di sini" required></textarea>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="file_pdf" class="form-label fw-bold"><i class="fas fa-file-pdf me-1"></i>File PDF</label>
-                            <input type="file" name="file_pdf" id="file_pdf" class="form-control shadow-sm" accept="application/pdf">
-                            <small class="text-muted">Format yang didukung: PDF (Max: 2MB)</small>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="tanggal_publikasi" class="form-label fw-bold"><i class="fas fa-calendar-alt me-1"></i>Tanggal Publikasi</label>
-                            <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control shadow-sm" required>
-                        </div>
-
-                        <div class="d-flex gap-3">
-                            <button type="submit" class="btn btn-primary px-4">
-                                <i class="fas fa-save me-1"></i> Simpan
-                            </button>
-                            <a href="{{ route('admin.warta.index') }}" class="btn btn-danger px-4">
-                                <i class="fas fa-times me-1"></i> Batal
-                            </a>
-                        </div>
-                    </form>
+                <!-- Input Judul -->
+                <div class="mb-3">
+                    <label for="judul" class="form-label fw-semibold">Judul</label>
+                    <input type="text" name="judul" id="judul" class="form-control custom-form-control" required>
                 </div>
-            </div>
+
+                <!-- Input Deskripsi -->
+                <div class="mb-3">
+                    <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>
+                    <textarea name="deskripsi" id="deskripsi" class="form-control" rows="4" required></textarea>
+                </div>
+
+                <!-- Input Tanggal Publikasi -->
+                <div class="mb-3">
+                    <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
+                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control custom-form-control" required>
+                </div>
+
+                <!-- Input File PDF -->
+                <div class="mb-3">
+                    <label for="file_pdf" class="form-label fw-semibold">File PDF</label>
+                    <input type="file" name="file_pdf" id="file_pdf" class="form-control custom-form-control" accept="application/pdf" required>
+                </div>
+
+            </form>
         </div>
     </div>
+
+    <!-- Tombol Submit dinaikkan dengan mt-1 -->
+    <div class="d-flex justify-content-end mt-1 mb-0">
+        <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formWarta">
+            Tambahkan
+        </button>
+    </div>
 </div>
+@endsection
+
+@section('styles')
+<style>
+    .custom-form-control {
+        height: 45px;
+        font-size: 16px;
+    }
+</style>
 @endsection
