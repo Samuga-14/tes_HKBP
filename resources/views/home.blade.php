@@ -136,21 +136,13 @@
               <h3 class="service-card-title h4 mb-4">Ayat Harian</h3>
 
               @if($ayatHarian)
-                <div class="mb-3">
-                  <h5 class="fw-bold">{{ $ayatHarian->judul }}</h5>
+                <div class="scroll-animate delay-2">
+                  <p><strong>{{ $ayatHarian->judul }}</strong></p>
                   <p>{{ $ayatHarian->deskripsi }}</p>
-                  <small class="text-muted">
-                    {{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}
-                  </small>
-
-                  @if($ayatHarian->gambar)
-                    <div class="mt-3">
-                      <img src="{{ asset('images/berita/' . $ayatHarian->gambar) }}" alt="Gambar Ayat Harian" class="img-fluid rounded shadow">
-                    </div>
-                  @endif
+                  <small><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
                 </div>
               @else
-                <p class="text-muted">Belum ada ayat harian tersedia saat ini.</p>
+                <p>Belum ada Ayat Harian yang tersedia.</p>
               @endif
             </div>
           </div>

@@ -10,6 +10,8 @@ use App\Http\Controllers\JemaatController;
 use App\Models\GaleriKegiatan;
 
 Route::get('/', [BeritaController::class, 'home'])->name('home');
+Route::get('/berita', [BeritaController::class, 'index2'])->name('berita');
+
 
 Route::get('/sejarah', function () {
     return view('sejarah');

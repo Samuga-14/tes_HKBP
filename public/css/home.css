@@ -7,7 +7,7 @@
 
     /* Hero */
     .hero {
-        background-image: url('../images/sijn.jpg');
+        background-image: url('../images/gambar12.jpg');
         background-size: cover;
         background-position: center;
         min-height: 95vh;
@@ -19,7 +19,7 @@
         color: white;
         opacity: 0.9;
     }
-  
+
     .hero::before {
         content: '';
         position: absolute;
