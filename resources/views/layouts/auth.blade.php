@@ -7,10 +7,11 @@
 
     <title>HKBP Portal - @yield('title')</title>
     <link rel="icon" href="{{ asset('images/hkbplogo.png') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+
     <!-- Styles -->
     <style>
         :root {
@@ -20,7 +21,7 @@
             --text-light: #8d99ae;
             --bg: #f8f9fa;
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--bg);
@@ -34,7 +35,7 @@
             background-size: cover;
             background-position: center;
         }
-        
+
         .auth-wrapper {
             width: 100%;
             max-width: 480px;
@@ -47,38 +48,38 @@
             overflow: hidden;
             padding: 40px;
         }
-        
+
         .auth-header {
             text-align: center;
             margin-bottom: 32px;
         }
-        
+
         .auth-logo {
             height: 72px;
             margin-bottom: 16px;
         }
-        
+
         .auth-title {
             font-size: 24px;
             font-weight: 600;
             color: var(--text);
             margin-bottom: 8px;
         }
-        
+
         .auth-subtitle {
             font-size: 14px;
             color: var(--text-light);
             font-weight: 400;
         }
-        
+
         .auth-content {
             width: 100%;
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
         .form-label {
             display: block;
             font-size: 14px;
@@ -86,7 +87,7 @@
             margin-bottom: 8px;
             font-weight: 500;
         }
-        
+
         .form-control {
             width: 100%;
             padding: 12px 16px;
@@ -96,13 +97,13 @@
             border-radius: 8px;
             transition: all 0.3s ease;
         }
-        
+
         .form-control:focus {
             outline: none;
             border-color: var(--primary-light);
             box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
         }
-        
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -116,34 +117,34 @@
             transition: all 0.3s ease;
             border: none;
         }
-        
+
         .btn-primary {
             background: var(--primary);
             color: white;
         }
-        
+
         .btn-primary:hover {
             background: var(--primary-light);
             transform: translateY(-1px);
         }
-        
+
         .auth-footer {
             text-align: center;
             margin-top: 24px;
             font-size: 13px;
             color: var(--text-light);
         }
-        
+
         .auth-footer a {
             color: var(--primary);
             text-decoration: none;
             font-weight: 500;
         }
-        
+
         .auth-footer a:hover {
             text-decoration: underline;
         }
-        
+
         @media (max-width: 576px) {
             .auth-wrapper {
                 padding: 32px 24px;
@@ -158,11 +159,11 @@
             <h1 class="auth-title">@yield('auth-title')</h1>
             <p class="auth-subtitle">@yield('auth-subtitle')</p>
         </div>
-        
+
         <div class="auth-content">
             @yield('auth-content')
         </div>
-        
+
         <div class="auth-footer">
             @yield('auth-footer')
         </div>
