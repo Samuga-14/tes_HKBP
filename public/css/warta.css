@@ -98,30 +98,49 @@ body {
     font-size: 0.95rem; /* diperbesar */
 }
 
-/* ====== DOWNLOAD ICON ====== */
-.download-icon a.btn.btn-info {
-    background-color: transparent !important;
-    border: none !important;
-    color: #3a3a3a !important;
-    font-size: 1.5rem;
-    padding: 0;
+/* ====== TOMBOL LIHAT ====== */
+.btn-lihat {
+    font-size: 0.875rem;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #002147;
+    color: #002147;
+    background-color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
     transition: all 0.3s ease;
-    box-shadow: none !important;
+    text-decoration: none;
 }
 
-.download-icon a.btn.btn-info:hover {
-    color: #0d2c5a !important;
-    transform: scale(1.2);
+.btn-lihat:hover {
+    background-color: #002147;
+    color: #ffffff;
+    text-decoration: none;
 }
 
-.download-icon a.btn.btn-info:focus,
-.download-icon a.btn.btn-info:active {
-    outline: none !important;
-    box-shadow: none !important;
-    background-color: transparent !important;
-    color: #3a3a3a !important;
+/* ====== TOMBOL DOWNLOAD ====== */
+.btn-download {
+    font-size: 0.875rem;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid #002147;
+    background-color: #f8f9fa;
+    color: #002147;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+    text-decoration: none;
 }
 
+.btn-download:hover {
+    background-color: #002147;
+    color: #ffffff;
+    text-decoration: none;
+}
 
 
 /* ====== RESPONSIVE ====== */

@@ -40,10 +40,14 @@
                 <p class="text-muted small">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
             </div>
 
-            <!-- IKON DOWNLOAD -->
-            <div class="download-icon">
+            <!-- IKON DOWNLOAD & LIHAT -->
+            <div class="aksi-buttons d-flex gap-2">
                 @if ($item->file_pdf)
-                    <a href="{{ asset('storage/' . $item->file_pdf) }}" class="btn btn-sm btn-info" target="_blank">
+                    <a href="{{ asset('storage/' . $item->file_pdf) }}" class="btn btn-sm btn-outline btn-lihat" target="_blank">
+                        <i class="fas fa-eye me-1"></i> Lihat
+                    </a>
+                    <a href="{{ asset('storage/' . $item->file_pdf) }}" class="btn btn-sm btn-outline-sm" target="_blank">
+                        <i class="fas fa-file-pdf"></i> 
                         <i class="fas fa-download"></i>
                     </a>
                 @endif
