@@ -4,10 +4,12 @@
 
 @section('content')
 <style>
-    body {
-        font-family: 'Poppins', sans-serif;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap');
 
+    body {
+        font-family: 'Kumbh Sans', sans-serif;
+    }
+    
     .table-no-border th, .table-no-border td {
         border: none !important;
     }

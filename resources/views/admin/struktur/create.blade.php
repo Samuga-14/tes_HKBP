@@ -38,12 +38,14 @@
             </div>
         </div>
 
-        <!-- Tombol fixed kanan bawah dengan margin bottom lebih tinggi -->
-        <div class="position-fixed bottom-0 end-0 p-4" style="z-index: 999; margin-bottom: 100px;">
-            <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
-                Tambahkan
-            </button>
-        </div>
+   <!-- Tombol fixed kanan bawah, dinaikkan dan digeser sedikit ke kiri -->
+<div class="position-fixed" style="bottom: 150px; right: 60px; z-index: 999;">
+    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
+        Tambahkan
+    </button>
+</div>
+
+
     </div>
 
     @endsection
