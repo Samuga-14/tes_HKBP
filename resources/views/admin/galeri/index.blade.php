@@ -38,14 +38,12 @@
     }
 
     .table th {
-    background-color: #f4f4f4;
-    font-size: 15px;
-    padding: 14px 12px; /* Sedikit lebih tebal */
-    color: #000;
-    font-weight: 600;
-}
-
-
+        background-color: #f4f4f4;
+        font-size: 15px;
+        padding: 14px 12px; /* Sedikit lebih tebal */
+        color: #000;
+        font-weight: 600;
+    }
 
     table tr {
         border-bottom: 1px solid #f0f0f0;
@@ -65,12 +63,12 @@
     }
 
     .icon-action {
-    background: none;
-    border: none;
-    font-size: 18px; 
-    cursor: pointer;
-    margin: 0 4px;
-}
+        background: none;
+        border: none;
+        font-size: 18px; 
+        cursor: pointer;
+        margin: 0 4px;
+    }
 
     .pagination {
         justify-content: end;
@@ -82,9 +80,9 @@
         margin: 0 4px;
     }
 
-    icon-label i {
-    font-size: 18px; 
-}
+    .icon-label i {
+        font-size: 18px; 
+    }
 </style>
 
 <div class="table-container">
@@ -94,7 +92,6 @@
             Add New <i class="fas fa-plus"></i>
         </a>
     </div>
-</div>
 
     <div class="table-responsive">
         <table class="table align-middle">
@@ -169,4 +166,5 @@
         {{ $galeri->links() }}
     </div>
 </div>
+
 @endsection
