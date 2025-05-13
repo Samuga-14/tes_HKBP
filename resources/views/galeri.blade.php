@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri Kegiatan - HKBP Sinambela Simanullang</title>
+    <title>Galeri Kegiatan</title>
     <link rel="  website icon" href="{{ asset('images/hkbplogo.png') }}" type="image/png">
 
 
@@ -25,11 +25,17 @@
 
     {{-- Hero Section --}}
     <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Selamat Datang di HKBP<br>Sinambela Simanullang</h1>
-            <p class="hero-subtitle">Jahowa Do Si Parmahan Au</p>
+        <div class="top-bar"></div>
+        <div class="hero-image">
+            <img src="{{ asset('images/icongaleri.jpg') }}"  alt="Ikon Gereja HKBP">
         </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Galeri Kegiatan<br>HKBP Sin-Sim</h1>
+            <p> Galeri kegiatan - kegiatan yang dilaksanakan oleh jemaat gereja HKBP Sinambela - Simanullang</p>
+        </div>
+        <div class="bottom-bar"></div>
     </section>
+
 
     {{-- Judul Section --}}
     <section class="section-title text-center mt-5 mb-4">
@@ -37,35 +43,58 @@
     </section>
 
     {{-- Galeri Section --}}
-    <section class="content-section">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                @foreach ($galeri as $item)
-                <div class="col">
-                    <div class="galeri-card">
-                        <div class="galeri-img-wrapper">
-            <img src="{{ asset('images/galeri/' . $item->gambar) }}" alt="{{ $item->judul }}" class="img-fluid">
-        </div>
-        <div class="galeri-text">
-            <div class="d-flex align-items-center mb-3">
-                <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="logo-galeri-mini me-2">
-                <span class="text-muted small">HKBP SINAMBELA SIMANULLANG</span>
+    <section class="galeri-section">
+        <div class="galeri-card">
+            <div class="galeri-image">
+                <img src="{{ asset('images/galeri/biblecamp.jpg') }}" alt="Foto Kegiatan">
             </div>
-            <h5 class="judul-galeri">{{ $item->judul }}</h5>
-            <p class="deskripsi-galeri">{{ Str::limit(strip_tags($item->deskripsi), 100) }}</p>
-            <div class="d-flex justify-content-between align-items-center mt-2">
-                <small class="text-muted">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}</small>
-                <a href="{{ asset('images/galeri/' . $item->gambar) }}" class="btn btn-sm btn-outline-primary" download>
-                    <i class="bi bi-download"></i> Unduh
-                </a>
+            <div class="galeri-content">
+                <div class="galeri-header">
+                    <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="galeri-logo">
+                    <span class="galeri-church">HKBP SINAMBELA</span>
+                </div>
+                <p class="galeri-text">
+                        Kegiatan Bible Camp 2024 yang Diikuti oleh <br>
+                        Remaja & Naposo Bulung Gereja HKBP Sinambela - Simanullang
+                </p>
+                <div class="galeri-date">9 APRIL 2024</div>
+
+                {{-- Pindahkan tombol ke dalam konten --}}
+                <div class="galeri-button-wrapper">
+                    <a href="https://photos.app.goo.gl/qua62nz3WXFpLimWA" class="galeri-button" target="_blank"
+                     rel="noopener noreferrer"> Lihat Galeri </a>
+
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-@endforeach
+    </section>
+    <section>
+            <div class="galeri-card">
+            <div class="galeri-image">
+                <img src="{{ asset('images/galeri/volley.jpg') }}" alt="Foto Kegiatan">
+            </div>
+            <div class="galeri-content">
+                <div class="galeri-header">
+                    <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="galeri-logo">
+                    <span class="galeri-church">HKBP SINAMBELA</span>
+                </div>
+                <p class="galeri-text">
+                        Perlombaan Volly Jetun Games yang oleh <br>
+                        Diikuti Naposo Bulung HKBP Sinambela - Simanullang
+                </p>
+                <div class="galeri-date"> 2 MEI 2025</div>
+
+                {{-- Pindahkan tombol ke dalam konten --}}
+                <div class="galeri-button-wrapper">
+                    <a href="https://photos.app.goo.gl/qua62nz3WXFpLimWA" class="galeri-button" target="_blank"
+                     rel="noopener noreferrer"> Lihat Galeri </a>
+
+                </div>
             </div>
         </div>
     </section>
+
+
+
 
     {{-- Footer --}}
     @include('footer')

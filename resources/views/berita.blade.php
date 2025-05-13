@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berita Gereja HKBP Sinambela Simanullang</title>
+    <title>Berita & Pengumuman</title>
     <link rel="  website icon" href="{{ asset('images/hkbplogo.png') }}" type="image/png">
 
     {{-- CSRF Token --}}
@@ -29,41 +29,59 @@
     <div class="container hero-content">
         <div class="row align-items-center">
             <div class="col-lg-6 text-section">
-                <h1>Berita & Pengumuman<br>HKBP Sinambela Simanullang</h1>
+                <h1>Berita & Pengumuman<br>HKBP Sinambela - Simanullang</h1>
+                <p> Berita dan pengumuman terbaru seputar kegiatan di Gereja HKBP Sinambela - Simanullang </p>
             </div>
             <div class="col-lg-6 text-center">
                 <img src="{{ asset('images/bg1.jpg') }}" alt="Ilustrasi Berita" class="hero-image">
             </div>
         </div>
-
-        <!-- Pindahkan bottom bar ke dalam container -->
-        <div class="bottom-bar-1"></div>
     </div>
+    <div class="bottom-bar"></div>
 </section>
 
-    {{-- Berita Section --}}
-    <section class="content-section py-5">
-        <div class="container">
-            <h2 class="mb-5 text-center fw-bold">Berita Terbaru</h2>
-            @foreach ($beritas->sortByDesc('tanggal_publikasi') as $item)
-            <div class="d-flex flex-column flex-md-row gap-3 mb-4 p-4 berita-box bg-white shadow-lg rounded-4">
-                <div class="flex-shrink-0">
-                    <img src="{{ asset('images/berita/' . $item->gambar) }}"  alt="{{ $item->judul }}" class="img-fluid rounded-3" style="width: 220px; height: 140px; object-fit: cover;">
-                </div>
-                <div class="flex-grow-1">
-                    <h5 class="fw-semibold">{{ $item->judul }}</h5>
-                    <p class="mb-2">{{ Str::limit(strip_tags($item->deskripsi), 150) }}</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <small class="text-muted">
-                            Dipublikasikan pada {{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}
-                        </small>
-                        <a href="{{ route('detail', $item->id) }}" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya</a>
+{{-- Berita Section --}}
+   <section class="berita-gereja-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Berita Gereja</h2>
+        
+        <div class="row">
+            <!-- Kontainer Berita 1 -->
+            <div class="col-12 mb-4">
+                <div class="berita-card shadow-lg rounded-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-5">
+                            <img src="{{ asset('images/berita/biblecamp.jpg') }}" alt="Berita 1" class="img-fluid rounded-3 berita-image">
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="berita-title">Bible Camp</h3>
+                            <p class="berita-desc">Bible Camp HKBP Sinambela adalah kegiatan rohani yang bertujuan untuk memperdalam iman, mempererat kebersamaan, dan membentuk karakter Kristiani di kalangan generasi muda. Melalui sesi renungan, pujian, permainan rohani, 
+                                dan kebersamaan di alam terbuka, para peserta diajak -|untuk lebih mengenal kasih Tuhan dan memperkuat relasi mereka dengan sesama serta dengan Kristus.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            @endforeach
+
+            <!-- Kontainer Berita 2 -->
+            <div class="col-12 mb-4">
+                <div class="berita-card shadow-lg rounded-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-5">
+                            <img src="{{ asset('images/berita/volley.jpg') }}" alt="Berita 2" class="img-fluid rounded-3 berita-image">
+                        </div>
+                        <div class="col-md-7">
+                            <h3 class="berita-title">Perlombaan Volly Jetun Games Diikuti Naposo Bulung HKBP Sinambela - Simanullang</h3>
+                            <p class="berita-desc">Naposo Bulung, sebagai generasi muda yang penuh semangat dan dedikasi terhadap kemajuan kampung, turut ambil bagian dalam kegiatan turnamen voli Jetun Games. 
+                                Keikutsertaan ini merupakan bentuk nyata dari komitmen mereka untuk membangun solidaritas, sportivitas, dan kebersamaan antar pemuda.</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Lihat Selengkapnya</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     {{-- Footer --}}
     @include('footer')
