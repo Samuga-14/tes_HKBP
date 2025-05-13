@@ -1,72 +1,62 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container-fluid py-4 px-5" style="background-color: #f9f9f9;">
-    <div class="bg-white p-4" style="border: 1px solid #e0e0e0;">
-        <h6 class="fw-semibold mb-4">Tambah Berita</h6>
-        <form action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data" id="createForm">
-            @csrf
+<div class="container mt-3 mb-5 position-relative">
+    <div class="row">
+        <div class="col-lg-6">
+            <h6 class="fw-semibold mb-4" style="font-size: 18px;">Tambah Berita</h6>
 
-            <div class="mb-3">
-                <label for="judul" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Judul</label>
-                <input type="text" class="form-control" name="judul" id="judul" required>
-            </div>
-            
-            <div class="mb-3">
-                <label for="gambar" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Gambar</label>
-                <div class="d-flex" style="border: 1px solid #ccc; border-radius: 12px; overflow: hidden; height: 44px;">
-                    <label for="gambar" class="btn btn-light mb-0" style="border: none; border-right: 1px solid #ccc; border-radius: 0; padding: 0 20px; display: flex; align-items: center;">
-                        Choose File
-                    </label>
-                    <div id="file-name" class="d-flex align-items-center px-3 text-muted" style="font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        No File Choosen
-                    </div>
+            @if ($errors->any())
+                <div class="alert alert-danger py-2 px-3" style="font-size: 14px;">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
-                <input type="file" name="gambar" id="gambar" accept="image/*" class="d-none">
-            </div>
+            @endif
 
-            <div class="mb-3">
-                <label for="deskripsi" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Deskripsi</label>
-                <textarea class="form-control" name="deskripsi" id="deskripsi" rows="5"></textarea>
-            </div>
+            <!-- Form -->
+            <form id="formBerita" action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
 
-            <div class="mb-3">
-                <label for="tanggal_publikasi" class="form-label text-secondary" style="font-weight: 600; font-size: 14px;">Tanggal Unggah</label>
-                <div class="input-group">
-                    <input type="date" class="form-control" name="tanggal_publikasi" id="tanggal_publikasi" required>
-                    <span class="input-group-text bg-white"><i class="fas fa-calendar-alt"></i></span>
+                <div class="mb-4">
+                    <label for="judul" class="form-label fw-semibold">Judul</label>
+                    <input type="text" name="judul" id="judul" class="form-control custom-form-control" value="{{ old('judul') }}" required>
                 </div>
-            </div>
 
-            <div class="d-flex justify-content-end mt-4">
-    <button type="submit" class="btn btn-primary" style="padding: 6px 20px; font-size: 14px;">
-        Tambahkan <span class="ms-2">+</span>
-    </button>
+                <div class="mb-4">
+                    <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>
+                    <textarea name="deskripsi" id="deskripsi" class="form-control custom-form-control" rows="5" required>{{ old('deskripsi') }}</textarea>
+                </div>
+
+                <div class="mb-4">
+                    <label for="gambar" class="form-label fw-semibold">Gambar</label>
+                    <input type="file" name="gambar" id="gambar" class="form-control custom-form-control" accept="image/*">
+                </div>
+
+                <div class="mb-4">
+                    <label for="tanggal_publikasi" class="form-label fw-semibold">Tanggal Publikasi</label>
+                    <input type="date" name="tanggal_publikasi" id="tanggal_publikasi" class="form-control custom-form-control" value="{{ old('tanggal_publikasi') }}" required>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tombol fixed kanan bawah, dinaikkan dan digeser sedikit ke kiri -->
+    <div class="position-fixed" style="bottom: 150px; right: 60px; z-index: 999;">
+        <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formBerita">
+            Tambahkan
+        </button>
+    </div>
 </div>
+@endsection
 
-
-@endsection  
-
-@section('scripts')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    // Menambahkan konfirmasi saat submit form
-    document.getElementById('createForm').addEventListener('submit', function(event) {
-        event.preventDefault();  // Mencegah form langsung submit
-        
-        Swal.fire({
-            title: 'Apakah Anda yakin?',
-            text: "Berita ini akan ditambahkan.",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'Ya, tambah!',
-            cancelButtonText: 'Batal'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Jika "Ya, tambah", form akan disubmit
-                event.target.submit();
-            }
-        });
-    });
-</script>
+@section('styles')
+<style>
+    .custom-form-control {
+        height: 45px; /* Menyesuaikan tinggi input */
+        font-size: 16px; /* Menyesuaikan ukuran font */
+    }
+</style>
 @endsection

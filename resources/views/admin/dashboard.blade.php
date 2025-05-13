@@ -3,254 +3,125 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="container-fluid px-4 py-6">
-
-    <!-- Welcome Card -->
-    <div class="card mb-6">
-        <div class="card-header">
-            <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <h2 class="card-title mb-2">Selamat Datang, {{ Auth::user()->name }}!</h2>
-                    <div>
-                        <span class="text-primary">Hari ini: {{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM Y') }}</span>
-                    </div>
-                </div>
-            </div> 
-        </div>        <div class="card-body">
-            <p class="text-muted">Semoga harimu menyenangkan 🌟</p>
+<div class="container-fluid py-5">
+    
+    {{-- Welcome --}}
+    <div class="card shadow-lg border-0 rounded-4 mb-5 bg-gradient bg-light">
+        <div class="card-body py-5 px-4 d-flex flex-column gap-2">
+            <h2 class="fw-bold text-dark mb-1">
+                👋 Selamat Datang, {{ Auth::user()->name }}!
+            </h2>
+            <p class="text-muted">Hari ini: <strong class="text-primary">{{ \Carbon\Carbon::now()->locale('id')->isoFormat('dddd, D MMMM Y') }}</strong></p>
+            <p class="text-secondary">Semoga harimu menyenangkan 🌟</p>
         </div>
     </div>
-    <!-- Ulang Tahun -->
-    <div class="space-y-3">
-        <!-- Hari Ini + Stats -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-3">
-            <!-- Hari Ini -->
-            <div class="lg:col-span-1 border border-gray-200 rounded-lg overflow-hidden">
-                <div class="px-3 py-2 bg-gray-50 border-b border-gray-200">
-                    <h3 class="font-medium text-sm text-gray-800 flex items-center gap-1">
-                        <i class="fas fa-birthday-cake text-xs text-yellow-600"></i>
-                        <!-- <span>Hari Ini ({{ now()->format('d/m/Y') }})</span> -->
-                    </h3>
-                </div>
-                @include('components.ulang-tahun', [
-                    'jemaats' => App\Models\Jemaat::ulangTahunHariIni()->get(),
-                    'hariIni' => true
-                ])
-            </div>
-        </div>
-        <br>                
-        <!-- Bulan Ini -->
-        <div class="space-y-3">
-            <div class="border border-gray-200 rounded-lg overflow-hidden">
-                <div class="px-3 py-2 bg-gray-50 border-b border-gray-200">
-                    <h3 class="font-medium text-sm text-gray-800 flex items-center gap-1">
-                        <i class="fas fa-calendar-alt text-xs text-blue-600"></i>
-                        <!-- <span>Bulan {{ now()->format('m/Y') }}</span> -->
-                    </h3>
-                </div>
-                @include('components.ulang-tahun', [
-                    'jemaats' => App\Models\Jemaat::ulangTahunBulanIni()->limit(10)->get(),
-                    'hariIni' => false
-                ])
-            </div>
-        </div>
-    </div>            
-    <br><br>
-    <!-- Stats Overview -->
-    <div class="lg:col-span-2 bg-white border border-gray-200 rounded-lg p-3">
-            <h3 class="font-medium text-sm mb-2">📊 Statistik</h3>
-            <!-- Isi stats di sini -->
-        </div>
-    <div class="row mb-4">
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3 class="text-muted small">Total KK Jemaat</h3>
-                            <p class="h3">{{ \App\Models\Jemaat::count() }}</p>
-                        </div>
-                        <div class="bg-primary bg-opacity-10 p-3 rounded-circle">
-                            <i class="fas fa-users text-primary"></i>
-                        </div>
-                    </div>
-                    <div class="mt-3 small text-muted">
-                        Total data KK jemaat terdaftar
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col-md-4 mb-4">
-            <div class="card">
+    {{-- Ulang Tahun --}}
+    <div class="row g-4 mb-4">
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-md rounded-4 h-100">
+                <div class="card-header bg-warning bg-opacity-10 border-0 rounded-top-4">
+                    <h6 class="m-0 text-warning fw-semibold"><i class="fas fa-birthday-cake me-2"></i> Ulang Tahun Hari Ini</h6>
+                </div>
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3 class="text-muted small">Total Berita</h3>
-                            <p class="h3">{{ \App\Models\Berita::count() }}</p>
-                        </div>
-                        <div class="bg-success bg-opacity-10 p-3 rounded-circle">
-                            <i class="fas fa-newspaper text-success"></i>
-                        </div>
-                    </div>
-                    <div class="mt-3 small text-muted">
-                        Total berita yang dipublikasikan
-                    </div>
+                    @include('components.ulang-tahun', [
+                        'jemaats' => App\Models\Jemaat::ulangTahunHariIni()->get(),
+                        'hariIni' => true
+                    ])
                 </div>
             </div>
         </div>
-
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3 class="text-muted small">Total Galeri</h3>
-                            <p class="h3">{{ \App\Models\GaleriKegiatan::count() }}</p>
-                        </div>
-                        <div class="bg-info bg-opacity-10 p-3 rounded-circle">
-                            <i class="fas fa-images text-info"></i>
-                        </div>
-                    </div>
-                    <div class="mt-3 small text-muted">
-                        Total foto kegiatan
-                    </div>
+        <div class="col-lg-6">
+            <div class="card border-0 shadow-md rounded-4 h-100">
+                <div class="card-header bg-primary bg-opacity-10 border-0 rounded-top-4">
+                    <h6 class="m-0 text-primary fw-semibold"><i class="fas fa-calendar-alt me-2"></i> Ulang Tahun Bulan Ini</h6>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <div class="card">
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div>
-                            <h3 class="text-muted small">Jumlah Pengurus Gereja</h3>
-                            <p class="h3">{{ \App\Models\StrukturKepengurusan::count() }}</p>
-                        </div>
-                        <div class="bg-info bg-opacity-10 p-3 rounded-circle">
-                            <i class="fas fa-images text-info"></i>
-                        </div>
-                    </div>
-                    <div class="mt-3 small text-muted">
-                        Total Jumlah pengurus gereja
-                    </div>
+                    @include('components.ulang-tahun', [
+                        'jemaats' => App\Models\Jemaat::ulangTahunBulanIni()->limit(10)->get(),
+                        'hariIni' => false
+                    ])
                 </div>
             </div>
         </div>
     </div>
-    <!-- Quick Access Cards -->
-    <div class="row mb-4">
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('admin.dashboard') }}" class="card text-decoration-none h-100">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
-                        <i class="fas fa-tachometer-alt text-primary"></i>
-                    </div>
-                    <div>
-                        <h3 class="card-title mb-1">Dashboard</h3>
-                        <p class="text-muted small mb-0">Menu Utama</p>
-                    </div>
-                </div>
-            </a>
-        </div>
 
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('admin.berita.index') }}" class="card text-decoration-none h-100">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3">
-                        <i class="fas fa-newspaper text-success"></i>
-                    </div>
-                    <div>
-                        <h3 class="card-title mb-1">Berita</h3>
-                        <p class="text-muted small mb-0">Informasi<br>jemaat</p>
-                    </div>
-                </div>
-            </a>
-        </div>
+    {{-- Statistik --}}
+    <div class="mb-5">
+        <h5 class="fw-bold mb-3 text-dark">📊 Statistik Jemaat</h5>
+        <div class="row g-4">
+            @php
+                $stats = [
+                    ['label' => 'Total KK Jemaat', 'icon' => 'fa-users', 'color' => 'primary', 'count' => \App\Models\Jemaat::count()],
+                    ['label' => 'Total Berita', 'icon' => 'fa-newspaper', 'color' => 'success', 'count' => \App\Models\Berita::count()],
+                    ['label' => 'Total Galeri', 'icon' => 'fa-images', 'color' => 'info', 'count' => \App\Models\GaleriKegiatan::count()],
+                    ['label' => 'Jumlah Pengurus Gereja', 'icon' => 'fa-sitemap', 'color' => 'danger', 'count' => \App\Models\StrukturKepengurusan::count()],
+                ];
+            @endphp
 
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('admin.galeri.index') }}" class="card text-decoration-none h-100">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-info bg-opacity-10 p-3 rounded-circle me-3">
-                        <i class="fas fa-images text-info"></i>
-                    </div>
-                    <div>
-                        <h3 class="card-title mb-1">Galeri Kegiatan</h3>
-                        <p class="text-muted small mb-0">Dokumentasi</p>
+            @foreach($stats as $stat)
+            <div class="col-md-3">
+                <div class="card shadow-sm border-0 rounded-4 h-100 hover-grow">
+                    <div class="card-body d-flex justify-content-between align-items-center p-4">
+                        <div>
+                            <p class="text-muted small mb-1">{{ $stat['label'] }}</p>
+                            <h3 class="fw-semibold mb-0">{{ $stat['count'] }}</h3>
+                        </div>
+                        <div class="bg-{{ $stat['color'] }} bg-opacity-10 p-3 rounded-circle">
+                            <i class="fas {{ $stat['icon'] }} text-{{ $stat['color'] }} fs-4"></i>
+                        </div>
                     </div>
                 </div>
-            </a>
+            </div>
+            @endforeach
         </div>
+    </div>
 
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('admin.jemaat.index') }}" class="card text-decoration-none h-100">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-warning bg-opacity-10 p-3 rounded-circle me-3">
-                        <i class="fas fa-users text-warning"></i>
-                    </div>
-                    <div>
-                        <h3 class="card-title mb-1">Data Jemaat</h3>
-                        <p class="text-muted small mb-0">Anggota Gereja</p>
-                    </div>
-                </div>
-            </a>
-        </div>
+    {{-- Menu Cepat --}}
+    <div class="row g-4">
+        @php
+            $menus = [
+                ['route' => 'admin.dashboard', 'icon' => 'fa-tachometer-alt', 'color' => 'primary', 'title' => 'Dashboard', 'desc' => 'Menu Utama'],
+                ['route' => 'admin.berita.index', 'icon' => 'fa-newspaper', 'color' => 'success', 'title' => 'Berita', 'desc' => 'Informasi jemaat'],
+                ['route' => 'admin.galeri.index', 'icon' => 'fa-images', 'color' => 'info', 'title' => 'Galeri Kegiatan', 'desc' => 'Dokumentasi'],
+                ['route' => 'admin.jemaat.index', 'icon' => 'fa-users', 'color' => 'warning', 'title' => 'Data Jemaat', 'desc' => 'Anggota Gereja'],
+                ['route' => 'admin.struktur.index', 'icon' => 'fa-sitemap', 'color' => 'danger', 'title' => 'Struktur Kepengurusan', 'desc' => 'Organisasi'],
+                ['route' => 'admin.warta.index', 'icon' => 'fa-church', 'color' => 'purple', 'title' => 'Warta Jemaat', 'desc' => 'Pengumuman'],
+            ];
+        @endphp
 
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('admin.struktur.index') }}" class="card text-decoration-none h-100">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-danger bg-opacity-10 p-3 rounded-circle me-3">
-                        <i class="fas fa-sitemap text-danger"></i>
-                    </div>
-                    <div>
-                        <h3 class="card-title mb-1">Struktur Kepengurusan</h3>
-                        <p class="text-muted small mb-0">Organisasi</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <a href="{{ route('admin.warta.index') }}" class="card text-decoration-none h-100">
-                <div class="card-body d-flex align-items-center">
-                    <div class="bg-purple bg-opacity-10 p-3 rounded-circle me-3">
-                        <i class="fas fa-church text-purple"></i>
-                    </div>
-                    <div>
-                        <h3 class="card-title mb-1">Warta Jemaat</h3>
-                        <p class="text-muted small mb-0">Pengumuman</p>
+        @foreach($menus as $menu)
+        <div class="col-md-4">
+            <a href="{{ route($menu['route']) }}" class="text-decoration-none">
+                <div class="card border-0 shadow-md rounded-4 hover-glow h-100">
+                    <div class="card-body d-flex align-items-center gap-3 p-4">
+                        <div class="bg-{{ $menu['color'] }} bg-opacity-10 p-3 rounded-circle">
+                            <i class="fas {{ $menu['icon'] }} text-{{ $menu['color'] }} fs-4"></i>
+                        </div>
+                        <div>
+                            <h6 class="fw-semibold text-dark mb-1">{{ $menu['title'] }}</h6>
+                            <p class="text-muted small mb-0">{{ $menu['desc'] }}</p>
+                        </div>
                     </div>
                 </div>
             </a>
         </div>
+        @endforeach
     </div>
 </div>
 
+{{-- Tambahan style --}}
 <style>
-.card {
-    border: 1px solid rgba(0,0,0,.125);
-    transition: box-shadow 0.2s ease;
+.hover-glow:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
 }
-
-.card:hover {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+.hover-grow {
+    transition: all 0.2s ease-in-out;
 }
-
-.card-title {
-    margin-bottom: 0;
-    font-size: 1.25rem;
-}
-
-.text-purple {
-    color: #6f42c1;
-}
-
-.bg-purple {
-    background-color: #6f42c1;
-}
-
-.rounded-circle {
-    border-radius: 50%!important;
+.hover-grow:hover {
+    transform: scale(1.02);
 }
 </style>
 @endsection
