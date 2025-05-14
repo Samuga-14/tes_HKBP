@@ -81,10 +81,41 @@
         object-fit: cover;
         border-radius: 6px;
     }
+
+        /* Popup sukses */
+    .custom-success-popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 99999; /* Pastikan popup di atas semua elemen */
+        background-color: #fff;
+        padding: 40px 30px;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        max-width: 90%;
+        width: 350px;
+        pointer-events: auto;
+    }
+    .custom-success-popup i {
+        font-size: 80px;
+        color: #28a745;
+    }
 </style>
 
 
 <div class="container-fluid py-3 px-4 rounded-container shadow-sm">
+    {{-- Notifikasi sukses --}}
+    @if (session('success'))
+        <div id="successPopup" class="custom-success-popup d-flex flex-column align-items-center justify-content-center">
+            <div class="check-icon mb-3">
+                <i class="fas fa-check-circle fa-5x text-success"></i>
+            </div>
+            <h5 class="text-center fw-bold mb-3">{{ session('success') }}</h5>
+            <button class="btn btn-danger px-4" id="closeSuccessBtn">OK</button>
+        </div>
+    @endif    
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold mb-0" style="font-size: 24px;">Data Berita</h2>
         <a href="{{ route('admin.berita.create') }}" class="add-button">
@@ -123,12 +154,12 @@
                             <a href="{{ route('admin.berita.edit', $item->id) }}" class="text-primary" title="Edit">
                                 <i class="fas fa-edit fa-lg"></i>
                             </a>
-                            <form action="{{ route('admin.berita.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus berita ini?')" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="icon-btn text-danger" title="Hapus">
-                                    <i class="fas fa-trash-alt fa-lg"></i>
-                                </button>
+                           <form class="delete-form d-inline" data-name="{{ $item->id }}" action="{{ route('admin.berita.destroy', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="button" class="icon-btn text-danger delete-btn" title="Hapus">
+                                        <i class="fas fa-trash-alt fa-lg"></i>
+                                    </button>
                             </form>
                         </div>
                     </td>
@@ -145,4 +176,43 @@
         </table>
     </div>
 </div>
+
+{{-- Script SweetAlert & popup --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Pastikan tombol OK pada popup sukses bisa diklik dan menutup popup
+        const closeBtn = document.getElementById('closeSuccessBtn');
+        const popup = document.getElementById('successPopup');
+        if (closeBtn && popup) {
+            closeBtn.addEventListener('click', function () {
+                // Menghapus element popup dari DOM
+                popup.remove();
+            });
+        }
+
+        // Konfirmasi hapus data menggunakan SweetAlert2
+        document.querySelectorAll('.delete-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const form = this.closest('.delete-form');
+                const nama = form.dataset.name || 'data ini';
+
+                Swal.fire({
+                    title: 'Yakin ingin menghapus?',
+                    text: `Data jemaat "${nama}" akan dihapus!`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                    }
+                });
+            });
+        });
+    });
+</script>
 @endsection

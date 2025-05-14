@@ -17,21 +17,19 @@
             @endif
 
             <!-- Form Edit Warta -->
-            <form id="formWarta" action="{{ route('admin.warta.update', $warta->id) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.warta.update', $warta->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
                 <div class="row g-4">
                     <!-- Kolom Kiri -->
                     <div class="col-md-6 pe-md-4">
-                        <!-- Input Judul -->
                         <div class="mb-3">
                             <label for="judul" class="form-label fw-semibold">Judul</label>
                             <input type="text" name="judul" id="judul" class="form-control custom-form-control"
                                 value="{{ old('judul', $warta->judul) }}" required>
                         </div>
 
-                        <!-- Input Deskripsi -->
                         <div class="mb-3">
                             <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>
                             <textarea name="deskripsi" id="deskripsi" class="form-control" rows="5" required>{{ old('deskripsi', $warta->deskripsi) }}</textarea>
@@ -40,7 +38,6 @@
 
                     <!-- Kolom Kanan -->
                     <div class="col-md-6 ps-md-4">
-                        <!-- Input File PDF -->
                         <div class="mb-3">
                             <label for="file_pdf" class="form-label fw-semibold">File PDF</label>
                             <input type="file" name="file_pdf" id="file_pdf" class="form-control custom-form-control" accept="application/pdf">
@@ -66,17 +63,14 @@
                     </div>
                 </div>
 
-                <!-- Tombol Submit -->
-               <div class="d-flex justify-content-between mt-5 mb-0">
-    <a href="{{ route('admin.struktur.index') }}" class="btn btn-secondary px-4 py-2">
-        Kembali
-    </a>
-
-    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
-        Edit
-    </button>
-</div>
-
+                <div class="d-flex justify-content-between mt-5 mb-0">
+                    <a href="{{ route('admin.warta.index') }}" class="btn btn-secondary px-4 py-2">
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;">
+                        Edit
+                    </button>
+                </div>
             </form>
         </div>
     </div>
