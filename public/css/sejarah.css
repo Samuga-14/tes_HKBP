@@ -1,257 +1,199 @@
-/* ======================
+/* ====================== 
    RESET & UMUM
 ====================== */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
+    background-color: #751515;
     margin: 0;
     padding: 0;
     color: #1e1e1e;
 }
 
-/* ======================
-   HERO SECTION
-====================== */
-.hero-sejarah {
-    background-color: #0d1c3f;
-    min-height: 80vh;
+/* ========================== 
+   HERO SECTION STYLING 
+========================== */
+.hero-section {
+    background: linear-gradient(135deg, #0d1c3f, #1b2d5c);
+    min-height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 80px 30px;
+    color: #fff;
     position: relative;
-    padding: 80px 40px;
-    color: white;
     overflow: hidden;
 }
 
-.hero-sejarah::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: #0d1c3f;
-    opacity: 0.9;
-    z-index: 1;
-}
-
-.hero-container {
-    position: relative;
-    z-index: 2;
+.hero-wrapper {
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 50px;
     max-width: 1200px;
     width: 100%;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
 }
 
-.hero-image {
+.hero-img {
     flex: 1;
     display: flex;
     justify-content: center;
-    padding-bottom: 10px;
-
 }
 
-.oval-frame {
-    width: 300px;
-    height: 300px;
+.oval-image {
+    width: 280px;
+    height: 360px;
     object-fit: cover;
-    border-radius: 90% / 90%;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-    border: 4px solid #fff;
-    transition: transform 0.4s ease;
+    border-radius: 48% 48% 48% 48% / 50% 50% 48% 48%;
+    border: 4px solid #ffffff;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.oval-frame:hover {
+.oval-image:hover {
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
     transform: scale(1.0);
 }
 
-.hero-text {
+.hero-content {
     flex: 2;
-    max-width: 700px;
-    animation: fadeInUp 1s ease-out;
+    max-width: 650px;
+    animation: fadeInUp 1s ease-out forwards;
     text-align: right;
 }
 
-.hero-text > p.lead {
+.hero-tagline {
     font-family: 'Alegreya Sans SC', sans-serif;
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-transform: uppercase;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
     color: #9ccdf5;
-    transition: all 0.3s ease;
-    text-align: right;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
 }
 
-
-.hero-text h1 {
-    font-size: 4rem;
+.hero-title {
+    font-size: 3.5rem;
     font-weight: 800;
-    letter-spacing: 3px;
     margin: 0;
     color: #ffffff;
-    transition: all 0.4s ease-in-out;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
 }
 
-.hero-text:hover p.lead {
-    color: #37566f;
-}
-
-
-.hero-text:hover h1 {
-    color: #9ccdf5;
-    transform: translateX(-5px);
-}
-.hero-description {
-    font-size: 1.4rem;
-    color: #e5e5e5;
+.hero-desc {
+    font-size: 1.3rem;
+    color: #e4e4e4;
     margin-top: 20px;
-    line-height: 1.8;
+    line-height: 1.7;
+    font-family: 'Poppins', sans-serif;
     text-align: right;
-    font-family: 'Poppins';
-    max-width: 600px;
-    margin-left: auto;
 }
 
+.hero-content:hover .hero-title {
+    color: #9ccdf5;
+}
 
-/* Animation */
 @keyframes fadeInUp {
-    0% {
+    from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(40px);
     }
-    100% {
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Responsive: Stack vertically on small screens */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .hero-container {
+    .hero-wrapper {
         flex-direction: column;
         text-align: center;
     }
 
-    .hero-text {
+    .hero-content {
         text-align: center;
     }
 
-    .hero-image {
-        margin-bottom: 20px;
+    .hero-desc {
+        text-align: center;
     }
 }
 
-/* ======================
-   SECTION TITLE
-====================== */
-.section-title {
-    font-size: 1.6rem;
-    color: #0d1c3f;
+/* ========================
+   INTERACTIVE HISTORY STYLE
+======================== */
+
+/* JUDUL UTAMA - SEJARAH SECTION */
+
+.container.py-5 h2 {
+    font-size: 2.8rem;
+    font-weight: 800;
     text-align: center;
-    font-weight: 600;
-    padding: 40px 20px 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* ======================
-   CONTENT SECTION
-====================== */
-.content-section {
-    padding: 60px 20px;
-    background-color: #ffffff;
-}
-
-.content-section .container {
-    max-width: 1100px;
-    margin: auto;
-}
-
-.content-block {
-    margin-bottom: 80px;
-}
-
-.content-block h4 {
-    font-size: 1.4rem;
-    font-weight: 700;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    position: relative;
+    font-family: 'Alegreya Sans SC', sans-serif;
     color: #0d1c3f;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 8px;
+    background: linear-gradient(to right, #156ba9, #321919);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.content-block img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
+.container.py-5 h2::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background: #2d66bc;
+    display: block;
+    margin: 20px auto 0;
+    border-radius: 2px;
 }
 
-/* Custom layout untuk gambar & teks */
-.row.align-items-center {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-}
-
-.row .col-md-3,
-.row .col-md-4 {
-    flex: 1 1 250px;
-}
-
-.row .col-md-9,
-.row .col-md-8 {
-    flex: 2 1 600px;
-}
-
-.content-block p {
-    font-size: 1rem;
-    color: #444;
-    line-height: 1.8;
-}
-
-/* ======================
-   LIST STYLE
-====================== */
-.content-block ul {
-    padding-left: 20px;
-    margin-top: 10px;
-}
-
-.content-block ul li {
-    margin-bottom: 6px;
-    font-size: 1rem;
-}
-
-/* ======================
-   RESPONSIVE
-====================== */
+/* Responsive tweak */
 @media (max-width: 768px) {
-    .hero-text h1 {
-        font-size: 2.2rem;
+    .container.py-5 h2 {
+        font-size: 2rem;
     }
+}
 
-    .hero-text p {
-        font-size: 1rem;
-    }
+.interactive-history {
+    font-family: 'Poppins', sans-serif;
+}
 
-    .section-title {
-        font-size: 1.4rem;
-    }
+/* Blok dengan gradasi dominan putih */
+.bg-white-blue {
+    background: linear-gradient(135deg, #ffffff, #042b52);
+}
 
-    .content-block h4 {
-        font-size: 1.2rem;
-    }
+/* Blok dengan gradasi dominan biru */
+.bg-blue-white {
+    background: linear-gradient(135deg, #042b52, #ffffff);
+}
 
-    .content-block p,
-    .content-block ul li {
-        font-size: 0.95rem;
-    }
+.history-block {
+    padding: 60px 0;
+}
 
-    .row.align-items-center {
-        flex-direction: column;
-    }
+.history-block h4 {
+    font-size: 1.6rem;
+    color: #5dbcfa;
+}
+
+.history-block p {
+    font-size: 1.1rem;
+    color: #ffffff;
+    line-height: 1.7;
+}
+
+.history-block img {
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.history-block img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
 }

@@ -103,6 +103,7 @@
                     <th>Deskripsi</th>
                     <th>Tanggal Publikasi</th>
                     <th>Video</th>
+                    <th>Link Foto </th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
