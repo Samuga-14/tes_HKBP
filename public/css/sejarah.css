@@ -37,40 +37,18 @@ body {
     position: relative;
     z-index: 2;
     display: flex;
+    justify-content: center; /* Make sure the content is centered */
     align-items: center;
-    gap: 60px;
+    flex-direction: column; /* Stack the content vertically */
+    gap: 20px; /* Add space between text sections */
     max-width: 1200px;
     width: 100%;
-    flex-wrap: wrap;
-}
-
-.hero-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 10px;
-
-}
-
-.oval-frame {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 90% / 90%;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-    border: 4px solid #fff;
-    transition: transform 0.4s ease;
-}
-
-.oval-frame:hover {
-    transform: scale(1.0);
 }
 
 .hero-text {
-    flex: 2;
+    text-align: center; /* Center the text */
     max-width: 700px;
     animation: fadeInUp 1s ease-out;
-    text-align: right;
 }
 
 .hero-text > p.lead {
@@ -80,10 +58,7 @@ body {
     margin-bottom: 10px;
     letter-spacing: 2px;
     color: #9ccdf5;
-    transition: all 0.3s ease;
-    text-align: right;
 }
-
 
 .hero-text h1 {
     font-size: 4rem;
@@ -91,28 +66,19 @@ body {
     letter-spacing: 3px;
     margin: 0;
     color: #ffffff;
-    transition: all 0.4s ease-in-out;
 }
 
-.hero-text:hover p.lead {
-    color: #37566f;
-}
-
-
-.hero-text:hover h1 {
-    color: #9ccdf5;
-    transform: translateX(-5px);
-}
 .hero-description {
     font-size: 1.4rem;
     color: #e5e5e5;
     margin-top: 20px;
     line-height: 1.8;
-    text-align: right;
     font-family: 'Poppins';
     max-width: 600px;
     margin-left: auto;
+    margin-right: auto; /* Center text description */
 }
+
 
 
 /* Animation */
