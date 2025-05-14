@@ -71,7 +71,11 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-end mt-4">
+                <!-- Tombol Kembali dan Tambahkan -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{{ route('admin.jemaat.index') }}" class="btn btn-secondary px-4 py-2">
+                        Kembali
+                    </a>
                     <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;">
                         Tambahkan
                     </button>
