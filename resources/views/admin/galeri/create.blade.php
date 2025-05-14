@@ -4,7 +4,7 @@
 <div class="container mt-3 mb-4">
     <div class="row justify-content-center">
         <div class="col-lg-12 ps-4">
-    <h6 class="fw-semibold mb-4" style="font-size: 18px; margin-left: 4px;">Tambah Galeri</h6>
+            <h6 class="fw-semibold mb-4" style="font-size: 18px; margin-left: 4px;">Tambah Galeri</h6>
 
             @if ($errors->any())
                 <div class="alert alert-danger py-2 px-3" style="font-size: 14px;">
@@ -49,10 +49,13 @@
                         <label for="link_google_foto" class="form-label fw-semibold">Link Google Foto</label>
                         <input type="url" name="link_google_foto" id="link_google_foto" class="form-control" placeholder="https://photos.app.goo.gl/..." />
                     </div>
-
                 </div>
 
-                <div class="d-flex justify-content-end mt-4">
+                <!-- Tombol kembali dan submit -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{{ route('admin.galeri.index') }}" class="btn btn-secondary px-4 py-2">
+                        Kembali
+                    </a>
                     <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;">
                         Tambahkan
                     </button>

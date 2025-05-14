@@ -1,30 +1,32 @@
 @extends('layouts.auth')
 
 @section('title', 'Login')
-@section('auth-title', 'LOGIN')
 
 @section('auth-content')
-<form method="POST" action="{{ route('login') }}">
-    @csrf
-    
-    <div class="form-group">
-        <label for="email" class="form-label">Email Address</label>
-        <input type="email" class="form-control" id="email" name="email" required autofocus>
-    </div>
-    
-    <div class="form-group">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" name="password" required>
-    </div>
-    
-    <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
-        <div style="display: flex; align-items: center;">
-            <input type="checkbox" id="remember" name="remember" style="margin-right: 8px;">
-            <label for="remember" style="font-size: 13px;">Remember me</label>
-        </div>
-    </div>
-    
-    <button type="submit" class="btn btn-primary" style="margin-top: 8px;">LOGIN</button>
-</form>
-@endsection
+<div class="login-wrapper">
+    <div class="login-box">
+        <img src="{{ asset('images/logo-hkbp.png') }}" alt="HKBP Logo" class="login-logo">
 
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+
+            <div class="input-group">
+                <span class="input-icon"><i class="fas fa-user"></i></span>
+                <input type="email" name="email" placeholder="Email" required autofocus>
+            </div>
+
+            <div class="input-group">
+                <span class="input-icon"><i class="fas fa-lock"></i></span>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <label for="remember">Remember Me</label>
+            </div>
+
+            <button type="submit" class="login-button">Login</button>
+        </form>
+    </div>
+</div>
+@endsection

@@ -61,16 +61,19 @@
                             <input type="file" name="video" id="video" class="form-control custom-form-control" accept="video/*">
                             <small class="text-muted" style="font-size: 13px;">Kosongkan jika tidak ingin mengubah video.</small>
                         </div>
+
                         <div class="mb-4">
                             <label for="link_google_foto" class="form-label fw-semibold">Link Google Foto</label>
                             <input type="url" name="link_google_foto" id="link_google_foto" class="form-control" value="{{ old('link_google_foto', $galeri->link_google_foto) }}">
                         </div>
-
                     </div>
                 </div>
 
-                <!-- Tombol Submit -->
-                <div class="d-flex justify-content-end mt-4 mb-0">
+                <!-- Tombol Kembali dan Edit -->
+                <div class="d-flex justify-content-between mt-4 mb-0">
+                    <a href="{{ route('admin.galeri.index') }}" class="btn btn-secondary px-4 py-2">
+                        Kembali
+                    </a>
                     <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;">
                         Edit
                     </button>

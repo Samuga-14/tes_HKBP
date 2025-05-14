@@ -37,8 +37,11 @@
         </div>
     </div>
 
-    <!-- Tombol submit dinaikkan dengan mt-1 -->
-    <div class="d-flex justify-content-end mt-1 mb-0">
+    <!-- Tombol kembali dan submit -->
+    <div class="d-flex justify-content-between mt-1 mb-0">
+        <a href="{{ route('admin.berita.index') }}" class="btn btn-secondary px-4 py-2">
+            Kembali
+        </a>
         <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formBerita">
             Tambahkan
         </button>

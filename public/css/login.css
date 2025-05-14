@@ -1,100 +1,78 @@
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background: url('/images/gambar12.jpg') no-repeat center center fixed;
+    background-image: url('/images/church-bg.jpg'); /* Ganti dengan gambar gereja Anda */
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.login-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-    position: relative;
+    min-height: 100vh;
+    backdrop-filter: brightness(0.95);
 }
 
-body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-color: rgba(255, 255, 255, 0.3); /* overlay putih transparan */
-    z-index: 0;
-}
-
-.auth-card {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 500px;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(10px);
-    padding: 40px 50px;
-    border-radius: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.auth-card img {
-    display: block;
-    margin: 0 auto 20px;
-    max-height: 70px;
-}
-
-.auth-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #2a2a2a;
+.login-box {
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 40px;
+    border-radius: 10px;
+    width: 320px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     text-align: center;
-    margin-bottom: 30px;
 }
 
-.form-group {
+.login-logo {
+    width: 70px;
     margin-bottom: 20px;
 }
 
-.form-label {
-    font-weight: 600;
-    font-size: 14px;
-    margin-bottom: 8px;
-    display: block;
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
 }
 
-.form-control {
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #444;
+}
+
+.input-group input {
     width: 100%;
-    background-color: #eaf1ff;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 15px;
-    font-size: 0.95rem;
-    box-sizing: border-box;
-    transition: box-shadow 0.3s;
-}
-
-.form-control:focus {
+    padding: 12px 12px 12px 40px;
+    border: 2px solid black;
+    border-radius: 30px;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.25);
+    font-size: 14px;
+    background-color: transparent;
 }
 
-.btn.btn-primary {
-    background-color: #16376e;
-    border: none;
-    padding: 12px;
-    font-weight: 600;
-    border-radius: 12px;
-    font-size: 1rem;
-    color: white;
-    cursor: pointer;
-    width: 100%;
-    transition: background-color 0.3s;
+.remember-me {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
-.btn.btn-primary:hover {
-    background-color: #0d2b57;
-}
-
-input[type="checkbox"] {
-    transform: scale(1.2);
+.remember-me input {
     margin-right: 6px;
 }
 
-label[for="remember"] {
-    font-size: 13px;
-    color: #333;
+.login-button {
+    padding: 10px 20px;
+    background-color: #00aaff;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100px;
+}
+
+.login-button:hover {
+    background-color: #008ecc;
 }
