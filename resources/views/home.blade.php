@@ -480,35 +480,52 @@
 
   <!-- Layanan Section -->
   <section class="service-section" id="layanan">
-    <div class="container-fluid">
-      <div class="text-center mb-5">
-        <h2 class="section-title animate-on-scroll">Layanan Ibadah</h2>
-        <div class="section-divider animate-on-scroll delay-1"></div>
-        <p class="section-subtitle animate-on-scroll delay-2">Kami mengundang Anda untuk bergabung dalam sukacita dan damai sejahtera di setiap ibadah mingguan kami.</p>
-      </div>
-      <div class="row align-items-center g-4">
-        <div class="col-lg-6">
-          <div class="service-card animate-on-scroll delay-1">
-            <h3 class="service-card-title h4 mb-4">Ayat Harian</h3>
-            <p><strong>Filipi 4:13</strong></p>
-            <p>Segala perkara dapat kutanggung di dalam Dia yang memberi kekuatan kepadaku.</p>
-            <small><em>14 Mei 2025</em></small>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="service-image animate-on-scroll delay-2">
-            <img src="{{ asset('images/ibadah.jpg') }}" alt="Ibadah Jemaat" class="img-fluid w-100">
-            <div class="service-image-overlay">
-              <div class="service-image-content">
-                <h4>Bergabunglah bersama kami</h4>
-                <a href="/ayat" class="btn btn-primary btn-sm mt-3">Lihat Jadwal</a>
-              </div>
+  <div class="container-fluid">
+    <div class="text-center mb-5">
+      <h2 class="section-title animate-on-scroll">Layanan Ibadah</h2>
+      <div class="section-divider animate-on-scroll delay-1"></div>
+      <p class="section-subtitle animate-on-scroll delay-2">
+        Kami mengundang Anda untuk bergabung dalam sukacita dan damai sejahtera di setiap ibadah mingguan kami.
+      </p>
+    </div>
+
+    <div class="row align-items-center g-4">
+      <!-- Kiri: Ayat Harian -->
+<div class="col-lg-6">
+    <div class="service-card scroll-animate delay-1">
+        <h3 class="service-card-title h4 mb-4">Ayat Harian</h3>
+        @if($ayatHarianList->count() > 0)
+            @foreach($ayatHarianList as $ayatHarian)
+                <div class="scroll-animate delay-2 mb-3">
+                    <h3>{{ $ayatHarian->judul }}</h3>
+                    <p>{{ $ayatHarian->deskripsi }}</p>
+                    <small>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</small>
+                </div>
+            @endforeach
+        @else
+            <p>Belum ada Ayat Harian yang tersedia.</p>
+        @endif
+    </div>
+</div>
+
+
+      <!-- Kanan: Gambar Ibadah -->
+      <div class="col-lg-6">
+        <div class="service-image animate-on-scroll delay-2">
+          <img src="{{ asset('images/ibadah.jpg') }}" alt="Ibadah Jemaat" class="img-fluid w-100">
+          <div class="service-image-overlay">
+            <div class="service-image-content">
+              <h4>Bergabunglah bersama kami</h4>
+              <a href="/ayat" class="btn btn-primary btn-sm mt-3">Lihat Jadwal</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+
 
   <!-- Our Community Section -->
   <section class="community-section">
@@ -584,8 +601,8 @@
       <h2 class="section-title animate-on-scroll">Dukung Pelayanan Kami</h2>
       <div class="section-divider animate-on-scroll delay-1"></div>
       <p class="section-subtitle animate-on-scroll delay-2">Bersama-sama, kita dapat menyebarkan kasih Tuhan melalui pelayanan dan misi gereja.</p>
-      <a href="https://wa.me/+6285830058928?text=Halo,%20saya%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20pelayanan%20HKBP%20Sinambela%20Simanullang" 
-         class="btn btn-primary animate-on-scroll delay-3" 
+      <a href="https://wa.me/+6285830058928?text=Halo,%20saya%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20pelayanan%20HKBP%20Sinambela%20Simanullang"
+         class="btn btn-primary animate-on-scroll delay-3"
          target="_blank">Hubungi Kami</a>
     </div>
   </section>

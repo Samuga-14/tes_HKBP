@@ -14,11 +14,23 @@ class BeritaController extends Controller
         return view('admin.berita.index', compact('beritas'));
     }
 
-    public function index2()
-    {
-        $beritas = Berita::latest()->paginate(5);
-        return view('berita', compact('beritas'));
-    }
+   public function index2()
+{
+    // Cari Ayat Harian terbaru (jika ada)
+    $ayatHarian = Berita::where('judul', 'like', '%Ayat Harian%')
+                        ->orderBy('tanggal_publikasi', 'desc')
+                        ->first();
+
+    // Ambil berita lain, KECUALI yang barusan
+    $beritas = Berita::when($ayatHarian, function ($q) use ($ayatHarian) {
+                    return $q->where('id', '!=', $ayatHarian->id);
+               })
+               ->orderBy('tanggal_publikasi', 'desc')
+               ->paginate(5);
+
+    // kirim dua variabel ke view
+    return view('berita', compact('beritas', 'ayatHarian'));
+}
 
     public function create()
     {
@@ -107,11 +119,16 @@ class BeritaController extends Controller
         return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil dihapus.');
     }
     public function home()
-    {
-        $ayatHarian = Berita::where('judul', 'like', '%Ayat Harian%')
+{
+    // Ambil semua Ayat Harian terbaru (bisa juga limit jika perlu)
+    $ayatHarianList = Berita::where('judul', 'like', '%Ayat Harian%')
                         ->orderBy('tanggal_publikasi', 'desc')
-                        ->first(); // ambil 1 yang terbaru
-        return view('home', compact('ayatHarian'));
-    }
+                        ->take(2)
+                        ->get();
+
+
+    return view('home', compact('ayatHarianList'));
+}
+
 
 }
