@@ -537,24 +537,27 @@
     </div>
 
     <div class="row align-items-center g-4">
-      <!-- Kiri: Ayat Harian -->
-<div class="col-lg-6">
-    <div class="service-card scroll-animate delay-1">
-        <h3 class="service-card-title h4 mb-4">Ayat Harian</h3>
-        @if($ayatHarianList->count() > 0)
-            @foreach($ayatHarianList as $ayatHarian)
-                <div class="scroll-animate delay-2 mb-3">
-                    <h3>{{ $ayatHarian->judul }}</h3>
-                    <p>{{ $ayatHarian->deskripsi }}</p>
-                    <small>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</small>
-                </div>
-            @endforeach
-        @else
-            <p>Belum ada Ayat Harian yang tersedia.</p>
-        @endif
-    </div>
+      <!-- Ayat Harian -->
+<div class="birthday-card-genz">
+  <div class="birthday-card-header-genz">
+    <i class="fas fa-book-open text-yellow-300 text-lg animate-pulse"></i>
+    <h3>Ayat Harian</h3>
+    <p>Selamat menjalani hari dalam kasih Kristus!</p>
+  </div>
+  <div class="birthday-card-body-genz">
+    @if($ayatHarian)
+      <div class="birthday-user-genz">
+        <div class="user-info">
+          <p class="user-name">{{ $ayatHarian->judul }}</p>
+          <p class="user-ttl">{{ $ayatHarian->deskripsi }}</p>
+          <small><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
+        </div>
+      </div>
+    @else
+      <div class="no-birthday-message">Belum ada Ayat Harian yang tersedia</div>
+    @endif
+  </div>
 </div>
-
 
       <!-- Kanan: Gambar Ibadah -->
       <div class="col-lg-6">
