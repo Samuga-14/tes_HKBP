@@ -478,8 +478,55 @@
   </div>
 </section>
 
+<!-- 🎉 Zona Informasi Harian (Ulang Tahun + Ayat Harian) -->
+<div class="info-zone-genz">
+  <!-- Ulang Tahun -->
+  <div class="birthday-card-genz">
+    <div class="birthday-card-header-genz">
+      <i class="fas fa-birthday-cake text-yellow-300 text-lg animate-pulse"></i>
+      <h3>Ulang Tahun Hari Ini</h3>
+      <p>Selamat ulang tahun!</p>
+    </div>
+    <div class="birthday-card-body-genz">
+      @forelse(App\Models\Jemaat::ulangTahunHariIni()->get() as $jemaat)
+        <div class="birthday-user-genz">
+          <div class="user-info">
+            <p class="user-name">{{ $jemaat->nama }}</p>
+            <p class="user-ttl">{{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }}</p>
+          </div>
+        </div>
+      @empty
+        <div class="no-birthday-message">Belum ada yang ulang tahun hari ini</div>
+      @endforelse
+    </div>
+  </div>
+
+  <!-- Ayat Harian -->
+  <div class="birthday-card-genz">
+    <div class="birthday-card-header-genz">
+      <i class="fas fa-book-open text-yellow-300 text-lg animate-pulse"></i>
+      <h3>Ayat Harian</h3>
+      <p> Selamat menjalani hari dalam kasih Kristus! </p>
+    </div>
+    <div class="birthday-card-body-genz">
+      @if($ayatHarian)
+        <div class="birthday-user-genz">
+          <div class="user-info">
+            <p class="user-name">{{ $ayatHarian->judul }}</p>
+            <p class="user-ttl">{{ $ayatHarian->deskripsi }}</p>
+            <small><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
+          </div>
+        </div>
+      @else
+        <div class="no-birthday-message">Belum ada Ayat Harian yang tersedia</div>
+      @endif
+    </div>
+  </div>
+</div>
+
   <!-- Layanan Section -->
   <section class="service-section" id="layanan">
+
   <div class="container-fluid">
     <div class="text-center mb-5">
       <h2 class="section-title animate-on-scroll">Layanan Ibadah</h2>
@@ -517,6 +564,22 @@
             <div class="service-image-content">
               <h4>Bergabunglah bersama kami</h4>
               <a href="/ayat" class="btn btn-primary btn-sm mt-3">Lihat Jadwal</a>
+
+    <div class="container-fluid">
+      <div class="text-center mb-5">
+        <h2 class="section-title animate-on-scroll">Layanan Ibadah</h2>
+        <div class="section-divider animate-on-scroll delay-1"></div>
+        <p class="section-subtitle animate-on-scroll delay-2">Kami mengundang Anda untuk bergabung dalam sukacita dan damai sejahtera di setiap ibadah mingguan kami.</p>
+      </div>
+        <div class="col-lg-6">
+          <div class="service-image animate-on-scroll delay-2">
+            <img src="{{ asset('images/ibadah.jpg') }}" alt="Ibadah Jemaat" class="img-fluid w-100">
+            <div class="service-image-overlay">
+              <div class="service-image-content">
+                <h4>Bergabunglah bersama kami</h4>
+                <a href="/ayat" class="btn btn-primary btn-sm mt-3">Lihat Jadwal</a>
+              </div>
+
             </div>
           </div>
         </div>

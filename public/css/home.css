@@ -1,6 +1,6 @@
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     color: #333;
     scroll-behavior: smooth;
 }
@@ -507,4 +507,126 @@ section {
 
 .scroll-animate {
     animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* birthday.css - Gen Z Enhanced (Soft Blue Theme) */
+
+.birthday-zone-genz {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #e9ebf5, #f2f4fa); /* soft blue pastel background */
+  position: relative;
+}
+
+.birthday-card-genz {
+  width: 100%;
+  max-width: 500px;
+  background-color: #dde1f0; /* soft blue */
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(13, 17, 55, 0.15);
+}
+
+.birthday-card-genz:hover {
+  transform: scale(1.03);
+}
+
+.birthday-card-header-genz {
+  background: linear-gradient(135deg, #b8bde3, #d4d8f0); /* blue gradation */
+  padding: 1rem;
+  text-align: center;
+  color: #1d223c;
+  font-family: 'Poppins', sans-serif;
+}
+
+.birthday-card-header-genz h3 {
+  font-size: 1.2rem;
+  animation: bounceIn 1s;
+}
+
+.birthday-card-body-genz {
+  padding: 1rem;
+}
+
+.birthday-user-genz {
+  display: flex;
+  align-items: center;
+  background-color: #f4f6fb;
+  border-radius: 1rem;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #cdd2eb;
+}
+
+.birthday-user-genz img {
+  width: 50px;
+  height: 50px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid #fff;
+  margin-right: 1rem;
+}
+
+.user-info .user-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #2e3566;
+}
+
+.user-info .user-ttl {
+  font-size: 0.85rem;
+  color: #6c759b;
+}
+
+.no-birthday-message {
+  text-align: center;
+  color: #1d223c;
+  font-style: italic;
+  padding: 1rem;
+  background-color: #e3e6f3;
+  border-radius: 1rem;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-50%) translateY(200px);
+    opacity: 0;
+  }
+}
+
+/* Container utama untuk dua kotak sejajar */
+.info-zone-genz {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #e9ebf5, #f2f4fa);
+}
+
+/* Kotak ayat harian disamakan dengan birthday card */
+.daily-verse-card-genz {
+  width: 100%;
+  max-width: 500px;
+  background-color: #dde1f0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(13, 17, 55, 0.15);
+}
+
+.daily-verse-card-genz:hover {
+  transform: scale(1.03);
 }
