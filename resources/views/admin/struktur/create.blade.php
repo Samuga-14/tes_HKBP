@@ -26,7 +26,12 @@
 
                 <div class="mb-4">
                     <label for="jabatan" class="form-label fw-semibold">Jabatan</label>
-                    <input type="text" name="jabatan" id="jabatan" class="form-control custom-form-control" required>
+                    <select name="jabatan" id="jabatan" class="form-control custom-form-control" required>
+                        <option value="">-- Pilih Jabatan --</option>
+                        @foreach($listJabatan as $jabatan)
+                            <option value="{{ $jabatan }}">{{ $jabatan }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="mb-4">
@@ -37,16 +42,12 @@
         </div>
     </div>
 
-<div class="d-flex justify-content-between mt-5 mb-0">
-    <a href="{{ route('admin.struktur.index') }}" class="btn btn-secondary px-4 py-2">
-        Kembali
-    </a>
-
-    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
-        Tambahkan
-    </button>
-</div>
-
+    <div class="d-flex justify-content-between mt-5 mb-0">
+        <a href="{{ route('admin.struktur.index') }}" class="btn btn-secondary px-4 py-2">Kembali</a>
+        <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
+            Tambahkan
+        </button>
+    </div>
 </div>
 @endsection
 
