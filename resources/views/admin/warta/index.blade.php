@@ -137,7 +137,7 @@
                     <td class="text-center">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}</td>
                     <td class="text-center">
                         @if ($item->file_pdf)
-                            <a href="{{ asset('storage/warta/' . $item->file_pdf) }}" target="_blank" class="text-danger" title="Lihat PDF">
+                            <a href="{{ asset('storage/' . $item->file_pdf) }}" target="_blank" class="text-danger" title="Lihat PDF">
                                 <i class="fas fa-file-pdf fa-lg"></i>
                             </a>
                         @else
