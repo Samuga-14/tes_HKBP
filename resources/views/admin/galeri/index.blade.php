@@ -139,6 +139,7 @@
             </thead>
             <tbody>
                 @forelse ($galeri as $index => $item)
+
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td style="max-width: 200px">{{ $item->judul }}</td>
@@ -157,9 +158,9 @@
                             </div>
                         </td>
                         <td style="max-width: 180px; word-break: break-word;">
-                            @if ($item->link_foto)
-                                <a href="{{ $item->link_foto }}" target="_blank" rel="noopener noreferrer">
-                                    {{ $item->link_foto }}
+                            @if ($item->link_google_foto)
+                                <a href="{{ $item->link_google_foto }}" target="_blank" rel="noopener noreferrer">
+                                    {{ $item->link_google_foto }}
                                 </a>
                             @else
                                 <span class="text-muted">-</span>
