@@ -276,8 +276,12 @@
         </div>
       </div>
     </div>
+    <div class="text-center mt-4">
+          <a href="{{ url('/') }}" class="btn btn-primary"><i class="bi bi-house-door me-2"></i>Kembali ke Beranda</a>
+        </div>
+    
   </section>
-   <!-- Header -->
+   <!-- Footer -->
   @include('footer')
   <!-- Footer -->
  
