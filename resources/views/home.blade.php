@@ -538,26 +538,6 @@
 
     <div class="row align-items-center g-4">
       <!-- Ayat Harian -->
-<div class="birthday-card-genz">
-  <div class="birthday-card-header-genz">
-    <i class="fas fa-book-open text-yellow-300 text-lg animate-pulse"></i>
-    <h3>Ayat Harian</h3>
-    <p>Selamat menjalani hari dalam kasih Kristus!</p>
-  </div>
-  <div class="birthday-card-body-genz">
-    @if($ayatHarian)
-      <div class="birthday-user-genz">
-        <div class="user-info">
-          <p class="user-name">{{ $ayatHarian->judul }}</p>
-          <p class="user-ttl">{{ $ayatHarian->deskripsi }}</p>
-          <small><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
-        </div>
-      </div>
-    @else
-      <div class="no-birthday-message">Belum ada Ayat Harian yang tersedia</div>
-    @endif
-  </div>
-</div>
 
       <!-- Kanan: Gambar Ibadah -->
       <div class="col-lg-6">
