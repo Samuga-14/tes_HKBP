@@ -7,69 +7,46 @@ use App\Models\StrukturKepengurusan;
 
 class StrukturKepengurusanController extends Controller
 {
+    private $listJabatan = [
+        'Pendeta',
+        'Pendeta Fungsional',
+        'Sekretaris',
+        'Parartaon',
+        'Bendahara',
+        'Ketua Marturia',
+        'Anggota Marturia',
+        'Ketua Diakonia',
+        'Anggota Diakonia',
+        'Ketua Koinonia',
+        'Anggota Koinonia',
+        'Learning',
+        'Calon Sintua'
+    ];
+
     public function index()
     {
         $struktur = StrukturKepengurusan::latest()->paginate(10);
         return view('admin.struktur.index', compact('struktur'));
     }
 
-//
-public function index2()
-{
-    $struktur = StrukturKepengurusan::all();
+    public function index2()
+    {
+        $struktur = StrukturKepengurusan::all();
 
-    // Filter berdasarkan jabatan
-    $pendeta = $struktur->filter(function($item){
-    return in_array($item->jabatan, [
-        'Pendeta',
-        'Pendeta Fungsional'
-    ]);
-});
+        $pendeta = $struktur->whereIn('jabatan', ['Pendeta', 'Pendeta Fungsional']);
+        $fungsionaris = $struktur->whereIn('jabatan', ['Sekretaris', 'Parartaon', 'Bendahara']);
+        $marturia = $struktur->whereIn('jabatan', ['Ketua Marturia', 'Anggota Marturia']);
+        $diakonia = $struktur->whereIn('jabatan', ['Ketua Diakonia', 'Anggota Diakonia']);
+        $koinonia = $struktur->whereIn('jabatan', ['Ketua Koinonia', 'Anggota Koinonia']);
+        $calonsintua = $struktur->whereIn('jabatan', ['Learning', 'Calon Sintua']);
 
-    $fungsionaris = $struktur->filter(function ($item) {
-        return in_array($item->jabatan, [
-            'Sekretaris',
-            'Parartaon',
-            'Bendahara'
-        ]);
-    });
-
-    $marturia = $struktur->filter(function ($item) {
-        return in_array($item->jabatan, [
-            'Ketua Marturia',
-            'Anggota Marturia'
-        ]);
-    });
-
-    $diakonia = $struktur->filter(function ($item) {
-        return in_array($item->jabatan, [
-            'Ketua Diakonia',
-            'Anggota Diakonia'
-        ]);
-    });
-
-    $koinonia = $struktur->filter(function ($item) {
-        return in_array($item->jabatan, [
-            'Ketua Koinonia',
-            'Anggota Koinonia'
-        ]);
-    });
-
-    $calonsintua = $struktur->filter(function ($item) {
-        return in_array($item->jabatan, [
-            'Learning',
-            'Calon Sintua'
-        ]);
-    });
-
-    return view('pengurus', compact('pendeta', 'fungsionaris', 'marturia','diakonia', 'koinonia', 'calonsintua'));
-}
-
-
+        return view('pengurus', compact('pendeta', 'fungsionaris', 'marturia', 'diakonia', 'koinonia', 'calonsintua'));
+    }
 
     public function create()
     {
-        return view('admin.struktur.create');
+        $listJabatan = $this->listJabatan;
+        return view('admin.struktur.create', compact('listJabatan'));
     }
 
     public function store(Request $request)
@@ -86,8 +63,7 @@ public function index2()
             $gambar = $request->file('gambar');
             $namaFile = time() . '_' . $gambar->getClientOriginalName();
             $gambar->move(public_path('images/struktur'), $namaFile);
-
-            $data['gambar'] = $namaFile; 
+            $data['gambar'] = $namaFile;
         }
 
         StrukturKepengurusan::create($data);
@@ -97,7 +73,8 @@ public function index2()
 
     public function edit(StrukturKepengurusan $struktur)
     {
-        return view('admin.struktur.edit', ['struktur' => $struktur]);
+        $listJabatan = $this->listJabatan;
+        return view('admin.struktur.edit', compact('struktur', 'listJabatan'));
     }
 
     public function update(Request $request, $id)
@@ -110,38 +87,26 @@ public function index2()
 
         $struktur = StrukturKepengurusan::findOrFail($id);
 
-        // Cek apakah user upload gambar baru
+        $data = $request->only(['nama', 'jabatan']);
+
         if ($request->hasFile('gambar')) {
-            // Simpan file baru
-            $gambarPath = $request->file('gambar')->store('uploads/struktur', 'public');
-
-            // Optional: hapus file lama kalau mau
-            // Storage::disk('public')->delete($struktur->gambar);
-
-            // Update semua
-            $struktur->update([
-                'nama' => $request->nama,
-                'jabatan' => $request->jabatan,
-                'gambar' => $gambarPath,
-            ]);
-        } else {
-            // Gambar tidak diubah
-            $struktur->update([
-                'nama' => $request->nama,
-                'jabatan' => $request->jabatan,
-            ]);
+            $gambar = $request->file('gambar');
+            $namaFile = time() . '_' . $gambar->getClientOriginalName();
+            $gambar->move(public_path('images/struktur'), $namaFile);
+            $data['gambar'] = $namaFile;
         }
+
+        $struktur->update($data);
 
         return redirect()->route('admin.struktur.index')->with('success', 'Struktur berhasil diperbarui!');
     }
-
 
     public function destroy($id)
     {
         $struktur = StrukturKepengurusan::findOrFail($id);
 
-        if ($struktur->gambar && file_exists(public_path($struktur->gambar))) {
-            unlink(public_path($struktur->gambar));
+        if ($struktur->gambar && file_exists(public_path('images/struktur/' . $struktur->gambar))) {
+            unlink(public_path('images/struktur/' . $struktur->gambar));
         }
 
         $struktur->delete();

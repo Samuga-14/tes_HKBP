@@ -175,10 +175,7 @@
     </div>
 
     {{-- Pagination --}}
-    <div class="mt-3">
-        {{ $jemaats->appends(request()->query())->links() }}
-    </div>
-</div>
+
 
 {{-- Script SweetAlert & popup --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

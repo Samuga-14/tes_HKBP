@@ -75,13 +75,12 @@
         font-size: 1.2rem;
     }
 
-            /* Popup sukses */
     .custom-success-popup {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: 99999; /* Pastikan popup di atas semua elemen */
+        z-index: 99999;
         background-color: #fff;
         padding: 40px 30px;
         border-radius: 16px;
@@ -91,6 +90,7 @@
         width: 350px;
         pointer-events: auto;
     }
+
     .custom-success-popup i {
         font-size: 80px;
         color: #28a745;
@@ -107,7 +107,8 @@
             <h5 class="text-center fw-bold mb-3">{{ session('success') }}</h5>
             <button class="btn btn-danger px-4" id="closeSuccessBtn">OK</button>
         </div>
-    @endif  
+    @endif
+
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="fw-bold mb-0" style="font-size: 24px;">Data Warta</h2>
         <a href="{{ route('admin.warta.create') }}" class="add-button">
@@ -123,7 +124,8 @@
                     <th style="width: 25%;">Judul</th>
                     <th style="width: 40%;">Deskripsi</th>
                     <th style="width: 15%;" class="text-center">Tanggal Publikasi</th>
-                    <th style="width: 15%;" class="text-center">Aksi</th>
+                    <th style="width: 10%;" class="text-center">File PDF</th>
+                    <th style="width: 10%;" class="text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -134,23 +136,32 @@
                     <td>{{ Str::limit(strip_tags($item->deskripsi), 100) }}</td>
                     <td class="text-center">{{ \Carbon\Carbon::parse($item->tanggal_publikasi)->translatedFormat('d F Y') }}</td>
                     <td class="text-center">
+                        @if ($item->file_pdf)
+                            <a href="{{ asset('storage/' . $item->file_pdf) }}" target="_blank" class="text-danger" title="Lihat PDF">
+                                <i class="fas fa-file-pdf fa-lg"></i>
+                            </a>
+                        @else
+                            <span class="text-muted">-</span>
+                        @endif
+                    </td>
+                    <td class="text-center">
                         <div class="d-flex justify-content-center gap-3">
                             <a href="{{ route('admin.warta.edit', $item->id) }}" class="text-primary" title="Edit">
                                 <i class="fas fa-edit fa-lg"></i>
                             </a>
-                          <form class="delete-form d-inline" data-name="{{ $item->id }}" action="{{ route('admin.warta.destroy', $item->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="button" class="icon-btn text-danger delete-btn" title="Hapus">
-                                        <i class="fas fa-trash-alt fa-lg"></i>
-                                    </button>
+                            <form class="delete-form d-inline" data-name="{{ $item->id }}" action="{{ route('admin.warta.destroy', $item->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="button" class="icon-btn text-danger delete-btn" title="Hapus">
+                                    <i class="fas fa-trash-alt fa-lg"></i>
+                                </button>
                             </form>
                         </div>
                     </td>
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="text-center text-muted py-4">
+                    <td colspan="6" class="text-center text-muted py-4">
                         <i class="fas fa-inbox fa-3x mb-2"></i><br>
                         Tidak ada data warta.
                     </td>
@@ -165,17 +176,14 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Pastikan tombol OK pada popup sukses bisa diklik dan menutup popup
         const closeBtn = document.getElementById('closeSuccessBtn');
         const popup = document.getElementById('successPopup');
         if (closeBtn && popup) {
             closeBtn.addEventListener('click', function () {
-                // Menghapus element popup dari DOM
                 popup.remove();
             });
         }
 
-        // Konfirmasi hapus data menggunakan SweetAlert2
         document.querySelectorAll('.delete-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 const form = this.closest('.delete-form');
