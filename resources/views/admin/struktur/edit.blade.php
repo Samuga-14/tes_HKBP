@@ -16,7 +16,6 @@
                 </div>
             @endif
 
-            <!-- Form Edit Pengurus -->
             <form id="formStruktur" action="{{ route('admin.struktur.update', $struktur->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -28,7 +27,12 @@
 
                 <div class="mb-4">
                     <label for="jabatan" class="form-label fw-semibold">Jabatan</label>
-                    <input type="text" name="jabatan" id="jabatan" class="form-control custom-form-control" value="{{ old('jabatan', $struktur->jabatan) }}" required>
+                    <select name="jabatan" id="jabatan" class="form-control custom-form-control" required>
+                        <option value="">-- Pilih Jabatan --</option>
+                        @foreach($listJabatan as $jabatan)
+                            <option value="{{ $jabatan }}" {{ $struktur->jabatan == $jabatan ? 'selected' : '' }}>{{ $jabatan }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="mb-4">
@@ -41,22 +45,16 @@
                     @endif
                     <input type="file" name="gambar" id="gambar" class="form-control custom-form-control" accept="image/*">
                 </div>
-
             </form>
         </div>
     </div>
 
-    <!-- Tombol untuk Submit -->
-   <div class="d-flex justify-content-between mt-5 mb-0">
-    <a href="{{ route('admin.struktur.index') }}" class="btn btn-secondary px-4 py-2">
-        Kembali
-    </a>
-
-    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
-        Edit
-    </button>
-</div>
-
+    <div class="d-flex justify-content-between mt-5 mb-0">
+        <a href="{{ route('admin.struktur.index') }}" class="btn btn-secondary px-4 py-2">Kembali</a>
+        <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" form="formStruktur">
+            Edit
+        </button>
+    </div>
 </div>
 @endsection
 

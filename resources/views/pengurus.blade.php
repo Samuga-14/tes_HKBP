@@ -14,13 +14,14 @@
   @include('header')
 
   <section class="hero-section">
-    <div class="radial-lines"></div>
-    <div class="hero-text">
-      <p class="subtitle">STRUKTUR</p>
-      <h1>KEPENGURUSAN</h1>
-      <p class="tagline">Menjadi pelayan yang setia dalam tubuh Kristus</p>
-    </div>
-  </section>
+  <div class="radial-lines"></div>
+  <div class="hero-text">
+    <p class="subtitle fade-up fade-up-delay-1">STRUKTUR</p>
+    <h1 class="fade-up fade-up-delay-2">KEPENGURUSAN</h1>
+    <p class="tagline fade-up fade-up-delay-3">Menjadi pelayan yang setia dalam tubuh Kristus</p>
+  </div>
+</section>
+
 
   @php
     $data = [
