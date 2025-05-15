@@ -40,7 +40,7 @@
     .table th {
         background-color: #f4f4f4;
         font-size: 15px;
-        padding: 14px 12px; /* Sedikit lebih tebal */
+        padding: 14px 12px;
         color: #000;
         font-weight: 600;
     }
@@ -65,7 +65,7 @@
     .icon-action {
         background: none;
         border: none;
-        font-size: 18px; 
+        font-size: 18px;
         cursor: pointer;
         margin: 0 4px;
     }
@@ -81,16 +81,15 @@
     }
 
     .icon-label i {
-        font-size: 18px; 
+        font-size: 18px;
     }
 
-    /* Popup sukses */
     .custom-success-popup {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        z-index: 99999; /* Pastikan popup di atas semua elemen */
+        z-index: 99999;
         background-color: #fff;
         padding: 40px 30px;
         border-radius: 16px;
@@ -100,6 +99,7 @@
         width: 350px;
         pointer-events: auto;
     }
+
     .custom-success-popup i {
         font-size: 80px;
         color: #28a745;
@@ -107,7 +107,6 @@
 </style>
 
 <div class="table-container">
-    {{-- Notifikasi sukses --}}
     @if (session('success'))
         <div id="successPopup" class="custom-success-popup d-flex flex-column align-items-center justify-content-center">
             <div class="check-icon mb-3">
@@ -134,7 +133,6 @@
                     <th>Gambar</th>
                     <th>Deskripsi</th>
                     <th>Tanggal Publikasi</th>
-                    <th>Video</th>
                     <th>Link Foto</th>
                     <th class="text-center">Aksi</th>
                 </tr>
@@ -158,15 +156,6 @@
                                 {{ \Carbon\Carbon::parse($item->tanggal_unggah)->format('d M Y') }}
                             </div>
                         </td>
-                        <td>
-                            <div class="icon-label">
-                                @if ($item->video)
-                                    <i class="fas fa-video text-success"></i> <span class="text-muted">Ada</span>
-                                @else
-                                    <i class="fas fa-video-slash text-muted"></i> <span class="text-muted">-</span>
-                                @endif
-                            </div>
-                        </td>
                         <td style="max-width: 180px; word-break: break-word;">
                             @if ($item->link_foto)
                                 <a href="{{ $item->link_foto }}" target="_blank" rel="noopener noreferrer">
@@ -184,8 +173,8 @@
                                 <form class="delete-form d-inline" data-name="{{ $item->judul }}" action="{{ route('admin.galeri.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="button" class="icon-btn text-danger delete-btn" title="Hapus">
-                                        <i class="fas fa-trash-alt fa-lg"></i>
+                                    <button type="button" class="icon-action text-danger delete-btn" title="Hapus">
+                                        <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </form>
                             </div>
@@ -193,7 +182,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="8" class="text-center text-muted py-4">
+                        <td colspan="7" class="text-center text-muted py-4">
                             <i class="fas fa-inbox fa-2x mb-2"></i>
                             <p>Tidak ada data galeri</p>
                         </td>
@@ -203,17 +192,14 @@
         </table>
     </div>
 
-    {{-- Pagination --}}
     <div class="d-flex justify-content-end">
         {{ $galeri->links() }}
     </div>
 </div>
 
-{{-- Script SweetAlert & popup --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Pastikan tombol OK pada popup sukses bisa diklik dan menutup popup
         const closeBtn = document.getElementById('closeSuccessBtn');
         const popup = document.getElementById('successPopup');
         if (closeBtn && popup) {
@@ -222,7 +208,6 @@
             });
         }
 
-        // Konfirmasi hapus data menggunakan SweetAlert2
         document.querySelectorAll('.delete-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 const form = this.closest('.delete-form');

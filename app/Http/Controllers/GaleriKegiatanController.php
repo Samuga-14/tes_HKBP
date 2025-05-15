@@ -28,7 +28,6 @@ class GaleriKegiatanController extends Controller
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-            'video' => 'nullable|mimes:mp4,webm,ogg|max:32768',
             'link_google_foto' => 'nullable|url|max:2048',
         ]);
 
@@ -45,12 +44,6 @@ class GaleriKegiatanController extends Controller
             $data['gambar'] = $namaFile;
         }
 
-        if ($request->hasFile('video')) {
-            $video = $request->file('video');
-            $namaFile = time() . '_' . $video->getClientOriginalName();
-            $video->move(public_path('videos/galeri'), $namaFile);
-            $data['video'] = 'videos/galeri/' . $namaFile;
-        }
 
         GaleriKegiatan::create($data);
 
@@ -68,7 +61,6 @@ class GaleriKegiatanController extends Controller
         'judul' => 'required|string|max:255',
         'deskripsi' => 'required|string',
         'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-        'video' => 'nullable|mimes:mp4,webm,ogg|max:32768',
         'link_google_foto' => 'nullable|url|max:2048',
     ]);
 
@@ -83,12 +75,6 @@ class GaleriKegiatanController extends Controller
         $data['gambar'] = 'images/galeri/' . $namaFile;
     }
 
-    if ($request->hasFile('video')) {
-        $video = $request->file('video');
-        $namaFile = time() . '_' . $video->getClientOriginalName();
-        $video->move(public_path('videos/galeri'), $namaFile);
-        $data['video'] = 'videos/galeri/' . $namaFile;
-    }
 
     $galeri->update($data);
 
