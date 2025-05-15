@@ -58,8 +58,6 @@
                                     <p class="mt-1" style="font-size: 14px;">Video saat ini: <strong>{{ basename($galeri->video) }}</strong></p>
                                 </div>
                             @endif
-                            <input type="file" name="video" id="video" class="form-control custom-form-control" accept="video/*">
-                            <small class="text-muted" style="font-size: 13px;">Kosongkan jika tidak ingin mengubah video.</small>
                         </div>
 
                         <div class="mb-4">

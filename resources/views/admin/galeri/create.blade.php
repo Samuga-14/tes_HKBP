@@ -38,13 +38,7 @@
                     </div>
 
                     <!-- Kolom Kanan -->
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label for="video" class="form-label fw-semibold">Video</label>
-                            <input type="file" name="video" id="video" class="form-control" accept="video/*">
-                        </div>
-                    </div>
-                    
+                    <div class="col-md-6">                    
                     <div class="mb-3">
                         <label for="link_google_foto" class="form-label fw-semibold">Link Google Foto</label>
                         <input type="url" name="link_google_foto" id="link_google_foto" class="form-control" placeholder="https://photos.app.goo.gl/..." />
