@@ -62,6 +62,7 @@ class WartaController extends Controller
         $warta->update([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
+            'file_pdf' => 'mimes:pdf|max:16384',
         ]);
 
         return redirect()->route('admin.warta.index')->with('success', 'Warta berhasil diperbarui!');

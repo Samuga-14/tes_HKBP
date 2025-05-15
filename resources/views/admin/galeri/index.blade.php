@@ -84,7 +84,7 @@
         font-size: 18px; 
     }
 
-/* Popup sukses */
+    /* Popup sukses */
     .custom-success-popup {
         position: fixed;
         top: 50%;
@@ -104,7 +104,6 @@
         font-size: 80px;
         color: #28a745;
     }
-
 </style>
 
 <div class="table-container">
@@ -136,7 +135,7 @@
                     <th>Deskripsi</th>
                     <th>Tanggal Publikasi</th>
                     <th>Video</th>
-                    <th>Link Foto </th>
+                    <th>Link Foto</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -168,12 +167,21 @@
                                 @endif
                             </div>
                         </td>
+                        <td style="max-width: 180px; word-break: break-word;">
+                            @if ($item->link_foto)
+                                <a href="{{ $item->link_foto }}" target="_blank" rel="noopener noreferrer">
+                                    {{ $item->link_foto }}
+                                </a>
+                            @else
+                                <span class="text-muted">-</span>
+                            @endif
+                        </td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center">
                                 <a href="{{ route('admin.galeri.edit', $item->id) }}" class="icon-action text-primary" title="Edit">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <form class="delete-form d-inline" data-name="{{ $item->id }}" action="{{ route('admin.galeri.destroy', $item->id) }}" method="POST">
+                                <form class="delete-form d-inline" data-name="{{ $item->judul }}" action="{{ route('admin.galeri.destroy', $item->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="icon-btn text-danger delete-btn" title="Hapus">
@@ -185,7 +193,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center text-muted py-4">
+                        <td colspan="8" class="text-center text-muted py-4">
                             <i class="fas fa-inbox fa-2x mb-2"></i>
                             <p>Tidak ada data galeri</p>
                         </td>
@@ -210,12 +218,11 @@
         const popup = document.getElementById('successPopup');
         if (closeBtn && popup) {
             closeBtn.addEventListener('click', function () {
-                // Menghapus element popup dari DOM
                 popup.remove();
             });
         }
 
- // Konfirmasi hapus data menggunakan SweetAlert2
+        // Konfirmasi hapus data menggunakan SweetAlert2
         document.querySelectorAll('.delete-btn').forEach(function (btn) {
             btn.addEventListener('click', function () {
                 const form = this.closest('.delete-form');
@@ -223,7 +230,7 @@
 
                 Swal.fire({
                     title: 'Yakin ingin menghapus?',
-                    text: `Data jemaat "${nama}" akan dihapus!`,
+                    text: `Data galeri "${nama}" akan dihapus!`,
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#d33',
@@ -239,4 +246,5 @@
         });
     });
 </script>
+
 @endsection
