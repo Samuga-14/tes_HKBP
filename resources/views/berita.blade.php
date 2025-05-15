@@ -69,9 +69,6 @@
     @empty
       <p class="text-center">Belum ada berita.</p>
     @endforelse
-
-    {{-- pagination --}}
-    {{ $beritas->links() }}
   </div>
 </section>
 

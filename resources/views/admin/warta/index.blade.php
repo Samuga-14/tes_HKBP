@@ -126,6 +126,7 @@
                     <th style="width: 15%;" class="text-center">Aksi</th>
                 </tr>
             </thead>
+            
             <tbody>
                 @forelse ($wartas as $index => $item)
                 <tr>

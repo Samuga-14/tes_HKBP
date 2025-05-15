@@ -212,10 +212,11 @@
 </head>
 <body>
 
-
+    <!-- Header -->
+  @include('header')
   <!-- Jadwal Ibadah Section -->
-  <section class="jadwal-ibadah">
-    <div class="container">
+  <section class="jadwal-ibadah ">
+    <div class="container mt-5">
       <h2 data-aos="fade-up">Pelayanan Ibadah HKBP Sinambela - Simanullang</h2>
 
       <div class="row">
@@ -266,7 +267,7 @@
         <!-- Permintaan Doa -->
         <div class="col-lg-4 col-md-6">
           <div class="jadwal-item" data-aos="fade-up">
-            <h3><i class="bi bi-pray me-2"></i>Permintaan Doa</h3>
+            <h3><i class="bi bi-columns me-2"></i>Permintaan Doa</h3>
             <ul>
               <li>Dapat diajukan oleh jemaat kapan saja</li>
             </ul>
@@ -276,18 +277,10 @@
       </div>
     </div>
   </section>
-
+   <!-- Header -->
+  @include('footer')
   <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>HKBP Sinambela - Simanullang © 2025</p>
-      <p>Kontak: (123) 456-7890 | Email: info@hkbpsimanullang.org</p>
-      <div class="mt-2">
-        <a href="#"><i class="bi bi-facebook"></i></a>
-        <a href="#"><i class="bi bi-instagram"></i></a>
-      </div>
-    </div>
-  </footer>
+ 
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

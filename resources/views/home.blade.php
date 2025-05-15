@@ -598,7 +598,7 @@
         </div>
         <div class="col-md-4">
           <div class="community-card animate-on-scroll delay-3">
-            <i class="bi bi-cross"></i>
+            <i class="bi bi-cloud-haze-fill"></i>
             <h3 class="mt-3">Iman yang Hidup</h3>
             <p>Dengan Alkitab sebagai pedoman, kami bertumbuh dalam iman melalui pengajaran, doa, dan pelayanan yang memuliakan Tuhan.</p>
           </div>
@@ -646,7 +646,7 @@
     <div class="container text-center">
       <h2 class="section-title animate-on-scroll">Dukung Pelayanan Kami</h2>
       <div class="section-divider animate-on-scroll delay-1"></div>
-      <p class="section-subtitle animate-on-scroll delay-2">Bersama-sama, kita dapat menyebarkan kasih Tuhan melalui pelayanan dan misi gereja.</p>
+      <p class="section-subtitle animate-on-scroll delay-2 mb-5">Bersama-sama, kita dapat menyebarkan kasih Tuhan melalui pelayanan dan misi gereja.</p>
       <a href="https://wa.me/+6285830058928?text=Halo,%20saya%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20pelayanan%20HKBP%20Sinambela%20Simanullang"
          class="btn btn-primary animate-on-scroll delay-3"
          target="_blank">Hubungi Kami</a>
