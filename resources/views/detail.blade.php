@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $berita->judul }} - Berita Gereja</title>
-    <link rel="  website icon" href="{{ asset('images/hkbplogo.png') }}" type="image/png">
-
+    <link rel="icon" href="{{ asset('images/hkbplogo.png') }}" type="image/png">
 
     <!-- Bootstrap & Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,28 +19,28 @@
 <body>
 
     <!-- Detail Berita Section -->
-    <section class="detail-berita-section py-5">
+    <section class="detail-berita-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <!-- Title and Date -->
-                    <h1 class="fw-bold display-4 mb-4 text-primary">{{ $berita->judul }}</h1>
+                <div class="col-lg-10">
+                    <!-- Title -->
+                    <h1>{{ $berita->judul }}</h1>
 
                     <!-- Image -->
-                    <img src="{{ asset('images/berita/' . $berita->gambar) }}" alt="{{ $berita->judul }}" class="img-fluid rounded-4 mb-4 shadow-lg">
+                    <img src="{{ asset('images/berita/' . $berita->gambar) }}" alt="{{ $berita->judul }}">
 
                     <!-- Description -->
-                    <div class="content-description mb-4">
-                        <p>{{ $berita->deskripsi }}</p>
+                    <div class="content-description">
+                        {!! nl2br(e($berita->deskripsi)) !!}
                     </div>
 
                     <!-- Published Date -->
-                    <p class="text-muted mb-3">
+                    <p class="text-muted">
                         Dipublikasikan pada {{ \Carbon\Carbon::parse($berita->tanggal_publikasi)->translatedFormat('d F Y') }}
                     </p>
 
                     <!-- Back Button -->
-                    <a href="{{route("berita.user")}}"  class="back-button">
+                    <a href="{{ route('berita.user') }}" class="back-button">
                         <i class="bi bi-arrow-left-circle"></i> Kembali
                     </a>
                 </div>

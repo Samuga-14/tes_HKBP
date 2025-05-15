@@ -41,7 +41,7 @@
                     <div class="col-md-6">                    
                     <div class="mb-3">
                         <label for="link_google_foto" class="form-label fw-semibold">Link Google Foto</label>
-                        <input type="url" name="link_google_foto" id="link_google_foto" class="form-control" placeholder="https://photos.app.goo.gl/..." />
+                        <input type="url" name="link_foto" id="link_foto" class="form-control" placeholder="https://photos.app.goo.gl/..." />
                     </div>
                 </div>
 

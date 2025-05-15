@@ -62,7 +62,7 @@
 
                         <div class="mb-4">
                             <label for="link_google_foto" class="form-label fw-semibold">Link Google Foto</label>
-                            <input type="url" name="link_google_foto" id="link_google_foto" class="form-control" value="{{ old('link_google_foto', $galeri->link_google_foto) }}">
+                            <input type="url" name="link_google_foto" id="link_google_foto" class="form-control" value="{{ old('link_google_foto', $galeri->link_foto) }}">
                         </div>
                     </div>
                 </div>
