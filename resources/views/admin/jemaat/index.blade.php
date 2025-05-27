@@ -94,7 +94,7 @@
                 <i class="fas fa-check-circle fa-5x text-success"></i>
             </div>
             <h5 class="text-center fw-bold mb-3">{{ session('success') }}</h5>
-            <button class="btn btn-danger px-4" id="closeSuccessBtn">OK</button>
+            <button class="btn btn-success px-4" id="closeSuccessBtn">OK</button>
         </div>
     @endif
 
@@ -131,9 +131,11 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama</th>
+                    <th>Tanggal Lahir</th>
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
                     <th>Status Pernikahan</th>
+                    <th>Nama Pasangan</th>
                     <th>Jumlah Anak</th>
                     <th class="text-center">Aksi</th>
                 </tr>
@@ -143,9 +145,11 @@
                     <tr>
                         <td>{{ $loop->iteration + ($jemaats->currentPage() - 1) * $jemaats->perPage() }}</td>
                         <td>{{ $jemaat->nama }}</td>
+                        <td>{{ $jemaat->tanggal_lahir }}</td>
                         <td>{{ $jemaat->jenis_kelamin }}</td>
                         <td>{{ $jemaat->alamat }}</td>
                         <td>{{ $jemaat->status_pernikahan }}</td>
+                        <td>{{ $jemaat->nama_pasangan }}</td>
                         <td>{{ $jemaat->jumlah_anak }}</td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-3">
@@ -164,7 +168,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center text-muted py-4">
+                        <td colspan="9" class="text-center text-muted py-4">
                             <i class="fas fa-inbox fa-3x mb-2"></i><br>
                             Tidak ada data jemaat.
                         </td>

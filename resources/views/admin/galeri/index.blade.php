@@ -113,7 +113,7 @@
                 <i class="fas fa-check-circle fa-5x text-success"></i>
             </div>
             <h5 class="text-center fw-bold mb-3">{{ session('success') }}</h5>
-            <button class="btn btn-danger px-4" id="closeSuccessBtn">OK</button>
+            <button class="btn btn-success px-4" id="closeSuccessBtn">OK</button>
         </div>
     @endif
 
