@@ -41,30 +41,52 @@
       margin-bottom: 0.4rem;
       font-weight: 300;
       font-size: 0.85rem;
-      transition: color 0.3s ease;
     }
 
-    footer ul li:hover {
-      color: #ffc107;
-    }
+    /* Bagian sosial media + kontak diubah jadi flex horizontal */
+   .social-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* posisi ikon kiri, teks kanan */
+  gap: 1.5rem;
+  flex-wrap: nowrap; /* jangan wrap */
+  width: 100%; /* penuh container */
+}
 
-    .footer-icon {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
+.footer-icon {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.8rem;
+  justify-content: start;
+}
+
+.contact-text p {
+  margin: 0;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: white;
+}
+
+
 
     .footer-icon a {
       color: white;
       transition: color 0.3s ease, transform 0.3s ease;
-      font-size: 1.5rem;
+      text-decoration: none;
     }
 
     .footer-icon a:hover {
       color: #ffc107;
-      transform: scale(1.1);
+      transform: scale(1.2);
     }
+
+   
+.contact-text p {
+  margin: 0;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: white;
+}
 
     footer img {
       border-radius: 8px;
@@ -83,7 +105,7 @@
       .footer-icon {
         justify-content: center;
       }
-      footer .col-md-2, footer .col-md-3 {
+      footer .col-md-2, footer .col-md-3, footer .col-md-3.text-center {
         text-align: center;
         margin-bottom: 1rem;
       }
@@ -92,6 +114,15 @@
       }
       footer h5 {
         font-size: 0.9rem;
+      }
+      .social-contact {
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: center;
+      }
+      .contact-text p {
+        text-align: center;
       }
     }
   </style>
@@ -102,16 +133,22 @@
   <footer>
     <div class="container">
       <div class="row text-center text-md-start">
-        <!-- Social Media and Contact Info -->
-        <div class="col-md-3 mb-3">
-          <div class="footer-icon">
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-youtube"></i></a>
-            <a href="#"><i class="bi bi-facebook"></i></a>
-          </div>
-          <p class="mb-1">HKBP SINSIM@GMAIL.COM</p>
-          <p>(123) 456-7890</p>
-        </div>
+      <!-- Social Media and Contact Info -->
+<div class="col-md-3 mb-3">
+  <div class="footer-icon">
+    <a href="https://wa.me/6285830058928" target="_blank"><i class="bi bi-whatsapp"></i></a>
+    <a href="https://www.youtube.com/@baktirajachannel1" target="_blank"><i class="bi bi-youtube"></i></a>
+    <a href="https://www.instagram.com/joseppsilaen_" target="_blank"><i class="bi bi-instagram"></i></a>
+    <a href="https://www.facebook.com/groups/HKBP SINAMBELA SIMANULLANG RESORT BAKARA" target="_blank"> <i class="bi bi-facebook"></i>
+</a>
+
+  </div>
+  <div class="contact-text mt-2">
+    <p class="mb-1">hkbpsinsim@gmail.com</p>
+  </div>
+</div>
+
+
 
         <!-- Services Section -->
         <div class="col-md-2 mb-3">
