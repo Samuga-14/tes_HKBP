@@ -68,6 +68,14 @@
                             <label for="jumlah_anak" class="form-label fw-semibold">Jumlah Anak</label>
                             <input type="number" name="jumlah_anak" id="jumlah_anak" class="form-control" required>
                         </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Nama Anak</label>
+                            <div id="nama-anak-wrapper">
+                                <input type="text" name="nama_anak[]" class="form-control mb-2" required>
+                            </div>
+                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="tambahInputNamaAnak()">+ Tambah Nama Anak</button>
+                        </div>
                     </div>
                 </div>
 
@@ -84,4 +92,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    function tambahInputNamaAnak() {
+        const wrapper = document.getElementById('nama-anak-wrapper');
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'nama_anak[]';
+        input.className = 'form-control mb-2';
+        input.required = true;
+        wrapper.appendChild(input);
+    }
+</script>
 @endsection

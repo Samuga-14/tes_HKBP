@@ -137,6 +137,7 @@
                     <th>Status Pernikahan</th>
                     <th>Nama Pasangan</th>
                     <th>Jumlah Anak</th>
+                    <th>Nama Anak</th>
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -151,6 +152,7 @@
                         <td>{{ $jemaat->status_pernikahan }}</td>
                         <td>{{ $jemaat->nama_pasangan }}</td>
                         <td>{{ $jemaat->jumlah_anak }}</td>
+                         <td>{{ $jemaat->nama_anak }}</td>
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-3">
                                 <a href="{{ route('admin.jemaat.edit', $jemaat->id) }}" class="text-primary" title="Edit">
