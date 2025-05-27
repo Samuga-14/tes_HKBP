@@ -399,31 +399,51 @@
 
 
   <!-- Bible Verse Section -->
-  <section class="bible-verse">
-    <div class="container text-center">
-      <div class="verse-wrapper animate-on-scroll">
-        <div class="verse-decor-top mb-4 animate-on-scroll delay-1">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2v20M2 12h20"/>
-          </svg>
-        </div>
-        <p class="verse-quote mb-4 animate-on-scroll delay-2">
-          Jala Dame Ni Kristus Ima<br>
-          Mangarajai Di Bagasan<br>
-          Roha Muna
-        </p>
-        <p class="verse-reference mt-4 animate-on-scroll delay-3">
-          <em>"Biarlah damai sejahtera Kristus menguasai hati kalian."</em><br>
-          <small>(Kolose 3:15, terjemahan bebas)</small>
-        </p>
-        <div class="verse-decor-bottom mt-4 animate-on-scroll delay-1">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--text-dark)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 2v20M2 12h20"/>
-          </svg>
-        </div>
-      </div>
+ <!-- 🎉 Zona Informasi Harian (Ulang Tahun + Ayat Harian) -->
+<div class="info-zone-genz">
+  <!-- Ulang Tahun -->
+  <div class="birthday-card-genz">
+    <div class="birthday-card-header-genz">
+      <i class="fas fa-birthday-cake text-yellow-300 text-lg animate-pulse"></i>
+      <h3>Ulang Tahun Hari Ini</h3>
+      <p>Selamat ulang tahun!</p>
     </div>
-  </section>
+    <div class="birthday-card-body-genz">
+      @forelse(App\Models\Jemaat::ulangTahunHariIni()->get() as $jemaat)
+        <div class="birthday-user-genz">
+          <div class="user-info">
+            <p class="user-name">{{ $jemaat->nama }}</p>
+            <p class="user-ttl">{{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }}</p>
+          </div>
+        </div>
+      @empty
+        <div class="no-birthday-message">Belum ada yang ulang tahun hari ini</div>
+      @endforelse
+    </div>
+  </div>
+
+  <!-- Ayat Harian -->
+  <div class="birthday-card-genz">
+    <div class="birthday-card-header-genz">
+      <i class="fas fa-book-open text-yellow-300 text-lg animate-pulse"></i>
+      <h3>Ayat Harian</h3>
+      <p> Selamat menjalani hari dalam kasih Kristus! </p>
+    </div>
+    <div class="birthday-card-body-genz">
+      @if($ayatHarian)
+        <div class="birthday-user-genz">
+          <div class="user-info">
+            <p class="user-name">{{ $ayatHarian->judul }}</p>
+            <p class="user-ttl">{{ $ayatHarian->deskripsi }}</p>
+            <small><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
+          </div>
+        </div>
+      @else
+        <div class="no-birthday-message">Belum ada Ayat Harian yang tersedia</div>
+      @endif
+    </div>
+  </div>
+</div>
 
   <!-- Jadwal Ibadah Mingguan -->
  <section class="schedule-section py-5">
@@ -477,52 +497,6 @@
     </div>
   </div>
 </section>
-
-<!-- 🎉 Zona Informasi Harian (Ulang Tahun + Ayat Harian) -->
-<div class="info-zone-genz">
-  <!-- Ulang Tahun -->
-  <div class="birthday-card-genz">
-    <div class="birthday-card-header-genz">
-      <i class="fas fa-birthday-cake text-yellow-300 text-lg animate-pulse"></i>
-      <h3>Ulang Tahun Hari Ini</h3>
-      <p>Selamat ulang tahun!</p>
-    </div>
-    <div class="birthday-card-body-genz">
-      @forelse(App\Models\Jemaat::ulangTahunHariIni()->get() as $jemaat)
-        <div class="birthday-user-genz">
-          <div class="user-info">
-            <p class="user-name">{{ $jemaat->nama }}</p>
-            <p class="user-ttl">{{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }}</p>
-          </div>
-        </div>
-      @empty
-        <div class="no-birthday-message">Belum ada yang ulang tahun hari ini</div>
-      @endforelse
-    </div>
-  </div>
-
-  <!-- Ayat Harian -->
-  <div class="birthday-card-genz">
-    <div class="birthday-card-header-genz">
-      <i class="fas fa-book-open text-yellow-300 text-lg animate-pulse"></i>
-      <h3>Ayat Harian</h3>
-      <p> Selamat menjalani hari dalam kasih Kristus! </p>
-    </div>
-    <div class="birthday-card-body-genz">
-      @if($ayatHarian)
-        <div class="birthday-user-genz">
-          <div class="user-info">
-            <p class="user-name">{{ $ayatHarian->judul }}</p>
-            <p class="user-ttl">{{ $ayatHarian->deskripsi }}</p>
-            <small><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
-          </div>
-        </div>
-      @else
-        <div class="no-birthday-message">Belum ada Ayat Harian yang tersedia</div>
-      @endif
-    </div>
-  </div>
-</div>
 
   <!-- Layanan Section -->
   <section class="service-section" id="layanan">
@@ -625,7 +599,7 @@
       <h2 class="section-title animate-on-scroll">Dukung Pelayanan Kami</h2>
       <div class="section-divider animate-on-scroll delay-1"></div>
       <p class="section-subtitle animate-on-scroll delay-2 mb-5">Bersama-sama, kita dapat menyebarkan kasih Tuhan melalui pelayanan dan misi gereja.</p>
-      <a href="https://wa.me/+6285830058928?text=Halo,%20saya%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20pelayanan%20HKBP%20Sinambela%20Simanullang"
+      <a href="https://wa.me/+6282276940299?text=Halo,%20saya%20ingin%20mengetahui%20lebih%20lanjut%20tentang%20pelayanan%20HKBP%20Sinambela%20Simanullang"
          class="btn btn-primary animate-on-scroll delay-3"
          target="_blank">Hubungi Kami</a>
     </div>
