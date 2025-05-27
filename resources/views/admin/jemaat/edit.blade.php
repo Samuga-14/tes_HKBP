@@ -61,19 +61,14 @@
                             </select>
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-4" id="nama_pasangan_div">
                             <label for="nama_pasangan" class="form-label fw-semibold">Nama Pasangan (Opsional)</label>
                             <input type="text" name="nama_pasangan" id="nama_pasangan" class="form-control custom-form-control">
                         </div>
 
-                        <div class="mb-4">
+                        <div class="mb-4" id="jumlah_anak_div">
                             <label for="jumlah_anak" class="form-label fw-semibold">Jumlah Anak</label>
-                            <input type="number" name="jumlah_anak" id="jumlah_anak" class="form-control custom-form-control" required>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="nama_anak" class="form-label fw-semibold">Nama Anak</label>
-                            <input type="text" name="nama_anak" id="nama_anak" class="form-control custom-form-control" required>
+                            <input type="text" name="jumlah_anak" id="jumlah_anak" class="form-control custom-form-control">
                         </div>
                     </div>
                 </div>
@@ -100,4 +95,31 @@
         font-size: 16px;
     }
 </style>
+@endsection
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const statusPernikahan = document.getElementById('status_pernikahan');
+        const namaPasanganDiv = document.getElementById('nama_pasangan_div');
+        const jumlahAnakDiv = document.getElementById('jumlah_anak_div');
+
+        function toggleFields() {
+            if (statusPernikahan.value === 'Menikah') {
+                namaPasanganDiv.style.display = 'block';
+                jumlahAnakDiv.style.display = 'block';
+                document.getElementById('nama_pasangan').required = true;
+                document.getElementById('jumlah_anak').required = true;
+            } else {
+                namaPasanganDiv.style.display = 'none';
+                jumlahAnakDiv.style.display = 'none';
+                document.getElementById('nama_pasangan').required = false;
+                document.getElementById('jumlah_anak').required = false;
+            }
+        }
+
+        statusPernikahan.addEventListener('change', toggleFields);
+        toggleFields();
+    });
+</script>
 @endsection

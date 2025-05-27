@@ -42,11 +42,8 @@
         <p class="hero-desc fs-5 mb-5 animate-fadeup-delay" style="font-family: 'Lora', serif; max-width: 700px; margin: 0 auto; line-height: 1.8;">
             Merayakan warisan iman yang mengakar kuat di Tanah Batak sejak abad ke-19, membawa cahaya Injil ke hati masyarakat.
         </p>
-
-        
     </div>
 </section>
-
 
     {{-- History Timeline Section --}}
     <section id="history" class="history-section py-5 bg-white">
@@ -128,7 +125,7 @@
         const lightbox = GLightbox({
             touchNavigation: true,
             loop: true,
-            autoplayVideos: true,
+            autoplayVideos: true
         });
 
         // GSAP Animations
@@ -143,8 +140,8 @@
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 85%',
-                    toggleActions: 'play none none none',
-                },
+                    toggleActions: 'play none none none'
+                }
             });
         });
 
@@ -158,5 +155,7 @@
             });
         });
     </script>
+</body>
+</body>
 </body>
 </html>

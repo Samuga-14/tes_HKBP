@@ -102,6 +102,26 @@
         font-size: 80px;
         color: #28a745;
     }
+
+    /* Pagination styling */
+.pagination {
+    gap: 5px;
+}
+.page-item .page-link {
+    border-radius: 8px !important;
+    border: 1px solid #dee2e6;
+    color: #0d6efd;
+    min-width: 38px;
+    text-align: center;
+}
+.page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+}
+.page-item.disabled .page-link {
+    color: #6c757d;
+}
 </style>
 
 
@@ -176,6 +196,58 @@
         </table>
     </div>
 </div>
+
+{{-- Tabel data jemaat --}}
+<div class="table-responsive">
+    <!-- Tabel yang sudah ada -->
+</div>
+
+{{-- Pagination --}}
+@if ($beritas->hasPages())
+<div class="d-flex justify-content-between align-items-center mt-4">
+    <div class="text-muted">
+        Menampilkan {{ $beritas->firstItem() }} sampai {{ $beritas->lastItem() }} dari {{ $beritas->total() }} data
+    </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination mb-0">
+            {{-- Previous Page Link --}}
+            @if ($beritas->onFirstPage())
+                <li class="page-item disabled">
+                    <span class="page-link">&laquo;</span>
+                </li>
+            @else
+                <li class="page-item">
+                    <a class="page-link" href="{{ $beritas->previousPageUrl() }}" rel="prev">&laquo;</a>
+                </li>
+            @endif
+
+            {{-- Pagination Elements --}}
+            @foreach ($beritas->getUrlRange(1, $beritas->lastPage()) as $page => $url)
+                @if ($page == $beritas->currentPage())
+                    <li class="page-item active">
+                        <span class="page-link">{{ $page }}</span>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endif
+            @endforeach
+
+            {{-- Next Page Link --}}
+            @if ($beritas->hasMorePages())
+                <li class="page-item">
+                    <a class="page-link" href="{{ $beritas->nextPageUrl() }}" rel="next">&raquo;</a>
+                </li>
+            @else
+                <li class="page-item disabled">
+                    <span class="page-link">&raquo;</span>
+                </li>
+            @endif
+        </ul>
+    </nav>
+</div>
+@endif
 
 {{-- Script SweetAlert & popup --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

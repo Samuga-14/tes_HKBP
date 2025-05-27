@@ -50,7 +50,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="status_pernikahan" class="form-label fw-semibold">Status Pernikahan</label>
-                            <select name="status_pernikahan" id="status_pernikahan" class="form-control" required>
+                            <select name="status_pernikahan" id="status_pernikahan" class="form-control" required onchange="toggleFields()">
                                 <option value="">-- Pilih Status --</option>
                                 <option value="Belum Menikah">Belum Menikah</option>
                                 <option value="Menikah">Menikah</option>
@@ -59,22 +59,14 @@
                             </select>
                         </div>
 
-                        <div class="mb-3">
-                            <label for="nama_pasangan" class="form-label fw-semibold">Nama Pasangan (Opsional)</label>
+                        <div class="mb-3" id="nama_pasangan_div">
+                            <label for="nama_pasangan" class="form-label fw-semibold">Nama Pasangan</label>
                             <input type="text" name="nama_pasangan" id="nama_pasangan" class="form-control">
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-3" id="jumlah_anak_div">
                             <label for="jumlah_anak" class="form-label fw-semibold">Jumlah Anak</label>
-                            <input type="number" name="jumlah_anak" id="jumlah_anak" class="form-control" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label fw-semibold">Nama Anak</label>
-                            <div id="nama-anak-wrapper">
-                                <input type="text" name="nama_anak[]" class="form-control mb-2" required>
-                            </div>
-                            <button type="button" class="btn btn-sm btn-outline-primary" onclick="tambahInputNamaAnak()">+ Tambah Nama Anak</button>
+                            <input type="number" name="jumlah_anak" id="jumlah_anak" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -94,14 +86,29 @@
 </div>
 
 <script>
-    function tambahInputNamaAnak() {
-        const wrapper = document.getElementById('nama-anak-wrapper');
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.name = 'nama_anak[]';
-        input.className = 'form-control mb-2';
-        input.required = true;
-        wrapper.appendChild(input);
+    function toggleFields() {
+        const statusPernikahan = document.getElementById('status_pernikahan').value;
+        const namaPasanganDiv = document.getElementById('nama_pasangan_div');
+        const jumlahAnakDiv = document.getElementById('jumlah_anak_div');
+        const namaPasanganInput = document.getElementById('nama_pasangan');
+        const jumlahAnakInput = document.getElementById('jumlah_anak');
+
+        if (statusPernikahan === 'Menikah') {
+            namaPasanganDiv.style.display = 'block';
+            jumlahAnakDiv.style.display = 'block';
+            namaPasanganInput.required = true;
+            jumlahAnakInput.required = true;
+        } else {
+            namaPasanganDiv.style.display = 'block';
+            jumlahAnakDiv.style.display = 'block';
+            namaPasanganInput.required = false;
+            jumlahAnakInput.required = false;
+        }
     }
+
+    // Run on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        toggleFields();
+    });
 </script>
 @endsection

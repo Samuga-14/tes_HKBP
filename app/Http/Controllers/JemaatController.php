@@ -31,8 +31,6 @@ class JemaatController extends Controller
         'alamat' => 'required',
         'status_pernikahan' => 'required|in:Menikah,Belum Menikah,Cerai,Janda,Duda',
         'jumlah_anak' => 'required|integer|min:0',
-        'nama_anak' => 'required_if:jumlah_anak,>,0|array',
-        'nama_anak.*' => 'required|string',
     ];
 
     $messages = [
@@ -40,21 +38,15 @@ class JemaatController extends Controller
         'nama_pasangan.required' => 'Nama pasangan harus diisi jika status pernikahan menikah!',
         'jumlah_anak.required' => 'Jumlah anak harus diisi jika status pernikahan menikah!',
         'jumlah_anak.min' => 'Jumlah anak tidak boleh kurang dari 0',
-        'nama_anak.required_if' => 'Nama anak harus diisi jika jumlah anak lebih dari 0',
     ];
 
     if ($request->status_pernikahan !== 'Menikah') {
-        $request->merge(['nama_pasangan' => null, 'jumlah_anak' => 0, 'nama_anak' => []]);
+        $request->merge(['nama_pasangan' => null, 'jumlah_anak' => 0]);
     }
 
     $request->validate($rules, $messages);
 
-    if ($request->jumlah_anak != count($request->nama_anak)) {
-        return back()->withErrors(['nama_anak' => 'Jumlah nama anak harus sesuai dengan jumlah anak yang diinput'])->withInput();
-    }
-
     $data = $request->all();
-    $data['nama_anak'] = json_encode($request->nama_anak);
 
     Jemaat::create($data);
 
@@ -101,7 +93,6 @@ class JemaatController extends Controller
             ->where('status_pernikahan', $request->status_pernikahan)
             ->where('nama_pasangan', $request->nama_pasangan)
             ->where('jumlah_anak', $request->jumlah_anak)
-            ->where('nama_anak', $request->nama_anak)
             ->first();
 
         if ($existingJemaat) {
