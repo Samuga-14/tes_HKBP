@@ -30,6 +30,10 @@
       letter-spacing: 1px;
       opacity: 0.8;
     }
+    .col-md-3.mb-3 {
+  text-align: center;
+}
+
 
     footer ul {
       padding-left: 0;
@@ -42,10 +46,6 @@
       font-weight: 300;
       font-size: 0.85rem;
       transition: color 0.3s ease;
-    }
-
-    footer ul li:hover {
-      color: #ffc107;
     }
 
     .footer-icon {
@@ -82,6 +82,7 @@
     @media (max-width: 767.98px) {
       .footer-icon {
         justify-content: center;
+        flex-wrap: wrap;
       }
       footer .col-md-2, footer .col-md-3 {
         text-align: center;
@@ -105,12 +106,10 @@
         <!-- Social Media and Contact Info -->
         <div class="col-md-3 mb-3">
           <div class="footer-icon">
-            <a href="#"><i class="bi bi-instagram"></i></a>
-            <a href="#"><i class="bi bi-youtube"></i></a>
-            <a href="#"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.facebook.com/groups/465960794645382/?ref=share&mibextid=NSMWBT"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/groups/465960794645382/?ref=share&mibextid=NSMWBT"><i class="bi bi-facebook"></i></a>
           </div>
           <p class="mb-1">HKBP SINSIM@GMAIL.COM</p>
-          <p>(123) 456-7890</p>
         </div>
 
         <!-- Services Section -->
@@ -149,9 +148,9 @@
 
         <!-- Created By Section -->
         <div class="col-md-3 mb-3 text-center">
-          <h5>DIBUAT OLEH</h5>
           <img src="{{ asset('images/itdel.jpeg') }}" alt="Logo Del" class="mb-2" />
-          <p class="fw-semibold mb-0">Institut Teknologi Del</p>
+          <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="mb-2" />
+          <p class="fw-semibold mb-0">Tim Pengembang</p>
         </div>
       </div>
       <hr />
