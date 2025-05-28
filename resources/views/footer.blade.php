@@ -30,10 +30,6 @@
       letter-spacing: 1px;
       opacity: 0.8;
     }
-    .col-md-3.mb-3 {
-  text-align: center;
-}
-
 
     footer ul {
       padding-left: 0;
@@ -47,32 +43,13 @@
       font-size: 0.85rem;
     }
 
-
-    /* Bagian sosial media + kontak diubah jadi flex horizontal */
-   .social-contact {
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* posisi ikon kiri, teks kanan */
-  gap: 1.5rem;
-  flex-wrap: nowrap; /* jangan wrap */
-  width: 100%; /* penuh container */
-}
-
-.footer-icon {
-  display: flex;
-  gap: 1.5rem;
-  font-size: 1.8rem;
-  justify-content: start;
-}
-
-.contact-text p {
-  margin: 0;
-  font-weight: 300;
-  font-size: 0.9rem;
-  color: white;
-}
-
-
+    .footer-icon {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 1.8rem;
+      justify-content: flex-start;
+      margin-bottom: 0.5rem;
+    }
 
     .footer-icon a {
       color: white;
@@ -85,19 +62,21 @@
       transform: scale(1.2);
     }
 
-   
-.contact-text p {
-  margin: 0;
-  font-weight: 300;
-  font-size: 0.9rem;
-  color: white;
-}
+    .contact-text {
+      font-weight: 300;
+      font-size: 0.9rem;
+      color: white;
+    }
 
     footer img {
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
       width: 70px;
-      margin-bottom: 1rem;
+      height: 70px;
+      object-fit: contain;
+      background-color: white;
+      padding: 6px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      margin: 0 10px 1rem;
     }
 
     hr {
@@ -105,30 +84,25 @@
       margin: 1.5rem 0;
     }
 
-    /* Mobile Optimizations */
     @media (max-width: 767.98px) {
       .footer-icon {
         justify-content: center;
         flex-wrap: wrap;
       }
-      footer .col-md-2, footer .col-md-3, footer .col-md-3.text-center {
+
+      .contact-text {
+        text-align: center;
+      }
+
+      footer .col-md-2,
+      footer .col-md-3 {
         text-align: center;
         margin-bottom: 1rem;
       }
-      footer .col-md-3 img {
-        width: 50px;
-      }
-      footer h5 {
-        font-size: 0.9rem;
-      }
-      .social-contact {
-        justify-content: center;
-        flex-direction: column;
-        gap: 0.8rem;
-        align-items: center;
-      }
-      .contact-text p {
-        text-align: center;
+
+      footer img {
+        width: 60px;
+        height: 60px;
       }
     }
   </style>
@@ -140,20 +114,18 @@
     <div class="container">
       <div class="row text-center text-md-start">
 
-      <!-- Social Media and Contact Info -->
-<div class="col-md-3 mb-3">
-  <div class="footer-icon">
-    <a href="https://wa.me/6285830058928" target="_blank"><i class="bi bi-whatsapp"></i></a>
-    <a href="https://www.youtube.com/@baktirajachannel1" target="_blank"><i class="bi bi-youtube"></i></a>
-    <a href="https://www.instagram.com/joseppsilaen_" target="_blank"><i class="bi bi-instagram"></i></a>
-    <a href="https://www.facebook.com/groups/HKBP SINAMBELA SIMANULLANG RESORT BAKARA" target="_blank"> <i class="bi bi-facebook"></i>
-</a>
-
-  </div>
-  <div class="contact-text mt-2">
-    <p class="mb-1">hkbpsinsim@gmail.com</p>
-  </div>
-</div>
+        <!-- Social Media and Contact Info -->
+        <div class="col-md-3 mb-3">
+          <div class="footer-icon">
+            <a href="https://wa.me/6285830058928" target="_blank"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://www.youtube.com/@baktirajachannel1" target="_blank"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.instagram.com/joseppsilaen_" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.facebook.com/groups/HKBP SINAMBELA SIMANULLANG RESORT BAKARA" target="_blank"><i class="bi bi-facebook"></i></a>
+          </div>
+          <div class="contact-text">
+            <p class="mb-0">hkbpsinsim@gmail.com</p>
+          </div>
+        </div>
 
         <!-- Services Section -->
         <div class="col-md-2 mb-3">
@@ -191,9 +163,9 @@
 
         <!-- Created By Section -->
         <div class="col-md-3 mb-3 text-center">
-          <img src="{{ asset('images/itdel.jpeg') }}" alt="Logo Del" class="mb-2" />
-          <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="mb-2" />
-          <p class="fw-semibold mb-0">Tim Pengembang</p>
+          <img src="{{ asset('images/itdel.jpeg') }}" alt="Logo Del" />
+          <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" />
+          <p class="fw-semibold mb-0 text-white">Tim Pengembang</p>
         </div>
       </div>
       <hr />
