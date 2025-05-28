@@ -22,49 +22,37 @@ class JemaatController extends Controller
         return view('admin.jemaat.create');
     }
 
-    public function store(Request $request)
-    {
-        $rules = [
-            'nama' => 'required',
-            'jenis_kelamin' => 'required',
-            'tanggal_lahir' => 'nullable|date',
-            'alamat' => 'required',
-            'status_pernikahan' => 'required|in:Menikah,Belum Menikah,Cerai,Janda,Duda',
-        ];
+   public function store(Request $request)
+{
+    $rules = [
+        'nama' => 'required',
+        'jenis_kelamin' => 'required',
+        'tanggal_lahir' => 'nullable|date',
+        'alamat' => 'required',
+        'status_pernikahan' => 'required|in:Menikah,Belum Menikah,Cerai,Janda,Duda',
+        'jumlah_anak' => 'required|integer|min:0',
+    ];
 
-        if ($request->status_pernikahan === 'Menikah') {
-            $rules['nama_pasangan'] = 'required|string';
-            $rules['jumlah_anak'] = 'required|integer|min:0';
-        } else {
-            $request->merge(['nama_pasangan' => null, 'jumlah_anak' => 0]);
-        }
+    $messages = [
+        'status_pernikahan.in' => 'Status pernikahan harus dipilih dari pilihan yang tersedia',
+        'nama_pasangan.required' => 'Nama pasangan harus diisi jika status pernikahan menikah!',
+        'jumlah_anak.required' => 'Jumlah anak harus diisi jika status pernikahan menikah!',
+        'jumlah_anak.min' => 'Jumlah anak tidak boleh kurang dari 0',
+    ];
 
-        $messages = [
-            'status_pernikahan.in' => 'Status pernikahan harus dipilih dari pilihan yang tersedia',
-            'nama_pasangan.required' => 'Nama pasangan harus diisi jika status pernikahan menikah!',
-            'jumlah_anak.required' => 'Jumlah anak harus diisi jika status pernikahan menikah!',
-            'jumlah_anak.min' => 'Jumlah anak tidak boleh kurang dari 0'
-        ];
-
-        $request->validate($rules, $messages);
-
-        $existingJemaat = Jemaat::where('nama', $request->nama)
-            ->where('jenis_kelamin', $request->jenis_kelamin)
-            ->where('tanggal_lahir', $request->tanggal_lahir)
-            ->where('alamat', $request->alamat)
-            ->where('status_pernikahan', $request->status_pernikahan)
-            ->where('nama_pasangan', $request->nama_pasangan)
-            ->where('jumlah_anak', $request->jumlah_anak)
-            ->first();
-
-        if ($existingJemaat) {
-            return back()->withErrors(['message' => 'Data jemaat dengan informasi yang sama sudah ada!'])->withInput();
-        }
-
-        Jemaat::create($request->all());
-
-        return redirect()->route('admin.jemaat.index')->with('success', 'Jemaat berhasil ditambahkan!');
+    if ($request->status_pernikahan !== 'Menikah') {
+        $request->merge(['nama_pasangan' => null, 'jumlah_anak' => 0]);
     }
+
+    $request->validate($rules, $messages);
+
+    $data = $request->all();
+
+    Jemaat::create($data);
+
+    return redirect()->route('admin.jemaat.index')->with('success', 'Jemaat berhasil ditambahkan!');
+}
+
 
     public function edit(Jemaat $jemaat)
     {

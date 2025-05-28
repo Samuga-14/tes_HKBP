@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="gambar" class="form-label fw-semibold">Gambar (Opsional)</label>
+                    <label for="gambar" class="form-label fw-semibold">Gambar</label>
                     <input type="file" name="gambar" id="gambar" class="form-control custom-form-control" accept="image/*">
                 </div>
             </form>

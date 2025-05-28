@@ -84,6 +84,26 @@
         font-size: 80px;
         color: #28a745;
     }
+
+    /* Pagination styling */
+.pagination {
+    gap: 5px;
+}
+.page-item .page-link {
+    border-radius: 8px !important;
+    border: 1px solid #dee2e6;
+    color: #0d6efd;
+    min-width: 38px;
+    text-align: center;
+}
+.page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+}
+.page-item.disabled .page-link {
+    color: #6c757d;
+}
 </style>
 
 <div class="container-fluid py-3 px-4 rounded-container shadow-sm">
@@ -179,6 +199,51 @@
     </div>
 
     {{-- Pagination --}}
+@if ($jemaats->hasPages())
+<div class="d-flex justify-content-between align-items-center mt-4">
+    <div class="text-muted">
+        Menampilkan {{ $jemaats->firstItem() }} sampai {{ $jemaats->lastItem() }} dari {{ $jemaats->total() }} data
+    </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination mb-0">
+            {{-- Previous Page Link --}}
+            @if ($jemaats->onFirstPage())
+                <li class="page-item disabled">
+                    <span class="page-link">&laquo;</span>
+                </li>
+            @else
+                <li class="page-item">
+                    <a class="page-link" href="{{ $jemaats->previousPageUrl() }}" rel="prev">&laquo;</a>
+                </li>
+            @endif
+
+            {{-- Pagination Elements --}}
+            @foreach ($jemaats->getUrlRange(1, $jemaats->lastPage()) as $page => $url)
+                @if ($page == $jemaats->currentPage())
+                    <li class="page-item active">
+                        <span class="page-link">{{ $page }}</span>
+                    </li>
+                @else
+                    <li class="page-item">
+                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                    </li>
+                @endif
+            @endforeach
+
+            {{-- Next Page Link --}}
+            @if ($jemaats->hasMorePages())
+                <li class="page-item">
+                    <a class="page-link" href="{{ $jemaats->nextPageUrl() }}" rel="next">&raquo;</a>
+                </li>
+            @else
+                <li class="page-item disabled">
+                    <span class="page-link">&raquo;</span>
+                </li>
+            @endif
+        </ul>
+    </nav>
+</div>
+@endif
 
 
 {{-- Script SweetAlert & popup --}}
@@ -206,8 +271,8 @@
                     text: `Data jemaat "${nama}" akan dihapus!`,
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#d33',
-                    cancelButtonColor: '#3085d6',
+                    confirmButtonColor: '#5D6532',
+                    cancelButtonColor: '#d33',
                     confirmButtonText: 'Ya, hapus!',
                     cancelButtonText: 'Batal'
                 }).then((result) => {

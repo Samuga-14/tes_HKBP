@@ -12,12 +12,13 @@ class Jemaat extends Model
 
     protected $fillable = [
         'nama',
-        'tanggal_lahir', 
-        'jenis_kelamin', 
-        'alamat', 
-        'status_pernikahan', 
-        'nama_pasangan', 
-        'jumlah_anak'
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'alamat',
+        'status_pernikahan',
+        'nama_pasangan',
+        'jumlah_anak',
+        'nama_anak'
     ];
 
     /**
@@ -38,7 +39,7 @@ class Jemaat extends Model
         return $query->whereMonth('tanggal_lahir', now()->month)
                     ->orderByRaw('DAY(tanggal_lahir)');
     }
-    
+
     /**
      * Get age attribute
      */
@@ -46,4 +47,9 @@ class Jemaat extends Model
     {
         return Carbon::parse($this->tanggal_lahir)->age;
     }
+    public function anak()
+    {
+        return $this->hasMany(Anak::class);
+    }
+
 }

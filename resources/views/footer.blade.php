@@ -30,6 +30,10 @@
       letter-spacing: 1px;
       opacity: 0.8;
     }
+    .col-md-3.mb-3 {
+  text-align: center;
+}
+
 
     footer ul {
       padding-left: 0;
@@ -42,6 +46,7 @@
       font-weight: 300;
       font-size: 0.85rem;
     }
+
 
     /* Bagian sosial media + kontak diubah jadi flex horizontal */
    .social-contact {
@@ -104,6 +109,7 @@
     @media (max-width: 767.98px) {
       .footer-icon {
         justify-content: center;
+        flex-wrap: wrap;
       }
       footer .col-md-2, footer .col-md-3, footer .col-md-3.text-center {
         text-align: center;
@@ -133,6 +139,7 @@
   <footer>
     <div class="container">
       <div class="row text-center text-md-start">
+
       <!-- Social Media and Contact Info -->
 <div class="col-md-3 mb-3">
   <div class="footer-icon">
@@ -147,8 +154,6 @@
     <p class="mb-1">hkbpsinsim@gmail.com</p>
   </div>
 </div>
-
-
 
         <!-- Services Section -->
         <div class="col-md-2 mb-3">
@@ -186,9 +191,9 @@
 
         <!-- Created By Section -->
         <div class="col-md-3 mb-3 text-center">
-          <h5>DIBUAT OLEH</h5>
           <img src="{{ asset('images/itdel.jpeg') }}" alt="Logo Del" class="mb-2" />
-          <p class="fw-semibold mb-0">Institut Teknologi Del</p>
+          <img src="{{ asset('images/hkbplogo.png') }}" alt="Logo HKBP" class="mb-2" />
+          <p class="fw-semibold mb-0">Tim Pengembang</p>
         </div>
       </div>
       <hr />
