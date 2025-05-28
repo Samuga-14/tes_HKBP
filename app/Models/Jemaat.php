@@ -16,9 +16,14 @@ class Jemaat extends Model
         'jenis_kelamin',
         'alamat',
         'status_pernikahan',
-        'nama_pasangan',
-        'jumlah_anak',
-        'nama_anak'
+        // 'nama_pasangan', // Dihapus
+        // 'jumlah_anak',   // Dihapus
+        // 'nama_anak'      // Dihapus (ini sepertinya tidak terpakai di migrasi awalmu juga)
+    ];
+
+    // Casting untuk tanggal lahir agar otomatis jadi objek Carbon
+    protected $casts = [
+        'tanggal_lahir' => 'date',
     ];
 
     /**
@@ -45,11 +50,16 @@ class Jemaat extends Model
      */
     public function getUmurAttribute()
     {
-        return Carbon::parse($this->tanggal_lahir)->age;
-    }
-    public function anak()
-    {
-        return $this->hasMany(Anak::class);
+        // Tambahkan pengecekan jika tanggal_lahir null untuk menghindari error
+        if ($this->tanggal_lahir) {
+            return Carbon::parse($this->tanggal_lahir)->age;
+        }
+        return null;
     }
 
+    // Relasi anak dihapus karena kolom jumlah_anak dihapus
+    // public function anak()
+    // {
+    //     return $this->hasMany(Anak::class);
+    // }
 }

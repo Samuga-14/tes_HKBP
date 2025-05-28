@@ -14,12 +14,15 @@ return new class extends Migration
         Schema::create('jemaats', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->date('tanggal_lahir');
+            $table->date('tanggal_lahir'); // Sebaiknya tidak nullable jika ini data penting
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->text('alamat');
-            $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah', 'Janda', 'Duda']);
-            $table->string('nama_pasangan')->nullable();
-            $table->integer('jumlah_anak')->default(0);
+            // Mengubah opsi dan menghapus 'Janda', 'Duda' karena 'Cerai' bisa mencakup itu
+            // atau bisa juga ditambahkan jika memang sangat spesifik dibutuhkan.
+            // Untuk saat ini sesuai permintaan: Menikah, Belum Menikah, Cerai
+            $table->enum('status_pernikahan', ['Belum Menikah', 'Menikah', 'Cerai']);
+            // $table->string('nama_pasangan')->nullable(); // Dihapus
+            // $table->integer('jumlah_anak')->default(0); // Dihapus
             $table->timestamps();
         });
     }

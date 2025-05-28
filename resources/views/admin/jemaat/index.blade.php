@@ -104,6 +104,30 @@
 .page-item.disabled .page-link {
     color: #6c757d;
 }
+ .info-card {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: .75rem;
+        padding: 1.25rem;
+        text-align: center;
+        margin-bottom: 1rem; /* Tambahkan margin bawah untuk card */
+    }
+    .info-card .icon {
+        font-size: 2.5rem;
+        margin-bottom: .5rem;
+    }
+    .info-card .title {
+        font-size: 0.9rem;
+        color: #6c757d;
+        font-weight: 500;
+        margin-bottom: .25rem;
+    }
+    .info-card .count {
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: #343a40;
+    }
+    
 </style>
 
 <div class="container-fluid py-3 px-4 rounded-container shadow-sm">
@@ -125,6 +149,32 @@
             Add New <i class="fas fa-plus"></i>
         </a>
     </div>
+
+    {{-- Informasi Jumlah Jemaat --}}
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="info-card">
+                <div class="icon text-primary"><i class="fas fa-male"></i></div>
+                <div class="title">JEMAAT LAKI-LAKI</div>
+                <div class="count">{{ $jumlahLakiLaki }}</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="info-card">
+                <div class="icon text-danger"><i class="fas fa-female"></i></div>
+                <div class="title">JEMAAT PEREMPUAN</div>
+                <div class="count">{{ $jumlahPerempuan }}</div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="info-card">
+                <div class="icon text-success"><i class="fas fa-users"></i></div>
+                <div class="title">TOTAL JEMAAT</div>
+                <div class="count">{{ $totalJemaat }}</div>
+            </div>
+        </div>
+    </div>
+
 
     {{-- Form pencarian dan jumlah tampilan --}}
     <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex align-items-center mb-3 gap-3 flex-wrap">
@@ -155,8 +205,9 @@
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
                     <th>Status Pernikahan</th>
-                    <th>Nama Pasangan</th>
-                    <th>Jumlah Anak</th>
+                    {{-- Kolom Nama Pasangan dan Jumlah Anak dihapus --}}
+                    {{-- <th>Nama Pasangan</th> --}}
+                    {{-- <th>Jumlah Anak</th> --}}
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -165,12 +216,13 @@
                     <tr>
                         <td>{{ $loop->iteration + ($jemaats->currentPage() - 1) * $jemaats->perPage() }}</td>
                         <td>{{ $jemaat->nama }}</td>
-                        <td>{{ $jemaat->tanggal_lahir }}</td>
+                        <td>{{ $jemaat->tanggal_lahir ? $jemaat->tanggal_lahir->format('d M Y') : '-' }}</td> {{-- Format tanggal --}}
                         <td>{{ $jemaat->jenis_kelamin }}</td>
-                        <td>{{ $jemaat->alamat }}</td>
+                        <td>{{ Str::limit($jemaat->alamat, 50) }}</td> {{-- Batasi panjang alamat di tabel --}}
                         <td>{{ $jemaat->status_pernikahan }}</td>
-                        <td>{{ $jemaat->nama_pasangan }}</td>
-                        <td>{{ $jemaat->jumlah_anak }}</td>
+                        {{-- Data Nama Pasangan dan Jumlah Anak dihapus --}}
+                        {{-- <td>{{ $jemaat->nama_pasangan ?? '-' }}</td> --}}
+                        {{-- <td>{{ $jemaat->jumlah_anak }}</td> --}}
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-3">
                                 <a href="{{ route('admin.jemaat.edit', $jemaat->id) }}" class="text-primary" title="Edit">
@@ -188,7 +240,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="9" class="text-center text-muted py-4">
+                        <td colspan="7" class="text-center text-muted py-4"> {{-- Colspan disesuaikan jadi 7 --}}
                             <i class="fas fa-inbox fa-3x mb-2"></i><br>
                             Tidak ada data jemaat.
                         </td>
@@ -199,80 +251,58 @@
     </div>
 
     {{-- Pagination --}}
-@if ($jemaats->hasPages())
-<div class="d-flex justify-content-between align-items-center mt-4">
-    <div class="text-muted">
-        Menampilkan {{ $jemaats->firstItem() }} sampai {{ $jemaats->lastItem() }} dari {{ $jemaats->total() }} data
+    @if ($jemaats->hasPages())
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <div class="text-muted">
+            Menampilkan {{ $jemaats->firstItem() }} sampai {{ $jemaats->lastItem() }} dari {{ $jemaats->total() }} data
+        </div>
+        {{-- Tampilkan pagination links dengan mempertahankan query string (search, perPage) --}}
+        {{ $jemaats->links() }}
     </div>
-    <nav aria-label="Page navigation">
-        <ul class="pagination mb-0">
-            {{-- Previous Page Link --}}
-            @if ($jemaats->onFirstPage())
-                <li class="page-item disabled">
-                    <span class="page-link">&laquo;</span>
-                </li>
-            @else
-                <li class="page-item">
-                    <a class="page-link" href="{{ $jemaats->previousPageUrl() }}" rel="prev">&laquo;</a>
-                </li>
-            @endif
-
-            {{-- Pagination Elements --}}
-            @foreach ($jemaats->getUrlRange(1, $jemaats->lastPage()) as $page => $url)
-                @if ($page == $jemaats->currentPage())
-                    <li class="page-item active">
-                        <span class="page-link">{{ $page }}</span>
-                    </li>
-                @else
-                    <li class="page-item">
-                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                    </li>
-                @endif
-            @endforeach
-
-            {{-- Next Page Link --}}
-            @if ($jemaats->hasMorePages())
-                <li class="page-item">
-                    <a class="page-link" href="{{ $jemaats->nextPageUrl() }}" rel="next">&raquo;</a>
-                </li>
-            @else
-                <li class="page-item disabled">
-                    <span class="page-link">&raquo;</span>
-                </li>
-            @endif
-        </ul>
-    </nav>
+    @endif
 </div>
-@endif
-
 
 {{-- Script SweetAlert & popup --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Pastikan tombol OK pada popup sukses bisa diklik dan menutup popup
-        const closeBtn = document.getElementById('closeSuccessBtn');
-        const popup = document.getElementById('successPopup');
-        if (closeBtn && popup) {
-            closeBtn.addEventListener('click', function () {
-                // Menghapus element popup dari DOM
-                popup.remove();
-            });
-        }
+    // ... (Script JS yang sudah ada tetap di sini) ...
+   document.addEventListener('DOMContentLoaded', function () {
+    const closeBtn = document.getElementById('closeSuccessBtn');
+    const popup = document.getElementById('successPopup');
 
-        // Konfirmasi hapus data menggunakan SweetAlert2
-        document.querySelectorAll('.delete-btn').forEach(function (btn) {
+    if (popup) { // Cukup cek keberadaan popup
+        console.log('DEBUG: #successPopup DITEMUKAN di DOM.');
+        if (closeBtn) {
+            console.log('DEBUG: #closeSuccessBtn DITEMUKAN. Memasang event listener.');
+           closeBtn.addEventListener('click', function () {
+    console.log('DEBUG: #closeSuccessBtn DIKLIK!');
+    popup.remove(); // LANGSUNG HAPUS ELEMENNYA
+});
+        } else {
+            console.error('DEBUG: #closeSuccessBtn TIDAK DITEMUKAN di dalam #successPopup.');
+        }
+    } else {
+        // Ini akan sering muncul jika halaman dimuat tanpa session('success'), jadi ini normal.
+        // console.log('DEBUG: #successPopup tidak ditemukan (kemungkinan tidak ada session success).');
+    }
+
+    // Konfirmasi hapus data menggunakan SweetAlert2
+    if (typeof Swal !== 'undefined') {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        if (deleteButtons.length > 0) {
+            // console.log('DEBUG: Ditemukan ' + deleteButtons.length + ' tombol delete.');
+        }
+        deleteButtons.forEach(function (btn) {
             btn.addEventListener('click', function () {
                 const form = this.closest('.delete-form');
                 const nama = form.dataset.name || 'data ini';
-
                 Swal.fire({
                     title: 'Yakin ingin menghapus?',
-                    text: `Data jemaat "${nama}" akan dihapus!`,
+                    text: `Data jemaat "${nama}" akan dihapus secara permanen!`,
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#5D6532',
-                    cancelButtonColor: '#d33',
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
                     confirmButtonText: 'Ya, hapus!',
                     cancelButtonText: 'Batal'
                 }).then((result) => {
@@ -282,6 +312,9 @@
                 });
             });
         });
-    });
+    } else {
+        console.warn('DEBUG: SweetAlert2 (Swal) tidak terdefinisi.');
+    }
+});
 </script>
 @endsection
