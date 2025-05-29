@@ -21,7 +21,6 @@
                 @csrf
                 @method('PUT')
 
-                <!-- Gunakan d-flex dan gap antar kolom -->
                 <div class="row g-4">
                     <!-- Kolom Kiri -->
                     <div class="col-md-6 pe-md-4">
@@ -34,6 +33,14 @@
                         <div class="mb-4">
                             <label for="deskripsi" class="form-label fw-semibold">Deskripsi</label>
                             <textarea name="deskripsi" id="deskripsi" class="form-control" rows="6" required>{{ old('deskripsi', $berita->deskripsi) }}</textarea>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="tipe" class="form-label fw-semibold">Jenis Konten</label>
+                            <select name="tipe" id="tipe" class="form-control custom-form-control" required>
+                                <option value="berita" {{ old('tipe', $berita->tipe) == 'berita' ? 'selected' : '' }}>Berita Umum</option>
+                                <option value="ayat_harian" {{ old('tipe', $berita->tipe) == 'ayat_harian' ? 'selected' : '' }}>Ayat Harian</option>
+                            </select>
                         </div>
                     </div>
 

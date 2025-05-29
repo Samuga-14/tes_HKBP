@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Berita extends Model
 {
     use HasFactory;
-    protected $table = 'beritas'; 
+    protected $table = 'beritas';
 
-    protected $fillable = ['judul', 'deskripsi', 'gambar', 'tanggal_publikasi','is_pinned'];
+    protected $fillable = ['judul', 'deskripsi', 'gambar', 'tanggal_publikasi', 'tipe'];
 
     public function getRouteKeyName()
 {

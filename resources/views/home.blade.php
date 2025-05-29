@@ -430,19 +430,19 @@
       <p> Selamat menjalani hari dalam kasih Kristus! </p>
     </div>
     <div class="birthday-card-body-genz">
-      @if($ayatHarian)
-        <div class="birthday-user-genz">
-          <div class="user-info">
-            <p class="user-name">{{ $ayatHarian->judul }}</p>
-            <p class="user-ttl">{{ $ayatHarian->deskripsi }}</p>
-            <small><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
-          </div>
+    @if($ayatHarian)
+      <div class="birthday-user-genz">
+        <div class="user-info">
+          <p class="user-name">{{ $ayatHarian->judul }}</p>
+          <p class="user-ttl">{{ $ayatHarian->deskripsi }}</p>
+          <small><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
         </div>
-      @else
-        <div class="no-birthday-message">Belum ada Ayat Harian yang tersedia</div>
-      @endif
-    </div>
+      </div>
+    @else
+      <div class="no-birthday-message">Belum ada Ayat Harian yang tersedia</div>
+    @endif
   </div>
+</div>
 </div>
 
   <!-- Jadwal Ibadah Mingguan -->
