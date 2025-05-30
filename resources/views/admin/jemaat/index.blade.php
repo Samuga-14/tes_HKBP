@@ -150,32 +150,6 @@
         </a>
     </div>
 
-    {{-- Informasi Jumlah Jemaat --}}
-    <div class="row mb-4">
-        <div class="col-md-4">
-            <div class="info-card">
-                <div class="icon text-primary"><i class="fas fa-male"></i></div>
-                <div class="title">JEMAAT LAKI-LAKI</div>
-                <div class="count">{{ $jumlahLakiLaki }}</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="info-card">
-                <div class="icon text-danger"><i class="fas fa-female"></i></div>
-                <div class="title">JEMAAT PEREMPUAN</div>
-                <div class="count">{{ $jumlahPerempuan }}</div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="info-card">
-                <div class="icon text-success"><i class="fas fa-users"></i></div>
-                <div class="title">TOTAL JEMAAT</div>
-                <div class="count">{{ $totalJemaat }}</div>
-            </div>
-        </div>
-    </div>
-
-
     {{-- Form pencarian dan jumlah tampilan --}}
     <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex align-items-center mb-3 gap-3 flex-wrap">
         <div class="d-flex align-items-center">

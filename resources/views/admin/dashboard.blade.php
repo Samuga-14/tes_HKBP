@@ -17,7 +17,7 @@
     </div>
 
     {{-- Ulang Tahun --}}
-    <div class="row g-4 mb-4">
+    <div class="row g-4 mb-4 justify-content-center">
         <div class="col-lg-6">
             <div class="card border-0 shadow-md rounded-4 h-100">
                 <div class="card-header bg-warning bg-opacity-10 border-0 rounded-top-4">
@@ -31,31 +31,17 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="card border-0 shadow-md rounded-4 h-100">
-                <div class="card-header bg-primary bg-opacity-10 border-0 rounded-top-4">
-                    <h6 class="m-0 text-primary fw-semibold"><i class="fas fa-calendar-alt me-2"></i> Ulang Tahun Bulan Ini</h6>
-                </div>
-                <div class="card-body">
-                    @include('components.ulang-tahun', [
-                        'jemaats' => App\Models\Jemaat::ulangTahunBulanIni()->limit(10)->get(),
-                        'hariIni' => false
-                    ])
-                </div>
-            </div>
-        </div>
     </div>
-
     {{-- Statistik --}}
     <div class="mb-5">
-        <h5 class="fw-bold mb-3 text-dark">📊 Statistik Jemaat</h5>
+        <h5 class="fw-bold mb-3 text-dark">📊 Statistik Gerejawi </h5>
         <div class="row g-4">
             @php
                 $stats = [
-                    ['label' => 'Total KK Jemaat', 'icon' => 'fa-users', 'color' => 'primary', 'count' => \App\Models\Jemaat::count()],
-                    ['label' => 'Total Berita', 'icon' => 'fa-newspaper', 'color' => 'success', 'count' => \App\Models\Berita::count()],
-                    ['label' => 'Total Galeri', 'icon' => 'fa-images', 'color' => 'info', 'count' => \App\Models\GaleriKegiatan::count()],
-                    ['label' => 'Jumlah Pengurus Gereja', 'icon' => 'fa-sitemap', 'color' => 'danger', 'count' => \App\Models\StrukturKepengurusan::count()],
+                    ['label' => 'Total Jumlah Jemaat', 'icon' => 'fa-users', 'color' => 'success', 'count' => \App\Models\Jemaat::count()],
+                    ['label' => 'Jemaat Laki-laki', 'icon' => 'fa-male', 'color' => 'primary', 'count' => \App\Models\Jemaat::where('jenis_kelamin', 'L')->count()],
+                    ['label' => 'Jemaat Perempuan', 'icon' => 'fa-female', 'color' => 'danger', 'count' => \App\Models\Jemaat::where('jenis_kelamin', 'P')->count()],
+                    ['label' => 'Jumlah Pengurus Gereja', 'icon' => 'fa-sitemap', 'color' => 'warning', 'count' => \App\Models\StrukturKepengurusan::count()],
                 ];
             @endphp
 
@@ -76,8 +62,8 @@
             @endforeach
         </div>
     </div>
-
     {{-- Menu Cepat --}}
+     <h5 class="fw-bold mb-3 text-dark">☄️ Navigasi Cepat </h5>
     <div class="row g-4">
         @php
             $menus = [
@@ -86,7 +72,7 @@
                 ['route' => 'admin.galeri.index', 'icon' => 'fa-images', 'color' => 'info', 'title' => 'Galeri Kegiatan', 'desc' => 'Dokumentasi'],
                 ['route' => 'admin.jemaat.index', 'icon' => 'fa-users', 'color' => 'warning', 'title' => 'Data Jemaat', 'desc' => 'Anggota Gereja'],
                 ['route' => 'admin.struktur.index', 'icon' => 'fa-sitemap', 'color' => 'danger', 'title' => 'Struktur Kepengurusan', 'desc' => 'Organisasi'],
-                ['route' => 'admin.warta.index', 'icon' => 'fa-church', 'color' => 'purple', 'title' => 'Warta Jemaat', 'desc' => 'Pengumuman'],
+                ['route' => 'admin.warta.index', 'icon' => 'fa-church', 'color' => 'secondary', 'title' => 'Warta Jemaat', 'desc' => 'Pengumuman'],
             ];
         @endphp
 
