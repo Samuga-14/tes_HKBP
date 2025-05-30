@@ -6,9 +6,32 @@ use App\Models\GaleriKegiatan;
 
 class GaleriKegiatanController extends Controller
 {
-    public function index()
+    public function index(Request $request) // Tambahkan Request $request
     {
-        $galeri = GaleriKegiatan::latest()->paginate(10);
+        $query = GaleriKegiatan::query(); // Mulai query builder
+
+        // Jika ada fitur search (opsional, bisa ditambahkan nanti jika perlu)
+        // if ($request->filled('search')) {
+        //     $searchTerm = $request->search;
+        //     $query->where(function ($q) use ($searchTerm) {
+        //         $q->where('judul', 'like', "%{$searchTerm}%")
+        //           ->orWhere('deskripsi', 'like', "%{$searchTerm}%");
+        //     });
+        // }
+
+        // Ambil nilai perPage dari request, default 10 (sesuai kode awalmu)
+        $perPage = $request->input('perPage', 5);
+        // Validasi opsi perPage
+        if (!in_array($perPage, [5, 10, 25, 50, 100])) { // Opsi yang valid
+            $perPage = 5; // Default jika input tidak valid
+        }
+
+        // Ambil data galeri dengan urutan terbaru, pagination, dan sertakan query string
+        // Asumsi 'created_at' atau 'tanggal_unggah' ada untuk 'latest'
+        $galeri = $query->latest('tanggal_unggah') // Atau 'created_at' jika lebih sesuai
+                        ->paginate($perPage)
+                        ->withQueryString(); // Ini penting!
+
         return view('admin.galeri.index', compact('galeri'));
     }
     public function index2()

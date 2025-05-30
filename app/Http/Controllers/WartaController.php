@@ -5,11 +5,35 @@ use App\Models\Warta;
 
 class WartaController extends Controller
 {
-    public function index()
+    public function index(Request $request) // Tambahkan Request $request
     {
-        $wartas = Warta::latest()->paginate(10);
+        $query = Warta::query(); // Mulai query builder
+
+        // Jika ada fitur search (opsional)
+        // if ($request->filled('search')) {
+        //     $searchTerm = $request->search;
+        //     $query->where(function ($q) use ($searchTerm) {
+        //         $q->where('judul', 'like', "%{$searchTerm}%")
+        //           ->orWhere('deskripsi', 'like', "%{$searchTerm}%");
+        //     });
+        // }
+
+        // Ambil nilai perPage dari request, default 10 (sesuai kode awalmu)
+        $perPage = $request->input('perPage', 5);
+        // Validasi opsi perPage
+        if (!in_array($perPage, [5,10, 25, 50, 100])) { // Opsi yang valid
+            $perPage = 10; // Default jika input tidak valid
+        }
+
+        // Ambil data warta dengan urutan terbaru, pagination, dan sertakan query string
+        // Asumsi 'created_at' atau 'tanggal_publikasi' ada untuk 'latest'
+        $wartas = $query->latest('tanggal_publikasi') // Atau 'created_at' jika lebih sesuai
+                        ->paginate($perPage)
+                        ->withQueryString(); // Ini penting!
+
         return view('admin.warta.index', compact('wartas'));
     }
+
     public function index2()
     {
         $wartas = Warta::latest()->paginate(10);

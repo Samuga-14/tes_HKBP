@@ -95,6 +95,36 @@
         font-size: 80px;
         color: #28a745;
     }
+     .form-select-sm {
+        width: auto;
+        display: inline-block;
+    }
+    .form-perpage-group label {
+        margin-right: 0.5rem;
+        margin-left: 0.2rem;
+    }
+    .form-search-group {
+        max-width: 300px;
+    }
+    /* Styling untuk pagination agar konsisten jika belum ada */
+    .pagination {
+        gap: 5px; /* Jarak antar item pagination */
+    }
+    .page-item .page-link {
+        border-radius: 8px !important; /* Sesuai style di Berita */
+        border: 1px solid #dee2e6;
+        color: #0d6efd;
+        min-width: 38px;
+        text-align: center;
+    }
+    .page-item.active .page-link {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+        color: white;
+    }
+    .page-item.disabled .page-link {
+        color: #6c757d;
+    }
 </style>
 
 <div class="container-fluid py-3 px-4 rounded-container shadow-sm">
@@ -114,6 +144,24 @@
         <a href="{{ route('admin.warta.create') }}" class="add-button">
             Tambah Warta <i class="fas fa-plus"></i>
         </a>
+    </div>
+
+        {{-- Form untuk memilih jumlah data per halaman dan search (opsional) --}}
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <form action="{{ route('admin.warta.index') }}" method="GET" class="d-inline-flex align-items-center form-perpage-group">
+            <label for="perPageShow">Tampilkan:</label>
+            <select name="perPage" id="perPageShow" class="form-select form-select-sm" onchange="this.form.submit()">
+                @foreach ([5, 10, 25, 50, 100] as $size)
+                    <option value="{{ $size }}" {{ request('perPage', 10) == $size ? 'selected' : '' }}>
+                        {{ $size }}
+                    </option>
+                @endforeach
+            </select>
+            <label for="perPageShow">data</label>
+            @if(request('search'))
+                <input type="hidden" name="search" value="{{ request('search') }}">
+            @endif
+        </form>
     </div>
 
     <div class="table-responsive">
@@ -170,6 +218,17 @@
             </tbody>
         </table>
     </div>
+      {{-- Menampilkan informasi jumlah data dan link pagination --}}
+    @if ($wartas->hasPages())
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <div class="text-muted">
+            Menampilkan {{ $wartas->firstItem() }} sampai {{ $wartas->lastItem() }} dari {{ $wartas->total() }} data
+        </div>
+        {{-- Menggunakan method links() untuk render pagination Bootstrap --}}
+        {{ $wartas->links() }}
+    </div>
+    @endif
+    </div> {{-- Penutup .container-fluid --}}
 </div>
 
 {{-- Script SweetAlert & popup --}}

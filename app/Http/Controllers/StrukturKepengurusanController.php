@@ -23,11 +23,38 @@ class StrukturKepengurusanController extends Controller
         'Calon Sintua'
     ];
 
-    public function index()
+    public function index(Request $request) // Tambahkan Request $request
     {
-        $struktur = StrukturKepengurusan::latest()->paginate(10);
+        $query = StrukturKepengurusan::query(); // Mulai query builder
+
+        // Jika ada fitur search (opsional)
+        // if ($request->filled('search')) {
+        //     $searchTerm = $request->search;
+        //     $query->where(function ($q) use ($searchTerm) {
+        //         $q->where('nama', 'like', "%{$searchTerm}%")
+        //           ->orWhere('jabatan', 'like', "%{$searchTerm}%");
+        //     });
+        // }
+
+        // Ambil nilai perPage dari request, default 10 (sesuai kode awalmu)
+        $perPage = $request->input('perPage', 5);
+        // Validasi opsi perPage
+        if (!in_array($perPage, [5, 10, 25, 50, 100])) { // Opsi yang valid
+            $perPage = 5; // Default jika input tidak valid
+        }
+
+        // Ambil data struktur kepengurusan dengan urutan terbaru, pagination, dan sertakan query string
+        // Asumsi 'created_at' atau mungkin ada kolom 'urutan' atau 'id' untuk 'latest'
+        // Jika ada kolom spesifik untuk urutan (misal 'urutan'), gunakan itu.
+        // Jika tidak, 'created_at' atau 'id' bisa jadi pilihan.
+        $struktur = $query->latest() // Defaultnya mengurutkan berdasarkan 'created_at' desc
+                          // atau $query->orderBy('urutan', 'asc')->paginate... jika ada kolom urutan
+                          ->paginate($perPage)
+                          ->withQueryString(); // Ini penting!
+
         return view('admin.struktur.index', compact('struktur'));
     }
+
 
     public function index2()
     {

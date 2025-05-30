@@ -16,7 +16,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.galeri.store') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('admin.galeri.store') }}" method="POST" enctype="multipart/form-data" id="formGaleri">
                 @csrf
                 <div class="row">
                     <!-- Kolom Kiri -->
@@ -50,7 +50,7 @@
                     <a href="{{ route('admin.galeri.index') }}" class="btn btn-secondary px-4 py-2">
                         Kembali
                     </a>
-                    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;">
+                    <button type="submit" class="btn text-white px-4 py-2" style="background-color: #0D99FF;" onclick="event.preventDefault(); submitForm();">
                         Tambahkan
                     </button>
                 </div>
@@ -58,4 +58,11 @@
         </div>
     </div>
 </div>
+
+<script>
+function submitForm() {
+    document.getElementById('formGaleri').submit();
+    window.location.href = "{{ route('admin.galeri.index') }}";
+}
+</script>
 @endsection

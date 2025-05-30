@@ -103,6 +103,17 @@
         font-size: 80px;
         color: #28a745;
     }
+        .form-select-sm {
+        width: auto;
+        display: inline-block;
+    }
+    .form-perpage-group label {
+        margin-right: 0.5rem;
+        margin-left: 0.2rem;
+    }
+    .form-search-group {
+        max-width: 300px;
+    }
 </style>
 
 <div class="table-container">
@@ -120,6 +131,23 @@
         <a href="{{ route('admin.struktur.create') }}" class="btn-add">
             Add New <i class="fas fa-plus"></i>
         </a>
+    </div>
+       {{-- Form untuk memilih jumlah data per halaman dan search (opsional) --}}
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <form action="{{ route('admin.struktur.index') }}" method="GET" class="d-inline-flex align-items-center form-perpage-group">
+            <label for="perPageShow">Tampilkan:</label>
+            <select name="perPage" id="perPageShow" class="form-select form-select-sm" onchange="this.form.submit()">
+                @foreach ([5, 10, 25, 50, 100] as $size)
+                    <option value="{{ $size }}" {{ request('perPage', 10) == $size ? 'selected' : '' }}>
+                        {{ $size }}
+                    </option>
+                @endforeach
+            </select>
+            <label for="perPageShow">data</label>
+            @if(request('search'))
+                <input type="hidden" name="search" value="{{ request('search') }}">
+            @endif
+        </form>
     </div>
 
     <div class="table-responsive">
@@ -174,14 +202,16 @@
     </div>
 
     {{-- Pagination --}}
+    @if ($struktur->hasPages()) {{-- Tambahkan pengecekan hasPages() --}}
     <div class="d-flex justify-content-between align-items-center mt-4">
-        <small>
+        <small class="text-muted"> {{-- text-muted ditambahkan untuk konsistensi --}}
             Menampilkan {{ $struktur->firstItem() }} - {{ $struktur->lastItem() }} dari {{ $struktur->total() }} data
         </small>
         <div>
             {{ $struktur->links() }}
         </div>
     </div>
+    @endif {{-- Penutup @if --}}
 </div>
 {{-- Script SweetAlert & popup --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

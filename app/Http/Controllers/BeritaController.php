@@ -8,9 +8,34 @@ use Illuminate\Support\Facades\Storage;
 
 class BeritaController extends Controller
 {
-    public function index()
+    public function index(Request $request) // Tambahkan Request $request
     {
-        $beritas = Berita::latest()->paginate(5);
+        $query = Berita::query(); // Mulai query builder
+
+        // Jika ada fitur search (opsional, bisa ditambahkan nanti jika perlu)
+        // if ($request->filled('search')) {
+        //     $searchTerm = $request->search;
+        //     $query->where(function ($q) use ($searchTerm) {
+        //         $q->where('judul', 'like', "%{$searchTerm}%")
+        //           ->orWhere('deskripsi', 'like', "%{$searchTerm}%");
+        //     });
+        // }
+
+        // Ambil nilai perPage dari request, default 5 (sesuai kode awalmu) atau bisa diubah ke 10
+        $perPage = $request->input('perPage', 5); // Defaultnya 5, bisa diubah jadi 10
+        // Validasi opsi perPage
+        if (!in_array($perPage, [5, 10, 25, 50, 100])) { // Tambahkan 5 ke opsi valid jika masih mau ada
+            $perPage = 5; // Atau default ke 10 jika 5 tidak diinginkan lagi
+        }
+
+        // Ambil data berita dengan urutan terbaru, pagination, dan sertakan query string
+        // Asumsi kolom `created_at` atau `tanggal_publikasi` ada untuk 'latest'
+        // Jika tidak ada kolom `tipe` di tabel berita untuk admin, tidak perlu filter tipe di sini.
+        // Kode awalmu hanya `Berita::latest()->paginate(5);`
+        $beritas = $query->latest('tanggal_publikasi') // Atau 'created_at' jika lebih sesuai
+                         ->paginate($perPage)
+                         ->withQueryString(); // Ini penting!
+
         return view('admin.berita.index', compact('beritas'));
     }
 

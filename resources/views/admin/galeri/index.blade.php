@@ -104,6 +104,17 @@
         font-size: 80px;
         color: #28a745;
     }
+        .form-select-sm {
+        width: auto;
+        display: inline-block;
+    }
+    .form-perpage-group label {
+        margin-right: 0.5rem;
+        margin-left: 0.2rem;
+    }
+    .form-search-group {
+        max-width: 300px;
+    }
 </style>
 
 <div class="table-container">
@@ -122,6 +133,24 @@
         <a href="{{ route('admin.galeri.create') }}" class="btn-add">
             Add New <i class="fas fa-plus"></i>
         </a>
+    </div>
+
+    {{-- Form untuk memilih jumlah data per halaman dan search (opsional) --}}
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+        <form action="{{ route('admin.galeri.index') }}" method="GET" class="d-inline-flex align-items-center form-perpage-group">
+            <label for="perPageShow">Tampilkan:</label>
+            <select name="perPage" id="perPageShow" class="form-select form-select-sm" onchange="this.form.submit()">
+                @foreach ([5, 10, 25, 50, 100] as $size)
+                    <option value="{{ $size }}" {{ request('perPage', 10) == $size ? 'selected' : '' }}>
+                        {{ $size }}
+                    </option>
+                @endforeach
+            </select>
+            <label for="perPageShow">data</label>
+            @if(request('search'))
+                <input type="hidden" name="search" value="{{ request('search') }}">
+            @endif
+        </form>
     </div>
 
     <div class="table-responsive">
@@ -193,9 +222,17 @@
         </table>
     </div>
 
-    <div class="d-flex justify-content-end">
+   {{-- Menampilkan informasi jumlah data dan link pagination --}}
+    @if ($galeri->hasPages())
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <div class="text-muted">
+            Menampilkan {{ $galeri->firstItem() }} sampai {{ $galeri->lastItem() }} dari {{ $galeri->total() }} data
+        </div>
+        {{-- Menggunakan method links() untuk render pagination Bootstrap --}}
         {{ $galeri->links() }}
     </div>
+    @endif
+    </div> {{-- Penutup .table-container --}}
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

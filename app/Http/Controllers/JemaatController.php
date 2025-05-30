@@ -22,7 +22,7 @@ class JemaatController extends Controller
         $totalJemaat = Jemaat::count(); // Total semua jemaat
 
         // Ambil data perPage dari request, default 10
-        $perPage = $request->input('perPage', 10);
+        $perPage = $request->input('perPage', 5);
         $jemaats = $query->latest()->paginate($perPage)->withQueryString(); // withQueryString agar parameter search & perPage tetap ada di pagination
 
         return view('admin.jemaat.index', compact('jemaats', 'jumlahLakiLaki', 'jumlahPerempuan', 'totalJemaat'));

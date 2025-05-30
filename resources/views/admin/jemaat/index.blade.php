@@ -155,8 +155,8 @@
         <div class="d-flex align-items-center">
             <label for="perPage" class="me-2">Show</label>
             <select name="perPage" id="perPage" class="form-select form-select-sm" onchange="this.form.submit()">
-                @foreach ([10, 20, 50, 100] as $size)
-                    <option value="{{ $size }}" {{ request('perPage', 10) == $size ? 'selected' : '' }}>
+                @foreach ([5, 10, 20, 50, 100] as $size)
+                    <option value="{{ $size }}" {{ request('perPage', 5) == $size ? 'selected' : '' }}>
                         {{ $size }}
                     </option>
                 @endforeach

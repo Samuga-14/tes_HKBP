@@ -57,7 +57,7 @@
 .content-description {
     background: #fff;
     padding: 30px 35px;
-    border-left: 5px solid #e63946;
+    border-left: 5px solid #072450;
     border-radius: 15px;
     font-size: 1.15rem;
     line-height: 1.9;
@@ -79,7 +79,7 @@
 /* === BACK BUTTON === */
 .back-button {
     display: inline-block;
-    background: linear-gradient(135deg, #e63946, #d62839);
+    background: linear-gradient(135deg, #072450, #02034e);
     color: white;
     padding: 12px 32px;
     font-weight: 600;
@@ -91,7 +91,7 @@
 }
 
 .back-button:hover {
-    background: linear-gradient(135deg, #c21830, #a4132c);
+    background: linear-gradient(135deg, #072450, #02034e);
     transform: translateY(-2px);
     box-shadow: 0 12px 24px rgba(230, 57, 70, 0.4);
 }

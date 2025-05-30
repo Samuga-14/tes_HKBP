@@ -122,6 +122,18 @@
 .page-item.disabled .page-link {
     color: #6c757d;
 }
+    .form-select-sm {
+        width: auto;
+        display: inline-block;
+    }
+    .form-perpage-group label {
+        margin-right: 0.5rem;
+        margin-left: 0.2rem; /* Sedikit spasi setelah dropdown */
+    }
+    /* Styling untuk search jika ada */
+    .form-search-group {
+        max-width: 300px; /* Batasi lebar input search */
+    }
 </style>
 
 
@@ -141,6 +153,26 @@
         <a href="{{ route('admin.berita.create') }}" class="add-button">
             Add New <i class="fas fa-plus"></i>
         </a>
+    </div>
+
+     {{-- Form untuk memilih jumlah data per halaman dan search (opsional) --}}
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"> {{-- Tambah gap-2 untuk spasi --}}
+        <form action="{{ route('admin.berita.index') }}" method="GET" class="d-inline-flex align-items-center form-perpage-group">
+            <label for="perPageShow">Tampilkan:</label>
+            <select name="perPage" id="perPageShow" class="form-select form-select-sm" onchange="this.form.submit()">
+                {{-- Sesuaikan opsi value dengan yang ada di controller --}}
+                @foreach ([5, 10, 25, 50, 100] as $size)
+                    <option value="{{ $size }}" {{ request('perPage', 5) == $size ? 'selected' : '' }}>
+                        {{ $size }}
+                    </option>
+                @endforeach
+            </select>
+            <label for="perPageShow">data</label>
+            {{-- Jika ada parameter search, pastikan terkirim juga --}}
+            @if(request('search'))
+                <input type="hidden" name="search" value="{{ request('search') }}">
+            @endif
+        </form>
     </div>
 
     <div class="table-responsive">
@@ -197,57 +229,17 @@
     </div>
 </div>
 
-{{-- Tabel data jemaat --}}
-<div class="table-responsive">
-    <!-- Tabel yang sudah ada -->
-</div>
-
-{{-- Pagination --}}
-@if ($beritas->hasPages())
-<div class="d-flex justify-content-between align-items-center mt-4">
-    <div class="text-muted">
-        Menampilkan {{ $beritas->firstItem() }} sampai {{ $beritas->lastItem() }} dari {{ $beritas->total() }} data
+    {{-- Pagination --}}
+    @if ($beritas->hasPages())
+    <div class="d-flex justify-content-between align-items-center mt-4">
+        <div class="text-muted">
+            Menampilkan {{ $beritas->firstItem() }} sampai {{ $beritas->lastItem() }} dari {{ $beritas->total() }} data
+        </div>
+        {{-- Menggunakan method links() untuk render pagination Bootstrap --}}
+        {{ $beritas->links() }}
     </div>
-    <nav aria-label="Page navigation">
-        <ul class="pagination mb-0">
-            {{-- Previous Page Link --}}
-            @if ($beritas->onFirstPage())
-                <li class="page-item disabled">
-                    <span class="page-link">&laquo;</span>
-                </li>
-            @else
-                <li class="page-item">
-                    <a class="page-link" href="{{ $beritas->previousPageUrl() }}" rel="prev">&laquo;</a>
-                </li>
-            @endif
-
-            {{-- Pagination Elements --}}
-            @foreach ($beritas->getUrlRange(1, $beritas->lastPage()) as $page => $url)
-                @if ($page == $beritas->currentPage())
-                    <li class="page-item active">
-                        <span class="page-link">{{ $page }}</span>
-                    </li>
-                @else
-                    <li class="page-item">
-                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
-                    </li>
-                @endif
-            @endforeach
-
-            {{-- Next Page Link --}}
-            @if ($beritas->hasMorePages())
-                <li class="page-item">
-                    <a class="page-link" href="{{ $beritas->nextPageUrl() }}" rel="next">&raquo;</a>
-                </li>
-            @else
-                <li class="page-item disabled">
-                    <span class="page-link">&raquo;</span>
-                </li>
-            @endif
-        </ul>
-    </nav>
-</div>
-@endif
+    @endif
+</div> {{-- Penutup .container-fluid --}}
 
 {{-- Script SweetAlert & popup --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
