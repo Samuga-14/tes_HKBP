@@ -18,6 +18,13 @@
 
             <form id="formBerita" action="{{ route('admin.berita.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <div class="mb-4">
+                    <label for="tipe" class="form-label fw-semibold">Jenis Konten</label>
+                    <select name="tipe" id="tipe" class="form-control custom-form-control" required>
+                        <option value="berita">Berita Umum</option>
+                        <option value="ayat_harian">Ayat Harian</option>
+                    </select>
+                </div>
 
                 <div class="mb-4">
                     <label for="judul" class="form-label fw-semibold">Judul</label>
@@ -32,14 +39,6 @@
                 <div class="mb-4">
                     <label for="gambar" class="form-label fw-semibold">Gambar</label>
                     <input type="file" name="gambar" id="gambar" class="form-control custom-form-control" accept="image/*">
-                </div>
-
-                <div class="mb-4">
-                    <label for="tipe" class="form-label fw-semibold">Jenis Konten</label>
-                    <select name="tipe" id="tipe" class="form-control custom-form-control" required>
-                        <option value="berita">Berita Umum</option>
-                        <option value="ayat_harian">Ayat Harian</option>
-                    </select>
                 </div>
             </form>
         </div>
