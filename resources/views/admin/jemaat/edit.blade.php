@@ -86,8 +86,8 @@
                         <a href="{{ route('admin.jemaat.index') }}" class="btn btn-secondary">
                             Kembali
                         </a>
-                        <button type="submit" class="btn btn-primary">
-                            Update Data
+                        <button type="submit" class="btn text-white" style="background-color: #0D99FF;" form="formBerita" fdprocessedid="ocidwx">
+                            Edit
                         </button>
                     </div>
                 </form>
