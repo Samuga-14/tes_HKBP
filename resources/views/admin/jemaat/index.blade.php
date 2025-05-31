@@ -149,22 +149,23 @@
             Add New <i class="fas fa-plus"></i>
         </a>
     </div>
-
     {{-- Form pencarian dan jumlah tampilan --}}
-    <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex align-items-center mb-3 gap-3 flex-wrap">
-        <div class="d-flex align-items-center">
-            <label for="perPage" class="me-2">Show</label>
+    <form action="{{ route('admin.jemaat.index') }}" method="GET" class="d-flex justify-content-between align-items-center mb-3 gap-3 flex-wrap">
+        <div class="d-flex align-items-center form-perpage-group"> {{-- Grouping untuk perPage --}}
+            <label for="perPage" class="me-2 form-perpage-label">Tampilkan:</label> {{-- "Show" diubah jadi "Tampilkan" agar konsisten dengan halaman lain --}}
             <select name="perPage" id="perPage" class="form-select form-select-sm" onchange="this.form.submit()">
+                {{-- Opsi value [5, 10, 20, 50, 100] sudah sesuai dengan controller jika default 5 dan ada opsi lain --}}
                 @foreach ([5, 10, 20, 50, 100] as $size)
                     <option value="{{ $size }}" {{ request('perPage', 5) == $size ? 'selected' : '' }}>
                         {{ $size }}
                     </option>
                 @endforeach
             </select>
+            <label for="perPage" class="ms-1">data</label> {{-- Tambah label "data" --}}
         </div>
         <div class="input-group" style="max-width: 300px;">
-            <input type="text" name="search" class="form-control" placeholder="Cari berdasarkan nama" value="{{ request('search') }}">
-            <button class="btn btn-outline-secondary" type="submit"><i class="fas fa-search"></i></button>
+            <input type="text" name="search" class="form-control form-control-sm" placeholder="Cari berdasarkan nama" value="{{ request('search') }}"> {{-- Tambah form-control-sm --}}
+            <button class="btn btn-outline-secondary btn-sm" type="submit"><i class="fas fa-search"></i></button> {{-- Tambah btn-sm --}}
         </div>
     </form>
 
@@ -179,9 +180,6 @@
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
                     <th>Status Pernikahan</th>
-                    {{-- Kolom Nama Pasangan dan Jumlah Anak dihapus --}}
-                    {{-- <th>Nama Pasangan</th> --}}
-                    {{-- <th>Jumlah Anak</th> --}}
                     <th class="text-center">Aksi</th>
                 </tr>
             </thead>
@@ -194,9 +192,6 @@
                         <td>{{ $jemaat->jenis_kelamin }}</td>
                         <td>{{ Str::limit($jemaat->alamat, 50) }}</td> {{-- Batasi panjang alamat di tabel --}}
                         <td>{{ $jemaat->status_pernikahan }}</td>
-                        {{-- Data Nama Pasangan dan Jumlah Anak dihapus --}}
-                        {{-- <td>{{ $jemaat->nama_pasangan ?? '-' }}</td> --}}
-                        {{-- <td>{{ $jemaat->jumlah_anak }}</td> --}}
                         <td class="text-center">
                             <div class="d-flex justify-content-center gap-3">
                                 <a href="{{ route('admin.jemaat.edit', $jemaat->id) }}" class="text-primary" title="Edit">
@@ -230,8 +225,7 @@
         <div class="text-muted">
             Menampilkan {{ $jemaats->firstItem() }} sampai {{ $jemaats->lastItem() }} dari {{ $jemaats->total() }} data
         </div>
-        {{-- Tampilkan pagination links dengan mempertahankan query string (search, perPage) --}}
-        {{ $jemaats->links() }}
+        {{ $jemaats->links() }} {{-- Method links() sudah benar --}}
     </div>
     @endif
 </div>

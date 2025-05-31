@@ -138,7 +138,7 @@
             <label for="perPageShow">Tampilkan:</label>
             <select name="perPage" id="perPageShow" class="form-select form-select-sm" onchange="this.form.submit()">
                 @foreach ([5, 10, 25, 50, 100] as $size)
-                    <option value="{{ $size }}" {{ request('perPage', 10) == $size ? 'selected' : '' }}>
+                    <option value="{{ $size }}" {{ request('perPage', 5) == $size ? 'selected' : '' }}>
                         {{ $size }}
                     </option>
                 @endforeach

@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule; // Import Rule untuk validasi 'in'
 
 class JemaatController extends Controller
 {
-    public function index(Request $request)
+public function index(Request $request)
     {
         $query = Jemaat::query();
 
@@ -21,9 +21,19 @@ class JemaatController extends Controller
         $jumlahPerempuan = Jemaat::where('jenis_kelamin', 'Perempuan')->count();
         $totalJemaat = Jemaat::count(); // Total semua jemaat
 
-        // Ambil data perPage dari request, default 10
+        // Ambil data perPage dari request, default 5 (sesuai kode awalmu)
         $perPage = $request->input('perPage', 5);
-        $jemaats = $query->latest()->paginate($perPage)->withQueryString(); // withQueryString agar parameter search & perPage tetap ada di pagination
+        // Validasi opsi perPage (opsional, tapi baik untuk ditambahkan)
+        if (!in_array($perPage, [5, 10, 20, 50, 100])) { // Pastikan opsi ini sesuai dengan yang ada di Blade
+            $perPage = 5; // Default jika input tidak valid
+        }
+
+        // Mengurutkan berdasarkan kolom yang relevan, misal 'nama' atau 'created_at'
+        // Kode awalmu $query->latest(), yang berarti order by created_at desc
+        // Jika mau order by nama: $query->orderBy('nama', 'asc')
+        $jemaats = $query->latest() // Atau orderBy('nama', 'asc') jika lebih sesuai
+                         ->paginate($perPage)
+                         ->withQueryString();
 
         return view('admin.jemaat.index', compact('jemaats', 'jumlahLakiLaki', 'jumlahPerempuan', 'totalJemaat'));
     }
