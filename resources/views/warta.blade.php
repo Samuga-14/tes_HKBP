@@ -24,8 +24,8 @@
         </div>
     </section>
     
-    <div class="section-title text-center mt-4 fw-semibold fs-5">
-        <h2> Warta Jemaat HKBP Sinambela Simanullang </h2>
+    <div class="section-title text-center mt-4 fw-bold fs-5">
+        <h2 class="fw-semibold text-center mt-1 fs-2"> Warta Jemaat HKBP Sinambela Simanullang </h2>
     </div>
 
    <div class="container py-4 warta-list">
