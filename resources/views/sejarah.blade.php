@@ -55,7 +55,7 @@
                             {{-- Item 1: Gambar Kiri, Teks Kanan --}}
                             <div class="timeline-item-v2" data-gsap="fade-up" data-gsap-delay="0.1">
                                 <div class="timeline-panel-v2 timeline-image-panel">
-                                    <img src="{{ asset('images/nommensen.png') }}" alt="Misi Nommensen" class="img-fluid rounded shadow-sm">
+                                    <img src="{{ asset('images/Nommensens.png') }}" alt="Misi Nommensen" class="img-fluid rounded shadow-sm">
                                 </div>
                                 <div class="timeline-icon-v2 shadow-sm">
                                     <i class="bi bi-book-half"></i>
@@ -82,25 +82,24 @@
                                             Bangunan Gereja Pertama
                                         </h4>
                                         <p>
-                                            Gereja pertama dibangun dengan material sederhana seperti kayu dan atap ilalang oleh semangat gotong royong jemaat. Bangunan ini kemudian direnovasi berkali-kali menjadi bangunan permanen yang lebih kokoh, menjadi simbol pertumbuhan iman dan persatuan jemaat.
-                                        </p>
-                                    </div>
-                                </div>
+                                            Bangunan gereja pertama HKBP Sinambela Simanullang dibangun tahun 1880 dengan arsitektur sederhana yang memadukan unsur lokal. Dibangun secara gotong royong dengan bahan kayu dan atap tradisional, menjadi simbol awal perjalanan dan pertumbuhan iman jemaat.                                    
+                                        </div>
+                                </div>                                
                                 <div class="timeline-icon-v2 shadow-sm">
                                     <i class="bi bi-tools"></i>
                                 </div>
                                 <div class="timeline-panel-v2 timeline-image-panel">
-                                     <img src="{{ asset('images/sejarah/gereja-awal.jpg') }}" alt="Gereja Pertama" class="img-fluid rounded shadow-sm">
+                                    <img src="{{ asset('images/gerejalama.jpg') }}" alt="Misi Nommensen" class="img-fluid rounded shadow-sm">
                                 </div>
                             </div>
 
                             {{-- Item 3: Gambar Kiri, Teks Kanan (Contoh tanpa gambar, panel gambar kosong) --}}
                             <div class="timeline-item-v2" data-gsap="fade-up" data-gsap-delay="0.3">
-                                  <div class="timeline-panel-v2 timeline-image-panel">
+                                <div class="timeline-panel-v2 timeline-image-panel">
                                     <img src="{{ asset('images/image.png') }}" alt="Misi Nommensen" class="img-fluid rounded shadow-sm">
                                 </div>
                                 <div class="timeline-icon-v2 shadow-sm">
-                                    <i class="bi bi-book-half"></i>
+                                    <i class="bi bi-bar-chart-line-fill"></i>
                                 </div>
                                 <div class="timeline-panel-v2 timeline-text-panel">
                                     <div class="timeline-content-v2 shadow-lg">
