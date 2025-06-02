@@ -1,578 +1,579 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffffff;
-    color: #333;
-    scroll-behavior: smooth;
+/* ROOT VARIABLES & BASIC SETUP */
+:root {
+  --primary: #102663; /* Deep navy */
+  --secondary: #d4a373; /* Soft gold */
+  --accent: #f9f6f0; /* Ivory */
+  --white: #ffffff;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280; /* Sedikit lebih gelap untuk kontras lebih baik */
+  --light-gray: #eef0f3; /* Untuk border halus */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --font-body: 'Poppins', sans-serif;
+  --font-heading: 'Playfair Display', serif;
 }
 
-/* Hero */
+body {
+  font-family: var(--font-body);
+  background-color: var(--accent);
+  color: var(--text-dark);
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Mencegah horizontal scroll jika ada elemen yg sedikit keluar */
+}
+
+/* ANIMATIONS */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px); /* Start sedikit dari bawah */
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.delay-1 { transition-delay: 0.15s; }
+.delay-2 { transition-delay: 0.3s; }
+.delay-3 { transition-delay: 0.45s; }
+.delay-4 { transition-delay: 0.6s; }
+.delay-5 { transition-delay: 0.75s; }
+
+
+/* HERO SECTION - IMPROVED */
 .hero {
-  position: relative;
-  background-image: url('../images/gereja.jpg');
-  background-size: cover;
-  background-position: center;
-  min-height: 80vh;
+  background: linear-gradient(rgba(11, 26, 57, 0.6), rgba(3, 10, 23, 0.4)), url('../images/gereja.jpg') center center/cover no-repeat;
+  min-height: 100vh; /* Lebih besar, full viewport height */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 2rem;
+  color: var(--white);
   text-align: center;
-  overflow: hidden;
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(rgba(10, 10, 30, 0.6), rgba(10, 10, 30, 0.6));
-  z-index: 1;
+  position: relative;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  color: white;
-  max-width: 800px;
+  max-width: 900px;
+  z-index: 1;
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-family: var(--font-heading);
+  font-size: 3.8rem; /* Lebih besar */
   font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 20px;
-  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  line-height: 1.25;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+.hero-title span { /* Jika ingin styling khusus untuk nama gereja */
+  color: #ffd700; /* Contoh warna gold, sesuaikan dengan --secondary jika cocok */
 }
 
-.hero-title span {
-  color: #ffeb3b;
+.hero-subtitle { /* Jika ada subtitle di masa depan */
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 1rem 0;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .hero-description {
-  font-size: 1.25rem;
-  color: #e0e0e0;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  font-size: 1.3rem; /* Sedikit lebih besar */
+  max-width: 700px;
+  margin: 0 auto 2.5rem; /* Margin bawah lebih besar jika ada tombol */
+  line-height: 1.7;
+  color: #f0f0f0; /* Warna putih yang sedikit soft */
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
 }
 
-.btn-hero {
-  display: inline-block;
-  background-color: #ffeb3b;
-  color: #1a237e;
+.hero .btn-primary { /* Tombol di Hero, jika ada */
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  padding: 0.9rem 2.8rem;
+  font-size: 1.15rem;
   font-weight: 600;
-  padding: 12px 24px;
   border-radius: 50px;
-  text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 5px 20px rgba(255, 235, 59, 0.4);
+  box-shadow: var(--shadow-md);
 }
-
-.btn-hero:hover {
-  background-color: #fdd835;
-  color: #0d1b6a;
-  box-shadow: 0 8px 25px rgba(255, 235, 59, 0.6);
-}
-
-/* Responsif */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-description {
-    font-size: 1.1rem;
-  }
-}
-
-
-/* Button Style */
-.hero .btn-primary {
-    background-color: #1a237e;
-    border: none;
-    padding: 0.8rem 2.5rem;
-    font-size: 1.2rem;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-}
-
 .hero .btn-primary:hover {
-    background-color: #3f51b5;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: #b38b59; /* Varian lebih gelap dari --secondary */
+  border-color: #b38b59;
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: var(--shadow-lg);
 }
 
-/* Bible Verse Section */
-.bible-verse {
-    background: linear-gradient(135deg, #f8faff 0%, #e3e8ff 100%);
-    padding: 4rem 0;
-}
-
-.bible-verse p {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Jadwal Ibadah Section */
-.schedule-section {
-    background-color: #ffffff;
-    padding: 6rem 0;
-}
-
-.schedule-section .table {
-    background-color: #f9fbff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-.schedule-section .table thead {
-    background-color: #1a237e;
-    color: #ffffff;
-    font-weight: 600;
-}
-
-.schedule-section .table tbody tr {
-    transition: background-color 0.3s ease;
-}
-
-.schedule-section .table tbody tr:hover {
-    background-color: #e8edff;
-}
-
-/* Layanan Section */
-.service-section {
-    background: linear-gradient(135deg, #f9fbff 0%, #e9eeff 100%);
-    padding: 6rem 0;
-}
-
-.py-6 {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-}
-
-.section-title {
-    color: #1a237e;
-    font-size: 2.8rem;
-    font-weight: 700;
-    position: relative;
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.section-divider {
-    width: 100px;
-    height: 5px;
-    background: linear-gradient(to right, #1a237e, #3f51b5);
-    border-radius: 3px;
-    margin: 1.5rem auto;
-}
-
-.section-subtitle {
-    font-size: 1.2rem;
-    color: #5c6bc0;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.service-card {
-    background-color: #ffffff;
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 50px rgba(59, 89, 152, 0.15);
-}
-
-.service-card-title {
-    color: #1a237e;
-    font-weight: 700;
-    border-bottom: 3px solid #e8edff;
-    padding-bottom: 1.2rem;
-}
-
-.service-image {
-    position: relative;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
-
-.service-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-
-.service-image-content {
-    text-align: center;
-}
-
-.service-image-content h4 {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-}
-
-/* Our Community Section */
-.community-section {
-    background: linear-gradient(135deg, #f9fbff 0%, #e3e8ff 100%);
-    padding: 6rem 0;
-}
-
-.community-card {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 3rem;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-    transition: all 0.4s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1px solid #e8edff;
-}
-
-.community-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 50px rgba(59, 89, 152, 0.15);
-}
-
-.community-card .bi {
-    font-size: 3rem;
-    color: #1a237e;
-    margin-bottom: 2rem;
-    transition: transform 0.3s ease;
-}
-
-.community-card:hover .bi {
-    transform: scale(1.2);
-}
-
-.community-card h3 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    color: #1a237e;
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-}
-
-.community-card p {
-    font-size: 1.15rem;
-    color: #4a5568;
-    line-height: 1.7;
-    flex-grow: 1;
-}
-
-/* Testimoni Section */
-.testimony-section {
-    background: linear-gradient(135deg, #f9fbff 0%, #e9eeff 100%);
-    padding: 6rem 0;
-}
-
-.testimony-card {
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 2.5rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.testimony-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
-
-.testimony-card p {
-    font-size: 1.1rem;
-    color: #4a5568;
-    line-height: 1.7;
-    margin-bottom: 1.8rem;
-}
-
-.testimony-card h5 {
-    font-size: 1.3rem;
-    color: #1a237e;
-    margin-bottom: 0.6rem;
-}
-
-.testimony-card small {
-    font-size: 0.95rem;
-    color: #718096;
-}
-
-/* Donasi Section */
-.donation-section {
-    padding: 6rem 0;
-    background: linear-gradient(135deg, #f9fbff 0%, #e3e8ff 100%);
-}
-
-.donation-section .btn-primary {
-    background-color: #1a237e;
-    border: none;
-    padding: 0.8rem 2.5rem;
-    font-size: 1.2rem;
-    border-radius: 50px;
-    transition: all 0.3s ease;
-}
-
-.donation-section .btn-primary:hover {
-    background-color: #3f51b5;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Visi & Misi Section */
-.vision-section {
-    padding: 6rem 0;
-    background-color: #ffffff;
-}
-
-.vision-content {
-    background-color: #f9fbff;
-    border-radius: 16px;
-    padding: 3rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-.mission-item {
-    font-size: 1.1rem;
-    color: #4a5568;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-    padding-left: 2rem;
-    position: relative;
-}
-
-.mission-item::before {
-    content: '\f058';
-    font-family: 'Bootstrap Icons';
-    color: #1a237e;
-    position: absolute;
-    left: 0;
-    font-size: 1.4rem;
-}
-
-.vision-image img {
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
-
-/* Map */
-.ratio iframe {
-    border: 5px solid #e8edff;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-}
-
-/* Typography */
-section h2 {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 700;
-    color: #1a237e;
-    margin-bottom: 30px;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-section.text-center p {
-    font-size: 1.3rem;
-    line-height: 1.8;
-    color: #4a5568;
-    max-width: 900px;
-    margin: 0 auto;
-    font-family: 'Roboto', sans-serif;
-    padding: 0 15px;
-}
-
-section {
-    padding: 80px 0;
-}
-
-.container {
-    max-width: 1300px;
-    padding: 0 20px;
-}
-
-/* Responsive */
-@media (max-width: 991.98px) {
-    .service-section {
-        padding: 5rem 0;
-    }
-
-    .section-title {
-        font-size: 2.3rem;
-    }
-
-    .service-card {
-        padding: 2rem;
-        margin-bottom: 2.5rem;
-    }
-
-    .service-image {
-        margin-top: 1.5rem;
-    }
-
-    .vision-image img {
-        height: 350px;
-    }
-
-    .community-card {
-        padding: 2rem;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .py-6 {
-        padding-top: 4rem;
-        padding-bottom: 4rem;
-    }
-
-    .hero {
-        min-height: 80vh;
-        padding: 1.5rem;
-    }
-
-    .hero-content {
-        margin-top: 0;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1.8rem;
-        margin-top: 1rem;
-    }
-
-    .section-title {
-        font-size: 2rem;
-    }
-
-    .community-card .bi {
-        font-size: 2.5rem;
-    }
-
-    .community-card h3 {
-        font-size: 1.5rem;
-    }
-
-    .vision-image img {
-        height: 300px;
-    }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.scroll-animate {
-    animation: fadeIn 0.8s ease-out forwards;
-}
-
-/* ======================
-   INFO ZONE (Ulang Tahun & Ayat Harian) - Natural Integration
-====================== */
+/* INFO ZONE (Ulang Tahun & Ayat Harian) - NATURAL INTEGRATION */
 .info-zone-container-v2 {
-    background-color: var(--accent); /* Sama dengan background body */
-    /* padding-top: 3rem; padding-bottom: 3rem; /* Sudah di Blade py-4 */
+  background-color: var(--accent); /* Menyatu dengan background body */
+  padding-top: 2.5rem; /* Sesuaikan padding jika py-4 Bootstrap tidak cukup */
+  padding-bottom: 2.5rem;
 }
+
 .info-zone-layout {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  max-width: 992px; /* Max width agar tidak terlalu lebar di desktop */
+  justify-content: center; /* Cards akan di tengah jika hanya satu */
+  gap: 1.5rem; /* Jarak antar card */
+  max-width: 992px;
   margin: 0 auto;
 }
 
 .info-card-natural {
-  flex: 1 1 360px; /* Basis lebih kecil agar bisa muat 2 di layar medium */
-  min-width: 280px;
-  max-width: 480px;
+  flex: 1 1 350px; /* Flex grow, shrink, basis */
+  min-width: 300px; /* Lebar minimum card */
+  max-width: 480px; /* Lebar maksimum card */
   background-color: var(--white);
-  border-radius: 10px;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid #e9e4db; /* Border lebih soft lagi */
-  display: flex;
-  padding: 1.25rem;
-  transition: box-shadow 0.3s ease;
+  border-radius: 12px; /* Rounded corners lebih modern */
+  box-shadow: var(--shadow-md); /* Shadow halus */
+  border: 1px solid var(--light-gray); /* Border sangat tipis & soft */
+  display: flex; /* Untuk layout icon dan content */
+  align-items: flex-start; /* Icon dan content align ke atas */
+  padding: 1.5rem; /* Padding internal card */
+  transition: box-shadow 0.3s ease-out, transform 0.3s ease-out;
 }
 .info-card-natural:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
 }
 
 .info-card-icon {
-    font-size: 1.7rem; /* Ukuran ikon disesuaikan */
+    font-size: 1.8rem; /* Ukuran ikon */
     color: var(--primary);
-    margin-right: 1rem;
-    margin-top: 0.2rem;
-    flex-shrink: 0;
-    width: 30px; /* Beri lebar tetap agar alignment teks rapi */
+    margin-right: 1.2rem; /* Jarak ikon ke teks */
+    margin-top: 0.1rem; /* Penyesuaian posisi vertikal ikon */
+    flex-shrink: 0; /* Icon tidak mengecil */
+    width: 30px;
     text-align: center;
 }
 
 .info-card-content-wrapper {
-    flex-grow: 1;
+    flex-grow: 1; /* Konten mengambil sisa ruang */
 }
 
 .info-card-natural h4 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.15rem; /* Judul card */
+  font-family: var(--font-body); /* Konsisten dengan body atau bisa juga var(--font-heading) */
+  font-size: 1.2rem; /* Judul card */
   font-weight: 600;
   color: var(--primary);
-  margin-bottom: 0.75rem;
-  border-bottom: 1px solid #f0ebe5; /* Garis pemisah lebih soft */
-  padding-bottom: 0.5rem;
+  margin-top: 0; /* Reset margin top H4 */
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid var(--light-gray); /* Garis pemisah soft */
+  padding-bottom: 0.6rem;
 }
 
 .info-list-item-natural {
-  margin-bottom: 0.6rem;
-  padding-bottom: 0.6rem;
+  margin-bottom: 0.7rem; /* Jarak antar item list */
+  padding-bottom: 0.7rem;
+  /* border-bottom: 1px dashed var(--light-gray); /* Opsional: pemisah antar item */
 }
-.info-list-item-natural:last-child { margin-bottom: 0; padding-bottom: 0; }
+.info-list-item-natural:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  /* border-bottom: none; */
+}
 
 .item-title-natural {
   font-weight: 500;
-  font-size: 0.95rem; /* Detail nama/judul ayat */
+  font-size: 0.95rem;
   color: var(--text-dark);
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.2rem;
 }
 .item-detail-natural {
-  font-size: 0.85rem;
+  font-size: 0.875rem; /* Sedikit lebih kecil */
   color: var(--text-muted);
   line-height: 1.5;
 }
 .item-date-natural {
-    font-size: 0.75rem; /* Tanggal lebih kecil */
+    font-size: 0.8rem;
     color: var(--text-muted);
-    margin-top: 0.2rem;
+    margin-top: 0.3rem;
     display: block;
-    font-style: italic;
 }
 .no-info-message-natural {
   text-align: left;
   color: var(--text-muted);
   font-size: 0.9rem;
   padding-top: 0.5rem;
+  font-style: italic;
+}
+
+/* BIBLE VERSE SECTION (Jika ada yang terpisah, style dari inline CSS lama) */
+.bible-verse {
+  background: linear-gradient(135deg, var(--accent), #e8ecef);
+  padding: 5rem 0;
+}
+.verse-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.verse-quote {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  color: var(--text-dark);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.verse-reference {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+
+/* SECTION GENERIC STYLES */
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem; /* Ukuran standar judul section */
+  font-weight: 700;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background: var(--secondary);
+  margin: 1rem auto 2rem auto; /* Margin atas, auto kiri-kanan, bawah */
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.15rem; /* Ukuran standar sub-judul section */
+  color: var(--text-muted);
+  max-width: 700px; /* Batasi lebar agar mudah dibaca */
+  margin: 0 auto 3rem auto; /* Margin bawah lebih besar sebelum konten section */
+  line-height: 1.7;
+}
+
+/* SCHEDULE SECTION */
+.schedule-section {
+  padding: 4rem 0; /* Padding standar */
+  background-color: var(--white); /* Warna background berbeda dari body agar menonjol */
+}
+.schedule-section .table {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden; /* Untuk border-radius di table head */
+}
+.schedule-section .table thead {
+  background-color: var(--primary);
+  color: var(--white);
+}
+.schedule-section .table tbody tr:hover {
+  background-color: #f1f5f9; /* Warna hover soft */
+}
+
+/* Card Ibadah di Schedule Section (Contoh tambahan jika ada) */
+.ibadah-card {
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--light-gray);
+    height: 100%; /* Agar card sama tinggi jika di row */
+}
+.ibadah-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+.ibadah-card .card-body {
+    padding: 1.5rem;
+}
+.ibadah-card .card-title {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+.ibadah-card .card-time {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary);
+    margin-bottom: 0.3rem;
+}
+.ibadah-card .card-type {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+
+/* SERVICE SECTION */
+.service-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa, var(--accent));
+}
+.service-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+.service-card-title {
+  font-family: var(--font-heading);
+  color: var(--primary);
+  font-weight: 700;
+  border-bottom: 2px solid var(--light-gray);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem; /* Jarak ke konten bawahnya */
+}
+.service-image {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.service-image img {
+  transition: transform 0.6s ease;
+  display: block; /* Menghilangkan spasi bawah img */
+  width: 100%;
+}
+.service-image:hover img {
+  transform: scale(1.05);
+}
+.service-image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, rgba(30, 58, 138, 0.85), transparent);
+  padding: 1.5rem; /* Padding overlay */
+  color: var(--white);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex; /* Untuk align item di overlay */
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  height: 60%; /* Ketinggian overlay */
+}
+.service-image:hover .service-image-overlay {
+  opacity: 1;
+}
+.service-image-content h4 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.service-image-content .btn-primary {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  font-size: 0.9rem;
+  padding: 0.5rem 1.5rem;
+}
+.service-image-content .btn-primary:hover {
+  background-color: #b38b59;
+  border-color: #b38b59;
+}
+
+
+/* COMMUNITY SECTION */
+.community-section {
+  padding: 4rem 0;
+  background: var(--accent);
+}
+.community-card {
+  background: var(--white);
+  border-radius: 15px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%; /* Untuk card dengan tinggi sama */
+  display: flex;
+  flex-direction: column;
+  text-align: center; /* Konten card center */
+}
+.community-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+.community-card .bi {
+  font-size: 2.8rem; /* Icon lebih besar */
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+.community-card:hover .bi {
+  transform: scale(1.1);
+}
+.community-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.6rem; /* Judul card komunitas */
+  font-weight: 600;
+  color: var(--primary); /* Gunakan primary color */
+  margin-bottom: 1rem;
+}
+.community-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    flex-grow: 1; /* Agar paragraf mengisi ruang jika card flex column */
+}
+
+/* TESTIMONY SECTION */
+.testimony-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa; /* Background sedikit beda */
+}
+.testimony-card {
+  background: var(--white); /* Background card putih */
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+.testimony-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+.testimony-card p { /* Kutipan testimoni */
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.testimony-card h5 { /* Nama pemberi testimoni */
+  font-family: var(--font-heading);
+  color: var(--text-dark);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.testimony-card small { /* Keterangan pemberi testimoni */
+    color: var(--secondary);
+    font-weight: 500;
+}
+
+/* DONATION SECTION */
+.donation-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--accent), #e8ecef);
+}
+.donation-section .btn-primary { /* Styling khusus untuk tombol donasi jika perlu */
+    background-color: var(--primary);
+    border-color: var(--primary);
+    padding: 0.9rem 2.8rem;
+    font-size: 1.1rem;
+}
+.donation-section .btn-primary:hover {
+    background-color: #162b65; /* Varian lebih gelap dari primary */
+    border-color: #162b65;
+}
+
+/* VISION & MISSION SECTION */
+.vision-section {
+  padding: 4rem 0;
+  background-color: var(--white);
+}
+.vision-content {
+  background: #fdfdfd; /* Background content sedikit beda */
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: var(--shadow-md);
+}
+.vision-content h3, .vision-content h4 {
+    font-family: var(--font-heading);
+    color: var(--primary);
+    font-weight: 700;
+}
+.vision-content h3 { font-size: 1.8rem; margin-bottom: 0.75rem;}
+.vision-content h4 { font-size: 1.5rem; margin-bottom: 1rem; margin-top: 2rem;}
+
+.mission-item {
+  font-size: 1.05rem; /* Ukuran font misi */
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  padding-left: 2rem; /* Ruang untuk ikon/bullet */
+  position: relative;
+  line-height: 1.7;
+}
+.mission-item:before {
+  content: '✓'; /* Ganti bullet dengan checkmark atau ikon Bootstrap */
+  /* font-family: 'Bootstrap Icons'; content: "\F26E"; /* Contoh ikon Bootstrap */
+  position: absolute;
+  left: 0;
+  color: var(--secondary);
+  font-size: 1.2rem; /* Ukuran ikon/bullet */
+  font-weight: bold;
+}
+.vision-image img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* LOCATION SECTION */
+.location-section {
+  padding: 4rem 0 0 0; /* No bottom padding, footer will follow */
+  background: var(--accent);
+}
+.location-section .section-title {
+    margin-bottom: 1rem; /* Kurangi margin bawah title sebelum divider */
+}
+.location-section .section-divider {
+    margin-bottom: 2.5rem; /* Tambah margin bawah divider sebelum map */
+}
+.location-section iframe {
+  border-radius: 0; /* Map full width tanpa radius jika section terakhir */
+  box-shadow: none; /* Hilangkan shadow jika full width */
+  border: none; /* Hilangkan border */
+  width: 100%;
+  display: block; /* Untuk menghilangkan potential whitespace bawah iframe */
+}
+/* Jika tidak mau full width, kembalikan style lama: */
+/*
+.location-section iframe {
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  border: 3px solid var(--light-gray);
+}
+*/
+
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 991.98px) {
+  .hero-title { font-size: 3rem; }
+  .hero-description { font-size: 1.15rem; }
+  .section-title { font-size: 2.2rem; }
+  .service-card, .community-card, .vision-content { padding: 2rem; }
+  .vision-image img { height: 350px; }
+  .info-zone-layout { gap: 1rem; } /* Kurangi gap di tablet */
+  .info-card-natural { flex-basis: calc(50% - 0.5rem); max-width: calc(50% - 0.5rem); } /* 2 card per row */
+
+}
+
+@media (max-width: 767.98px) {
+  .hero { min-height: 80vh; padding: 1.5rem; }
+  .hero-title { font-size: 2.4rem; }
+  .hero-description { font-size: 1.05rem; }
+  .section-title { font-size: 1.9rem; }
+  .section-subtitle { font-size: 1rem; margin-bottom: 2rem; }
+  .verse-quote { font-size: 1.5rem; }
+  .vision-image img { height: 280px; margin-bottom: 1.5rem; } /* Gambar Visi Misi di atas teks pada mobile */
+  .info-card-natural { flex-basis: 100%; max-width: 100%; } /* 1 card per row */
+  .community-card { margin-bottom: 1.5rem; } /* Jarak antar community card di mobile */
+  .testimony-card { margin-bottom: 1.5rem; }
+}
+
+@media (max-width: 575.98px) {
+    .hero-title { font-size: 2rem; }
+    .hero-description { font-size: 1rem; }
+    .section-title { font-size: 1.7rem; }
 }

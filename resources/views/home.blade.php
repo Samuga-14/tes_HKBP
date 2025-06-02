@@ -16,401 +16,42 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ asset('css/home.css') }}" />
 
-  <style>
-    :root {
-      --primary: #1e3a8a; /* Deep navy */
-      --secondary: #d4a373; /* Soft gold */
-      --accent: #f9f6f0; /* Ivory */
-      --text-dark: #1f2937;
-      --text-muted: #4b5563;
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    }
+  {{-- SEMUA STYLE DARI SINI SUDAH DIPINDAHKAN KE home.css --}}
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: var(--accent);
-      color: var(--text-dark);
-      scroll-behavior: smooth;
-    }
-
-    /* Animations */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .animate-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .delay-1 { transition-delay: 0.2s; }
-    .delay-2 { transition-delay: 0.4s; }
-    .delay-3 { transition-delay: 0.6s; }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('{{ asset("images/gereja.jpg") }}') center/cover no-repeat;
-      min-height: 95vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      color: #fff;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 900px;
-      text-align: center;
-      z-index: 1;
-    }
-
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1.5rem;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-subtitle {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 500;
-      margin: 1rem 0;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .hero-description {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-      line-height: 1.8;
-      color: #f1f1f1;
-    }
-
-    .btn-primary {
-      background-color: var(--secondary);
-      border-color: var(--secondary);
-      padding: 0.8rem 2.5rem;
-      font-size: 1.1rem;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-primary:hover {
-      background-color: #b38b59;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Bible Verse Section */
-    .bible-verse {
-      background: linear-gradient(135deg, var(--accent), #e8ecef);
-      padding: 5rem 0;
-    }
-
-    .verse-wrapper {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .verse-decor-top,
-    .verse-decor-bottom {
-      transition: opacity 0.8s ease 0.2s;
-    }
-
-    .verse-quote {
-      font-family: 'Playfair Display', serif;
-      font-weight: 500;
-      font-size: 2rem;
-      line-height: 1.4;
-      letter-spacing: 0.5px;
-      color: var(--text-dark);
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
-
-    .verse-reference {
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.125rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Schedule Section */
-    .schedule-section {
-      padding: 5rem 0;
-      background-color: #fff;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-divider {
-      width: 80px;
-      height: 4px;
-      background: var(--secondary);
-      margin: 1.5rem auto;
-      border-radius: 2px;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    .table {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .table thead {
-      background-color: var(--primary);
-      color: #fff;
-    }
-
-    .table tbody tr:hover {
-      background-color: #f1f5f9;
-    }
-
-    /* Service Section */
-    .service-section {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, #f8f9fa, var(--accent));
-    }
-
-    .service-card {
-      background: #fff;
-      border-radius: 15px;
-      padding: 2.5rem;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .service-card-title {
-      font-family: 'Playfair Display', serif;
-      color: var(--primary);
-      font-weight: 700;
-      border-bottom: 2px solid #e8ecef;
-      padding-bottom: 1rem;
-    }
-
-    .service-image {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-    }
-
-    .service-image img {
-      transition: transform 0.6s ease;
-    }
-
-    .service-image:hover img {
-      transform: scale(1.05);
-    }
-
-    .service-image-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: linear-gradient(to top, rgba(30, 58, 138, 0.8), transparent);
-      padding: 2rem;
-      color: #fff;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .service-image:hover .service-image-overlay {
-      opacity: 1;
-    }
-
-    /* Community Section */
-    .community-section {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, var(--accent), #e8ecef);
-    }
-
-    .community-card {
-      background: #fff;
-      border-radius: 15px;
-      padding: 2.5rem;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-      height: 100%;
-    }
-
-    .community-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .community-card .bi {
-      font-size: 2.5rem;
-      color: var(--secondary);
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s ease;
-    }
-
-    .community-card:hover .bi {
-      transform: scale(1.1);
-    }
-
-    .community-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--text-dark);
-    }
-
-    /* Testimony Section */
-    .testimony-section {
-      padding: 5rem 0;
-      background-color: #fff;
-    }
-
-    .testimony-card {
-      background: var(--accent);
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: var(--shadow);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-
-    .testimony-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .testimony-card h5 {
-      font-family: 'Playfair Display', serif;
-      color: var(--text-dark);
-    }
-
-    /* Donation Section */
-    .donation-section {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, #f8f9fa, var(--accent));
-    }
-
-    /* Vision Section */
-    .vision-section {
-      padding: 5rem 0;
-      background-color: #fff;
-    }
-
-    .vision-content {
-      background: #fff;
-      border-radius: 12px;
-      padding: 2.5rem;
-      box-shadow: var(--shadow);
-    }
-
-    .mission-item {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .mission-item:before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--secondary);
-      font-size: 1.5rem;
-    }
-
-    .vision-image img {
-      height: 400px;
-      object-fit: cover;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-    }
-
-    /* Location Section */
-    .location-section {
-      padding: 5rem 0;
-      background: linear-gradient(135deg, var(--accent), #e8ecef);
-    }
-
-    .location-section iframe {
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      border: 3px solid #e8ecef;
-    }
-
-    /* Responsive */
-    @media (max-width: 991.98px) {
-      .hero-title { font-size: 2.8rem; }
-      .hero-subtitle { font-size: 2rem; }
-      .section-title { font-size: 2.2rem; }
-      .service-card, .community-card, .vision-content { padding: 2rem; }
-      .vision-image img { height: 350px; }
-    }
-
-    @media (max-width: 767.98px) {
-      .hero { min-height: 80vh; padding: 1.5rem; }
-      .hero-title { font-size: 2.2rem; }
-      .hero-subtitle { font-size: 1.6rem; }
-      .verse-quote { font-size: 1.5rem; }
-      .section-title { font-size: 1.8rem; }
-      .vision-image img { height: 250px; }
-    }
-  </style>
 </head>
 <body>
   <!-- Header -->
   @include('header')
 
   <!-- Hero Section -->
-<section class="hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1 class="hero-title animate-on-scroll">
-      Selamat Datang di <br><span>HKBP Sinambela Simanullang</span>
-    </h1>
-    <p class="hero-description animate-on-scroll delay-2">
-      Bergabunglah dalam kasih dan ibadah bersama kami <br> untuk memuliakan Tuhan yang hidup.
-    </p>
-  </div>
-</section>
+  <section class="hero">
+    {{-- <div class="hero-overlay"></div> --> HAPUS INI, GRADIENT SUDAH DI CSS .hero --}}
+    <div class="hero-content">
+      <h1 class="hero-title animate-on-scroll">
+        Selamat Datang di <br><span>HKBP Sinambela Simanullang</span>
+      </h1>
+      <p class="hero-description animate-on-scroll delay-2">
+        Bergabunglah dalam kasih dan ibadah bersama kami <br> untuk memuliakan Tuhan yang hidup.
+      </p>
+      {{-- Jika ingin ada tombol di hero, bisa ditambahkan lagi
+      <a href="#layanan" class="btn btn-primary animate-on-scroll delay-3">Jelajahi Lebih Lanjut</a>
+      --}}
+    </div>
+  </section>
 
-<!-- Zona Informasi Harian (Ulang Tahun + Ayat Harian) -->
-  <section class="info-zone-container-v2 py-4"> {{-- Padding py-4 agar tidak terlalu besar --}}
+  <!-- Zona Informasi Harian (Ulang Tahun + Ayat Harian) -->
+  <section class="info-zone-container-v2 py-4 animate-on-scroll">
     <div class="container">
         <div class="info-zone-layout">
             <!-- Ulang Tahun -->
-            <div class="info-card-natural animate-on-scroll">
+            <div class="info-card-natural animate-on-scroll delay-1">
                 <div class="info-card-icon">
-                    <i class="fas fa-birthday-cake"></i>
+                    <i class="bi bi-calendar-heart"></i> {{-- Ganti icon --}}
                 </div>
                 <div class="info-card-content-wrapper">
                     <h4>Ulang Tahun Hari Ini</h4>
                     @php
-                        // Ambil data jemaat yang ulang tahun hari ini
-                        $jemaatUlangTahun = App\Models\Jemaat::ulangTahunHariIni()->limit(3)->get(); // Batasi misal 3 nama
+                        $jemaatUlangTahun = App\Models\Jemaat::ulangTahunHariIni()->limit(3)->get();
                     @endphp
                     @forelse($jemaatUlangTahun as $jemaat)
                         <div class="info-list-item-natural">
@@ -427,14 +68,13 @@
             </div>
 
             <!-- Ayat Harian -->
-            <div class="info-card-natural animate-on-scroll delay-1">
+            <div class="info-card-natural animate-on-scroll delay-2">
                  <div class="info-card-icon">
-                    <i class="fas fa-book-open"></i>
+                    <i class="bi bi-book-half"></i> {{-- Ganti icon --}}
                 </div>
                 <div class="info-card-content-wrapper">
                     <h4>Ayat Harian</h4>
                     @php
-                        // Pastikan $ayatHarian di-pass dari controller
                         // $ayatHarian = App\Models\Berita::where('tipe', 'ayat_harian')
                         //                               ->orderBy('tanggal_publikasi', 'desc')
                         //                               ->first();
@@ -442,7 +82,7 @@
                     @if(isset($ayatHarian) && $ayatHarian)
                         <div class="info-list-item-natural">
                             <p class="item-title-natural">{{ $ayatHarian->judul }}</p>
-                            <p class="item-detail-natural">{{ Str::limit($ayatHarian->deskripsi, 150) }}</p> {{-- Batasi panjang deskripsi --}}
+                            <p class="item-detail-natural">{{ Str::limit($ayatHarian->deskripsi, 150) }}</p>
                             <small class="item-date-natural"><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
                         </div>
                     @else
@@ -455,57 +95,57 @@
   </section>
 
   <!-- Jadwal Ibadah Mingguan -->
- <section class="schedule-section py-5">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="section-title animate-on-scroll">Jadwal Ibadah Mingguan</h2>
-      <div class="section-divider animate-on-scroll delay-1"></div>
-      <p class="section-subtitle animate-on-scroll delay-2">Mari bersama-sama memuji dan menyembah Tuhan.</p>
+  <section class="schedule-section py-5">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title animate-on-scroll">Jadwal Ibadah Mingguan</h2>
+        <div class="section-divider animate-on-scroll delay-1"></div>
+        <p class="section-subtitle animate-on-scroll delay-2">Mari bersama-sama memuji dan menyembah Tuhan.</p>
+      </div>
+
+      <div class="row g-4 animate-on-scroll delay-3">
+        <div class="col-md-6 col-lg-3">
+          <div class="card ibadah-card text-center shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Minggu</h5>
+              <p class="card-time">08:00 WIB</p>
+              <p class="card-type">Ibadah Umum</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card ibadah-card text-center shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Minggu</h5>
+              <p class="card-time">10:00 WIB</p>
+              <p class="card-type">Sekolah Minggu</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card ibadah-card text-center shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Rabu</h5>
+              <p class="card-time">19:00 WIB</p>
+              <p class="card-type">Kebaktian Doa</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="card ibadah-card text-center shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Jumat</h5>
+              <p class="card-time">18:00 WIB</p>
+              <p class="card-type">Ibadah Pemuda</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="row g-4 animate-on-scroll delay-3">
-      <div class="col-md-6 col-lg-3">
-        <div class="card ibadah-card text-center shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Minggu</h5>
-            <p class="card-time">08:00 WIB</p>
-            <p class="card-type">Ibadah Umum</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3">
-        <div class="card ibadah-card text-center shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Minggu</h5>
-            <p class="card-time">10:00 WIB</p>
-            <p class="card-type">Sekolah Minggu</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3">
-        <div class="card ibadah-card text-center shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Rabu</h5>
-            <p class="card-time">19:00 WIB</p>
-            <p class="card-type">Kebaktian Doa</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6 col-lg-3">
-        <div class="card ibadah-card text-center shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">Jumat</h5>
-            <p class="card-time">18:00 WIB</p>
-            <p class="card-type">Ibadah Pemuda</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- Layanan Section -->
   <section class="service-section" id="layanan">
@@ -521,7 +161,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-6">
           <div class="service-image text-center">
-            <img src="{{ asset('images/ibadah.jpg') }}" alt="Ibadah Jemaat" class="img-fluid rounded shadow">
+            <img src="{{ asset('images/lihat.jpg') }}" alt="Ibadah Jemaat" class="img-fluid rounded shadow">
             <div class="service-image-overlay d-flex align-items-center justify-content-center">
               <div class="service-image-content">
                 <h4>Bergabunglah bersama kami</h4>
@@ -532,7 +172,7 @@
         </div>
       </div>
     </div>
-  </section></section>
+  </section>
 
   <!-- Our Community Section -->
   <section class="community-section">
@@ -651,7 +291,7 @@
   </section>
 
   <!-- Lokasi -->
-  <section class="location-section">
+  <section class="location-section mb-5">
     <div class="container">
       <h2 class="text-center section-title animate-on-scroll">Lokasi Gereja</h2>
       <div class="section-divider animate-on-scroll delay-1"></div>
@@ -679,7 +319,7 @@
             entry.target.classList.add('visible');
           }
         });
-      }, { threshold: 0.2 });
+      }, { threshold: 0.1 }); // threshold 0.1 agar animasi lebih cepat terlihat
 
       document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
