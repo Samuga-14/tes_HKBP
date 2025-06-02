@@ -15,22 +15,24 @@
 <body>
 
     @include('header')
-
-    <section class="hero">
-        <div class="hero-content text-center py-5">
-            <h1 class="hero-title">Warta Gereja<br>HKBP Sinambela Simanullang</h1>
-            <br><br>
-            <p>Melalui Warta Jemaat, kita dipersatukan dalam informasi dan kasih untuk bertumbuh bersama sebagai tubuh Kristus</p>
-        </div>
+    <!-- HERO SECTION -->
+  <section class="hero-section">
+  <div class="radial-lines"></div>
+  <div class="hero-text">
+    <p class="subtitle fade-up fade-up-delay-1">Warta Gereja</p>
+    <h1 class="fade-up fade-up-delay-2">HKBP SINAMBELA - SIMANULLANG</h1>
+    <p class="tagline fade-up fade-up-delay-3">
+Melalui Warta Jemaat, kita dipersatukan dalam informasi dan kasih untuk bertumbuh bersama sebagai tubuh Kristus</p>
+  </div>
+</section>
+    {{-- Judul Section --}}
+    <section class="section-title text-center mt-5 mb-4 fade-up fade-up-delay-4">
+        Warta Gereja Mingguan
     </section>
-    
-    <div class="section-title text-center mt-4 fw-bold fs-5">
-        <h2 class="fw-semibold text-center mt-1 fs-2"> Warta Jemaat HKBP Sinambela Simanullang </h2>
-    </div>
 
    <div class="container py-4 warta-list">
     @foreach ($wartas as $index => $item)
-        <div class="warta-item d-flex justify-content-between align-items-center py-3 border-bottom animate-fadein" style="animation-delay: {{ 0.15 * $index }}s;">
+        <div class="warta-item d-flex justify-content-between align-items-center py-3 border-bottom animate-fadein" style="animation-delay: {{ 0.15 * $index }}">
             <!-- TANGGAL -->
             <div class="tanggal text-muted text-uppercase small" style="min-width: 120px;">
                 {{ \Carbon\Carbon::parse($item->tanggal_terbit)->translatedFormat('d F Y') }}
