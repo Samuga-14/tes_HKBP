@@ -45,7 +45,7 @@ Route::get('/kegiatan', function () {
 
 
 // Authentication
-Auth::routes(['register' => true]);
+Auth::routes(['register' => false]); // Disable registration
 
 // Group Admin Panel (Harus Login)
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
