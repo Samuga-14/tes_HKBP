@@ -23,21 +23,14 @@
     @include('header')
 
     {{-- Hero Section --}}
-    <section class="hero-berita-custom fade-up fade-up-delay-1">
-        <div class="top-bar"></div>
-        <div class="container hero-content">
-            <div class="row align-items-center">
-                <div class="col-lg-6 text-section fade-up fade-up-delay-2">
-                    <h1>Berita & Pengumuman<br>HKBP Sinambela - Simanullang</h1>
-                    <p>Berita dan pengumuman terbaru seputar kegiatan di Gereja HKBP Sinambela - Simanullang</p>
-                </div>
-                <div class="col-lg-6 text-center fade-up fade-up-delay-3">
-                    <img src="{{ asset('images/bg1.jpg') }}" alt="Ilustrasi Berita" class="hero-image" />
-                </div>
-            </div>
-        </div>
-        <div class="bottom-bar"></div>
-    </section>
+  <section class="hero-section">
+  <div class="radial-lines"></div>
+  <div class="hero-text">
+    <p class="subtitle fade-up fade-up-delay-1 ">Berita & Pengumuman</p>
+    <h1 class="fade-up fade-up-delay-2">HKBP SINAMBELA -SIMANULLANG</h1>
+    <p class="tagline fade-up fade-up-delay-3">Berita dan pengumuman terbaru seputar kegiatan di Gereja HKBP Sinambela - Simanullang</p>
+  </div>
+</section>
 
     {{-- Berita Section --}}
     <section class="content-section py-5 fade-up fade-up-delay-4">

@@ -23,22 +23,14 @@
     @include('header')
 
     {{-- Hero Section --}}
-    <section class="hero">
-        <div class="top-bar fade-up fade-up-delay-1"></div>
-
-        <div class="hero-image fade-up fade-up-delay-1">
-            <img src="{{ asset('images/icongaleri.jpg') }}" alt="Ikon Gereja HKBP">
-        </div>
-
-        <div class="hero-content">
-            <h1 class="hero-title fade-up fade-up-delay-2">Galeri Kegiatan<br>HKBP Sin-Sim</h1>
-            <p class="fade-up fade-up-delay-3">
-                Galeri kegiatan - kegiatan yang dilaksanakan oleh jemaat gereja HKBP Sinambela - Simanullang
-            </p>
-        </div>
-
-        <div class="bottom-bar fade-up fade-up-delay-3"></div>
-    </section>
+  <section class="hero-section">
+  <div class="radial-lines"></div>
+  <div class="hero-text">
+    <p class="subtitle fade-up fade-up-delay-1">GALERI KEGIATAN</p>
+    <h1 class="fade-up fade-up-delay-2">HKBP SINAMBELA - SIMANULLANG</h1>
+    <p class="tagline fade-up fade-up-delay-3">Galeri kegiatan - kegiatan yang dilaksanakan oleh jemaat gereja HKBP Sinambela - Simanullang</p>
+  </div>
+</section>
 
     {{-- Judul Section --}}
     <section class="section-title text-center mt-5 mb-4 fade-up fade-up-delay-4">
