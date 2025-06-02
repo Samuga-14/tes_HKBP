@@ -18,7 +18,7 @@
     --hero-navy-overlay-start: rgba(10, 25, 47, 0.85);
     --hero-navy-overlay-end: rgba(10, 25, 47, 0.95);
     --hero-text-primary: #e6f1ff; /* Putih untuk teks utama di hero */
-    --hero-text-accent: #64ffda;  /* Aksen teal/mint terang untuk subtitle di hero */
+    --hero-text-accent: #d8f9f1;  /* Aksen teal/mint terang untuk subtitle di hero */
     --hero-text-secondary: #ccd6f6; /* Abu-abu terang untuk deskripsi di hero */
 }
 

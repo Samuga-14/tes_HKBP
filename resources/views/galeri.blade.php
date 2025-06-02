@@ -33,7 +33,7 @@
 </section>
 
     {{-- Judul Section --}}
-    <section class="section-title text-center mt-5 mb-4 fade-up fade-up-delay-4">
+    <section class="section-title text-center mt-4 mb-4 fade-up fade-up-delay-4">
         Dokumentasi Kegiatan Terbaru
     </section>
 
