@@ -30,9 +30,9 @@
                     <a class="nav-link {{ request()->routeIs('pengurus.user') ? 'active' : '' }}" href="{{ route('pengurus.user') }}">Struktur Kepengurusan</a>
                 </li>
             </ul>
-            {{-- <div class="d-flex ms-4">
-                <a href="{{ route('login') }}" class="btn btn-login">Login</a>
-            </div> --}}
+            <div class="d-flex ms-4">
+                <a href="{{ route('login') }}" class="btn btn-login">Login Admin</a>
+            </div> 
         </div>
     </div>
 </nav>
