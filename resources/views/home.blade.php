@@ -512,7 +512,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-6">
           <div class="service-image text-center">
-            <img src="{{ asset('images/ibadah.jpg') }}" alt="Ibadah Jemaat" class="img-fluid rounded shadow">
+            <img src="{{ asset('images/heme.jpg') }}" alt="Ibadah Jemaat" class="img-fluid rounded shadow">
             <div class="service-image-overlay d-flex align-items-center justify-content-center">
               <div class="service-image-content">
                 <h4>Bergabunglah bersama kami</h4>
