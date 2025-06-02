@@ -22,6 +22,7 @@
   </div>
 </section>
 
+<h2 class="mt-4 mb-4 text-center fw-semibold fade-up fade-up-delay-5">Struktur Kepengurusan Gereja HKBP SIN - SIM</h2>
 
   @php
     $data = [
