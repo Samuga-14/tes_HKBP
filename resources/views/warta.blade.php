@@ -22,7 +22,7 @@
     <p class="subtitle fade-up fade-up-delay-1">Warta Gereja</p>
     <h1 class="fade-up fade-up-delay-2">HKBP SINAMBELA - SIMANULLANG</h1>
     <p class="tagline fade-up fade-up-delay-3">
-Melalui Warta Jemaat, kita dipersatukan dalam informasi dan kasih untuk bertumbuh bersama sebagai tubuh Kristus</p>
+Melalui Warta Jemaat, kita dipersatukan dalam informasi dan kasih untuk bertumbuh bersama sebagai tubuh Kristus</p>
   </div>
 </section>
     {{-- Judul Section --}}
@@ -47,9 +47,6 @@ Melalui Warta Jemaat, kita dipersatukan dalam informasi dan kasih untuk bertumbu
             <!-- IKON DOWNLOAD & LIHAT -->
             <div class="aksi-buttons d-flex gap-2">
                 @if ($item->file_pdf)
-                    <a href="{{ asset('storage/' . $item->file_pdf) }}" class="btn btn-sm btn-outline btn-lihat" target="_blank" title="Lihat PDF">
-                        <i class="fas fa-eye me-1"></i> Lihat
-                    </a>
                     <a href="{{ asset('storage/' . $item->file_pdf) }}" class="btn btn-sm btn-outline-sm" target="_blank" title="Download PDF">
                         <i class="fas fa-file-pdf"></i>
                         <i class="fas fa-download"></i>

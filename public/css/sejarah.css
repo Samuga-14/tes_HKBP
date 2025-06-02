@@ -2,21 +2,30 @@
    VARIABLES & RESET
 ====================== */
 :root {
+    /* Warna utama untuk section selain Hero (tema terang) */
     --sapphire-blue: #0a2b5c;
     --gold-pure: #c89c3d;
     --pearl-white: #f8f9fa;
-    --alabaster-white: #F0EDE5;
+    --alabaster-white: #F0EDE5; /* Background section terang */
     --gray-light: #e9ecef;
     --gray-medium: #adb5bd;
-    --gray-dark: #495057;
+    --gray-dark: #495057;   /* Teks utama di section terang */
     --shadow-soft: rgba(0, 0, 0, 0.08);
     --shadow-medium: rgba(0, 0, 0, 0.12);
+
+    /* Variabel khusus untuk Hero Navy Theme */
+    --hero-navy-dark: #0a192f;  /* Navy Blue dari referensi gambar */
+    --hero-navy-overlay-start: rgba(10, 25, 47, 0.85);
+    --hero-navy-overlay-end: rgba(10, 25, 47, 0.95);
+    --hero-text-primary: #e6f1ff; /* Putih untuk teks utama di hero */
+    --hero-text-accent: #64ffda;  /* Aksen teal/mint terang untuk subtitle di hero */
+    --hero-text-secondary: #ccd6f6; /* Abu-abu terang untuk deskripsi di hero */
 }
 
 body {
     font-family: 'Lora', serif;
-    background-color: var(--alabaster-white);
-    color: var(--gray-dark);
+    background-color: var(--alabaster-white); /* Background body utama tetap terang */
+    color: var(--gray-dark);                  /* Teks body utama tetap gelap */
     overflow-x: hidden;
     scroll-behavior: smooth;
     line-height: 1.7;
@@ -25,7 +34,7 @@ body {
 h1, h2, h3, h4, h5 {
     font-family: 'Cinzel', serif;
     letter-spacing: 0.03em;
-    color: var(--sapphire-blue);
+    /* Warna heading akan di-set per section */
     margin-top: 0;
     margin-bottom: 1rem;
     font-weight: 700;
@@ -34,12 +43,12 @@ h1, h2, h3, h4, h5 {
 img {
     max-width: 100%;
     height: auto;
-    display: block; /* Menghilangkan space bawah pada inline image */
+    display: block;
 }
 
 .section-title {
     font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-    color: var(--sapphire-blue);
+    color: var(--sapphire-blue); /* Judul section (Timeline, Gallery) tetap biru sapphire */
     margin-bottom: 3.5rem;
     text-align: center;
     text-transform: uppercase;
@@ -56,30 +65,30 @@ img {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: var(--gold-pure);
+    background-color: var(--gold-pure); /* Garis bawah tetap gold */
     border-radius: 2px;
 }
 
 
 /* ==========================
-   HERO SECTION
+   HERO SECTION (NAVY THEME APPLIED HERE)
 ========================== */
 .hero-section {
     position: relative;
-    min-height: 100vh; /* Full viewport height */
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url("../images/hero-bg.jpg") no-repeat center center/cover; /* Ganti dengan path gambar hero yang benar */
-    color: var(--pearl-white);
+    background: url("../images/hero-bg.jpg") no-repeat center center/cover; /* Ganti path jika perlu */
     text-align: center;
     padding: 3rem 1rem;
+    color: var(--hero-text-primary); /* Default teks di hero jadi putih */
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, rgba(10, 43, 92, 0.85), rgba(0, 0, 0, 0.75)); /* Sedikit lebih gelap */
+    background: linear-gradient(to bottom, var(--hero-navy-overlay-start), var(--hero-navy-overlay-end));
     z-index: 1;
 }
 
@@ -92,16 +101,17 @@ img {
 .hero-title {
     font-size: clamp(3.5rem, 7vw, 5.5rem);
     margin-bottom: 1rem;
-    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     line-height: 1.1;
+    color: var(--hero-text-primary); /* Eksplisit */
 }
 
 .hero-subtitle {
     font-size: clamp(1.8rem, 4vw, 2.8rem);
     font-weight: 600;
-    color: var(--gold-pure);
+    color: var(--hero-text-accent);
     margin-bottom: 2rem;
-    text-shadow: 0 3px 8px rgba(212, 160, 23, 0.6);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .hero-desc {
@@ -109,46 +119,44 @@ img {
     line-height: 1.85;
     opacity: 0.95;
     max-width: 700px;
-    margin: 0 auto 2.5rem auto; /* Tambah margin bawah jika ada tombol */
+    margin: 0 auto 2.5rem auto;
+    color: var(--hero-text-secondary);
 }
 
 .hero-btn {
     display: inline-block;
     padding: 0.9rem 3rem;
-    margin-top: 1rem; /* Disesuaikan dari hero-desc margin-bottom */
-    background: var(--gold-pure);
-    color: var(--sapphire-blue);
+    margin-top: 1rem;
+    background: var(--hero-text-accent);
+    color: var(--hero-navy-dark);
     font-size: 1.15rem;
     font-weight: 700;
     font-family: 'Cinzel', serif;
     text-decoration: none;
     border-radius: 5px;
-    box-shadow: 0 6px 15px rgba(212, 160, 23, 0.5);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
 }
-
 .hero-btn:hover {
-    background-color: #b8860b;
-    box-shadow: 0 8px 20px rgba(212, 160, 23, 0.7);
+    background-color: #52d9c8;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     transform: translateY(-2px);
 }
 
-/* ... CSS Lainnya (Hero, Footer, Variables, dll. tetap sama dari versi full code sebelumnya) ... */
-
 /* ==========================
-   HISTORY TIMELINE (REVISI V2)
+   HISTORY TIMELINE (TEMA TERANG - V2 dengan gambar di luar)
 ========================== */
 .history-section {
     padding: 5rem 1rem;
+    background-color: var(--alabaster-white); /* Background section terang */
 }
 
 .timeline {
     position: relative;
-    max-width: 1000px; /* Bisa sedikit lebih lebar karena ada 2 kolom efektif */
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-/* Garis tengah timeline */
 .timeline::before {
     content: '';
     position: absolute;
@@ -156,7 +164,7 @@ img {
     bottom: 0;
     left: 50%;
     width: 4px;
-    background: var(--gold-pure);
+    background: var(--gold-pure); /* Garis timeline gold */
     transform: translateX(-50%);
     border-radius: 2px;
     opacity: 0.7;
@@ -164,26 +172,25 @@ img {
 
 .timeline-item-v2 {
     position: relative;
-    display: flex; /* Untuk mengatur panel kiri dan kanan */
-    justify-content: space-between; /* Mendorong panel ke sisi masing-masing */
-    align-items: flex-start; /* Align item ke atas */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
     width: 100%;
-    margin-bottom: 4rem; /* Jarak antar item */
-    clear: both; /* Mencegah float aneh jika ada */
+    margin-bottom: 4rem;
+    clear: both;
 }
 
 .timeline-panel-v2 {
-    width: calc(50% - 45px); /* Setengah lebar dikurangi ~setengah lebar icon + margin */
-    position: relative; /* Untuk elemen panah jika ada */
+    width: calc(50% - 45px);
+    position: relative;
 }
 
-/* Ikon di tengah */
 .timeline-icon-v2 {
     width: 60px;
     height: 60px;
-    background: var(--sapphire-blue);
-    color: var(--gold-pure);
-    border: 3px solid var(--alabaster-white);
+    background: var(--sapphire-blue); /* Icon sapphire */
+    color: var(--gold-pure);          /* Simbol gold */
+    border: 3px solid var(--alabaster-white); /* Border kontras dengan background section */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -191,74 +198,54 @@ img {
     font-size: 1.8rem;
     position: absolute;
     left: 50%;
-    top: 20px; /* Sesuaikan posisi vertikal ikon */
+    top: 20px;
     transform: translateX(-50%);
-    z-index: 10; /* Di atas garis dan panel */
+    z-index: 10;
     box-shadow: 0 4px 12px var(--shadow-medium);
 }
 
-/* Styling untuk panel yang berisi teks */
 .timeline-text-panel .timeline-content-v2 {
     padding: 1.8rem;
-    background: #ffffff;
+    background: #ffffff; /* Konten timeline putih */
     border-radius: 12px;
     box-shadow: 0 6px 25px var(--shadow-soft);
+    color: var(--gray-dark); /* Teks konten gelap */
 }
 
-/* Styling untuk panel yang berisi gambar */
 .timeline-image-panel {
-    padding: 0; /* Gambar biasanya tidak butuh padding internal sebanyak teks */
-    display: flex; /* Untuk alignment gambar jika perlu */
-    align-items: center; /* Pusatkan gambar secara vertikal jika tingginya beda */
-    justify-content: center; /* Pusatkan gambar secara horizontal */
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .timeline-image-panel img {
-    border-radius: 10px; /* Rounded gambar */
-    box-shadow: 0 5px 15px var(--shadow-soft); /* Shadow pada gambar */
-    max-width: 100%; /* Pastikan gambar tidak melebihi panelnya */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-soft);
+    max-width: 100%;
     height: auto;
-    /* Jika ingin gambar punya tinggi tetap: */
-    /* height: 250px; */
-    /* object-fit: cover; */
 }
-/* Placeholder jika tidak ada gambar */
 .img-placeholder-v2 {
     width: 100%;
-    height: 200px; /* Sesuaikan tinggi placeholder */
+    height: 200px;
     border: 2px dashed var(--gray-medium);
+    background-color: var(--gray-light);
+}
+.img-placeholder-v2 i {
+    color: var(--gray-medium);
 }
 
+.timeline-item-v2:nth-child(odd) .timeline-image-panel { order: 1; }
+.timeline-item-v2:nth-child(odd) .timeline-icon-v2    { order: 2; }
+.timeline-item-v2:nth-child(odd) .timeline-text-panel { order: 3; text-align: left; }
 
-/* Atur posisi panel kiri dan kanan */
-.timeline-item-v2:nth-child(odd) .timeline-image-panel {
-    order: 1; /* Gambar di kiri */
-    /* text-align: right; /* Untuk alignment internal jika perlu */
-}
-.timeline-item-v2:nth-child(odd) .timeline-icon-v2 {
-    order: 2;
-}
-.timeline-item-v2:nth-child(odd) .timeline-text-panel {
-    order: 3; /* Teks di kanan */
-    text-align: left;
-}
+.timeline-item-v2:nth-child(even) .timeline-text-panel { order: 1; text-align: right; }
+.timeline-item-v2:nth-child(even) .timeline-icon-v2    { order: 2; }
+.timeline-item-v2:nth-child(even) .timeline-image-panel { order: 3; }
 
-
-.timeline-item-v2:nth-child(even) .timeline-text-panel {
-    order: 1; /* Teks di kiri */
-    text-align: right;
-}
-.timeline-item-v2:nth-child(even) .timeline-icon-v2 {
-    order: 2;
-}
-.timeline-item-v2:nth-child(even) .timeline-image-panel {
-    order: 3; /* Gambar di kanan */
-    /* text-align: left; /* Untuk alignment internal jika perlu */
-}
-/* Styling teks di dalam .timeline-content-v2 */
 .timeline-year {
     font-size: clamp(1.6rem, 2.8vw, 2rem);
     font-weight: 700;
-    color: var(--gold-pure);
+    color: var(--gold-pure); /* Tahun gold */
     margin-bottom: 0.4rem;
 }
 
@@ -266,7 +253,7 @@ img {
     font-size: clamp(1.3rem, 2.2vw, 1.6rem);
     font-weight: 700;
     font-family: 'Lora', serif;
-    color: var(--sapphire-blue);
+    color: var(--sapphire-blue); /* Judul timeline sapphire */
     margin-bottom: 0.8rem;
     line-height: 1.3;
 }
@@ -274,68 +261,17 @@ img {
 .timeline-content-v2 p {
     font-size: clamp(0.9rem, 1.7vw, 1.05rem);
     line-height: 1.75;
-    color: var(--gray-dark);
+    color: var(--gray-dark); /* Paragraf abu tua */
     margin-bottom: 0;
 }
 
-
-/* RESPONSIVE TIMELINE V2 */
-@media (max-width: 767.98px) { /* Mobile */
-    .timeline::before {
-        left: 30px; /* Garis ke kiri */
-        transform: translateX(0);
-    }
-
-    .timeline-item-v2,
-    .timeline-item-v2:nth-child(odd),
-    .timeline-item-v2:nth-child(even) {
-        flex-direction: column; /* Semua jadi stack vertikal */
-        align-items: flex-start; /* Rata kiri */
-        padding-left: 0; /* Atau sesuaikan dengan posisi garis baru */
-    }
-
-    .timeline-icon-v2 {
-        position: relative; /* Tidak lagi absolute di tengah */
-        left: 0;
-        top: 0;
-        transform: translateX(0);
-        margin-bottom: 1rem; /* Jarak icon ke konten di bawahnya */
-        /* Jika garis di kiri, icon juga di kiri */
-        margin-left: calc(30px - (60px / 2)); /* (posisi garis - setengah lebar icon) */
-    }
-
-    .timeline-panel-v2,
-    .timeline-item-v2:nth-child(odd) .timeline-image-panel,
-    .timeline-item-v2:nth-child(odd) .timeline-text-panel,
-    .timeline-item-v2:nth-child(even) .timeline-text-panel,
-    .timeline-item-v2:nth-child(even) .timeline-image-panel {
-        width: 100%;
-        order: 0 !important; /* Reset order flex */
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        text-align: left !important; /* Semua teks rata kiri */
-    }
-
-    /* Gambar di atas teks di mobile */
-    .timeline-image-panel {
-        margin-bottom: 1rem;
-    }
-    .timeline-text-panel {
-        /* Tidak perlu margin khusus lagi */
-    }
-}
-
-/* ... (CSS responsive lainnya untuk hero, footer, dll. tetap sama) ... */
-
-
 /* ==========================
-   GALLERY SECTION (Jika Diaktifkan)
+   GALLERY SECTION (TEMA TERANG - Jika Diaktifkan)
 ========================== */
 .gallery-section {
     background: var(--alabaster-white);
     padding: 5rem 1rem;
 }
-
 .gallery-item-v2 {
     position: relative;
     overflow: hidden;
@@ -349,48 +285,35 @@ img {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px var(--shadow-medium);
 }
-
 .gallery-item-v2 img {
     transition: transform 0.4s ease;
     width: 100%;
 }
-
 .gallery-item-v2:hover img {
     transform: scale(1.08);
 }
-
 .gallery-item-v2-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(10, 43, 92, 0.75);
+    background-color: rgba(10, 43, 92, 0.75); /* Overlay sapphire */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.4s ease;
-    color: var(--pearl-white);
+    color: var(--pearl-white); /* Teks overlay putih */
     text-align: center;
     padding: 1rem;
 }
-
 .gallery-item-v2:hover .gallery-item-v2-overlay {
     opacity: 1;
 }
-
-.gallery-item-v2-overlay i {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.gallery-item-v2-overlay p {
-    font-family: 'Lora', serif;
-    font-size: 1rem;
-    margin-bottom: 0;
-}
+.gallery-item-v2-overlay i { font-size: 2.5rem; margin-bottom: 0.5rem; }
+.gallery-item-v2-overlay p { font-family: 'Lora', serif; font-size: 1rem; margin-bottom: 0; }
 
 /* ==========================
-   FOOTER
+   FOOTER (TEMA TERANG/ASLI)
 ========================== */
 .footer {
     background-color: var(--sapphire-blue);
@@ -399,8 +322,8 @@ img {
     padding: 2.5rem 1rem;
     font-size: 1rem;
     font-weight: 400;
-    box-shadow: inset 0 1px 15px rgba(255, 255, 255, 0.15);
     margin-top: 3rem;
+    box-shadow: inset 0 1px 15px rgba(255, 255, 255, 0.15);
 }
 .footer a {
     color: var(--gold-pure);
@@ -414,118 +337,74 @@ img {
 }
 
 /* ==========================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (Timeline V2 - Disesuaikan)
 ========================== */
-@media (max-width: 991.98px) { /* Tablet (Sebelumnya 992px) */
-    .timeline::before {
-        left: 30px;
-        transform: translateX(0);
-    }
-
-    .timeline-item,
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even) {
-        flex-direction: row; /* Tetap row, icon di kiri, konten di kanan */
-        padding-left: 0; /* Reset padding jika ada */
-    }
-
-    .timeline-icon {
-        position: relative; /* Ubah dari absolute */
-        left: 0;
-        transform: translateX(0);
-        top: 0; /* Reset top */
-        margin-right: 20px; /* Jarak icon ke konten */
-        align-self: flex-start; /* Agar icon align dengan atas konten */
-    }
-
-    .timeline-content,
-    .timeline-item:nth-child(odd) .timeline-content,
-    .timeline-item:nth-child(even) .timeline-content {
-        width: calc(100% - 80px); /* Lebar konten (100% - lebar icon - margin icon) */
-        margin-left: 0;
-        margin-right: 0;
-        text-align: left; /* Semua teks rata kiri */
-    }
-     /* Untuk item genap, pastikan inner content tidak terbalik */
-    .timeline-item:nth-child(even) .timeline-inner-content {
-        flex-direction: column; /* Default ke column dulu di tablet, lalu atur lagi jika perlu row */
-    }
-    @media (min-width: 768px) and (max-width: 991.98px) {
-        .timeline-item:nth-child(even) .timeline-inner-content {
-            flex-direction: row-reverse; /* Tetap row-reverse untuk tablet */
-        }
-    }
-}
-
-@media (max-width: 767.98px) { /* Mobile (Sebelumnya 768px) */
+@media (max-width: 767.98px) { /* Mobile */
     .hero-title { font-size: 2.8rem !important; }
     .hero-subtitle { font-size: 1.8rem !important; }
     .hero-desc { font-size: 1rem !important; }
     .section-title { font-size: 2.3rem !important; }
 
-    .timeline-item,
-    .timeline-item:nth-child(odd),
-    .timeline-item:nth-child(even) {
-        flex-direction: column; /* Semua jadi column */
-        align-items: center; /* Pusatkan icon */
-        padding-left: 0;
-    }
-    .timeline::before { /* Sembunyikan garis utama di mobile, atau buat jadi lebih simpel */
-        left: 50%;
-        transform: translateX(-50%);
+    .timeline::before {
+        left: 30px;
+        transform: translateX(0);
     }
 
-    .timeline-icon {
-        position: relative; /* Kembali relative */
-        margin-right: 0;
-        margin-bottom: 1rem; /* Jarak icon ke konten di bawahnya */
-        left: auto;
-        transform: none;
+    .timeline-item-v2,
+    .timeline-item-v2:nth-child(odd),
+    .timeline-item-v2:nth-child(even) {
+        flex-direction: column;
+        align-items: flex-start; /* Atau center jika mau icon di tengah */
+        padding-left: 0; /* Atau sesuaikan dengan posisi garis baru */
     }
 
-    .timeline-content,
-    .timeline-item:nth-child(odd) .timeline-content,
-    .timeline-item:nth-child(even) .timeline-content {
+    .timeline-icon-v2 {
+        position: relative;
+        left: 0; /* Jika garis di kiri, icon bisa di kiri juga */
+        transform: translateX(calc(30px - 50%)); /* Pusatkan icon pada garis kiri */
+        margin-bottom: 1rem;
+        align-self: flex-start; /* Atau center */
+        /* top: auto;  Reset top */
+    }
+
+    .timeline-panel-v2,
+    .timeline-item-v2:nth-child(odd) .timeline-image-panel,
+    .timeline-item-v2:nth-child(odd) .timeline-text-panel,
+    .timeline-item-v2:nth-child(even) .timeline-text-panel,
+    .timeline-item-v2:nth-child(even) .timeline-image-panel {
         width: 100%;
-        text-align: center; /* Atau left, sesuai preferensi */
-    }
-
-    .timeline-inner-content,
-    .timeline-item:nth-child(even) .timeline-inner-content {
-        flex-direction: column !important; /* Semua jadi column di mobile */
-        align-items: center; /* Pusatkan gambar */
-    }
-
-    .timeline-image-wrapper {
-        width: 80%; /* Gambar tidak terlalu full width di mobile */
-        max-width: 300px; /* Batas max */
-        margin-right: 0 !important;
+        order: 0 !important; /* Reset order */
         margin-left: 0 !important;
-        margin-bottom: 1rem !important;
+        margin-right: 0 !important;
+        text-align: left !important;
     }
-    .timeline-text-wrapper,
-    .timeline-item:nth-child(even) .timeline-text-wrapper {
-        text-align: center !important; /* Atau left, sesuai preferensi */
+
+    /* Gambar di atas teks di mobile untuk semua item */
+    .timeline-item-v2 .timeline-image-panel {
+        order: 1 !important; /* Gambar selalu di atas */
+        margin-bottom: 1rem;
+    }
+    .timeline-item-v2 .timeline-text-panel {
+        order: 2 !important; /* Teks selalu di bawah gambar */
     }
 }
 
-@media (max-width: 575.98px) { /* Extra Small Mobile (Sebelumnya 576px) */
+@media (max-width: 575.98px) { /* Extra Small Mobile */
     .hero-title { font-size: 2.3rem !important; }
     .hero-subtitle { font-size: 1.6rem !important; }
     .hero-btn { padding: 0.7rem 2rem !important; font-size: 1rem !important; }
 
-    .history-section, .gallery-section {
-        padding: 3rem 0.75rem;
-    }
+    .history-section, .gallery-section { padding: 3rem 0.75rem; }
     .section-title { font-size: 2rem !important; }
-    .timeline-content { padding: 1.2rem; }
+    .timeline-content-v2 { padding: 1.2rem; } /* Konten di dalam panel teks */
     .timeline-year { font-size: 1.5rem; }
     .timeline-title { font-size: 1.3rem; }
-    .timeline-content p { font-size: 0.95rem; }
+    .timeline-content-v2 p { font-size: 0.95rem; }
 
-    .timeline-icon {
+    .timeline-icon-v2 {
         width: 50px;
         height: 50px;
         font-size: 1.6rem;
+        transform: translateX(calc(30px - 50%)); /* Sesuaikan dengan lebar icon baru */
     }
 }

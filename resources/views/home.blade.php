@@ -397,53 +397,62 @@
   </div>
 </section>
 
+<!-- Zona Informasi Harian (Ulang Tahun + Ayat Harian) -->
+  <section class="info-zone-container-v2 py-4"> {{-- Padding py-4 agar tidak terlalu besar --}}
+    <div class="container">
+        <div class="info-zone-layout">
+            <!-- Ulang Tahun -->
+            <div class="info-card-natural animate-on-scroll">
+                <div class="info-card-icon">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <div class="info-card-content-wrapper">
+                    <h4>Ulang Tahun Hari Ini</h4>
+                    @php
+                        // Ambil data jemaat yang ulang tahun hari ini
+                        $jemaatUlangTahun = App\Models\Jemaat::ulangTahunHariIni()->limit(3)->get(); // Batasi misal 3 nama
+                    @endphp
+                    @forelse($jemaatUlangTahun as $jemaat)
+                        <div class="info-list-item-natural">
+                            <p class="item-title-natural">{{ $jemaat->nama }}</p>
+                            <p class="item-detail-natural">{{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }}</p>
+                        </div>
+                    @empty
+                        <p class="no-info-message-natural">Tidak ada yang berulang tahun hari ini.</p>
+                    @endforelse
+                    @if(App\Models\Jemaat::ulangTahunHariIni()->count() > 3)
+                        <p class="item-detail-natural mt-2"><em>Dan beberapa lainnya...</em></p>
+                    @endif
+                </div>
+            </div>
 
-  <!-- Bible Verse Section -->
- <!-- 🎉 Zona Informasi Harian (Ulang Tahun + Ayat Harian) -->
-<div class="info-zone-genz">
-  <!-- Ulang Tahun -->
-  <div class="birthday-card-genz">
-    <div class="birthday-card-header-genz">
-      <i class="fas fa-birthday-cake text-yellow-300 text-lg animate-pulse"></i>
-      <h3>Ulang Tahun Hari Ini</h3>
-      <p>Selamat ulang tahun!</p>
-    </div>
-    <div class="birthday-card-body-genz">
-      @forelse(App\Models\Jemaat::ulangTahunHariIni()->get() as $jemaat)
-        <div class="birthday-user-genz">
-          <div class="user-info">
-            <p class="user-name">{{ $jemaat->nama }}</p>
-            <p class="user-ttl">{{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }}</p>
-          </div>
+            <!-- Ayat Harian -->
+            <div class="info-card-natural animate-on-scroll delay-1">
+                 <div class="info-card-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="info-card-content-wrapper">
+                    <h4>Ayat Harian</h4>
+                    @php
+                        // Pastikan $ayatHarian di-pass dari controller
+                        // $ayatHarian = App\Models\Berita::where('tipe', 'ayat_harian')
+                        //                               ->orderBy('tanggal_publikasi', 'desc')
+                        //                               ->first();
+                    @endphp
+                    @if(isset($ayatHarian) && $ayatHarian)
+                        <div class="info-list-item-natural">
+                            <p class="item-title-natural">{{ $ayatHarian->judul }}</p>
+                            <p class="item-detail-natural">{{ Str::limit($ayatHarian->deskripsi, 150) }}</p> {{-- Batasi panjang deskripsi --}}
+                            <small class="item-date-natural"><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
+                        </div>
+                    @else
+                        <p class="no-info-message-natural">Ayat Harian belum tersedia.</p>
+                    @endif
+                </div>
+            </div>
         </div>
-      @empty
-        <div class="no-birthday-message">Belum ada yang ulang tahun hari ini</div>
-      @endforelse
     </div>
-  </div>
-
-  <!-- Ayat Harian -->
-  <div class="birthday-card-genz">
-    <div class="birthday-card-header-genz">
-      <i class="fas fa-book-open text-yellow-300 text-lg animate-pulse"></i>
-      <h3>Ayat Harian</h3>
-      <p> Selamat menjalani hari dalam kasih Kristus! </p>
-    </div>
-    <div class="birthday-card-body-genz">
-    @if($ayatHarian)
-      <div class="birthday-user-genz">
-        <div class="user-info">
-          <p class="user-name">{{ $ayatHarian->judul }}</p>
-          <p class="user-ttl">{{ $ayatHarian->deskripsi }}</p>
-          <small><i>{{ \Carbon\Carbon::parse($ayatHarian->tanggal_publikasi)->translatedFormat('d F Y') }}</i></small>
-        </div>
-      </div>
-    @else
-      <div class="no-birthday-message">Belum ada Ayat Harian yang tersedia</div>
-    @endif
-  </div>
-</div>
-</div>
+  </section>
 
   <!-- Jadwal Ibadah Mingguan -->
  <section class="schedule-section py-5">
