@@ -117,9 +117,9 @@
         <!-- Social Media and Contact Info -->
         <div class="col-md-3 mb-3">
           <div class="footer-icon">
-            <a href="https://wa.me/6285830058928" target="_blank"><i class="bi bi-whatsapp"></i></a>
+            <a href="https://wa.me/6282276940299" target="_blank"><i class="bi bi-whatsapp"></i></a>
             <a href="https://www.youtube.com/@baktirajachannel1" target="_blank"><i class="bi bi-youtube"></i></a>
-            <a href="https://www.instagram.com/joseppsilaen_" target="_blank"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.instagram.com/nhkbp_sinsim" target="_blank"><i class="bi bi-instagram"></i></a>
             <a href="https://www.facebook.com/groups/HKBP SINAMBELA SIMANULLANG RESORT BAKARA" target="_blank"><i class="bi bi-facebook"></i></a>
           </div>
           <div class="contact-text">
