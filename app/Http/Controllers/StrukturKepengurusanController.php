@@ -8,11 +8,14 @@ use App\Models\StrukturKepengurusan;
 class StrukturKepengurusanController extends Controller
 {
     private $listJabatan = [
-        'Pendeta',
+        'Pendeta Resort',
+        'Guru Huria',
         'Pendeta Fungsional',
         'Sekretaris',
         'Parartaon',
+        'Wakil Parartaon',
         'Bendahara',
+        'Wakil Bendahara',
         'Ketua Marturia',
         'Anggota Marturia',
         'Ketua Diakonia',
@@ -60,8 +63,8 @@ class StrukturKepengurusanController extends Controller
     {
         $struktur = StrukturKepengurusan::all();
 
-        $pendeta = $struktur->whereIn('jabatan', ['Pendeta', 'Pendeta Fungsional']);
-        $fungsionaris = $struktur->whereIn('jabatan', ['Sekretaris', 'Parartaon', 'Bendahara']);
+        $pendeta = $struktur->whereIn('jabatan', ['Pendeta Resort', 'Pendeta Fungsional']);
+        $fungsionaris = $struktur->whereIn('jabatan', ['Guru Huria', 'Sekretaris', 'Parartaon', 'Wakil Parartaon', 'Bendahara', 'Wakil Bendahara']);
         $marturia = $struktur->whereIn('jabatan', ['Ketua Marturia', 'Anggota Marturia']);
         $diakonia = $struktur->whereIn('jabatan', ['Ketua Diakonia', 'Anggota Diakonia']);
         $koinonia = $struktur->whereIn('jabatan', ['Ketua Koinonia', 'Anggota Koinonia']);
