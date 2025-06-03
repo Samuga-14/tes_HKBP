@@ -55,18 +55,19 @@
                     @endphp
                     @forelse($jemaatUlangTahun as $jemaat)
                         <div class="info-list-item-natural">
-                            <p class="item-title-natural">{{ $jemaat->nama }}</p>
-                            <p class="item-detail-natural">{{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }}</p>
+                            <p class="item-title-natural">{{ $jemaat->nama }} ({{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }})</p>
                         </div>
                     @empty
                         <p class="no-info-message-natural">Tidak ada yang berulang tahun hari ini.</p>
                     @endforelse
-                    @if(App\Models\Jemaat::ulangTahunHariIni()->count() > 3)
-                        <p class="item-detail-natural mt-2"><em>Dan beberapa lainnya...</em></p>
+                    @if($jemaatUlangTahun->count() > 0)
+                        <p class="item-detail-natural"><em>Selamat ulang tahun, Tuhan Yesus memberkati! 🎉</em></p>
+                        @if(App\Models\Jemaat::ulangTahunHariIni()->count() > 3)
+                            <p class="item-detail-natural"><em>Dan beberapa lainnya...</em></p>
+                        @endif
                     @endif
                 </div>
             </div>
-
             <!-- Ayat Harian -->
             <div class="info-card-natural animate-on-scroll delay-2">
                  <div class="info-card-icon">

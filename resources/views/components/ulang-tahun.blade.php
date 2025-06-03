@@ -1,14 +1,11 @@
 <div class="space-y-2">
     <!-- Header -->
     <div class="flex items-center gap-2 px-3 py-2 bg-{{ $hariIni ? 'yellow' : 'blue' }}-50 rounded-lg">
-        <i class="fas {{ $hariIni ? '' : 'fa-calendar-alt text-blue-600' }}"></i>
-        <h3 class="font-medium text-sm text-gray-800">
+        <h3 class="fw-bold text-sm text-gray-800">
             @if($hariIni)
-            
-            @else
-                Ulang Tahun Bulan {{ now()->format('m/Y') }}
+             SELAMAT ULANG TAHUN !, TUHAN YESUS MEMBERKATI
             @endif
-        </h3>
+        </h3>    
     </div>
 
     <!-- List -->
