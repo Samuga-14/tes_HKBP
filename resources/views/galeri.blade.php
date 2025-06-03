@@ -28,7 +28,7 @@
   <div class="hero-text">
     <p class="subtitle fade-up fade-up-delay-1">GALERI KEGIATAN</p>
     <h1 class="fade-up fade-up-delay-2">HKBP SINAMBELA - SIMANULLANG</h1>
-    <p class="tagline fade-up fade-up-delay-3">Galeri kegiatan - kegiatan yang dilaksanakan oleh jemaat gereja HKBP Sinambela - Simanullang</p>
+    <p class="tagline fade-up fade-up-delay-3">Galeri kegiatan - kegiatan yang dilaksanakan oleh jemaat gereja HKBP Sinambela - Simanullang</p>
   </div>
 </section>
 
