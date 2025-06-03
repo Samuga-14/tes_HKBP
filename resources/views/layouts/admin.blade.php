@@ -185,9 +185,9 @@
 <!-- Layout Wrapper -->
 <div class="layout-wrapper">
     <div class="topbar">
-        <div class="hamburger-icon">
+        {{-- <div class="hamburger-icon">
             <i class="fas fa-bars"></i>
-        </div>
+        </div> --}}
         <h3>@yield('title')</h3>
         <div class="profile">
             <div class="profile-icon">

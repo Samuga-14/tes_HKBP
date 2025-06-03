@@ -22,6 +22,7 @@
   </div>
 </section>
 
+<h2 class="mt-4 mb-4 text-center fw-semibold fade-up fade-up-delay-5">Struktur Kepengurusan Gereja HKBP SIN - SIM</h2>
 
   @php
     $data = [
@@ -45,7 +46,7 @@
 
   @foreach ($data as $section => $items)
     <section class="section-wrapper">
-      <div class="section-title">{{ $section }}</div>
+      <div class="section-title mt-5">{{ $section }}</div>
       <p class="section-description">{{ $descriptions[$section] }}</p>
       <div class="container person-grid">
         @foreach ($items as $item)

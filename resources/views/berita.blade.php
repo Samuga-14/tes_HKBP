@@ -35,7 +35,7 @@
     {{-- Berita Section --}}
     <section class="content-section py-5 fade-up fade-up-delay-4">
         <div class="container">
-            <h2 class="mb-5 text-center fw-bold fade-up fade-up-delay-5">Berita Terbaru</h2>
+            <h2 class="mb-5 text-center fw-semibold fade-up fade-up-delay-5">Berita Terbaru</h2>
 
             @forelse ($beritas as $index => $item)
                 <div class="d-flex flex-column flex-md-row gap-3 mb-4 p-4 berita-box bg-white shadow-lg rounded-4 fade-up fade-up-delay-{{ ($index % 6) + 1 }}">

@@ -6,7 +6,8 @@
                 <span style="font-size: 1.2rem;">HKBP</span>
                 <span style="font-size: 1rem;">SINAMBELA-SIMANULLANG</span>
             </div>
-        </a>        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -32,7 +33,7 @@
             </ul>
             <div class="d-flex ms-4">
                 <a href="{{ route('login') }}" class="btn btn-login">Login Admin</a>
-            </div> 
+            </div>
         </div>
     </div>
 </nav>
