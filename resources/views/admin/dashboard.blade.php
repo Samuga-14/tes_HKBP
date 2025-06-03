@@ -39,8 +39,8 @@
             @php
                 $stats = [
                     ['label' => 'Total Jumlah Jemaat', 'icon' => 'fa-users', 'color' => 'success', 'count' => \App\Models\Jemaat::count()],
-                    ['label' => 'Jemaat Laki-laki', 'icon' => 'fa-male', 'color' => 'primary', 'count' => \App\Models\Jemaat::where('jenis_kelamin', 'L')->count()],
-                    ['label' => 'Jemaat Perempuan', 'icon' => 'fa-female', 'color' => 'danger', 'count' => \App\Models\Jemaat::where('jenis_kelamin', 'P')->count()],
+                    ['label' => 'Jemaat Laki-laki', 'icon' => 'fa-male', 'color' => 'primary', 'count' => \App\Models\Jemaat::where('jenis_kelamin', 'Laki-laki')->count()],
+                    ['label' => 'Jemaat Perempuan', 'icon' => 'fa-female', 'color' => 'danger', 'count' => \App\Models\Jemaat::where('jenis_kelamin', 'Perempuan')->count()],
                     ['label' => 'Jumlah Pengurus Gereja', 'icon' => 'fa-sitemap', 'color' => 'warning', 'count' => \App\Models\StrukturKepengurusan::count()],
                 ];
             @endphp
