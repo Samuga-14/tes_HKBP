@@ -70,28 +70,29 @@ class WartaController extends Controller
         return view('admin.warta.edit', compact('warta'));
     }
 
-    public function update(Request $request, Warta $warta)
-    {
-        $request->validate([
-            'judul' => 'required',
-            'deskripsi' => 'required',
-            'file_pdf' => 'mimes:pdf|max:16384',
-        ]);
+   public function update(Request $request, Warta $warta)
+{
+    $request->validate([
+        'judul' => 'required',
+        'deskripsi' => 'required',
+        'file_pdf' => 'mimes:pdf|max:16384',
+    ]);
 
-        if ($request->hasFile('file_pdf')) {
-            $filePath = $request->file('file_pdf')->store('uploads/pdf', 'public');
-            $warta->update(['file_pdf' => $filePath]);
-        }
+    $dataUpdate = [
+        'judul' => $request->judul,
+        'deskripsi' => $request->deskripsi,
+    ];
 
-        $warta->update([
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'file_pdf' => 'mimes:pdf|max:16384',
-        ]);
-
-        return redirect()->route('admin.warta.index')->with('success', 'Warta berhasil diperbarui!');
-
+    if ($request->hasFile('file_pdf')) {
+        $filePath = $request->file('file_pdf')->store('uploads/pdf', 'public');
+        $dataUpdate['file_pdf'] = $filePath;
     }
+
+    $warta->update($dataUpdate);
+
+    return redirect()->route('admin.warta.index')->with('success', 'Warta berhasil diperbarui!');
+}
+
 
     public function destroy(Warta $warta)
     {
