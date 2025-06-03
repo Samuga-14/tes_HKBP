@@ -53,7 +53,7 @@ Melalui Warta Jemaat, kita dipersatukan dalam informasi dan kasih untuk bertumbu
                     </a>
                 @endif
             </div>
-        </div>       
+        </div>
     @endforeach
    </div>
 
