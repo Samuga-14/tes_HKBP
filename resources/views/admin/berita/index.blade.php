@@ -195,7 +195,9 @@
                     <td>{{ Str::limit(strip_tags($item->deskripsi), 100) }}</td>
                     <td class="text-center">
                         @if ($item->gambar)
-                            <img src="{{ asset($item->gambar) }}" alt="Gambar">
+                                                <div class="flex-shrink-0">
+                        <img src="{{ asset('images/berita/' . $item->gambar) }}"
+                             alt="{{ $item->judul }}"/>
                         @else
                             <i class="fas fa-image fa-2x" style="color: #0d6efd;"></i>
                         @endif
