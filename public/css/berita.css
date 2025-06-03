@@ -50,7 +50,7 @@ body {
   font-size: 3.5rem;
   letter-spacing: 4px;
   text-transform: uppercase;
-  color: #aadfff;
+  color: #fbfeff;
   font-weight: 800;
 }
 
@@ -65,8 +65,6 @@ body {
 /* ======================
    BERITA SECTION
 ====================== */
-/* === Berita Section === */
-/* === Berita Section === */
 .content-section {
     background: linear-gradient(135deg, #f0f4ff, #ffffff);
 }

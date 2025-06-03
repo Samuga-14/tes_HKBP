@@ -49,24 +49,26 @@
                     <i class="bi bi-calendar-heart"></i> {{-- Ganti icon --}}
                 </div>
                 <div class="info-card-content-wrapper">
-                    <h4>Ulang Tahun Hari Ini</h4>
+                    <h4>Ulang Tahun Hari Ini ({{ now()->format('d/m/Y') }})</h4>
                     @php
                         $jemaatUlangTahun = App\Models\Jemaat::ulangTahunHariIni()->limit(3)->get();
                     @endphp
+                     @if($jemaatUlangTahun->count() > 0)
+                        <p class="item-detail-natural fw-bold">Selamat ulang tahun, Tuhan Yesus memberkati!</p>
+                        @if(App\Models\Jemaat::ulangTahunHariIni()->count() > 10)
+                            <p class="item-detail-natural"><em>Dan beberapa lainnya...</em></p>
+                        @endif
+                    @endif
                     @forelse($jemaatUlangTahun as $jemaat)
                         <div class="info-list-item-natural">
-                            <p class="item-title-natural">{{ $jemaat->nama }}</p>
-                            <p class="item-detail-natural">{{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }}</p>
+                            <p class="item-title-natural">{{ $jemaat->nama }}({{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }})</p>
                         </div>
                     @empty
                         <p class="no-info-message-natural">Tidak ada yang berulang tahun hari ini.</p>
                     @endforelse
-                    @if(App\Models\Jemaat::ulangTahunHariIni()->count() > 3)
-                        <p class="item-detail-natural mt-2"><em>Dan beberapa lainnya...</em></p>
-                    @endif
+                   
                 </div>
             </div>
-
             <!-- Ayat Harian -->
             <div class="info-card-natural animate-on-scroll delay-2">
                  <div class="info-card-icon">

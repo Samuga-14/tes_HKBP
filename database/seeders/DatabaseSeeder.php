@@ -21,5 +21,16 @@ class DatabaseSeeder extends Seeder
         'email' => 'hkbp@example.com',
         'password' => Hash::make('hkbp123'), // Ganti dengan password yang lo mau
     ]);
+        User::create([
+        'name' => 'Admin',
+        'email' => 'admin1@example.com',
+        'password' => Hash::make('adminhkbp123'),
+    ]);
+
+        User::create([
+        'name' => 'Admin HKBP',
+        'email' => 'adminhkbp@example.com',
+        'password' => Hash::make('admin123'),
+    ]);
     }
 }
