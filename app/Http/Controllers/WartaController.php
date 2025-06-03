@@ -84,9 +84,11 @@ class WartaController extends Controller
     ];
 
     if ($request->hasFile('file_pdf')) {
-        $filePath = $request->file('file_pdf')->store('uploads/pdf', 'public');
-        $dataUpdate['file_pdf'] = $filePath;
-    }
+    $filePath = $request->file('file_pdf')->store('uploads/pdf', 'public');
+    $dataUpdate['file_pdf'] = $filePath;
+    } else {
+    $dataUpdate['file_pdf'] = $warta->file_pdf;
+   }
 
     $warta->update($dataUpdate);
 
