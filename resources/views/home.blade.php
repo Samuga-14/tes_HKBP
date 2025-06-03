@@ -49,7 +49,7 @@
                     <i class="bi bi-calendar-heart"></i> {{-- Ganti icon --}}
                 </div>
                 <div class="info-card-content-wrapper">
-                    <h4>Ulang Tahun Hari Ini</h4>
+                    <h4>Ulang Tahun Hari Ini ({{ now()->format('d/m/Y') }})</h4>
                     @php
                         $jemaatUlangTahun = App\Models\Jemaat::ulangTahunHariIni()->limit(3)->get();
                     @endphp
