@@ -61,30 +61,43 @@ class BeritaController extends Controller
     {
         return view('admin.berita.create');
     }
+public function store(Request $request)
+{
+    // Validasi input
+    $rules = [
+        'judul' => 'required|string|max:255',
+        'deskripsi' => 'required|string',
+        'tipe' => 'required|string|in:berita,ayat_harian',
+    ];
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'tipe' => 'required|string|in:berita,ayat_harian', // validasi tipe
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-        ]);
-
-        $data = $request->only(['judul', 'deskripsi', 'tipe']);
-        $data['tanggal_publikasi'] = now();
-
-        if ($request->hasFile('gambar')) {
-            $gambar = $request->file('gambar');
-            $namaFile = time() . '_' . $gambar->getClientOriginalName();
-            $gambar->move(public_path('images/berita'), $namaFile);
-            $data['gambar'] = $namaFile;
-        }
-
-        Berita::create($data);
-
-        return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan!');
+    if ($request->input('tipe') === 'berita') {
+        $rules['gambar'] = 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192';
+    } else {
+        $rules['gambar'] = 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192';
     }
+
+    $validated = $request->validate($rules);
+
+    $data = $request->only(['judul', 'deskripsi', 'tipe']);
+    $data['tanggal_publikasi'] = now();
+
+    if ($request->hasFile('gambar')) {
+        $gambar = $request->file('gambar');
+        $namaFile = time() . '_' . $gambar->getClientOriginalName();
+        $gambar->move(public_path('images/berita'), $namaFile);
+        $data['gambar'] = $namaFile;
+    }
+
+    // Jika tidak ada gambar dan tipe ayat_harian, pastikan null dikirim
+    if (!isset($data['gambar'])) {
+        $data['gambar'] = null;
+    }
+
+    Berita::create($data);
+
+    return redirect()->route('admin.berita.index')->with('success', 'Berita berhasil ditambahkan!');
+}
+
 
     public function show($id)
     {
