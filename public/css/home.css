@@ -334,52 +334,62 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-lg);
 }
+
 .service-image img {
   transition: transform 0.6s ease;
-  display: block; /* Menghilangkan spasi bawah img */
+  display: block;
   width: 100%;
 }
+
 .service-image:hover img {
   transform: scale(1.05);
 }
-.service-image-overlay {
+
+.service-image-content {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(to top, rgba(30, 58, 138, 0.85), transparent);
-  padding: 1.5rem; /* Padding overlay */
-  color: var(--white);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  display: flex; /* Untuk align item di overlay */
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  height: 60%; /* Ketinggian overlay */
+  color: white;
 }
-.service-image:hover .service-image-overlay {
-  opacity: 1;
-}
+
 .service-image-content h4 {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
 }
+
+.service-image-content {
+  position: absolute;
+  top: 65%; /* contoh posisi diturunkan */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+}
+
+.service-image-content h4 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
 .service-image-content .btn-primary {
   background-color: var(--secondary);
   border-color: var(--secondary);
   font-size: 0.9rem;
   padding: 0.5rem 1.5rem;
-}
-.service-image-content .btn-primary:hover {
-  background-color: #b38b59;
-  border-color: #b38b59;
+  color: #fff; /* pastikan teks tombol putih */
 }
 
+.service-image-content .btn-primary:hover,
+.service-image-content .btn-primary:focus {
+  background-color: #e6c93b; /* warna kuning sedikit terang untuk hover */
+  border-color: #e6c93b;
+  color: #fff;
+}
 
-/* COMMUNITY SECTION */
 .community-section {
   padding: 4rem 0;
   background: var(--accent);
@@ -390,17 +400,17 @@ body {
   padding: 2.5rem;
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  height: 100%; /* Untuk card dengan tinggi sama */
+  height: 100%; 
   display: flex;
   flex-direction: column;
-  text-align: center; /* Konten card center */
+  text-align: center; 
 }
 .community-card:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-lg);
 }
 .community-card .bi {
-  font-size: 2.8rem; /* Icon lebih besar */
+  font-size: 2.8rem; 
   color: var(--secondary);
   margin-bottom: 1.5rem;
   transition: transform 0.3s ease;
@@ -419,16 +429,16 @@ body {
     color: var(--text-muted);
     line-height: 1.6;
     font-size: 0.95rem;
-    flex-grow: 1; /* Agar paragraf mengisi ruang jika card flex column */
+    flex-grow: 1; 
 }
 
 /* TESTIMONY SECTION */
 .testimony-section {
   padding: 4rem 0;
-  background-color: #f8f9fa; /* Background sedikit beda */
+  background-color: #f8f9fa;
 }
 .testimony-card {
-  background: var(--white); /* Background card putih */
+  background: var(--white); 
   border-radius: 12px;
   padding: 2rem;
   box-shadow: var(--shadow-md);

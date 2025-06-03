@@ -267,7 +267,7 @@
       <div class="row align-items-center g-5">
         <div class="col-md-6">
           <div class="vision-image animate-on-scroll delay-1">
-            <img src="{{ asset('images/jemaat.jpeg') }}" alt="Visi Misi Gereja" class="img-fluid">
+            <img src="{{ asset('images/wih (1).jpg ') }}" alt="Visi Misi Gereja" class="img-fluid">
           </div>
         </div>
         <div class="col-md-6">
