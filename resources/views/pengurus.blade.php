@@ -46,7 +46,7 @@
 
   @foreach ($data as $section => $items)
     <section class="section-wrapper">
-      <div class="section-title">{{ $section }}</div>
+      <div class="section-title mt-5">{{ $section }}</div>
       <p class="section-description">{{ $descriptions[$section] }}</p>
       <div class="container person-grid">
         @foreach ($items as $item)
