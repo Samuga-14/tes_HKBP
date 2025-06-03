@@ -18,26 +18,18 @@
                 <div class="p-3 hover:bg-gray-50 transition-colors border-b border-gray-100 last:border-b-0">
                     <div class="flex items-center justify-between gap-3">
                         <div class="flex items-center gap-3">
-                            <!-- Avatar -->
-                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                                <span class="text-blue-600 font-medium">
-                                    {{ substr($jemaat->nama, 0, 1) }}
-                                </span>
-                            </div>
+                        <!-- Icon -->
+                        <div class="text-yellow-400">
+                            <i class="fas fa-gift"></i>
+                        </div>
                             <!-- Nama -->
                             <div>
                                 <span class="font-medium text-gray-800 block">
                                     {{ $jemaat->nama }}
                                 </span>
-                                <span class="text-xs text-gray-500">
-                                    {{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d/m/2025') }}
-                                </span>
                             </div>
                         </div>
-                        <!-- Icon -->
-                        <div class="text-yellow-400">
-                            <i class="fas fa-gift"></i>
-                        </div>
+
                     </div>
                 </div>
             @endforeach

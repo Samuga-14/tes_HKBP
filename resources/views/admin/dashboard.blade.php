@@ -21,7 +21,7 @@
         <div class="col-lg-6">
             <div class="card border-0 shadow-md rounded-4 h-100">
                 <div class="card-header bg-success bg-opacity-10 border-0 rounded-top-4">
-                    <h2 class="m-0 text-success fw-bold"><i class="fas fa-birthday-cake me-2"></i> Ulang Tahun Hari Ini ({{ now()->format('d/m/Y') }})</h2>
+                    <h2 class="m-0 text-success fw-bold"><i class="fas fa-birthday-cake me-2"></i> Ulang Tahun Hari Ini ({{ now()->format('d-m-Y') }})</h2>
                 </div>
                 <div class="card-body">
                     @include('components.ulang-tahun', [

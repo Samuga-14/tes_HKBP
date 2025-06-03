@@ -49,7 +49,7 @@
                     <i class="bi bi-calendar-heart"></i> {{-- Ganti icon --}}
                 </div>
                 <div class="info-card-content-wrapper">
-                    <h4>Ulang Tahun Hari Ini ({{ now()->format('d/m/Y') }})</h4>
+                    <h4>Ulang Tahun Hari Ini ({{ now()->format('d-m-Y') }})</h4>
                     @php
                         $jemaatUlangTahun = App\Models\Jemaat::ulangTahunHariIni()->limit(3)->get();
                     @endphp
@@ -61,7 +61,7 @@
                     @endif
                     @forelse($jemaatUlangTahun as $jemaat)
                         <div class="info-list-item-natural">
-                            <p class="item-title-natural">{{ $jemaat->nama }}({{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }})</p>
+                            <p class="item-title-natural">{{ $jemaat->nama }}</p>
                         </div>
                     @empty
                         <p class="no-info-message-natural">Tidak ada yang berulang tahun hari ini.</p>
