@@ -53,19 +53,20 @@
                     @php
                         $jemaatUlangTahun = App\Models\Jemaat::ulangTahunHariIni()->limit(3)->get();
                     @endphp
+                     @if($jemaatUlangTahun->count() > 0)
+                        <p class="item-detail-natural fw-bold">Selamat ulang tahun, Tuhan Yesus memberkati!</p>
+                        @if(App\Models\Jemaat::ulangTahunHariIni()->count() > 10)
+                            <p class="item-detail-natural"><em>Dan beberapa lainnya...</em></p>
+                        @endif
+                    @endif
                     @forelse($jemaatUlangTahun as $jemaat)
                         <div class="info-list-item-natural">
-                            <p class="item-title-natural">{{ $jemaat->nama }} ({{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }})</p>
+                            <p class="item-title-natural">{{ $jemaat->nama }}({{ \Carbon\Carbon::parse($jemaat->tanggal_lahir)->format('d M Y') }})</p>
                         </div>
                     @empty
                         <p class="no-info-message-natural">Tidak ada yang berulang tahun hari ini.</p>
                     @endforelse
-                    @if($jemaatUlangTahun->count() > 0)
-                        <p class="item-detail-natural"><em>Selamat ulang tahun, Tuhan Yesus memberkati! 🎉</em></p>
-                        @if(App\Models\Jemaat::ulangTahunHariIni()->count() > 3)
-                            <p class="item-detail-natural"><em>Dan beberapa lainnya...</em></p>
-                        @endif
-                    @endif
+                   
                 </div>
             </div>
             <!-- Ayat Harian -->
